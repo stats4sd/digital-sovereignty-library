@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Contracts\ResolvesVideoLinks;
+use App\Contracts\SearchesLibrary;
 use App\Models\SiteSetting;
+use App\Services\Search\DatabaseLibrarySearch;
+use App\Services\Search\MeilisearchLibrarySearch;
 use App\Services\VideoLink\EcoAgTubeAdapter;
 use App\Services\VideoLinkResolver;
 use Embed\Embed;
@@ -40,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(ResolvesVideoLinks::class, VideoLinkResolver::class);
+
+        $this->app->bind(SearchesLibrary::class, function () {
+            if (config('scout.driver') === 'meilisearch') {
+                return $this->app->make(MeilisearchLibrarySearch::class);
+            }
+
+            return $this->app->make(DatabaseLibrarySearch::class);
+        });
     }
 
     /**
@@ -70,6 +81,7 @@ class AppServiceProvider extends ServiceProvider
             }
             config([
                 'branding.features.show_language_filter' => $settings->show_language_filter,
+                'branding.features.show_trove_type_filter' => $settings->show_trove_type_filter,
             ]);
         } catch (\Exception) {
             // DB not ready (fresh install) - branding.php defaults remain
