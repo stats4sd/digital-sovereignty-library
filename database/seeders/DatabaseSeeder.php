@@ -3,10 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\Prep\CurriculumSeeder;
 use Database\Seeders\Prep\RoleSeeder;
 use Database\Seeders\Prep\SiteContentSeeder;
 use Database\Seeders\Prep\SiteSettingSeeder;
 use Database\Seeders\Prep\TagTypeSeeder;
+use Database\Seeders\Prep\ToolkitToolsSeeder;
 use Database\Seeders\Prep\TroveTypeSeeder;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TroveTypeSeeder::class);
         $this->call(SiteContentSeeder::class);
         $this->call(SiteSettingSeeder::class);
+        $this->call(CurriculumSeeder::class);
+        $this->call(ToolkitToolsSeeder::class);
 
         // run test seeders locally
         if (app()->environment('local')) {

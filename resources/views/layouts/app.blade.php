@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @php $siteName = config('branding.org_name') ?: config('app.name'); @endphp
+        <title>@hasSection('title')@yield('title') - {{ $siteName }}@else{{ $siteName }}@endif</title>
         {{-- Fonts - open sans, lato, lora --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +34,7 @@
             </svg>
         </button>
         @include('footer')
+        <x-glossary-drawer />
         @livewireScripts
     </body>
 </html>

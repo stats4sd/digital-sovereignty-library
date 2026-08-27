@@ -130,7 +130,7 @@
     <!-- Description -->
     <div class="divider"></div>
     <h2 class="text-2xl font-bold mb-4">{{ t('Description') }}</h2>
-    <div class="text-gray-700 leading-relaxed">{!! t($resource->description) !!}</div>
+    <div class="description text-gray-700 leading-relaxed" data-glossary-scope>{!! t($resource->description) !!}</div>
 
     <!-- View / Download -->
     @if($videoLinks->isNotEmpty() || ($externalLinks && is_array($externalLinks)) || $mediaFiles->isNotEmpty())

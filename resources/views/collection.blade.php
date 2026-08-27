@@ -78,7 +78,7 @@
     @if($collection->created_at)
         <p class="text-xs text-gray-400 mb-4">{{ \Carbon\Carbon::parse($collection->created_at)->translatedFormat('F Y') }}</p>
     @endif
-    <div class="text-gray-700 leading-relaxed">{!! t($collection->description) !!}</div>
+    <div class="description text-gray-700 leading-relaxed" data-glossary-scope>{!! t($collection->description) !!}</div>
 
     <!-- Resources -->
     <div id="collection-resources" class="mt-16">

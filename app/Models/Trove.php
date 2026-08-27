@@ -346,6 +346,12 @@ class Trove extends Model implements HasMedia
             ->withPivot('id');
     }
 
+    public function curriculumModules(): BelongsToMany
+    {
+        return $this->belongsToMany(CurriculumModule::class)
+            ->withPivot('id', 'order_column');
+    }
+
     public function relatedTroves()
     {
         // Using the collections to get related troves

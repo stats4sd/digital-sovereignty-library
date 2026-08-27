@@ -18,22 +18,24 @@ class SiteContentSeeder extends Seeder
             $this->command?->warn('BRAND_ORG_NAME is not set (or still the "Your Organisation" default). Set it in .env before seeding, otherwise the placeholder name is baked into SiteContent and changing .env later will not update it.');
         }
 
+        // home_* keys were removed: this deployment's home page is the curriculum
+        // landing (home_digital_sovereignty view), which does not use SiteContent.
         $defaults = [
-            'home_heading_line1' => [
-                $defaultLocale => $orgName,
-            ],
-            'home_heading_line2' => [
-                $defaultLocale => 'Resources Library',
-            ],
+            // 'home_heading_line1' => [
+            //     $defaultLocale => $orgName,
+            // ],
+            // 'home_heading_line2' => [
+            //     $defaultLocale => 'Resources Library',
+            // ],
             'library_heading_line1' => [
                 $defaultLocale => $orgName,
             ],
             'library_heading_line2' => [
                 $defaultLocale => 'Resources Library',
             ],
-            'home_intro' => [
-                $defaultLocale => 'Welcome to the ' . $orgName . ' Resources Library - a carefully selected set of resources for you to explore.',
-            ],
+            // 'home_intro' => [
+            //     $defaultLocale => 'Welcome to the ' . $orgName . ' Resources Library - a carefully selected set of resources for you to explore.',
+            // ],
             'library_hero_description' => [
                 $defaultLocale => 'Browse the full library of resources and collections on a variety of topics.',
             ],

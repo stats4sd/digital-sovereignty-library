@@ -8,6 +8,8 @@ use App\Filament\Pages\Login;
 use App\Filament\Pages\SiteContentPage;
 use App\Filament\Pages\SiteOptionsPage;
 use App\Filament\Resources\CollectionResource;
+use App\Filament\Resources\CurriculumModuleResource;
+use App\Filament\Resources\GlossaryTermResource;
 use App\Filament\Resources\InviteResource;
 use App\Filament\Resources\TagResource;
 use App\Filament\Resources\TagTypeResource;
@@ -88,6 +90,11 @@ class AdminPanelProvider extends PanelProvider
                         ...CollectionResource::getNavigationItems(),
                     ])
                     ->groups([
+                        NavigationGroup::make('Curriculum')
+                            ->items([
+                                ...CurriculumModuleResource::getNavigationItems(),
+                                ...GlossaryTermResource::getNavigationItems(),
+                            ]),
                         NavigationGroup::make('Details')
                             ->items([
                                 ...TroveTypeResource::getNavigationItems(),

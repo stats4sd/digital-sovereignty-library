@@ -22,8 +22,16 @@
             <ul class="flex space-x-6 font-medium uppercase text-base">
                 <li><a href="/home"
                         class=" hover:text-brand-primary {{ request()->is('home') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} ">
-                        {{ t('Library Home') }}
+                        {{ t('Home') }}
                     </a></li>
+                <li><a href="/curriculum"
+                        class=" hover:text-brand-primary {{ request()->is('curriculum*') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} ">
+                        {{ t('Curriculum') }}
+                    </a></li>
+                <li><button type="button" class="uppercase font-medium cursor-pointer hover:text-brand-primary"
+                        x-on:click="$dispatch('open-glossary')">
+                        {{ t('Glossary') }}
+                    </button></li>
                 <li><a href="/browse-all"
                         class=" hover:text-brand-primary  {{ request()->is('browse-all') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} !hover:text-red">
                         {{ t('Browse Library') }}
@@ -53,7 +61,12 @@
     <div class="lg:hidden" x-show="open" x-on:click.outside="open = false" style="display: none;">
         <nav class="bg-brand-bg text-right">
             <ul class="flex flex-col space-y-2 px-6 pb-4">
-                <li><a href="/home" class="text-gray-800 hover:text-gray-600">{{ t('Library Home') }}</a></li>
+                <li><a href="/home" class="text-gray-800 hover:text-gray-600">{{ t('Home') }}</a></li>
+                <li><a href="/curriculum" class="text-gray-800 hover:text-gray-600">{{ t('Curriculum') }}</a></li>
+                <li><button type="button" class="text-gray-800 hover:text-gray-600 cursor-pointer"
+                        x-on:click="$dispatch('open-glossary'); open = false">
+                        {{ t('Glossary') }}
+                    </button></li>
                 <li><a href="/browse-all" class="text-gray-800 hover:text-gray-600">{{ t('Browse Library') }}</a></li>
                 @if(count(config('branding.locales', ['en' => 'English'])) > 1)
                 <li class="relative nav-item pt-2 text-gray-800" x-data="{ langOpen: false }">

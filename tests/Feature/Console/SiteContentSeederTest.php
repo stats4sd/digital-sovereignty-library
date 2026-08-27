@@ -26,7 +26,7 @@ it('does not warn when the org name is configured', function () {
         ->doesntExpectOutputToContain('BRAND_ORG_NAME is not set')
         ->assertSuccessful();
 
-    expect(SiteContent::get('home_heading_line1'))->toContain('Acme Research');
+    expect(SiteContent::get('library_heading_line1'))->toContain('Acme Research');
 });
 
 it('runs without a command instance when seeded programmatically', function () {
