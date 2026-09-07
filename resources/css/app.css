@@ -193,6 +193,13 @@
         @apply shadow-lg;
     }
 
+    .role-card-selected,
+    .role-card-selected:hover {
+        border-color: var(--brand-secondary);
+        background-color: rgb(from var(--brand-secondary) r g b / 0.08);
+        box-shadow: inset 0 0 0 1px var(--brand-secondary);
+    }
+
     /* Learning map nodes (absolutely positioned over the trail SVG) */
     .curriculum-node {
         @apply absolute w-36 text-center cursor-pointer;

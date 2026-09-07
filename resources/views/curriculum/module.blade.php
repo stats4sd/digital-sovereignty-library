@@ -2,7 +2,7 @@
 @section('title', $module->title)
 @section('content')
     <div class="container mx-auto px-8 py-12 max-w-3xl">
-        <a href="{{ route('curriculum') }}#map" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-brand-secondary mb-6">
+        <a href="{{ route('curriculum') }}" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-brand-secondary mb-6">
             &larr; {{ t('Back to the learning map') }}
         </a>
 
