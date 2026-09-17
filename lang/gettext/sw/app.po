@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Sovereignty Library\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sw\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: resources/views/collection.blade.php:14
+msgid "Collection"
+msgstr "Mkusanyo"
+
+#: resources/views/collection.blade.php:16
+msgid "resources"
+msgstr "rasilimali"
+
+#: resources/views/collection.blade.php:20
+#: resources/views/trove.blade.php:53
+msgid "Available in:"
+msgstr "Inapatikana kwa:"
+
+#: resources/views/collection.blade.php:43
+#: resources/views/header.blade.php:40
+#: resources/views/header.blade.php:76
+#: resources/views/home.blade.php:32
+#: resources/views/trove.blade.php:84
+msgid "Browse Library"
+msgstr "Vinjari Maktaba"
+
+#: resources/views/collection.blade.php:48
+#: resources/views/trove.blade.php:89
+msgid "Share"
+msgstr "Shiriki"
+
+#: resources/views/collection.blade.php:51
+#: resources/views/trove.blade.php:92
+msgid "Share by email"
+msgstr "Shiriki kwa barua pepe"
+
+#: resources/views/collection.blade.php:57
+#: resources/views/trove.blade.php:98
+msgid "Share on WhatsApp"
+msgstr "Shiriki kwenye WhatsApp"
+
+#: resources/views/collection.blade.php:63
+#: resources/views/trove.blade.php:104
+msgid "Share on LinkedIn"
+msgstr "Shiriki kwenye LinkedIn"
+
+#: resources/views/collection.blade.php:68
+#: resources/views/trove.blade.php:109
+msgid "Copy link"
+msgstr "Nakili kiungo"
+
+#: resources/views/collection.blade.php:77
+#: resources/views/trove.blade.php:131
+msgid "Description"
+msgstr "Maelezo"
+
+#: resources/views/collection.blade.php:86
+msgid "Resources in this collection"
+msgstr "Rasilimali katika mkusanyo huu"
+
+#: resources/views/components/collection-result-card.blade.php:51
+#: resources/views/components/resource-result-card.blade.php:92
+msgid "VIEW"
+msgstr "TAZAMA"
+
+#: resources/views/components/curriculum-resource-row.blade.php:43
+msgid "View"
+msgstr "Tazama"
+
+#: resources/views/components/glossary-drawer.blade.php:60
+#: resources/views/components/glossary-drawer.blade.php:72
+#: resources/views/header.blade.php:35
+#: resources/views/header.blade.php:73
+msgid "Glossary"
+msgstr "Faharasa"
+
+#: resources/views/components/glossary-drawer.blade.php:73
+msgid "Close glossary"
+msgstr "Funga faharasa"
+
+#: resources/views/components/glossary-drawer.blade.php:78
+msgid "Search terms…"
+msgstr "Tafuta istilahi…"
+
+#: resources/views/components/glossary-drawer.blade.php:86
+msgid "All sources"
+msgstr "Vyanzo vyote"
+
+#: resources/views/components/glossary-drawer.blade.php:105
+msgid "Source:"
+msgstr "Chanzo:"
+
+#: resources/views/components/glossary-drawer.blade.php:116
+msgid "No matching terms."
+msgstr "Hakuna istilahi zinazolingana."
+
+#: resources/views/components/glossary-drawer.blade.php:119
+msgid "This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time."
+msgstr "Faharasa hii inatokana na kazi ya Marion Girard Cisneros, iliyotumika kwa ruhusa, na inaendelea kurekebishwa na kupanuliwa kadri muda unavyopita."
+
+#: resources/views/components/glossary-drawer.blade.php:120
+msgid "Other glossaries worth consulting:"
+msgstr "Faharasa nyingine zinazofaa kurejelewa:"
+
+#: resources/views/components/glossary-drawer.blade.php:124
+msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Faharasa — Utawala wa Data katika Kilimo (zana za UBC, PDF)"
+
+#: resources/views/components/glossary-drawer.blade.php:130
+msgid "Open Data Handbook Glossary"
+msgstr "Faharasa ya Open Data Handbook"
+
+#: resources/views/components/glossary-drawer.blade.php:197
+msgid "Open full glossary →"
+msgstr "Fungua faharasa kamili →"
+
+#: resources/views/components/video-link.blade.php:59
+msgid "Watch on :host"
+msgstr "Tazama kwenye :host"
+
+#: resources/views/curriculum/index.blade.php:1
+#: resources/views/curriculum/index.blade.php:18
+#: resources/views/header.blade.php:30
+#: resources/views/header.blade.php:70
+msgid "Curriculum"
+msgstr "Mtaala"
+
+#: resources/views/curriculum/index.blade.php:7
+msgid "Curriculum steps"
+msgstr "Hatua za mtaala"
+
+#: resources/views/curriculum/index.blade.php:11
+msgid "Intro"
+msgstr "Utangulizi"
+
+#: resources/views/curriculum/module.blade.php:5
+msgid "Back to the learning map"
+msgstr "Rudi kwenye ramani ya kujifunza"
+
+#: resources/views/curriculum/module.blade.php:22
+#: resources/views/curriculum/pillar.blade.php:24
+msgid "Learning outcomes"
+msgstr "Matokeo ya kujifunza"
+
+#: resources/views/curriculum/module.blade.php:33
+msgid "Resources"
+msgstr "Rasilimali"
+
+#: resources/views/curriculum/module.blade.php:42
+msgid "Resources for this stop are coming soon."
+msgstr "Rasilimali za kituo hiki zinakuja hivi karibuni."
+
+#: resources/views/curriculum/partials/map.blade.php:12
+msgid "Explore in any order"
+msgstr "Chunguza kwa mpangilio wowote"
+
+#: resources/views/curriculum/partials/map.blade.php:14
+msgid "The trail suggests a route, but there's no wrong way through. Start wherever makes sense for you."
+msgstr "Njia hii inapendekeza mwelekeo, lakini hakuna njia isiyo sahihi. Anza mahali popote penye maana kwako."
+
+#: resources/views/curriculum/partials/map.blade.php:34
+#: resources/views/curriculum/partials/map.blade.php:50
+msgid "Optional"
+msgstr "Hiari"
+
+#: resources/views/curriculum/partials/map.blade.php:61
+msgid "Build your toolkit"
+msgstr "Jenga seti yako ya zana"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:12
+msgid "Build Your Sovereign Toolkit"
+msgstr "Jenga Seti Yako Huru ya Zana"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:13
+msgid "Tools your community can own and run."
+msgstr "Zana ambazo jumuiya yako inaweza kumiliki na kuendesha yenyewe."
+
+#: resources/views/curriculum/partials/toolkit.blade.php:28
+msgid "Learn more"
+msgstr "Jifunze zaidi"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tool"
+msgstr "zana"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tools"
+msgstr "zana"
+
+#: resources/views/curriculum/pillar.blade.php:5
+msgid "Back to toolkit"
+msgstr "Rudi kwenye seti ya zana"
+
+#: resources/views/curriculum/pillar.blade.php:41
+msgid "Resources for this section are coming soon."
+msgstr "Rasilimali za sehemu hii zinakuja hivi karibuni."
+
+#: resources/views/footer.blade.php:16
+msgid "Template"
+msgstr "Kiolezo"
+
+#: resources/views/footer.blade.php:14
+msgid "Built using the :stats4sd Resources Repository :template"
+msgstr "Imeundwa kwa kutumia :template cha Hifadhi ya Rasilimali cha :stats4sd"
+
+#: resources/views/header.blade.php:7
+msgid ":org logo"
+msgstr "Nembo ya :org"
+
+#: resources/views/header.blade.php:25
+#: resources/views/header.blade.php:69
+msgid "Home"
+msgstr "Nyumbani"
+
+#: resources/views/header.blade.php:49
+#: resources/views/header.blade.php:80
+msgid "Change Language"
+msgstr "Badilisha Lugha"
+
+#: resources/views/home.blade.php:33
+msgid "Browse the full library of resources and collections."
+msgstr "Vinjari maktaba yote ya rasilimali na mikusanyo."
+
+#: resources/views/home_digital_sovereignty.blade.php:19
+msgid "Digital Sovereignty Curriculum"
+msgstr "Mtaala wa Mamlaka ya Kidijitali"
+
+#: resources/views/home_digital_sovereignty.blade.php:21
+msgid "Your tools. Your data."
+msgstr "Zana zako. Data yako."
+
+#: resources/views/home_digital_sovereignty.blade.php:22
+msgid "Your terms."
+msgstr "Masharti yako."
+
+#: resources/views/home_digital_sovereignty.blade.php:25
+msgid "Whether you're leading, training, farming, or supporting, digital sovereignty starts with your community. Learn what fits, then build your toolkit."
+msgstr "Iwe unaongoza, unafundisha, unalima au unasaidia, mamlaka ya kidijitali huanza na jumuiya yako. Jifunze kinachokufaa, kisha jenga seti yako ya zana."
+
+#: resources/views/home_digital_sovereignty.blade.php:30
+msgid "Start Learning"
+msgstr "Anza Kujifunza"
+
+#: resources/views/home_digital_sovereignty.blade.php:34
+msgid "or browse the full library"
+msgstr "au vinjari maktaba yote"
+
+#: resources/views/home_digital_sovereignty.blade.php:42
+msgid "How familiar are you with digital sovereignty?"
+msgstr "Unaifahamu kwa kiasi gani mamlaka ya kidijitali?"
+
+#: resources/views/home_digital_sovereignty.blade.php:48
+#: resources/views/home_digital_sovereignty.blade.php:54
+msgid "New here"
+msgstr "Mimi ni mgeni"
+
+#: resources/views/home_digital_sovereignty.blade.php:49
+#: resources/views/home_digital_sovereignty.blade.php:55
+msgid "Start with a short primer before the learning map."
+msgstr "Anza na utangulizi mfupi kabla ya ramani ya kujifunza."
+
+#: resources/views/home_digital_sovereignty.blade.php:59
+msgid "I know the basics"
+msgstr "Najua misingi"
+
+#: resources/views/home_digital_sovereignty.blade.php:60
+msgid "Skip ahead, straight to the learning map."
+msgstr "Ruka moja kwa moja hadi ramani ya kujifunza."
+
+#: resources/views/home_digital_sovereignty.blade.php:67
+msgid "A quick grounding"
+msgstr "Misingi kwa ufupi"
+
+#: resources/views/home_digital_sovereignty.blade.php:81
+msgid "Continue to the learning map"
+msgstr "Endelea hadi ramani ya kujifunza"
+
+#: resources/views/livewire/browse-all.blade.php:34
+msgid "Search and filter"
+msgstr "Tafuta na chuja"
+
+#: resources/views/livewire/browse-all.blade.php:43
+msgid "Search here"
+msgstr "Tafuta hapa"
+
+#: resources/views/livewire/browse-all.blade.php:44
+msgid "Search resources and collections"
+msgstr "Tafuta rasilimali na mikusanyo"
+
+#: resources/views/livewire/browse-all.blade.php:59
+msgid "Clear search"
+msgstr "Futa utafutaji"
+
+#: resources/views/livewire/browse-all.blade.php:70
+msgid "Filters:"
+msgstr "Vichujio:"
+
+#: resources/views/livewire/browse-all.blade.php:78
+msgid "Language:"
+msgstr "Lugha:"
+
+#: resources/views/livewire/browse-all.blade.php:107
+msgid "Type:"
+msgstr "Aina:"
+
+#: resources/views/livewire/browse-all.blade.php:175
+msgid "Text-based search is temporarily unavailable. You can still browse resources below, and use the filters to narrow your search."
+msgstr "Utafutaji kwa maandishi haupatikani kwa sasa. Bado unaweza kuvinjari rasilimali hapa chini na kutumia vichujio kupunguza matokeo ya utafutaji wako."
+
+#: resources/views/livewire/browse-all.blade.php:180
+msgid "No resources or collections match your search or filters."
+msgstr "Hakuna rasilimali au mikusanyo inayolingana na utafutaji au vichujio vyako."
+
+#: resources/views/livewire/browse-all.blade.php:183
+msgid "No resources or collections have been added yet."
+msgstr "Hakuna rasilimali au mikusanyo iliyoongezwa bado."
+
+#: resources/views/livewire/browse-all.blade.php:187
+msgid "Showing :start - :end out of :total resources and collections"
+msgstr "Inaonyesha :start - :end kati ya :total rasilimali na mikusanyo"
+
+#: resources/views/livewire/browse-all.blade.php:192
+msgid "Clear Filters"
+msgstr "Futa Vichujio"
+
+#: resources/views/livewire/browse-all.blade.php:215
+msgid "Pagination"
+msgstr "Kurasa"
+
+#: resources/views/livewire/browse-all.blade.php:221
+msgid "First page"
+msgstr "Ukurasa wa kwanza"
+
+#: resources/views/livewire/browse-all.blade.php:224
+msgid "First"
+msgstr "Ya kwanza"
+
+#: resources/views/livewire/browse-all.blade.php:233
+msgid "Previous page"
+msgstr "Ukurasa uliotangulia"
+
+#: resources/views/livewire/browse-all.blade.php:236
+msgid "Previous"
+msgstr "Iliyotangulia"
+
+#: resources/views/livewire/browse-all.blade.php:250
+msgid "Page"
+msgstr "Ukurasa"
+
+#: resources/views/livewire/browse-all.blade.php:264
+msgid "Next page"
+msgstr "Ukurasa unaofuata"
+
+#: resources/views/livewire/browse-all.blade.php:267
+msgid "Next"
+msgstr "Inayofuata"
+
+#: resources/views/livewire/browse-all.blade.php:276
+msgid "Last page"
+msgstr "Ukurasa wa mwisho"
+
+#: resources/views/livewire/browse-all.blade.php:279
+msgid "Last"
+msgstr "Ya mwisho"
+
+#: resources/views/livewire/collection-troves.blade.php:11
+msgid "No resources available for this collection."
+msgstr "Hakuna rasilimali zinazopatikana kwa mkusanyo huu."
+
+#: resources/views/livewire/trove-collections.blade.php:11
+msgid "No collections available for this resource."
+msgstr "Hakuna mikusanyo inayopatikana kwa rasilimali hii."
+
+#: resources/views/livewire/trove-related-troves.blade.php:15
+msgid "No related resources found."
+msgstr "Hakuna rasilimali zinazohusiana zilizopatikana."
+
+#: resources/views/trove.blade.php:16
+msgid "PREVIEW MODE: This resource has not been published and is only visible to authorised users"
+msgstr "HALI YA UHAKIKI: Rasilimali hii haijachapishwa na inaonekana tu kwa watumiaji walioidhinishwa"
+
+#: resources/views/trove.blade.php:138
+msgid "View / Download"
+msgstr "Tazama / Pakua"
+
+#: resources/views/trove.blade.php:212
+msgid "Download all (ZIP)"
+msgstr "Pakua zote (ZIP)"
+
+#: resources/views/trove.blade.php:224
+msgid "Collections including this resource"
+msgstr "Mikusanyo inayojumuisha rasilimali hii"
+
+#: resources/views/trove.blade.php:231
+msgid "Related resources"
+msgstr "Rasilimali zinazohusiana"

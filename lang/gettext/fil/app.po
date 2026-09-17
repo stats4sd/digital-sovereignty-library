@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Sovereignty Library\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fil\n"
+"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
+
+#: resources/views/collection.blade.php:14
+msgid "Collection"
+msgstr "Koleksyon"
+
+#: resources/views/collection.blade.php:16
+msgid "resources"
+msgstr "sanggunian"
+
+#: resources/views/collection.blade.php:20
+#: resources/views/trove.blade.php:53
+msgid "Available in:"
+msgstr "Makukuha sa:"
+
+#: resources/views/collection.blade.php:43
+#: resources/views/header.blade.php:40
+#: resources/views/header.blade.php:76
+#: resources/views/home.blade.php:32
+#: resources/views/trove.blade.php:84
+msgid "Browse Library"
+msgstr "Galugarin ang Aklatan"
+
+#: resources/views/collection.blade.php:48
+#: resources/views/trove.blade.php:89
+msgid "Share"
+msgstr "Ibahagi"
+
+#: resources/views/collection.blade.php:51
+#: resources/views/trove.blade.php:92
+msgid "Share by email"
+msgstr "Ibahagi sa pamamagitan ng email"
+
+#: resources/views/collection.blade.php:57
+#: resources/views/trove.blade.php:98
+msgid "Share on WhatsApp"
+msgstr "Ibahagi sa WhatsApp"
+
+#: resources/views/collection.blade.php:63
+#: resources/views/trove.blade.php:104
+msgid "Share on LinkedIn"
+msgstr "Ibahagi sa LinkedIn"
+
+#: resources/views/collection.blade.php:68
+#: resources/views/trove.blade.php:109
+msgid "Copy link"
+msgstr "Kopyahin ang link"
+
+#: resources/views/collection.blade.php:77
+#: resources/views/trove.blade.php:131
+msgid "Description"
+msgstr "Paglalarawan"
+
+#: resources/views/collection.blade.php:86
+msgid "Resources in this collection"
+msgstr "Mga sanggunian sa koleksyong ito"
+
+#: resources/views/components/collection-result-card.blade.php:51
+#: resources/views/components/resource-result-card.blade.php:92
+msgid "VIEW"
+msgstr "TINGNAN"
+
+#: resources/views/components/curriculum-resource-row.blade.php:43
+msgid "View"
+msgstr "Tingnan"
+
+#: resources/views/components/glossary-drawer.blade.php:60
+#: resources/views/components/glossary-drawer.blade.php:72
+#: resources/views/header.blade.php:35
+#: resources/views/header.blade.php:73
+msgid "Glossary"
+msgstr "Glosaryo"
+
+#: resources/views/components/glossary-drawer.blade.php:73
+msgid "Close glossary"
+msgstr "Isara ang glosaryo"
+
+#: resources/views/components/glossary-drawer.blade.php:78
+msgid "Search terms…"
+msgstr "Maghanap ng termino…"
+
+#: resources/views/components/glossary-drawer.blade.php:86
+msgid "All sources"
+msgstr "Lahat ng pinagmulan"
+
+#: resources/views/components/glossary-drawer.blade.php:105
+msgid "Source:"
+msgstr "Pinagmulan:"
+
+#: resources/views/components/glossary-drawer.blade.php:116
+msgid "No matching terms."
+msgstr "Walang tumutugmang termino."
+
+#: resources/views/components/glossary-drawer.blade.php:119
+msgid "This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time."
+msgstr "Ang glosaryong ito ay batay sa gawa ni Marion Girard Cisneros, ginamit nang may pahintulot, at inaangkop at pinalalawak sa paglipas ng panahon."
+
+#: resources/views/components/glossary-drawer.blade.php:120
+msgid "Other glossaries worth consulting:"
+msgstr "Iba pang glosaryong maaaring konsultahin:"
+
+#: resources/views/components/glossary-drawer.blade.php:124
+msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Glosaryo — Pamamahala ng Datos sa Agrikultura (UBC toolkit, PDF)"
+
+#: resources/views/components/glossary-drawer.blade.php:130
+msgid "Open Data Handbook Glossary"
+msgstr "Glosaryo ng Open Data Handbook"
+
+#: resources/views/components/glossary-drawer.blade.php:197
+msgid "Open full glossary →"
+msgstr "Buksan ang buong glosaryo →"
+
+#: resources/views/components/video-link.blade.php:59
+msgid "Watch on :host"
+msgstr "Panoorin sa :host"
+
+#: resources/views/curriculum/index.blade.php:1
+#: resources/views/curriculum/index.blade.php:18
+#: resources/views/header.blade.php:30
+#: resources/views/header.blade.php:70
+msgid "Curriculum"
+msgstr "Kurikulum"
+
+#: resources/views/curriculum/index.blade.php:7
+msgid "Curriculum steps"
+msgstr "Mga hakbang ng kurikulum"
+
+#: resources/views/curriculum/index.blade.php:11
+msgid "Intro"
+msgstr "Panimula"
+
+#: resources/views/curriculum/module.blade.php:5
+msgid "Back to the learning map"
+msgstr "Bumalik sa mapa ng pagkatuto"
+
+#: resources/views/curriculum/module.blade.php:22
+#: resources/views/curriculum/pillar.blade.php:24
+msgid "Learning outcomes"
+msgstr "Mga inaasahang matututuhan"
+
+#: resources/views/curriculum/module.blade.php:33
+msgid "Resources"
+msgstr "Mga Sanggunian"
+
+#: resources/views/curriculum/module.blade.php:42
+msgid "Resources for this stop are coming soon."
+msgstr "Malapit nang maging available ang mga sanggunian para sa hintuang ito."
+
+#: resources/views/curriculum/partials/map.blade.php:12
+msgid "Explore in any order"
+msgstr "Galugarin sa anumang pagkakasunod-sunod"
+
+#: resources/views/curriculum/partials/map.blade.php:14
+msgid "The trail suggests a route, but there's no wrong way through. Start wherever makes sense for you."
+msgstr "Nagmumungkahi ng ruta ang daan, pero walang maling landas. Magsimula kung saan pinakamakabuluhan para sa iyo."
+
+#: resources/views/curriculum/partials/map.blade.php:34
+#: resources/views/curriculum/partials/map.blade.php:50
+msgid "Optional"
+msgstr "Opsyonal"
+
+#: resources/views/curriculum/partials/map.blade.php:61
+msgid "Build your toolkit"
+msgstr "Buuin ang iyong toolkit"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:12
+msgid "Build Your Sovereign Toolkit"
+msgstr "Buuin ang Iyong Soberanong Toolkit"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:13
+msgid "Tools your community can own and run."
+msgstr "Mga kasangkapang maaaring pag-arian at patakbuhin ng iyong komunidad."
+
+#: resources/views/curriculum/partials/toolkit.blade.php:28
+msgid "Learn more"
+msgstr "Alamin pa"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tool"
+msgstr "kasangkapan"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tools"
+msgstr "kasangkapan"
+
+#: resources/views/curriculum/pillar.blade.php:5
+msgid "Back to toolkit"
+msgstr "Bumalik sa toolkit"
+
+#: resources/views/curriculum/pillar.blade.php:41
+msgid "Resources for this section are coming soon."
+msgstr "Malapit nang maging available ang mga sanggunian para sa seksyong ito."
+
+#: resources/views/footer.blade.php:16
+msgid "Template"
+msgstr "Template"
+
+#: resources/views/footer.blade.php:14
+msgid "Built using the :stats4sd Resources Repository :template"
+msgstr "Ginawa gamit ang :template ng Repositoryo ng mga Sanggunian ng :stats4sd"
+
+#: resources/views/header.blade.php:7
+msgid ":org logo"
+msgstr "Logo ng :org"
+
+#: resources/views/header.blade.php:25
+#: resources/views/header.blade.php:69
+msgid "Home"
+msgstr "Home"
+
+#: resources/views/header.blade.php:49
+#: resources/views/header.blade.php:80
+msgid "Change Language"
+msgstr "Palitan ang Wika"
+
+#: resources/views/home.blade.php:33
+msgid "Browse the full library of resources and collections."
+msgstr "Galugarin ang buong aklatan ng mga sanggunian at koleksyon."
+
+#: resources/views/home_digital_sovereignty.blade.php:19
+msgid "Digital Sovereignty Curriculum"
+msgstr "Kurikulum sa Digital na Soberanya"
+
+#: resources/views/home_digital_sovereignty.blade.php:21
+msgid "Your tools. Your data."
+msgstr "Iyong mga kasangkapan. Iyong datos."
+
+#: resources/views/home_digital_sovereignty.blade.php:22
+msgid "Your terms."
+msgstr "Ikaw ang masusunod."
+
+#: resources/views/home_digital_sovereignty.blade.php:25
+msgid "Whether you're leading, training, farming, or supporting, digital sovereignty starts with your community. Learn what fits, then build your toolkit."
+msgstr "Namumuno ka man, nagsasanay, nagsasaka, o sumusuporta, nagsisimula ang digital na soberanya sa iyong komunidad. Alamin kung ano ang akma, at buuin ang iyong toolkit."
+
+#: resources/views/home_digital_sovereignty.blade.php:30
+msgid "Start Learning"
+msgstr "Simulan ang Pag-aaral"
+
+#: resources/views/home_digital_sovereignty.blade.php:34
+msgid "or browse the full library"
+msgstr "o galugarin ang buong aklatan"
+
+#: resources/views/home_digital_sovereignty.blade.php:42
+msgid "How familiar are you with digital sovereignty?"
+msgstr "Gaano ka pamilyar sa digital na soberanya?"
+
+#: resources/views/home_digital_sovereignty.blade.php:48
+#: resources/views/home_digital_sovereignty.blade.php:54
+msgid "New here"
+msgstr "Bago pa lang ako rito"
+
+#: resources/views/home_digital_sovereignty.blade.php:49
+#: resources/views/home_digital_sovereignty.blade.php:55
+msgid "Start with a short primer before the learning map."
+msgstr "Magsimula sa isang maikling panimula bago ang mapa ng pagkatuto."
+
+#: resources/views/home_digital_sovereignty.blade.php:59
+msgid "I know the basics"
+msgstr "Alam ko na ang mga batayan"
+
+#: resources/views/home_digital_sovereignty.blade.php:60
+msgid "Skip ahead, straight to the learning map."
+msgstr "Lumaktaw nang diretso sa mapa ng pagkatuto."
+
+#: resources/views/home_digital_sovereignty.blade.php:67
+msgid "A quick grounding"
+msgstr "Mabilisang pundasyon"
+
+#: resources/views/home_digital_sovereignty.blade.php:81
+msgid "Continue to the learning map"
+msgstr "Magpatuloy sa mapa ng pagkatuto"
+
+#: resources/views/livewire/browse-all.blade.php:34
+msgid "Search and filter"
+msgstr "Maghanap at mag-filter"
+
+#: resources/views/livewire/browse-all.blade.php:43
+msgid "Search here"
+msgstr "Maghanap dito"
+
+#: resources/views/livewire/browse-all.blade.php:44
+msgid "Search resources and collections"
+msgstr "Maghanap ng mga sanggunian at koleksyon"
+
+#: resources/views/livewire/browse-all.blade.php:59
+msgid "Clear search"
+msgstr "I-clear ang paghahanap"
+
+#: resources/views/livewire/browse-all.blade.php:70
+msgid "Filters:"
+msgstr "Mga filter:"
+
+#: resources/views/livewire/browse-all.blade.php:78
+msgid "Language:"
+msgstr "Wika:"
+
+#: resources/views/livewire/browse-all.blade.php:107
+msgid "Type:"
+msgstr "Uri:"
+
+#: resources/views/livewire/browse-all.blade.php:175
+msgid "Text-based search is temporarily unavailable. You can still browse resources below, and use the filters to narrow your search."
+msgstr "Pansamantalang hindi available ang paghahanap gamit ang teksto. Maaari mo pa ring tingnan ang mga sanggunian sa ibaba at gamitin ang mga filter para paliitin ang iyong paghahanap."
+
+#: resources/views/livewire/browse-all.blade.php:180
+msgid "No resources or collections match your search or filters."
+msgstr "Walang sanggunian o koleksyong tumutugma sa iyong paghahanap o mga filter."
+
+#: resources/views/livewire/browse-all.blade.php:183
+msgid "No resources or collections have been added yet."
+msgstr "Wala pang naidagdag na sanggunian o koleksyon."
+
+#: resources/views/livewire/browse-all.blade.php:187
+msgid "Showing :start - :end out of :total resources and collections"
+msgstr "Ipinapakita ang :start - :end sa :total na sanggunian at koleksyon"
+
+#: resources/views/livewire/browse-all.blade.php:192
+msgid "Clear Filters"
+msgstr "I-clear ang mga Filter"
+
+#: resources/views/livewire/browse-all.blade.php:215
+msgid "Pagination"
+msgstr "Mga pahina"
+
+#: resources/views/livewire/browse-all.blade.php:221
+msgid "First page"
+msgstr "Unang pahina"
+
+#: resources/views/livewire/browse-all.blade.php:224
+msgid "First"
+msgstr "Una"
+
+#: resources/views/livewire/browse-all.blade.php:233
+msgid "Previous page"
+msgstr "Nakaraang pahina"
+
+#: resources/views/livewire/browse-all.blade.php:236
+msgid "Previous"
+msgstr "Nakaraan"
+
+#: resources/views/livewire/browse-all.blade.php:250
+msgid "Page"
+msgstr "Pahina"
+
+#: resources/views/livewire/browse-all.blade.php:264
+msgid "Next page"
+msgstr "Susunod na pahina"
+
+#: resources/views/livewire/browse-all.blade.php:267
+msgid "Next"
+msgstr "Susunod"
+
+#: resources/views/livewire/browse-all.blade.php:276
+msgid "Last page"
+msgstr "Huling pahina"
+
+#: resources/views/livewire/browse-all.blade.php:279
+msgid "Last"
+msgstr "Huli"
+
+#: resources/views/livewire/collection-troves.blade.php:11
+msgid "No resources available for this collection."
+msgstr "Walang available na sanggunian para sa koleksyong ito."
+
+#: resources/views/livewire/trove-collections.blade.php:11
+msgid "No collections available for this resource."
+msgstr "Walang available na koleksyon para sa sanggunian na ito."
+
+#: resources/views/livewire/trove-related-troves.blade.php:15
+msgid "No related resources found."
+msgstr "Walang natagpuang kaugnay na sanggunian."
+
+#: resources/views/trove.blade.php:16
+msgid "PREVIEW MODE: This resource has not been published and is only visible to authorised users"
+msgstr "PREVIEW MODE: Hindi pa nailathala ang sanggunian na ito at nakikita lamang ito ng mga awtorisadong user"
+
+#: resources/views/trove.blade.php:138
+msgid "View / Download"
+msgstr "Tingnan / I-download"
+
+#: resources/views/trove.blade.php:212
+msgid "Download all (ZIP)"
+msgstr "I-download lahat (ZIP)"
+
+#: resources/views/trove.blade.php:224
+msgid "Collections including this resource"
+msgstr "Mga koleksyong naglalaman ng sanggunian na ito"
+
+#: resources/views/trove.blade.php:231
+msgid "Related resources"
+msgstr "Mga kaugnay na sanggunian"
