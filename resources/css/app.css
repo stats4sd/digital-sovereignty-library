@@ -273,3 +273,18 @@
         text-decoration: underline;
     }
 }
+/*
+ * Indic scripts (Devanagari and relatives) carry a headstroke plus vowel marks above and
+ * below the baseline, so they sit taller than Latin text. Tailwind's large text sizes
+ * default to a line-height of roughly 1.0-1.1, and leading-none/tight/snug are tighter
+ * still, which clips those marks on headings. Give them a floor for those languages.
+ * Deliberately outside any @layer so it beats the utilities regardless of specificity.
+ * Extend the :lang() list as other tall scripts are added as site locales.
+ */
+:where(:lang(hi), :lang(mr), :lang(ne), :lang(bn), :lang(pa), :lang(gu)) :where(
+    h1, h2, h3, h4, h5, h6,
+    [class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"],
+    [class*="leading-none"], [class*="leading-tight"], [class*="leading-snug"]
+):not([class*="leading-normal"], [class*="leading-relaxed"], [class*="leading-loose"]) {
+    line-height: 1.4;
+}
