@@ -24,11 +24,13 @@ class ToolkitToolsSeeder extends Seeder
 
         $toolType = TroveType::where('label->en', 'Tool')->first();
 
+        $translations = $this->translations();
+
         $toolsTagType = TagType::firstOrCreate(
             ['slug' => 'tools'],
             [
-                'label' => ['en' => 'Tools'],
-                'description' => ['en' => 'Tool areas of the sovereign toolkit'],
+                'label' => $this->translated('Tools', $translations, fn ($set) => $set['tag_type']['label'] ?? null),
+                'description' => $this->translated('Tool areas of the sovereign toolkit', $translations, fn ($set) => $set['tag_type']['description'] ?? null),
                 'freetext' => false,
                 'show_in_filter' => true,
             ],
@@ -39,9 +41,12 @@ class ToolkitToolsSeeder extends Seeder
             'collaboration' => 'Collaboration',
             'farm' => 'Farm',
             'market' => 'Market',
-        ])->map(fn (string $name) => Tag::firstOrCreate(
+        ])->map(fn (string $name, string $key) => Tag::firstOrCreate(
             ['type_id' => $toolsTagType->id, 'name->en' => $name],
-            ['name' => ['en' => $name], 'type_id' => $toolsTagType->id],
+            [
+                'name' => $this->translated($name, $translations, fn ($set) => $set['pillars'][$key] ?? null),
+                'type_id' => $toolsTagType->id,
+            ],
         ));
 
         foreach ($this->tools() as $pillarKey => $tools) {
@@ -56,8 +61,8 @@ class ToolkitToolsSeeder extends Seeder
 
                 if (! $trove) {
                     $trove = Trove::withoutSyncingToSearch(fn () => Trove::create([
-                        'title' => ['en' => $tool['title']],
-                        'description' => ['en' => $tool['description']],
+                        'title' => $this->translated($tool['title'], $translations, fn ($set) => $set['tools'][$tool['title']]['title'] ?? null),
+                        'description' => $this->translated($tool['description'], $translations, fn ($set) => $set['tools'][$tool['title']]['description'] ?? null),
                         'trove_type_id' => $toolType?->id,
                         'source' => true,
                         'creation_date' => now()->toDateString(),
@@ -75,6 +80,42 @@ class ToolkitToolsSeeder extends Seeder
                 }
             }
         }
+    }
+
+    /**
+     * Per-locale translations of the English content below, one file per locale in
+     * toolkit-translations/{locale}.php (see any of those files for the shape).
+     * English here stays the single authoring source; missing locales fall back to it.
+     *
+     * @return array<string, array>
+     */
+    private function translations(): array
+    {
+        $translations = [];
+
+        foreach (glob(__DIR__.'/toolkit-translations/*.php') ?: [] as $file) {
+            $translations[basename($file, '.php')] = require $file;
+        }
+
+        return $translations;
+    }
+
+    /**
+     * Builds a locale => value dictionary: English first, then every locale whose
+     * translation file yields a non-empty string via $pick.
+     */
+    private function translated(string $english, array $translations, callable $pick): array
+    {
+        $values = ['en' => $english];
+
+        foreach ($translations as $locale => $set) {
+            $value = $pick($set);
+            if (is_string($value) && $value !== '') {
+                $values[$locale] = $value;
+            }
+        }
+
+        return $values;
     }
 
     private function tools(): array

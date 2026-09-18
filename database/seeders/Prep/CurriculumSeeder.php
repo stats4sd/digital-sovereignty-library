@@ -10,22 +10,75 @@ class CurriculumSeeder extends Seeder
 {
     public function run(): void
     {
+        $translations = $this->translations();
+
         foreach ($this->modules() as $module) {
             CurriculumModule::firstOrCreate(
                 ['key' => $module['key']],
-                collect($module)->except('key')->all(),
+                collect($this->translateModule($module, $translations))->except('key')->all(),
             );
         }
 
         foreach ($this->glossaryTerms() as $term => $definition) {
+            $termTranslations = ['en' => $term];
+            $definitionTranslations = ['en' => $definition];
+
+            foreach ($translations as $locale => $set) {
+                $entry = $set['glossary'][$term] ?? [];
+                if (! empty($entry['term'])) {
+                    $termTranslations[$locale] = $entry['term'];
+                }
+                if (! empty($entry['definition'])) {
+                    $definitionTranslations[$locale] = $entry['definition'];
+                }
+            }
+
             GlossaryTerm::firstOrCreate(
                 ['term->en' => $term],
                 [
-                    'term' => ['en' => $term],
-                    'definition' => ['en' => $definition],
+                    'term' => $termTranslations,
+                    'definition' => $definitionTranslations,
                 ],
             );
         }
+    }
+
+    /**
+     * Per-locale translations of the English content below, one file per locale in
+     * curriculum-translations/{locale}.php (see any of those files for the shape).
+     * The English source in this class stays the single place content is authored;
+     * a missing locale or key simply falls back to English at render time.
+     *
+     * @return array<string, array{modules: array, glossary: array}>
+     */
+    private function translations(): array
+    {
+        $translations = [];
+
+        foreach (glob(__DIR__.'/curriculum-translations/*.php') ?: [] as $file) {
+            $translations[basename($file, '.php')] = require $file;
+        }
+
+        return $translations;
+    }
+
+    /** Adds every available locale to each translatable (['en' => ...]) field of a module. */
+    private function translateModule(array $module, array $translations): array
+    {
+        foreach ($module as $field => $value) {
+            if (! is_array($value) || ! array_key_exists('en', $value)) {
+                continue;
+            }
+
+            foreach ($translations as $locale => $set) {
+                $translated = $set['modules'][$module['key']][$field] ?? null;
+                if (is_string($translated) && $translated !== '') {
+                    $module[$field][$locale] = $translated;
+                }
+            }
+        }
+
+        return $module;
     }
 
     private function modules(): array

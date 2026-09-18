@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\CurriculumModule;
+use App\Models\Tag;
+use App\Models\TagType;
 use App\Models\Trove;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Database\Seeders\Prep\ToolkitToolsSeeder;
@@ -9,6 +11,24 @@ use Database\Seeders\Prep\TroveTypeSeeder;
 beforeEach(function () {
     $this->seed(TroveTypeSeeder::class);
     $this->seed(CurriculumSeeder::class);
+});
+
+it('merges every locale file into the seeded tools, tag type and pillar tags', function () {
+    $this->seed(ToolkitToolsSeeder::class);
+
+    $locales = collect(glob(database_path('seeders/Prep/toolkit-translations/*.php')))
+        ->map(fn ($file) => basename($file, '.php'));
+    expect($locales)->toHaveCount(11);
+
+    $liteFarm = Trove::withDrafts()->where('title->en', 'LiteFarm')->first();
+    $tagType = TagType::where('slug', 'tools')->first();
+    $farmTag = Tag::where('type_id', $tagType->id)->where('name->en', 'Farm')->first();
+
+    foreach ($locales as $locale) {
+        expect($liteFarm->getTranslation('description', $locale, false))->toContain('<h2>')
+            ->and($tagType->getTranslation('label', $locale, false))->not->toBe('')
+            ->and($farmTag->getTranslation('name', $locale, false))->not->toBe('');
+    }
 });
 
 it('seeds the toolkit tools and attaches them to the pillars in order', function () {

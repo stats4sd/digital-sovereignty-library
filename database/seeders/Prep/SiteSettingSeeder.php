@@ -14,6 +14,17 @@ class SiteSettingSeeder extends Seeder
             'show_trove_type_filter' => false,
             'locales' => [
                 ['code' => 'en', 'label' => 'English'],
+                ['code' => 'id', 'label' => 'Bahasa Indonesia'],
+                ['code' => 'es', 'label' => 'Español'],
+                ['code' => 'fil', 'label' => 'Filipino'],
+                ['code' => 'fr', 'label' => 'Français'],
+                ['code' => 'it', 'label' => 'Italiano'],
+                ['code' => 'sw', 'label' => 'Kiswahili'],
+                ['code' => 'pt', 'label' => 'Português'],
+                ['code' => 'ru', 'label' => 'Русский'],
+                ['code' => 'hi', 'label' => 'हिन्दी'],
+                ['code' => 'ar', 'label' => 'العربية'],
+                ['code' => 'zh_CN', 'label' => '简体中文'],
             ],
         ]);
     }
