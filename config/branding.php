@@ -41,6 +41,13 @@ return [
     'locales' => ['en' => 'English'],
 
     /*
+     * Right-to-left locales. When the active locale's code (or its language prefix,
+     * e.g. "ar" for "ar_EG") is in this list, the public layout renders <html dir="rtl">
+     * so the browser flips text alignment and layout direction.
+     */
+    'rtl_locales' => ['ar', 'he', 'fa', 'ur'],
+
+    /*
      * Supported Languages
      * -------------------
      * Languages are managed via the admin panel (Site Options) and stored in

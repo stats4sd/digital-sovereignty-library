@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@php
+    $locale = app()->getLocale();
+    $rtlLocales = config('branding.rtl_locales', []);
+    $isRtl = in_array($locale, $rtlLocales, true)
+        || in_array(strtolower(strtok($locale, '_-')), $rtlLocales, true);
+@endphp
+<html lang="{{ str_replace('_', '-', $locale) }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
