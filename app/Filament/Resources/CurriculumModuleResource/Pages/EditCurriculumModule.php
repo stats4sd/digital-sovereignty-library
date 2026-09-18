@@ -12,6 +12,8 @@ class EditCurriculumModule extends EditRecord
 
     protected static string $resource = CurriculumModuleResource::class;
 
+    public ?string $activeLocale = null;
+
     // Relation managers declare `activeLocale` as a reactive prop and cannot
     // set it themselves; ensure it's populated before Filament builds the
     // relation manager schema, or they'll try to mutate the reactive prop.

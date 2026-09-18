@@ -67,11 +67,37 @@ Route::group([
     Route::get('/curriculum/{key}', function ($key) {
         $module = CurriculumModule::forSection(CurriculumModule::SECTION_MAP)
             ->where('key', $key)
-            ->with('troves.troveType')
+            ->with('sessions')
             ->firstOrFail();
 
         return view('curriculum.module', compact('module'));
     })->name('curriculum.show');
+
+    Route::get('/curriculum/{key}/{session}', function ($key, $sessionSlug) {
+        $module = CurriculumModule::forSection(CurriculumModule::SECTION_MAP)
+            ->where('key', $key)
+            ->with('sessions')
+            ->firstOrFail();
+
+        $session = $module->sessions->firstWhere('slug', $sessionSlug);
+
+        if (! $session) {
+            abort(404);
+        }
+
+        $session->load('troves.troveType');
+
+        $index = $module->sessions->search(fn ($candidate) => $candidate->is($session));
+        $previous = $index > 0 ? $module->sessions->get($index - 1) : null;
+        $next = $module->sessions->get($index + 1);
+
+        return view('curriculum.session', [
+            'module' => $module,
+            'session' => $session,
+            'previous' => $previous,
+            'next' => $next,
+        ]);
+    })->name('curriculum.session');
 
     // Toolkit pillars render as a section of /curriculum (no standalone index page);
     // only the per-pillar detail pages have their own route.

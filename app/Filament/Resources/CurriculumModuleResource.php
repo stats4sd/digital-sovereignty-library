@@ -9,12 +9,15 @@ use App\Models\CurriculumModule;
 use App\Support\HtmlSanitizer;
 use Filament\Actions\EditAction;
 use Filament\Forms;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Repeater;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 
 class CurriculumModuleResource extends Resource
@@ -26,6 +29,8 @@ class CurriculumModuleResource extends Resource
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
 
     protected static ?string $navigationLabel = 'Curriculum Modules';
+
+    public ?string $activeLocale;
 
     public static function canCreate(): bool
     {
@@ -67,6 +72,24 @@ class CurriculumModuleResource extends Resource
                     ->childField(Forms\Components\TextInput::class)
                     ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_TOOLKIT),
 
+                Forms\Components\TextInput::make('number')
+                    ->label('Module number')
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(255)
+                    ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_MAP),
+
+                TranslatableComboField::make('goal')
+                    ->icon('heroicon-o-flag')
+                    ->iconColor('primary')
+                    ->extraAttributes(['class' => 'grey-box'])
+                    ->label('Goal')
+                    ->childField(
+                        Forms\Components\Textarea::make('goal')
+                            ->rows(2),
+                    )
+                    ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_MAP),
+
                 TranslatableComboField::make('description')
                     ->icon('heroicon-o-document-text')
                     ->iconColor('primary')
@@ -91,16 +114,30 @@ class CurriculumModuleResource extends Resource
                             ->rows(2),
                     ),
 
-                TranslatableComboField::make('learning_outcomes')
-                    ->icon('heroicon-o-check-circle')
-                    ->iconColor('primary')
-                    ->extraAttributes(['class' => 'grey-box'])
+                Repeater::make('learning_outcomes')
                     ->label('Learning Outcomes')
-                    ->description('One outcome per line. Shown as a bullet list on the module page.')
-                    ->childField(
-                        Forms\Components\Textarea::make('learning_outcomes')
-                            ->rows(5),
-                    ),
+                    ->reorderable()
+                    ->collapsible()
+                    ->itemLabel(fn (array $state): ?string => data_get($state, 'statement.'.CurriculumModuleResource::getDefaultTranslatableLocale()))
+                    ->addActionLabel('Add outcome')
+                    ->defaultItems(0)
+                    ->schema([
+                        Hidden::make('key')
+                            ->default(fn (): string => (string) Str::uuid()),
+
+                        TranslatableComboField::make('statement')
+                            ->label('Outcome')
+                            ->columns(3)
+                            ->childField(Forms\Components\TextInput::class)
+                            ->required(),
+
+                        TranslatableComboField::make('in_practice')
+                            ->label('In practice')
+                            ->childField(
+                                Forms\Components\Textarea::make('in_practice')
+                                    ->rows(2),
+                            ),
+                    ]),
             ])->columns(1);
     }
 
@@ -120,6 +157,10 @@ class CurriculumModuleResource extends Resource
                 Tables\Columns\TextColumn::make('troves_count')
                     ->counts(['troves' => fn (Builder $query) => $query->workingVersions()])
                     ->label('# Resources')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('sessions_count')
+                    ->counts('sessions')
+                    ->label('# Sessions')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Last Updated')
@@ -144,6 +185,7 @@ class CurriculumModuleResource extends Resource
     {
         return [
             RelationManagers\TrovesRelationManager::class,
+            RelationManagers\SessionsRelationManager::class,
         ];
     }
 

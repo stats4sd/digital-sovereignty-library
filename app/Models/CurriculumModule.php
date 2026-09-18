@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -32,7 +34,12 @@ class CurriculumModule extends Model
         'subtitle',
         'description',
         'note',
-        'learning_outcomes',
+        'goal',
+    ];
+
+    protected $casts = [
+        'learning_outcomes' => 'array',
+        'number' => 'integer',
     ];
 
     public function troves(): BelongsToMany
@@ -42,23 +49,42 @@ class CurriculumModule extends Model
             ->orderByPivot('order_column');
     }
 
+    public function sessions(): HasMany
+    {
+        return $this->hasMany(CurriculumSession::class)
+            ->orderBy('order_column')
+            ->orderBy('id')
+            ->chaperone('module');
+    }
+
     public function scopeForSection(Builder $query, string $section): Builder
     {
         return $query->where('section', $section);
     }
 
     /**
-     * `learning_outcomes` is stored as one outcome per line; this returns the
-     * current locale's outcomes as a clean array of strings.
+     * `learning_outcomes` is a structured array of items (key, per-locale statement,
+     * per-locale in_practice); this returns the current locale's outcomes as
+     * ['key', 'statement', 'in_practice'] arrays, dropping items with no statement. A legacy
+     * (pre-migration) locale-keyed dict is not a list and returns an empty array.
      */
     protected function outcomesList(): Attribute
     {
         return Attribute::get(function (): array {
-            $raw = (string) $this->getTranslation('learning_outcomes', app()->getLocale());
+            $items = $this->learning_outcomes;
 
-            return collect(preg_split('/\r\n|\r|\n/', $raw))
-                ->map(fn (string $line) => trim($line))
-                ->filter()
+            if (! is_array($items) || ! array_is_list($items)) {
+                return [];
+            }
+
+            return collect($items)
+                ->filter(fn (mixed $item) => is_array($item))
+                ->map(fn (array $item) => [
+                    'key' => $item['key'] ?? null,
+                    'statement' => TranslatableText::pick($item['statement'] ?? null),
+                    'in_practice' => TranslatableText::pick($item['in_practice'] ?? null),
+                ])
+                ->filter(fn (array $item) => filled($item['statement']))
                 ->values()
                 ->all();
         });

@@ -21,3 +21,4 @@ yarn-error.log
 /public/packages
 data.ms
 storage/media-library/temp
+.DS_Store

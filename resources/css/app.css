@@ -21,6 +21,12 @@
     --color-brand-bg: var(--brand-bg);
     --color-brand-footer-bg: var(--brand-footer-bg);
     --color-brand-footer-text: var(--brand-footer-text);
+    --color-brand-surface: var(--brand-surface);
+    --color-brand-surface-muted: var(--brand-surface-muted);
+    --color-brand-ink: var(--brand-ink);
+    --color-brand-ink-muted: var(--brand-ink-muted);
+    --color-brand-line: var(--brand-line);
+    --font-display: var(--brand-font-display);
 }
 
 :root {
@@ -34,6 +40,14 @@
     --brand-footer-bg: #ece6d2;         /* footer background colour */
     --brand-footer-text: #634234;       /* footer text colour */
     --brand-font: 'Open Sans', sans-serif; /* change @import URL above to use a different Google Font */
+
+    /* Derived tones used for surfaces/borders in the curriculum module & session pages */
+    --brand-surface: #FFFFFF;
+    --brand-surface-muted: #F6F1DD;
+    --brand-ink: #2F2A20;
+    --brand-ink-muted: #6B6355;
+    --brand-line: #DED6BD;
+    --brand-font-display: 'Lora', Georgia, serif; /* Lora is already loaded in layouts/app.blade.php */
 
     /** Additional colours for the Admin panel **/
     --brand-success: #16A34A;
@@ -66,6 +80,11 @@
 
     footer a {
         color: var(--brand-footer-text);
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--brand-secondary);
+        outline-offset: 3px;
     }
 }
 
@@ -271,6 +290,30 @@
 
     .glossary-tip-link:hover {
         text-decoration: underline;
+    }
+
+    /* Inline glossary terms need a lighter hover colour on the olive outcomes band. */
+    .bg-brand-primary .glossary-term:hover {
+        color: var(--brand-bg);
+    }
+
+    /* Thick vertical rule that sits beside a section heading (module/session pages). */
+    .brand-rule {
+        @apply w-6 shrink-0;
+        background-color: var(--brand-primary);
+    }
+
+    /* Pill CTA, e.g. "Start Session 1" — must live in @layer components to beat the
+       base layer's `a { color }` rule, so the pill text stays white on olive. */
+    .brand-pill {
+        @apply inline-flex items-center gap-4 rounded-full px-8 py-4 font-bold shadow-lg;
+        background-color: var(--brand-primary);
+        color: #fff;
+        transition: opacity 200ms ease;
+    }
+
+    .brand-pill:hover {
+        opacity: 0.9;
     }
 }
 /*

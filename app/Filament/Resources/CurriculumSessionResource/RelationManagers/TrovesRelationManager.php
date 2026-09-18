@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources\CurriculumModuleResource\RelationManagers;
+namespace App\Filament\Resources\CurriculumSessionResource\RelationManagers;
 
-use App\Models\CurriculumModule;
 use App\Models\Trove;
 use Filament\Actions\AttachAction;
 use Filament\Actions\DetachAction;
@@ -10,7 +9,6 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use LaraZeus\SpatieTranslatable\Resources\RelationManagers\Concerns\Translatable;
 use Livewire\Attributes\Reactive;
 
@@ -28,15 +26,10 @@ class TrovesRelationManager extends RelationManager
         return false;
     }
 
-    public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
-    {
-        return $ownerRecord->section !== CurriculumModule::SECTION_MAP;
-    }
-
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Resources in this Module')
+            ->heading('Resources in this Session')
             ->recordTitleAttribute('title')
             ->defaultSort('order_column')
             ->reorderable('order_column')
@@ -49,7 +42,7 @@ class TrovesRelationManager extends RelationManager
             ->headerActions([
                 AttachAction::make()
                     ->label('Add resource')
-                    ->modalHeading('Add a resource to this module')
+                    ->modalHeading('Add a resource to this session')
                     ->recordSelectSearchColumns(['title'])
                     ->recordSelectOptionsQuery(
                         fn (Builder $query) => $query
@@ -60,11 +53,11 @@ class TrovesRelationManager extends RelationManager
             ])
             ->recordActions([
                 DetachAction::make()
-                    ->label('Remove from module')
-                    ->modalHeading('Remove resource from module'),
+                    ->label('Remove from session')
+                    ->modalHeading('Remove resource from session'),
             ])
             ->toolbarActions([])
             ->recordUrl(fn (Trove $record) => url('/resources/'.$record->slug))
-            ->emptyStateDescription('Use the "Add resource" button above to link published resources to this module. Drag rows to set the order they appear in.');
+            ->emptyStateDescription('Use the "Add resource" button above to link published resources to this session. Drag rows to set the order they appear in.');
     }
 }

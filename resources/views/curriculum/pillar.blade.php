@@ -24,7 +24,12 @@
                     <div class="uppercase tracking-[0.12em] text-brand-secondary text-xs font-semibold mb-3">{{ t('Learning outcomes') }}</div>
                     <ul class="list-disc ms-5 text-gray-700 space-y-1.5" data-glossary-scope>
                         @foreach($pillar->outcomes_list as $outcome)
-                            <li>{{ $outcome }}</li>
+                            <li>
+                                {{ $outcome['statement'] }}
+                                @if($outcome['in_practice'])
+                                    <span class="block text-sm italic text-gray-500">{{ t('In practice:') }} {{ $outcome['in_practice'] }}</span>
+                                @endif
+                            </li>
                         @endforeach
                     </ul>
                 </div>

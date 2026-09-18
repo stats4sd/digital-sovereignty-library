@@ -5,6 +5,7 @@ namespace Database\Seeders\Prep;
 use App\Models\CurriculumModule;
 use App\Models\GlossaryTerm;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CurriculumSeeder extends Seeder
 {
@@ -12,11 +13,8 @@ class CurriculumSeeder extends Seeder
     {
         $translations = $this->translations();
 
-        foreach ($this->modules() as $module) {
-            CurriculumModule::firstOrCreate(
-                ['key' => $module['key']],
-                collect($this->translateModule($module, $translations))->except('key')->all(),
-            );
+        foreach ($this->modules() as $definition) {
+            $this->seedModule($this->translateModule($definition, $translations));
         }
 
         foreach ($this->glossaryTerms() as $term => $definition) {
@@ -78,7 +76,192 @@ class CurriculumSeeder extends Seeder
             }
         }
 
+        // Structured outcomes: the locale files still hold one statement per line, so map
+        // them onto the outcome items by position when the counts line up. A mismatch (e.g.
+        // community-needs, whose outcomes were rewritten after translation) falls back to English.
+        if (isset($module['learning_outcomes']) && is_array($module['learning_outcomes'])) {
+            foreach ($translations as $locale => $set) {
+                $translated = $set['modules'][$module['key']]['learning_outcomes'] ?? null;
+                if (! is_string($translated) || $translated === '') {
+                    continue;
+                }
+
+                $lines = preg_split('/\r?\n/', trim($translated)) ?: [];
+                if (count($lines) !== count($module['learning_outcomes'])) {
+                    continue;
+                }
+
+                foreach ($lines as $index => $line) {
+                    if (trim($line) !== '') {
+                        $module['learning_outcomes'][$index]['statement'][$locale] = trim($line);
+                    }
+                }
+            }
+        }
+
         return $module;
+    }
+
+    private function seedModule(array $definition): void
+    {
+        $sessions = $definition['sessions'] ?? [];
+        $attributes = collect($definition)->except(['key', 'sessions'])->all();
+
+        $module = CurriculumModule::firstOrCreate(
+            ['key' => $definition['key']],
+            $attributes,
+        );
+
+        $this->backfillModule($module, $attributes);
+
+        if ($definition['key'] === 'community-needs') {
+            $this->refreshLegacyCommunityNeeds($module);
+        }
+
+        foreach ($sessions as $index => $session) {
+            $this->seedSession($module, $session, $index);
+        }
+    }
+
+    /**
+     * Fills number/goal/learning_outcomes on rows that already existed before those fields
+     * were introduced, without touching a value an admin has since edited — including a
+     * deliberate clear to an empty array/string, which is not the same as never having been set.
+     */
+    private function backfillModule(CurriculumModule $module, array $attributes): void
+    {
+        $dirty = false;
+
+        foreach (['number', 'goal', 'learning_outcomes'] as $field) {
+            if (! array_key_exists($field, $attributes)) {
+                continue;
+            }
+
+            if (! is_null($module->$field)) {
+                continue;
+            }
+
+            $module->$field = $attributes[$field];
+            $dirty = true;
+        }
+
+        if ($dirty) {
+            $module->save();
+        }
+    }
+
+    /**
+     * Migration 100300 converted the pre-existing three community-needs outcomes into the
+     * structured shape verbatim. Replace them with the four spike outcomes, but only when the
+     * stored statements still exactly match that legacy set, so an admin's own edits survive.
+     * The description gets the same edit-preserving treatment.
+     */
+    private function refreshLegacyCommunityNeeds(CurriculumModule $module): void
+    {
+        $legacyOutcomeStatements = [
+            'Map the stakeholders who produce, control, and profit from data in your context',
+            'Distinguish between a problem, a constraint, and a genuine need',
+            'Write a clear statement of need before choosing any technology',
+        ];
+
+        $storedOutcomeStatements = collect($module->learning_outcomes ?? [])
+            ->map(fn (array $item) => $item['statement']['en'] ?? null)
+            ->all();
+
+        if ($storedOutcomeStatements === $legacyOutcomeStatements) {
+            $module->learning_outcomes = $this->communityNeedsOutcomes();
+            $module->save();
+        }
+
+        $legacyDescription = '<p>Map who holds power and data in your context, then turn real problems into a clear statement of need before reaching for any tool.</p>';
+
+        if ($module->getTranslation('description', 'en') === $legacyDescription) {
+            $module->description = ['en' => $this->communityNeedsDescription()];
+            $module->save();
+        }
+    }
+
+    private function seedSession(CurriculumModule $module, array $session, int $index): void
+    {
+        $outcomes = $module->learning_outcomes ?? [];
+        $position = $session['builds_toward_position'] - 1;
+        $buildsToward = $outcomes[$position]['key'] ?? null;
+
+        $module->sessions()->firstOrCreate(
+            ['slug' => $session['slug']],
+            [
+                'title' => ['en' => $session['title']],
+                'summary' => ['en' => $session['summary']],
+                'builds_toward' => $buildsToward,
+                'order_column' => $index + 1,
+            ],
+        );
+    }
+
+    private function outcome(string $statement, ?string $inPractice = null): array
+    {
+        return [
+            'key' => (string) Str::uuid(),
+            'statement' => ['en' => $statement],
+            'in_practice' => $inPractice === null ? null : ['en' => $inPractice],
+        ];
+    }
+
+    private function communityNeedsDescription(): string
+    {
+        return '<p>This module provides a practical framework for applying the concepts introduced in Modules 1 and 2 to your own context. It focuses on community and organisational settings, while recognising that many of the approaches can also be applied at individual, multi-organisational, and broader system levels. Through practical exercises and real-world examples, you will learn how to understand your operational context, identify genuine needs and constraints, and make informed decisions about data and digital tools before choosing a technology.</p>';
+    }
+
+    private function communityNeedsOutcomes(): array
+    {
+        return [
+            $this->outcome(
+                'Conduct a system-level diagnostic of your organisational and operational context.',
+                'you will complete a Context Diagnostic Canvas and write a short diagnostic statement about your own organisation.',
+            ),
+            $this->outcome(
+                'Define your needs based on real operational constraints, rather than assumed solutions.',
+                'you will apply the Problem → Constraint → Need method and build a first Needs Matrix.',
+            ),
+            $this->outcome(
+                'Understand the need to evaluate and select tools based on sovereignty criteria, including control, accessibility, and sustainability.',
+                'you will be able to name these criteria and explain why they matter — full tool-by-tool evaluation is covered in Module 4.',
+            ),
+            $this->outcome(
+                'Explain what is required to approach data governance from a needs-based perspective, including ownership, access, and protection.',
+                'you will be able to explain the four components of a data governance framework and sketch one for your own organisation.',
+            ),
+        ];
+    }
+
+    private function communityNeedsSessions(): array
+    {
+        return [
+            [
+                'slug' => 'understanding-your-operational-context',
+                'title' => 'Understanding Your Operational Context',
+                'summary' => 'Conduct a system-level diagnostic of organisational and operational context',
+                'builds_toward_position' => 1,
+            ],
+            [
+                'slug' => 'defining-what-you-actually-need',
+                'title' => 'Defining What You Actually Need',
+                'summary' => 'Needs from constraints, not assumed solutions',
+                'builds_toward_position' => 2,
+            ],
+            [
+                'slug' => 'deciding-what-belongs-in-a-digital-system',
+                'title' => 'Deciding What Belongs in a Digital System',
+                'summary' => 'Sovereignty criteria for tool evaluation',
+                'builds_toward_position' => 3,
+            ],
+            [
+                'slug' => 'why-data-governance-starts-with-your-needs',
+                'title' => 'Why Data Governance Starts with Your Needs',
+                'summary' => 'Needs-based data governance',
+                'builds_toward_position' => 4,
+            ],
+        ];
     }
 
     private function modules(): array
@@ -98,55 +281,62 @@ class CurriculumSeeder extends Seeder
                 'section' => CurriculumModule::SECTION_MAP,
                 'title' => ['en' => 'Understanding the Digital Landscape'],
                 'description' => ['en' => '<p>Get a shared picture of the digital terrain your community is already standing on: connectivity, devices, literacy, and who controls what.</p>'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    'Describe the connectivity, devices, and digital skills your community is working with',
-                    'Identify who controls the digital systems your community currently relies on',
-                    'Recognize where hybrid (paper and digital) systems make sense',
-                ])],
+                'number' => 1,
+                'goal' => ['en' => 'To help learners build a shared, honest picture of the digital landscape their community already operates in before introducing any new technology.'],
+                'learning_outcomes' => [
+                    $this->outcome('Describe the connectivity, devices, and digital skills your community is working with'),
+                    $this->outcome('Identify who controls the digital systems your community currently relies on'),
+                    $this->outcome('Recognize where hybrid (paper and digital) systems make sense'),
+                ],
             ],
             [
                 'key' => 'knowledge-justice',
                 'section' => CurriculumModule::SECTION_MAP,
                 'title' => ['en' => 'Understanding Knowledge, Justice & Data Rights'],
                 'description' => ['en' => '<p>Ask whose knowledge counts, who owns the data a community produces, and what rights protect both.</p>'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    'Explain whose knowledge counts in digital systems, and who benefits from it',
-                    'Describe the rights a community holds over the data it produces',
-                    'Apply a rights-based frame (like the CARE principles) to community data',
-                ])],
+                'number' => 2,
+                'goal' => ['en' => 'To help learners recognise whose knowledge and data rights are at stake in digital systems, and apply a rights-based lens to their own context.'],
+                'learning_outcomes' => [
+                    $this->outcome('Explain whose knowledge counts in digital systems, and who benefits from it'),
+                    $this->outcome('Describe the rights a community holds over the data it produces'),
+                    $this->outcome('Apply a rights-based frame (like the CARE principles) to community data'),
+                ],
             ],
             [
                 'key' => 'community-needs',
                 'section' => CurriculumModule::SECTION_MAP,
                 'title' => ['en' => 'Understanding Community Needs'],
-                'description' => ['en' => '<p>Map who holds power and data in your context, then turn real problems into a clear statement of need before reaching for any tool.</p>'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    'Map the stakeholders who produce, control, and profit from data in your context',
-                    'Distinguish between a problem, a constraint, and a genuine need',
-                    'Write a clear statement of need before choosing any technology',
-                ])],
+                'description' => ['en' => $this->communityNeedsDescription()],
+                'number' => 3,
+                'goal' => ['en' => 'To help learners better understand their community or organisational needs for data and digital tools before making technology decisions.'],
+                'learning_outcomes' => $this->communityNeedsOutcomes(),
+                'sessions' => $this->communityNeedsSessions(),
             ],
             [
                 'key' => 'tech-assessment',
                 'section' => CurriculumModule::SECTION_MAP,
                 'title' => ['en' => 'Tech Assessment'],
                 'description' => ['en' => '<p>Weigh options against ownership, openness, offline function, cost, and lock-in risk before you commit to any single platform.</p>'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    "Decide what should be digitized, what shouldn't, and who decides",
-                    'Assess tools against ownership, openness, offline function, and cost',
-                    'Spot lock-in risks before committing to a platform',
-                ])],
+                'number' => 4,
+                'goal' => ['en' => 'To help learners assess digital tools against ownership, openness, offline function, cost, and lock-in risk before committing to any platform.'],
+                'learning_outcomes' => [
+                    $this->outcome("Decide what should be digitized, what shouldn't, and who decides"),
+                    $this->outcome('Assess tools against ownership, openness, offline function, and cost'),
+                    $this->outcome('Spot lock-in risks before committing to a platform'),
+                ],
             ],
             [
                 'key' => 'tech-strategy',
                 'section' => CurriculumModule::SECTION_MAP,
                 'title' => ['en' => 'Tech Strategy'],
                 'description' => ['en' => '<p>Set the rules for how data is owned and shared, connect tools to real market access, and pull it all into one local strategy.</p>'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    "Set rules for how your community's data is owned, accessed, and stored",
-                    'Connect digital tools to real market access without losing value to middlemen',
-                    'Draw every step together into one local digital sovereignty strategy',
-                ])],
+                'number' => 5,
+                'goal' => ['en' => "To help learners translate what they've learned into a single, actionable digital sovereignty strategy for their own community."],
+                'learning_outcomes' => [
+                    $this->outcome("Set rules for how your community's data is owned, accessed, and stored"),
+                    $this->outcome('Connect digital tools to real market access without losing value to middlemen'),
+                    $this->outcome('Draw every step together into one local digital sovereignty strategy'),
+                ],
             ],
 
             // ---- FarmHackBox ----
@@ -156,11 +346,11 @@ class CurriculumSeeder extends Seeder
                 'title' => ['en' => 'Get Started with the Farm Hack Box'],
                 'description' => ['en' => '<p>A box to locally host your sovereign digital tools. The Farm Hack box is community-built hardware: a small local server your community owns and runs, hosting your own tools and data (file storage, communication, farm records), even without reliable internet.</p>'],
                 'note' => ['en' => 'This stop is entirely optional. Everything else in the curriculum and toolkit works with or without the box.'],
-                'learning_outcomes' => ['en' => implode("\n", [
-                    'Explain what the Farm Hack box is and what it can host',
-                    "Judge whether local hosting fits your community's needs and capacity",
-                    "Identify what you'd need to set one up",
-                ])],
+                'learning_outcomes' => [
+                    $this->outcome('Explain what the Farm Hack box is and what it can host'),
+                    $this->outcome("Judge whether local hosting fits your community's needs and capacity"),
+                    $this->outcome("Identify what you'd need to set one up"),
+                ],
             ],
 
             // ---- Toolkit pillars ----
