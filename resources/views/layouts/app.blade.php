@@ -34,7 +34,7 @@
             @yield('content')
         @endisset
         </main>
-        <button id="scrollToTopButton" class="hidden fixed bottom-5 right-5 w-12 h-12 {{ $scrollButtonColor ?? 'bg-brand-primary hover:opacity-80' }} text-white rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300">
+        <button id="scrollToTopButton" class="hidden fixed bottom-5 end-5 w-12 h-12 {{ $scrollButtonColor ?? 'bg-brand-primary hover:opacity-80' }} text-white rounded-full shadow-lg flex items-center justify-center transition-opacity duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75 12 12m0 0 3.75 3.75M12 12v9M21 3H3" />
             </svg>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto px-8 py-12 max-w-3xl">
         <a href="{{ route('curriculum') }}" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-brand-secondary mb-6">
-            &larr; {{ t('Back to the learning map') }}
+            <x-dir-arrow back /> {{ t('Back to the learning map') }}
         </a>
 
         <div class="mb-8">
@@ -20,7 +20,7 @@
             @if(count($module->outcomes_list))
                 <div class="mt-6 bg-white/60 border border-brand-primary/10 rounded-xl px-6 py-5 max-w-2xl">
                     <div class="uppercase tracking-[0.12em] text-brand-secondary text-xs font-semibold mb-3">{{ t('Learning outcomes') }}</div>
-                    <ul class="list-disc ml-5 text-gray-700 space-y-1.5" data-glossary-scope>
+                    <ul class="list-disc ms-5 text-gray-700 space-y-1.5" data-glossary-scope>
                         @foreach($module->outcomes_list as $outcome)
                             <li>{{ $outcome }}</li>
                         @endforeach

@@ -15,7 +15,7 @@
 
 <!-- Preview Banner -->
 @if (!$resource->is_published)
-    <div class="bg-brand-primary text-white py-4 px-6 font-semibold flex justify-center space-x-1">
+    <div class="bg-brand-primary text-white py-4 px-6 font-semibold flex justify-center gap-1">
         <x-heroicon-o-exclamation-circle class="w-6 h-6 text-white" />
         <span>{{ t('PREVIEW MODE: This resource has not been published and is only visible to authorised users') }}</span>
     </div>
@@ -177,7 +177,7 @@
                                     <p class="text-xs text-gray-400 truncate">{{ $item['data']['link_url'] }}</p>
                                 </div>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-300 group-hover:text-brand-primary transition flex-shrink-0 ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-300 group-hover:text-brand-primary transition flex-shrink-0 ms-3 rtl:-scale-x-100">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                             </svg>
                         </a>
@@ -195,7 +195,7 @@
                                     <p class="text-xs text-gray-400">{{ Number::fileSize($item['data']->size) }}</p>
                                 </div>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-300 group-hover:text-brand-primary transition flex-shrink-0 ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-300 group-hover:text-brand-primary transition flex-shrink-0 ms-3">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/>
                             </svg>
                         </a>

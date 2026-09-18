@@ -25,7 +25,7 @@
                 <p class="text-sm text-gray-600 leading-relaxed max-w-3xl" data-glossary-scope>{{ Str::limit(strip_tags($farmHackBox->description), 220) }}</p>
             </div>
             <span class="self-start sm:self-center whitespace-nowrap text-sm font-semibold border border-brand-primary/30 rounded-lg px-4 py-1.5 text-brand-primary">
-                {{ t('Learn more') }} &rarr;
+                {{ t('Learn more') }} <x-dir-arrow />
             </span>
         </a>
     @endif
@@ -36,7 +36,7 @@
                 @php $pillar = $pillars[$key]; @endphp
                 <a href="{{ route('toolkit.show', $key) }}"
                     class="relative flex flex-col bg-white/60 border border-brand-primary/10 rounded-2xl p-6 min-h-[210px] hover-effect">
-                    <span class="absolute top-4 right-5 text-xs text-gray-400">{{ $pillar->troves_count }} {{ $pillar->troves_count === 1 ? t('tool') : t('tools') }}</span>
+                    <span class="absolute top-4 end-5 text-xs text-gray-400">{{ $pillar->troves_count }} {{ $pillar->troves_count === 1 ? t('tool') : t('tools') }}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-8 h-8 text-brand-primary mb-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="{{ $layout['icon'] }}" />

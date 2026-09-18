@@ -48,7 +48,7 @@
                 <span class="curriculum-node-dot curriculum-node-dot-inline shrink-0"></span>
                 <span class="font-semibold text-gray-800">{{ $module->title }}</span>
                 @if($node['optional'] ?? false)
-                    <span class="optional-pill ml-auto shrink-0">{{ t('Optional') }}</span>
+                    <span class="optional-pill ms-auto shrink-0">{{ t('Optional') }}</span>
                 @endif
             </a>
         @endif

@@ -57,18 +57,18 @@
     <div class="fixed inset-0 bg-black/35 z-40" x-show="open" x-transition.opacity x-on:click="open = false" style="display: none;"></div>
 
     {{-- Drawer --}}
-    <div class="fixed top-0 right-0 h-full w-96 max-w-[88vw] bg-brand-bg shadow-2xl z-50 flex flex-col"
+    <div class="fixed top-0 end-0 h-full w-96 max-w-[88vw] bg-brand-bg shadow-2xl z-50 flex flex-col"
         role="dialog"
         aria-modal="true"
         aria-label="{{ t('Glossary') }}"
         x-trap.inert.noscroll="open"
         x-show="open"
         x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="translate-x-full"
+        x-transition:enter-start="translate-x-full rtl:-translate-x-full"
         x-transition:enter-end="translate-x-0"
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="translate-x-0"
-        x-transition:leave-end="translate-x-full"
+        x-transition:leave-end="translate-x-full rtl:-translate-x-full"
         style="display: none;">
 
         <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-brand-primary/10">
@@ -96,7 +96,7 @@
             <div class="pt-5 text-xs text-gray-400 leading-relaxed space-y-2">
                 <p class="text-gray-500">{{ t('This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time.') }}</p>
                 <p class="font-semibold text-gray-500">{{ t('Other glossaries worth consulting:') }}</p>
-                <ul class="list-disc ml-4 space-y-1">
+                <ul class="list-disc ms-4 space-y-1">
                     <li>
                         <a class="underline hover:text-brand-secondary" href="https://lfs-bcacarn-2023.sites.olt.ubc.ca/files/2024/07/Toolkit-Glossary-EN-24.03.27-2.pdf" target="_blank" rel="noopener">
                             {{ t('Glossary - Data Governance in Agriculture (UBC toolkit, PDF)') }}

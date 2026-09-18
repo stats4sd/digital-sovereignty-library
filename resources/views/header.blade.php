@@ -19,7 +19,7 @@
 
         <!-- Nav Items (hidden on small screens) -->
         <nav class="hidden lg:flex">
-            <ul class="flex space-x-6 font-medium uppercase text-base">
+            <ul class="flex gap-6 font-medium uppercase text-base">
                 <li><a href="/home"
                         class=" hover:text-brand-primary {{ request()->is('home') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} ">
                         {{ t('Home') }}
@@ -59,7 +59,7 @@
 
     <!-- Nav Items (visible on small screens) -->
     <div class="lg:hidden" x-show="open" x-on:click.outside="open = false" style="display: none;">
-        <nav class="bg-brand-bg text-right">
+        <nav class="bg-brand-bg text-end">
             <ul class="flex flex-col space-y-2 px-6 pb-4">
                 <li><a href="/home" class="text-gray-800 hover:text-gray-600">{{ t('Home') }}</a></li>
                 <li><a href="/curriculum" class="text-gray-800 hover:text-gray-600">{{ t('Curriculum') }}</a></li>

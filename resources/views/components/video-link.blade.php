@@ -28,6 +28,6 @@
                 <p class="text-sm text-gray-500 truncate">{{ $host }}</p>
             </div>
         </div>
-        <span class="text-sm text-gray-500 group-hover:text-brand-primary whitespace-nowrap ml-4">{{ t('Watch on') }} {{ $host }} ↗</span>
+        <span class="text-sm text-gray-500 group-hover:text-brand-primary whitespace-nowrap ms-4">{{ t('Watch on') }} {{ $host }} ↗</span>
     </a>
 @endif

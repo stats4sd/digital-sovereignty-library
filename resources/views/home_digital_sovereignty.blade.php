@@ -27,7 +27,7 @@
             </p>
             <button type="button" x-on:click="step = 'intro'"
                 class="inline-flex items-center gap-2 bg-brand-secondary hover:opacity-90 text-white font-semibold px-8 py-4 rounded-lg shadow transition-opacity">
-                {{ t('Start Learning') }} &rarr;
+                {{ t('Start Learning') }} <x-dir-arrow />
             </button>
             <div class="mt-6">
                 <a href="/browse-all" class="text-sm text-gray-600 underline hover:text-brand-secondary">
@@ -77,7 +77,7 @@
 
                         <a href="{{ route('curriculum') }}"
                             class="mt-4 inline-flex items-center gap-2 bg-brand-secondary hover:opacity-90 text-white font-semibold px-6 py-3 rounded-lg transition-opacity">
-                            {{ t('Continue to the learning map') }} &rarr;
+                            {{ t('Continue to the learning map') }} <x-dir-arrow />
                         </a>
                     </div>
                 </div>

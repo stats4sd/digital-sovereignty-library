@@ -11,12 +11,12 @@
     <div class="relative z-10 flex flex-col items-center justify-center  h-[400px] sm:h-[35vh] px-8 sm:px-20 xl:px-4 text-white">
         <div class="max-w-3xl w-full mx-auto text-center">
             <!-- Heading -->
-            <div class="font-bold text-left md:text-center text-4xl sm:text-5xl md:text-5xl">
+            <div class="font-bold text-start md:text-center text-4xl sm:text-5xl md:text-5xl">
                 {{ \App\Models\SiteContent::get('library_heading_line1') }} {{ \App\Models\SiteContent::get('library_heading_line2') }}
             </div>
 
             <!-- Description -->
-            <div class="mt-6 text-left md:text-center pr-2 mx-auto">
+            <div class="mt-6 text-start md:text-center pe-2 mx-auto">
                 <p class="mb-4 text-xl">{{ \App\Models\SiteContent::get('library_hero_description') }}
                 </p>
             </div>
@@ -27,7 +27,7 @@
         <div class="flex flex-col lg:flex-row lg:gap-12">
 
             <!-- Sidebar (Search & Filters) -->
-            <div class="lg:min-w-[280px] w-full lg:w-2/12 bg-[#f4f4f4] lg:bg-brand-bg self-start lg:pl-12 px-8 py-6 lg:py-8 ">
+            <div class="lg:min-w-[280px] w-full lg:w-2/12 bg-[#f4f4f4] lg:bg-brand-bg self-start lg:ps-12 px-8 py-6 lg:py-8 ">
                 <div class="pb-4 sm:pb-0 lg:pb-4 sm:hidden lg:block">
                     <div class="pb-4 sm:pb-0 lg:pb-4 text-xl font-bold">{{ t('Search and filter') }}</div>
                     <div class="divider hidden lg:block"></div>
@@ -37,13 +37,13 @@
                 <div class="relative flex items-center mb-6">
                     <input
                         type="text"
-                        class="w-full py-2 pl-12 pr-4 bg-gray-200 border-none rounded-full focus:outline-none transition duration-300 focus:bg-gray-100 focus:ring-0 text-gray-700"
+                        class="w-full py-2 ps-12 pe-4 bg-gray-200 border-none rounded-full focus:outline-none transition duration-300 focus:bg-gray-100 focus:ring-0 text-gray-700"
                         placeholder="{{ t('Search here') }}"
                         aria-label="{{ t('Search resources and collections') }}"
                         wire:model.live.debounce.400ms="query"
                     >
 
-                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                    <div class="absolute start-3 top-1/2 transform -translate-y-1/2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 text-gray-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
                         </svg>
@@ -55,7 +55,7 @@
                             type="button"
                             wire:click="clearSearch"
                             aria-label="{{ t('Clear search') }}"
-                            class="absolute right-3 top-1/2 transform -translate-y-1/2"
+                            class="absolute end-3 top-1/2 transform -translate-y-1/2"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="gray" class="w-5 h-5 cursor-pointer hover:stroke-gray-700 transition-colors duration-200">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -64,7 +64,7 @@
                     @endif
                 </div>
             <div class="flex flex-col sm:flex-row lg:flex-col sm:mb-2 sm:mt-4 lg:my-0">
-            <div class="pb-4 sm:pb-0 ml-2 mr-16 lg:pb-4 hidden sm:block lg:hidden">
+            <div class="pb-4 sm:pb-0 ms-2 me-16 lg:pb-4 hidden sm:block lg:hidden">
                     <div class="pb-4 sm:pb-0 lg:pb-4 text-xl font-bold">{{ t('Filters:') }}</div>
                     <div class="divider hidden lg:block"></div>
                 </div>
@@ -74,7 +74,7 @@
                     <div class="border-t border-gray-400 sm:border-0 lg:border-t mb-6 sm:my-0 lg:mb-6"></div>
                     <div class="flex justify-between items-center cursor-pointer" @click="open = !open">
                         <label class="text-base lg:font-bold">{{ t("Language:") }}</label>
-                        <svg class="w-5 h-5 ml-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg class="w-5 h-5 ms-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </div>
@@ -86,10 +86,10 @@
                                 $localeMuted = $facetsAvailable && $localeCount === 0 && !$localeSelected;
                             @endphp
                             <label class="flex items-center {{ $localeMuted ? 'text-gray-400' : '' }}">
-                                <input type="checkbox" wire:model.live="selectedLanguages" value="{{ $code }}" class="mr-2 accent-brand-primary"/>
+                                <input type="checkbox" wire:model.live="selectedLanguages" value="{{ $code }}" class="me-2 accent-brand-primary"/>
                                 <span class="flex-1">{{ $label }}</span>
                                 @if($facetsAvailable)
-                                    <span class="ml-2 text-xs {{ $localeMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $localeCount }}</span>
+                                    <span class="ms-2 text-xs {{ $localeMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $localeCount }}</span>
                                 @endif
                             </label>
                         @endforeach
@@ -99,11 +99,11 @@
 
                 <!-- Resource Type Filter - hidden via the "Show resource type filter" site option or when no resource types are configured -->
                 @if(config('branding.features.show_trove_type_filter', false) && $filterTroveTypes->isNotEmpty())
-                <div class="sm:ml-6 lg:ml-0" x-data="window.innerWidth >= 1024 ? { open: true } : { open: false }">
+                <div class="sm:ms-6 lg:ms-0" x-data="window.innerWidth >= 1024 ? { open: true } : { open: false }">
                     <div class="border-t border-gray-400 sm:border-0 lg:border-t my-6 sm:my-0 lg:my-6"></div>
                     <div class="flex justify-between items-center cursor-pointer" @click="open = !open">
                         <label class="text-base lg:font-bold">{{ t('Type:') }}</label>
-                        <svg class="w-5 h-5 ml-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg class="w-5 h-5 ms-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </div>
@@ -118,10 +118,10 @@
                                 <input type="checkbox"
                                     wire:model.live="selectedTroveTypes"
                                     value="{{ $filterTroveType->id }}"
-                                    class="mr-2 accent-brand-primary"/>
+                                    class="me-2 accent-brand-primary"/>
                                 <span class="flex-1">{{ $filterTroveType->label }}</span>
                                 @if($facetsAvailable)
-                                    <span class="ml-2 text-xs {{ $troveTypeMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $troveTypeCount }}</span>
+                                    <span class="ms-2 text-xs {{ $troveTypeMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $troveTypeCount }}</span>
                                 @endif
                             </label>
                         @endforeach
@@ -131,11 +131,11 @@
 
                 <!-- Tag Type Filters (configured via admin panel) -->
                 @foreach($filterTagTypes as $filterTagType)
-                <div class="sm:ml-6 lg:ml-0" x-data="window.innerWidth >= 1024 ? { open: true } : { open: false }">
+                <div class="sm:ms-6 lg:ms-0" x-data="window.innerWidth >= 1024 ? { open: true } : { open: false }">
                     <div class="border-t border-gray-400 sm:border-0 lg:border-t my-6 sm:my-0 lg:my-6"></div>
                     <div class="flex justify-between items-center cursor-pointer" @click="open = !open">
                         <label class="text-base lg:font-bold">{{ $filterTagType->label }}:</label>
-                        <svg class="w-5 h-5 ml-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg class="w-5 h-5 ms-2 transition-transform duration-300" :class="open ? 'rotate-90' : '-rotate-90'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </div>
@@ -150,10 +150,10 @@
                                 <input type="checkbox"
                                     wire:model.live="selectedTagsByType.{{ $filterTagType->id }}"
                                     value="{{ $tag->id }}"
-                                    class="mr-2 accent-brand-primary"/>
+                                    class="me-2 accent-brand-primary"/>
                                 <span class="flex-1">{{ $tag->name }}</span>
                                 @if($facetsAvailable)
-                                    <span class="ml-2 text-xs {{ $tagMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $tagCount }}</span>
+                                    <span class="ms-2 text-xs {{ $tagMuted ? 'text-gray-400' : 'text-gray-500' }}">{{ $tagCount }}</span>
                                 @endif
                             </label>
                         @endforeach

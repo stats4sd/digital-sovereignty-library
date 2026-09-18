@@ -8,7 +8,7 @@
 
 
 <div
-    class="card hover-effect resource-card relative flex shadow-xl flex-col justify-between bg-[#f2f2f2] overflow-hidden  rounded-t-3xl rounded-bl-3xl ">
+    class="card hover-effect resource-card relative flex shadow-xl flex-col justify-between bg-[#f2f2f2] overflow-hidden  rounded-t-3xl rounded-es-3xl ">
     <a href="{{ url('resources/' . $item['slug']) }}" class="absolute inset-0 z-0" target="{{ $target }}">
     </a>
     <!-- Content -->
@@ -18,7 +18,7 @@
         <div class="h-52 bg-cover bg-center mb-4 overflow-y-hidden">
             <img src="{{ $item['cover_image_thumb'] }}" alt="{{ $item['title'] }}" class="overflow-y-hidden card-img w-full" />
         </div>
-     <div class="absolute top-4 left-4 h-12 w-12 resource-card-icon rounded-full text-white text-center py-auto bg-brand-secondary">
+     <div class="absolute top-4 start-4 h-12 w-12 resource-card-icon rounded-full text-white text-center py-auto bg-brand-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"
                     class="mx-auto my-3">
                     <path
