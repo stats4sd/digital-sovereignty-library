@@ -110,7 +110,7 @@ msgid "Other glossaries worth consulting:"
 msgstr "مسارد أخرى تستحق الاطلاع:"
 
 #: resources/views/components/glossary-drawer.blade.php:124
-msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
 msgstr "مسرد — حوكمة البيانات في الزراعة (مجموعة أدوات UBC، PDF)"
 
 #: resources/views/components/glossary-drawer.blade.php:130

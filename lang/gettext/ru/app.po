@@ -110,8 +110,8 @@ msgid "Other glossaries worth consulting:"
 msgstr "Другие полезные глоссарии:"
 
 #: resources/views/components/glossary-drawer.blade.php:124
-msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
-msgstr "Глоссарий — Управление данными в сельском хозяйстве (набор инструментов UBC, PDF)"
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Глоссарий - Управление данными в сельском хозяйстве (набор инструментов UBC, PDF)"
 
 #: resources/views/components/glossary-drawer.blade.php:130
 msgid "Open Data Handbook Glossary"

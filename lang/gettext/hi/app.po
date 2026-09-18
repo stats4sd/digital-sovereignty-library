@@ -110,8 +110,8 @@ msgid "Other glossaries worth consulting:"
 msgstr "अन्य उपयोगी शब्दावलियाँ:"
 
 #: resources/views/components/glossary-drawer.blade.php:124
-msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
-msgstr "शब्दावली — कृषि में डेटा गवर्नेंस (UBC टूलकिट, PDF)"
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "शब्दावली - कृषि में डेटा गवर्नेंस (UBC टूलकिट, PDF)"
 
 #: resources/views/components/glossary-drawer.blade.php:130
 msgid "Open Data Handbook Glossary"

@@ -110,8 +110,8 @@ msgid "Other glossaries worth consulting:"
 msgstr "Faharasa nyingine zinazofaa kurejelewa:"
 
 #: resources/views/components/glossary-drawer.blade.php:124
-msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
-msgstr "Faharasa — Utawala wa Data katika Kilimo (zana za UBC, PDF)"
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Faharasa - Utawala wa Data katika Kilimo (zana za UBC, PDF)"
 
 #: resources/views/components/glossary-drawer.blade.php:130
 msgid "Open Data Handbook Glossary"

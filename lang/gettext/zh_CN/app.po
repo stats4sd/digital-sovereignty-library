@@ -110,8 +110,8 @@ msgid "Other glossaries worth consulting:"
 msgstr "其他值得参考的术语表："
 
 #: resources/views/components/glossary-drawer.blade.php:124
-msgid "Glossary — Data Governance in Agriculture (UBC toolkit, PDF)"
-msgstr "术语表 — 农业数据治理（UBC 工具包，PDF）"
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "术语表 - 农业数据治理（UBC 工具包，PDF）"
 
 #: resources/views/components/glossary-drawer.blade.php:130
 msgid "Open Data Handbook Glossary"

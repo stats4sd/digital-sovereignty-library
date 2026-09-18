@@ -120,7 +120,7 @@
                 <ul class="list-disc ml-4 space-y-1">
                     <li>
                         <a class="underline hover:text-brand-secondary" href="https://lfs-bcacarn-2023.sites.olt.ubc.ca/files/2024/07/Toolkit-Glossary-EN-24.03.27-2.pdf" target="_blank" rel="noopener">
-                            {{ t('Glossary — Data Governance in Agriculture (UBC toolkit, PDF)') }}
+                            {{ t('Glossary - Data Governance in Agriculture (UBC toolkit, PDF)') }}
                         </a>
                     </li>
                     <li>
