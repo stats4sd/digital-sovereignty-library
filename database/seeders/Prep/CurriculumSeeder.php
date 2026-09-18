@@ -8,8 +8,6 @@ use Illuminate\Database\Seeder;
 
 class CurriculumSeeder extends Seeder
 {
-    public const BASE_GLOSSARY_SOURCE = 'Marion Girard Cisneros';
-
     public function run(): void
     {
         foreach ($this->modules() as $module) {
@@ -25,7 +23,6 @@ class CurriculumSeeder extends Seeder
                 [
                     'term' => ['en' => $term],
                     'definition' => ['en' => $definition],
-                    'source' => self::BASE_GLOSSARY_SOURCE,
                 ],
             );
         }
@@ -146,32 +143,32 @@ class CurriculumSeeder extends Seeder
     }
 
     /**
-     * The base glossary by Marion Girard Cisneros (see BASE_GLOSSARY_SOURCE)
+     * The base glossary by Marion Girard Cisneros (credited in the drawer footer)
      */
     private function glossaryTerms(): array
     {
         return [
-            'Big data' => 'Big data refers to vast volumes of structured, semistructured, and unstructured data collected by governments, business and organizations, which can be mined for valuable information.',
-            'Community sovereignty' => 'Community sovereignty refers to the autonomy and political self-governance of a community. This concept is based on the principle that each community is free to determine its own destiny and relations with other communities. Data policies should respect the sovereignty of communities to refuse, restrict, or remain unconnected from data collection.',
-            'Data' => 'Any set of codified symbols representing units of information regarding specific aspects of the world that can be captured or generated, recorded, stored, and transmitted in analogue or digital form.',
+            'Big data' => "Big data refers to vast volumes of structured, semistructured, and unstructured data collected by governments, business and organizations, which can be mined for valuable information.",
+            'Community sovereignty' => "Community sovereignty refers to the autonomy and political self-governance of a community. This concept is based on the principle that each community is free to determine its own destiny and relations with other communities. Data policies should respect the sovereignty of communities to refuse, restrict, or remain unconnected from data collection.",
+            'Data' => "Any set of codified symbols representing units of information regarding specific aspects of the world that can be captured or generated, recorded, stored, and transmitted in analogue or digital form.\n\nFrom a farmer’s perspective, data is not an individual resource to be owned or controlled in isolation. It is embedded in their relationships—with their agroecological territories, shared resources, communities, and governments—and emerges from the questions, constraints, and challenges they confront in daily life. Data justice, therefore, cannot be universal or abstract; it must be grounded in these lived relationships. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/",
             'Data extraction' => "Data extraction is the process of retrieving data from data sources for further processing or storage. It's often used to migrate data to a new system, integrate data from various sources, or to analyze data.",
-            'Data for FSN' => 'Data for Food Security and Nutrition refers to the information collected and analyzed to design and evaluate effective policies in ensuring food security and nutrition.',
-            'Data governance' => 'A political and economic regime that sets boundaries for data collection by upholding human rights and outlawing any form of data processing that infringes individual and collective autonomy or self-determination. Only data governance for food security and nutrition based on a human rights approach will ensure the availability of high-quality, timely and relevant qualitative and quantitative data that improves food security and nutrition and contribute to the progressive realization of the right to healthy and sustainable food. Small food producers across the world are advocating for new approaches to data governance that protect not only their privacy, but also their sovereignty and autonomy.',
-            'Data infrastructures' => 'Data infrastructures refer to the underlying frameworks and services that are necessary for the collection, processing, storage, and distribution of data. This includes hardware, software, networks, and facilities used to develop, test, operate, monitor, manage, and support data applications.',
+            'Data for FSN' => "Data for Food Security and Nutrition refers to the information collected and analyzed to design and evaluate effective policies in ensuring food security and nutrition.",
+            'Data governance' => "A political and economic regime that sets boundaries for data collection by upholding human rights and outlawing any form of data processing that infringes individual and collective autonomy or self-determination. Only data governance for food security and nutrition based on a human rights approach will ensure the availability of high-quality, timely and relevant qualitative and quantitative data that improves food security and nutrition and contribute to the progressive realization of the right to healthy and sustainable food. Small food producers across the world are advocating for new approaches to data governance that protect not only their privacy, but also their sovereignty and autonomy.\n\nSee also: https://digifoodproject.org/what-is-data-governance",
+            'Data infrastructures' => "Data infrastructures refer to the underlying frameworks and services that are necessary for the collection, processing, storage, and distribution of data. This includes hardware, software, networks, and facilities used to develop, test, operate, monitor, manage, and support data applications.",
             'Data justice' => "Data justice refers to the equitable distribution of benefits and burdens related to data. It's a concept that uses social justice ideas to address rights, fairness, and protections in the context of datafication.",
-            'Data literacy' => 'Data literacy is the ability to read, understand, create, and communicate data as information. It includes the essential skills to critically analyze, interpret, and use data effectively.',
+            'Data literacy' => "Data literacy is the ability to read, understand, create, and communicate data as information. It includes the essential skills to critically analyze, interpret, and use data effectively.",
             'Data privacy' => "Data privacy, also known as information privacy, involves the handling and protection of sensitive data from unauthorized access, use, disclosure, disruption, modification, or destruction. It's a key aspect of data governance that ensures the confidentiality and privacy of personal data.",
-            'Data sovereignty' => 'The capacity of various actors of food systems to exercise control and make autonomous decisions over the data collected within their operations.',
+            'Data sovereignty' => "The capacity of various actors of food systems to exercise control and make autonomous decisions over the data collected within their operations.",
             'Datafication' => "With the advent of data-driven technologies like AI-enabled plant breeding, digital farm platforms, and online food retail, immense quantities of data are being generated, leading to what is referred to as 'datafication'. This process encompasses a diverse range of activities, purposes, organisms, communities, and applications across the entire food supply chain. However, the question of who benefits from this transformation and how it addresses existing inequalities leading to the perpetuation of food insecurity largely depends on the governance of this data.",
-            'Digital food chain' => 'The application of digital technologies and datafication in agricultural and food systems, transforming traditional food production, distribution, and consumption processes into data-driven ones.',
-            'Digital grocery' => 'Digital grocery refers to online platforms where customers can buy food and other grocery items and get them delivered to their doorstep.',
-            'Digital technologies' => 'Tools and methods that use digital information to solve problems, communicate, and create products.',
-            'Digitalization of food systems' => 'The digitalization of food systems involves the application of digital technologies and datafication in the agricultural sector, transforming traditional food production, distribution, and consumption processes into data-driven ones.',
-            'FAIR and CARE principles' => 'The FAIR and CARE principles are guidelines for data management and stewardship, with FAIR standing for Findable, Accessible, Interoperable, and Reusable, while CARE stands for Collective benefit, Authority to control, Responsibility, and Ethics.',
-            'False climate solutions' => 'Measures or technologies that claim to address climate change but do not reduce greenhouse gas emissions at the source or create other social and environmental harms.',
-            'Free, Prior, Informed Consent (FPIC)' => 'Free, Prior, Informed Consent (FPIC) is a principle that seeks to protect the rights of Indigenous Peoples and local communities in decision-making processes, particularly in relation to their lands, territories, and resources.',
-            'Hyper-nudging' => 'Hyper-nudging is a concept that involves the use of big data and machine learning to provide highly personalized nudges, influencing individual behavior in real-time.',
-            'Internet of Things' => 'The network of physical objects—"things"—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet.',
+            'Digital food chain' => "The application of digital technologies and datafication in agricultural and food systems, transforming traditional food production, distribution, and consumption processes into data-driven ones.",
+            'Digital grocery' => "Digital grocery refers to online platforms where customers can buy food and other grocery items and get them delivered to their doorstep.",
+            'Digital technologies' => "Tools and methods that use digital information to solve problems, communicate, and create products.",
+            'Digitalization of food systems' => "The digitalization of food systems involves the application of digital technologies and datafication in the agricultural sector, transforming traditional food production, distribution, and consumption processes into data-driven ones.",
+            'FAIR and CARE principles' => "The FAIR and CARE principles are guidelines for data management and stewardship, with FAIR standing for Findable, Accessible, Interoperable, and Reusable, while CARE stands for Collective benefit, Authority to control, Responsibility, and Ethics.",
+            'False climate solutions' => "Measures or technologies that claim to address climate change but do not reduce greenhouse gas emissions at the source or create other social and environmental harms.",
+            'Free, Prior, Informed Consent (FPIC)' => "Free, Prior, Informed Consent (FPIC) is a principle that seeks to protect the rights of Indigenous Peoples and local communities in decision-making processes, particularly in relation to their lands, territories, and resources.",
+            'Hyper-nudging' => "Hyper-nudging is a concept that involves the use of big data and machine learning to provide highly personalized nudges, influencing individual behavior in real-time.",
+            'Internet of Things' => "The network of physical objects—\"things\"—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet.",
         ];
     }
 }

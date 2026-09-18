@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -50,17 +51,6 @@ class GlossaryTermResource extends Resource
                             ->rows(3),
                     )
                     ->required(),
-
-                Forms\Components\TextInput::make('source')
-                    ->label('Source / credit')
-                    ->helperText('Who this term is taken or adapted from (e.g. "Marion Girard Cisneros" or "Adapted from the Open Data Handbook"). Shown under the definition in the glossary drawer; leave empty for terms written in-house.')
-                    ->maxLength(255),
-
-                Forms\Components\TextInput::make('source_url')
-                    ->label('Source URL')
-                    ->helperText('Optional link to the original glossary; the credit becomes a link when set.')
-                    ->url()
-                    ->maxLength(255),
             ])
             ->columns(1);
     }
@@ -75,10 +65,9 @@ class GlossaryTermResource extends Resource
                 Tables\Columns\TextColumn::make('definition')
                     ->limit(90)
                     ->wrap(),
-                Tables\Columns\TextColumn::make('source')
-                    ->toggleable(),
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make()
                     ->modalHeading(fn (GlossaryTerm $record): string => 'Delete glossary term "'.$record->term.'"'),

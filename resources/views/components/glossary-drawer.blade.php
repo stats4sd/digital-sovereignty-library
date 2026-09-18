@@ -2,8 +2,6 @@
     $glossaryTerms = \App\Models\GlossaryTerm::all()
         ->mapWithKeys(fn ($term) => [$term->getTranslation('term', app()->getLocale()) => [
             'def' => $term->getTranslation('definition', app()->getLocale()),
-            'source' => $term->source,
-            'source_url' => $term->source_url,
         ]])
         ->filter(fn ($entry, $term) => $term !== '' && $entry['def'] !== '')
         ->sortKeys();
@@ -13,22 +11,16 @@
 <div x-data="{
         open: false,
         query: '',
-        sourceFilter: null,
         focusTerm: null,
         terms: JSON.parse(document.getElementById('glossary-data').textContent),
-        get sources() {
-            return [...new Set(Object.values(this.terms).map((e) => e.source).filter(Boolean))].sort();
-        },
         get filtered() {
             const q = this.query.trim().toLowerCase();
             return Object.entries(this.terms).filter(([term, entry]) =>
-                (!this.sourceFilter || entry.source === this.sourceFilter)
-                && (!q || term.toLowerCase().includes(q) || entry.def.toLowerCase().includes(q))
+                (!q || term.toLowerCase().includes(q) || entry.def.toLowerCase().includes(q))
             );
         },
         openDrawer(term = null) {
             this.query = '';
-            this.sourceFilter = null;
             this.focusTerm = term;
             this.open = true;
             this.$nextTick(() => {
@@ -43,6 +35,17 @@
         },
         slug(term) {
             return term.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        },
+        // Definitions are plain text; escape everything, then turn bare URLs into links.
+        // NB: this lives inside a double-quoted HTML attribute, so no double quotes and
+        // no entity references (the HTML parser would decode them) may appear here.
+        linkify(text) {
+            const holder = document.createElement('div');
+            holder.textContent = text;
+            const escaped = holder.innerHTML;
+            return escaped.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)]/g, (url) =>
+                '<a href=\'' + url + '\' class=\'underline hover:text-brand-secondary break-all\' target=\'_blank\' rel=\'noopener\'>' + url + '</a>'
+            );
         },
     }"
     x-on:open-glossary.window="openDrawer($event.detail?.term ?? null)"
@@ -77,21 +80,6 @@
             <input type="text" x-model="query" x-ref="searchInput"
                 placeholder="{{ t('Search terms…') }}"
                 class="w-full rounded-lg border border-brand-primary/20 bg-white/70 px-3 py-2 text-sm focus:border-brand-secondary focus:ring-0">
-
-            {{-- Source filter — only shown once terms from more than one glossary exist. --}}
-            <div class="flex flex-wrap gap-1.5 mt-3" x-show="sources.length > 1" x-cloak>
-                <button type="button"
-                    class="rounded-full border px-2.5 py-0.5 text-xs transition-colors"
-                    :class="sourceFilter === null ? 'bg-brand-secondary text-white border-brand-secondary' : 'border-brand-primary/20 text-gray-500 hover:border-brand-secondary'"
-                    x-on:click="sourceFilter = null">{{ t('All sources') }}</button>
-                <template x-for="source in sources" :key="source">
-                    <button type="button"
-                        class="rounded-full border px-2.5 py-0.5 text-xs transition-colors"
-                        :class="sourceFilter === source ? 'bg-brand-secondary text-white border-brand-secondary' : 'border-brand-primary/20 text-gray-500 hover:border-brand-secondary'"
-                        x-on:click="sourceFilter = (sourceFilter === source ? null : source)"
-                        x-text="source"></button>
-                </template>
-            </div>
         </div>
 
         <div class="overflow-y-auto px-6 pb-8 flex-1">
@@ -100,22 +88,13 @@
                     :id="'gloss-' + slug(term)"
                     :class="focusTerm === term ? 'bg-brand-secondary/15 px-3 -mx-3' : ''">
                     <div class="font-semibold text-brand-primary text-sm mb-1" x-text="term"></div>
-                    <div class="text-sm text-gray-600 leading-relaxed" x-text="entry.def"></div>
-                    <div class="text-xs text-gray-400 mt-1.5" x-show="entry.source">
-                        {{ t('Source:') }}
-                        <template x-if="entry.source_url">
-                            <a class="underline hover:text-brand-secondary" :href="entry.source_url" target="_blank" rel="noopener" x-text="entry.source"></a>
-                        </template>
-                        <template x-if="!entry.source_url">
-                            <span x-text="entry.source"></span>
-                        </template>
-                    </div>
+                    <div class="text-sm text-gray-600 leading-relaxed whitespace-pre-line" x-html="linkify(entry.def)"></div>
                 </div>
             </template>
             <div class="text-sm text-gray-400 text-center py-6" x-show="filtered.length === 0">{{ t('No matching terms.') }}</div>
 
             <div class="pt-5 text-xs text-gray-400 leading-relaxed space-y-2">
-                <p>{{ t('This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time.') }}</p>
+                <p class="text-gray-500">{{ t('This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time.') }}</p>
                 <p class="font-semibold text-gray-500">{{ t('Other glossaries worth consulting:') }}</p>
                 <ul class="list-disc ml-4 space-y-1">
                     <li>

@@ -11,24 +11,7 @@ it('embeds the glossary data and drawer on public pages', function () {
     $this->get('/curriculum')
         ->assertOk()
         ->assertSee('glossary-data')
-        ->assertSee('vast volumes of structured, semistructured') // Big data definition
-        ->assertSee(CurriculumSeeder::BASE_GLOSSARY_SOURCE); // per-term credit in the drawer payload
-});
-
-it('includes per-term source attribution in the drawer payload', function () {
-    GlossaryTerm::factory()->create([
-        'term' => ['en' => 'Open data'],
-        'definition' => ['en' => 'Data anyone can access, use and share.'],
-        'source' => 'Open Data Handbook',
-        'source_url' => 'https://opendatahandbook.org/glossary/en/',
-    ]);
-
-    // Match the raw JSON payload (the drawer footer also mentions the handbook,
-    // so a plain-text assertion would pass without the per-term data).
-    $this->get('/curriculum')
-        ->assertOk()
-        ->assertSee('"source":"Open Data Handbook"', false)
-        ->assertSee('"source_url":"https:\/\/opendatahandbook.org\/glossary\/en\/"', false);
+        ->assertSee('vast volumes of structured, semistructured'); // Big data definition
 });
 
 it('omits the glossary drawer entirely when no terms exist', function () {

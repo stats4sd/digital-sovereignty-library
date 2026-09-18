@@ -12,9 +12,7 @@ it('seeds the fixed module set and glossary', function () {
         // 4 pillars + the featured Farm Hack Box
         ->and(CurriculumModule::forSection(CurriculumModule::SECTION_TOOLKIT)->count())->toBe(5)
         ->and(CurriculumModule::forSection(CurriculumModule::SECTION_INTRO)->count())->toBe(1)
-        ->and(GlossaryTerm::count())->toBe(21)
-        // Every seeded term is credited to the base ("mother") glossary.
-        ->and(GlossaryTerm::where('source', CurriculumSeeder::BASE_GLOSSARY_SOURCE)->count())->toBe(21);
+        ->and(GlossaryTerm::count())->toBe(21);
 });
 
 it('is idempotent and preserves admin edits on re-run', function () {

@@ -261,7 +261,7 @@
     }
 
     .glossary-tip-def {
-        @apply text-sm text-gray-600 leading-relaxed;
+        @apply text-sm text-gray-600 leading-relaxed whitespace-pre-line;
     }
 
     .glossary-tip-link {

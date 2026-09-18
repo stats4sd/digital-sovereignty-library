@@ -2,6 +2,7 @@
 
 use App\Filament\Resources\GlossaryTermResource\Pages\ListGlossaryTerms;
 use App\Models\GlossaryTerm;
+use Filament\Actions\Testing\TestAction;
 use Livewire\Livewire;
 
 beforeEach(fn () => actingAsEditor());
@@ -11,8 +12,6 @@ it('creates a glossary term through the manage-records modal', function () {
         ->callAction('create', [
             'term' => ['en' => 'Lock-in'],
             'definition' => ['en' => 'Becoming dependent on one platform.'],
-            'source' => 'Open Data Handbook',
-            'source_url' => 'https://opendatahandbook.org/glossary/en/',
         ]);
 
     $created = GlossaryTerm::query()->get()->first(
@@ -20,8 +19,7 @@ it('creates a glossary term through the manage-records modal', function () {
     );
 
     expect($created)->not->toBeNull()
-        ->and($created->source)->toBe('Open Data Handbook')
-        ->and($created->source_url)->toBe('https://opendatahandbook.org/glossary/en/');
+        ->and($created->getTranslation('definition', 'en'))->toBe('Becoming dependent on one platform.');
 });
 
 it('edits a glossary term through the table modal', function () {
@@ -43,4 +41,19 @@ it('deletes a glossary term through the table action', function () {
         ->callTableAction('delete', $term);
 
     expect(GlossaryTerm::query()->whereKey($term->getKey())->exists())->toBeFalse();
+});
+
+it('opens a glossary term in a read-only view modal', function () {
+    $term = GlossaryTerm::factory()->create([
+        'term' => ['en' => 'Interoperability'],
+        'definition' => ['en' => 'Systems that can exchange data with each other.'],
+    ]);
+
+    Livewire::test(ListGlossaryTerms::class)
+        ->mountAction(TestAction::make('view')->table($term))
+        ->assertActionMounted(TestAction::make('view')->table($term))
+        ->assertSchemaStateSet([
+            'term' => ['en' => 'Interoperability'],
+            'definition' => ['en' => 'Systems that can exchange data with each other.'],
+        ]);
 });
