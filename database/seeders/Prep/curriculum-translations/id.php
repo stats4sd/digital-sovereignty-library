@@ -9,26 +9,67 @@ return [
         ],
         'digital-landscape' => [
             'title' => 'Memahami Lanskap Digital',
+            'goal' => 'Membantu peserta membangun gambaran bersama yang jujur tentang lanskap digital yang sudah menjadi ruang kerja komunitas mereka, sebelum memperkenalkan teknologi baru.',
             'description' => '<p>Dapatkan gambaran bersama tentang medan digital yang sudah dipijak komunitas Anda: konektivitas, perangkat, literasi, dan siapa yang mengendalikan apa.</p>',
             'learning_outcomes' => "Menggambarkan konektivitas, perangkat, dan keterampilan digital yang dimiliki komunitas Anda\nMengidentifikasi siapa yang mengendalikan sistem digital yang saat ini diandalkan komunitas Anda\nMengenali di mana sistem hibrida (kertas dan digital) masuk akal",
         ],
         'knowledge-justice' => [
             'title' => 'Memahami Pengetahuan, Keadilan & Hak atas Data',
+            'goal' => 'Membantu peserta mengenali pengetahuan dan hak atas data siapa yang dipertaruhkan dalam sistem digital, serta menerapkan sudut pandang berbasis hak pada konteks mereka sendiri.',
             'description' => '<p>Bertanya pengetahuan siapa yang diperhitungkan, siapa yang memiliki data yang dihasilkan komunitas, dan hak apa yang melindungi keduanya.</p>',
             'learning_outcomes' => "Menjelaskan pengetahuan siapa yang diperhitungkan dalam sistem digital, dan siapa yang diuntungkan darinya\nMenggambarkan hak-hak yang dimiliki komunitas atas data yang dihasilkannya\nMenerapkan kerangka berbasis hak (seperti prinsip CARE) pada data komunitas",
         ],
         'community-needs' => [
             'title' => 'Memahami Kebutuhan Komunitas',
-            'description' => '<p>Petakan siapa yang memegang kekuasaan dan data dalam konteks Anda, lalu ubah masalah nyata menjadi pernyataan kebutuhan yang jelas sebelum meraih alat apa pun.</p>',
-            'learning_outcomes' => "Memetakan para pemangku kepentingan yang menghasilkan, mengendalikan, dan mengambil keuntungan dari data dalam konteks Anda\nMembedakan antara masalah, kendala, dan kebutuhan yang sesungguhnya\nMenulis pernyataan kebutuhan yang jelas sebelum memilih teknologi apa pun",
+            'goal' => 'Membantu peserta memahami lebih baik kebutuhan komunitas atau organisasi mereka akan data dan alat digital sebelum mengambil keputusan teknologi.',
+            'description' => '<p>Modul ini menyediakan kerangka praktis untuk menerapkan konsep yang diperkenalkan di Modul 1 dan 2 pada konteks Anda sendiri. Fokusnya pada lingkungan komunitas dan organisasi, dengan menyadari bahwa banyak pendekatan ini juga dapat diterapkan di tingkat individu, antarorganisasi, dan sistem yang lebih luas. Melalui latihan praktis dan contoh nyata, Anda akan belajar memahami konteks operasional Anda, mengenali kebutuhan dan keterbatasan yang sesungguhnya, serta mengambil keputusan yang tepat tentang data dan alat digital sebelum memilih teknologi.</p>',
+            // One entry per outcome, in the same order as the English source; in_practice may be omitted.
+            'learning_outcomes' => [
+                [
+                    'statement' => 'Melakukan diagnosis tingkat sistem terhadap konteks organisasi dan operasional Anda.',
+                    'in_practice' => 'Anda akan mengisi Kanvas Diagnosis Konteks dan menulis pernyataan diagnosis singkat tentang organisasi Anda sendiri.',
+                ],
+                [
+                    'statement' => 'Menentukan kebutuhan Anda berdasarkan keterbatasan operasional yang nyata, bukan solusi yang diasumsikan.',
+                    'in_practice' => 'Anda akan menerapkan metode Masalah → Keterbatasan → Kebutuhan dan menyusun Matriks Kebutuhan pertama.',
+                ],
+                [
+                    'statement' => 'Memahami perlunya mengevaluasi dan memilih alat berdasarkan kriteria kedaulatan, termasuk kontrol, aksesibilitas, dan keberlanjutan.',
+                    'in_practice' => 'Anda akan mampu menyebutkan kriteria ini dan menjelaskan mengapa penting; evaluasi lengkap per alat dibahas di Modul 4.',
+                ],
+                [
+                    'statement' => 'Menjelaskan apa yang diperlukan untuk mendekati tata kelola data dari perspektif berbasis kebutuhan, termasuk kepemilikan, akses, dan perlindungan.',
+                    'in_practice' => 'Anda akan mampu menjelaskan empat komponen kerangka tata kelola data dan membuat sketsanya untuk organisasi Anda sendiri.',
+                ],
+            ],
+            'sessions' => [
+                'understanding-your-operational-context' => [
+                    'title' => 'Memahami Konteks Operasional Anda',
+                    'summary' => 'Melakukan diagnosis tingkat sistem terhadap konteks organisasi dan operasional',
+                ],
+                'defining-what-you-actually-need' => [
+                    'title' => 'Menentukan Apa yang Benar-Benar Anda Butuhkan',
+                    'summary' => 'Kebutuhan dari keterbatasan, bukan solusi yang diasumsikan',
+                ],
+                'deciding-what-belongs-in-a-digital-system' => [
+                    'title' => 'Memutuskan Apa yang Layak Masuk ke Sistem Digital',
+                    'summary' => 'Kriteria kedaulatan untuk mengevaluasi alat',
+                ],
+                'why-data-governance-starts-with-your-needs' => [
+                    'title' => 'Mengapa Tata Kelola Data Dimulai dari Kebutuhan Anda',
+                    'summary' => 'Tata kelola data berbasis kebutuhan',
+                ],
+            ],
         ],
         'tech-assessment' => [
             'title' => 'Penilaian Teknologi',
+            'goal' => 'Membantu peserta menilai alat digital berdasarkan kepemilikan, keterbukaan, fungsi luring, biaya, dan risiko ketergantungan sebelum berkomitmen pada platform apa pun.',
             'description' => '<p>Timbang pilihan-pilihan berdasarkan kepemilikan, keterbukaan, fungsi luring (offline), biaya, dan risiko keterikatan (lock-in) sebelum Anda berkomitmen pada satu platform.</p>',
             'learning_outcomes' => "Memutuskan apa yang perlu didigitalkan, apa yang tidak, dan siapa yang memutuskan\nMenilai alat berdasarkan kepemilikan, keterbukaan, fungsi luring, dan biaya\nMengenali risiko keterikatan (lock-in) sebelum berkomitmen pada sebuah platform",
         ],
         'tech-strategy' => [
             'title' => 'Strategi Teknologi',
+            'goal' => 'Membantu peserta menerjemahkan apa yang telah dipelajari menjadi satu strategi kedaulatan digital yang konkret dan dapat dijalankan untuk komunitas mereka sendiri.',
             'description' => '<p>Tetapkan aturan tentang bagaimana data dimiliki dan dibagikan, hubungkan alat dengan akses pasar yang nyata, dan rangkum semuanya ke dalam satu strategi lokal.</p>',
             'learning_outcomes' => "Menetapkan aturan tentang bagaimana data komunitas Anda dimiliki, diakses, dan disimpan\nMenghubungkan alat digital dengan akses pasar yang nyata tanpa kehilangan nilai kepada perantara\nMerangkai semua langkah menjadi satu strategi kedaulatan digital lokal",
         ],

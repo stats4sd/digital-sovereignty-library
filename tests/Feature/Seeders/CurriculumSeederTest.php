@@ -204,3 +204,33 @@ it('leaves community-needs outcomes untouched when they no longer match the lega
     expect($refreshedOutcomes)->toHaveCount(3)
         ->and($refreshedOutcomes[0]['statement']['en'])->toBe('Something an admin wrote instead');
 });
+
+it('translates the community-needs goal, structured outcomes and sessions', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $module = CurriculumModule::where('key', 'community-needs')->firstOrFail();
+
+    expect($module->getTranslation('goal', 'fr', false))->not->toBe('')
+        ->and($module->getTranslation('description', 'fr', false))->toContain('modules 1 et 2')
+        ->and($module->learning_outcomes)->toHaveCount(4);
+
+    foreach ($module->learning_outcomes as $outcome) {
+        expect($outcome['statement']['fr'] ?? '')->not->toBe('')
+            ->and($outcome['in_practice']['ar'] ?? '')->not->toBe('');
+    }
+
+    $session = $module->sessions->firstWhere('slug', 'defining-what-you-actually-need');
+
+    expect($session->getTranslation('title', 'es', false))->toBe('Definir lo que realmente necesita')
+        ->and($session->getTranslation('summary', 'zh_CN', false))->not->toBe('')
+        ->and($session->getTranslation('title', 'en', false))->toBe('Defining What You Actually Need');
+});
+
+it('keeps positional outcome translations for modules whose locale files are one-per-line strings', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $module = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
+
+    expect($module->learning_outcomes)->toHaveCount(3)
+        ->and($module->learning_outcomes[0]['statement']['fr'] ?? '')->toStartWith('Décrire');
+});

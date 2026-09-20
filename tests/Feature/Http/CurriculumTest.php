@@ -127,7 +127,10 @@ it('renders the module hero with number, title, CTA to the first session and goa
 
 it('hides the module number, goal band and outcomes band, and shows the empty session state, when absent', function () {
     $module = CurriculumModule::where('key', 'tech-assessment')->first();
-    $module->update(['number' => null, 'goal' => null, 'learning_outcomes' => null]);
+    // The seeded goal carries every locale, so null-ing via update() would only clear `en`
+    // and the view would fall back to another locale; drop all translations instead.
+    $module->forgetTranslations('goal', asNull: true);
+    $module->update(['number' => null, 'learning_outcomes' => null]);
 
     $this->get('/curriculum/tech-assessment')
         ->assertOk()

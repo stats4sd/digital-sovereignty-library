@@ -9,26 +9,67 @@ return [
         ],
         'digital-landscape' => [
             'title' => 'Comprendre le paysage numérique',
+            'goal' => 'Aider les apprenants à se construire une image commune et honnête du paysage numérique dans lequel leur communauté évolue déjà, avant d\'introduire toute nouvelle technologie.',
             'description' => '<p>Obtenez une vision commune du terrain numérique sur lequel votre communauté se trouve déjà : connectivité, appareils, littératie numérique, et qui contrôle quoi.</p>',
             'learning_outcomes' => "Décrire la connectivité, les appareils et les compétences numériques dont dispose votre communauté\nIdentifier qui contrôle les systèmes numériques dont votre communauté dépend actuellement\nReconnaître les situations où des systèmes hybrides (papier et numérique) ont du sens",
         ],
         'knowledge-justice' => [
             'title' => 'Comprendre les savoirs, la justice et les droits sur les données',
+            'goal' => 'Aider les apprenants à reconnaître quels savoirs et quels droits sur les données sont en jeu dans les systèmes numériques, et à appliquer une approche fondée sur les droits à leur propre contexte.',
             'description' => '<p>Demandez-vous quels savoirs comptent, à qui appartiennent les données qu\'une communauté produit, et quels droits protègent les uns comme les autres.</p>',
             'learning_outcomes' => "Expliquer quels savoirs comptent dans les systèmes numériques, et qui en tire profit\nDécrire les droits qu'une communauté détient sur les données qu'elle produit\nAppliquer un cadre fondé sur les droits (comme les principes CARE) aux données communautaires",
         ],
         'community-needs' => [
             'title' => 'Comprendre les besoins de la communauté',
-            'description' => '<p>Cartographiez qui détient le pouvoir et les données dans votre contexte, puis transformez des problèmes réels en un énoncé de besoin clair avant de vous tourner vers un quelconque outil.</p>',
-            'learning_outcomes' => "Cartographier les parties prenantes qui produisent, contrôlent et tirent profit des données dans votre contexte\nDistinguer un problème, une contrainte et un besoin réel\nRédiger un énoncé de besoin clair avant de choisir une technologie",
+            'goal' => 'Aider les apprenants à mieux comprendre les besoins de leur communauté ou de leur organisation en matière de données et d\'outils numériques avant de prendre des décisions technologiques.',
+            'description' => '<p>Ce module propose un cadre pratique pour appliquer les concepts introduits dans les modules 1 et 2 à votre propre contexte. Il se concentre sur les contextes communautaires et organisationnels, tout en reconnaissant que de nombreuses approches s\'appliquent aussi aux niveaux individuel, inter-organisationnel et systémique. À travers des exercices pratiques et des exemples concrets, vous apprendrez à comprendre votre contexte opérationnel, à identifier les besoins et contraintes réels, et à prendre des décisions éclairées sur les données et les outils numériques avant de choisir une technologie.</p>',
+            // One entry per outcome, in the same order as the English source; in_practice may be omitted.
+            'learning_outcomes' => [
+                [
+                    'statement' => 'Réaliser un diagnostic systémique de votre contexte organisationnel et opérationnel.',
+                    'in_practice' => 'vous compléterez un Canevas de diagnostic du contexte et rédigerez un court énoncé de diagnostic sur votre propre organisation.',
+                ],
+                [
+                    'statement' => 'Définir vos besoins à partir de contraintes opérationnelles réelles, plutôt que de solutions présupposées.',
+                    'in_practice' => 'vous appliquerez la méthode Problème → Contrainte → Besoin et construirez une première Matrice des besoins.',
+                ],
+                [
+                    'statement' => 'Comprendre la nécessité d\'évaluer et de choisir les outils selon des critères de souveraineté, notamment le contrôle, l\'accessibilité et la durabilité.',
+                    'in_practice' => 'vous saurez nommer ces critères et expliquer pourquoi ils comptent — l\'évaluation détaillée outil par outil est traitée dans le module 4.',
+                ],
+                [
+                    'statement' => 'Expliquer ce qu\'implique une approche de la gouvernance des données fondée sur les besoins, y compris la propriété, l\'accès et la protection.',
+                    'in_practice' => 'vous saurez expliquer les quatre composantes d\'un cadre de gouvernance des données et en esquisser un pour votre propre organisation.',
+                ],
+            ],
+            'sessions' => [
+                'understanding-your-operational-context' => [
+                    'title' => 'Comprendre votre contexte opérationnel',
+                    'summary' => 'Réaliser un diagnostic systémique du contexte organisationnel et opérationnel',
+                ],
+                'defining-what-you-actually-need' => [
+                    'title' => 'Définir ce dont vous avez réellement besoin',
+                    'summary' => 'Des besoins issus des contraintes, pas de solutions présupposées',
+                ],
+                'deciding-what-belongs-in-a-digital-system' => [
+                    'title' => 'Décider ce qui a sa place dans un système numérique',
+                    'summary' => 'Des critères de souveraineté pour évaluer les outils',
+                ],
+                'why-data-governance-starts-with-your-needs' => [
+                    'title' => 'Pourquoi la gouvernance des données commence par vos besoins',
+                    'summary' => 'Une gouvernance des données fondée sur les besoins',
+                ],
+            ],
         ],
         'tech-assessment' => [
             'title' => 'Évaluation technologique',
+            'goal' => 'Aider les apprenants à évaluer les outils numériques selon la propriété, l\'ouverture, le fonctionnement hors ligne, le coût et le risque de dépendance avant de s\'engager sur une plateforme.',
             'description' => '<p>Pesez les options selon la propriété, l\'ouverture, le fonctionnement hors ligne, le coût et le risque de dépendance avant de vous engager sur une plateforme unique.</p>',
             'learning_outcomes' => "Décider ce qui doit être numérisé, ce qui ne doit pas l'être, et qui en décide\nÉvaluer les outils selon la propriété, l'ouverture, le fonctionnement hors ligne et le coût\nRepérer les risques de dépendance (lock-in) avant de s'engager sur une plateforme",
         ],
         'tech-strategy' => [
             'title' => 'Stratégie technologique',
+            'goal' => 'Aider les apprenants à traduire ce qu\'ils ont appris en une stratégie de souveraineté numérique unique et concrète pour leur propre communauté.',
             'description' => '<p>Fixez les règles de propriété et de partage des données, reliez les outils à un véritable accès au marché et rassemblez le tout dans une seule stratégie locale.</p>',
             'learning_outcomes' => "Fixer les règles de propriété, d'accès et de stockage des données de votre communauté\nRelier les outils numériques à un véritable accès au marché sans perdre de valeur au profit des intermédiaires\nRassembler toutes les étapes en une seule stratégie locale de souveraineté numérique",
         ],

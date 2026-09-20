@@ -9,26 +9,67 @@ return [
         ],
         'digital-landscape' => [
             'title' => 'Kuelewa Mandhari ya Kidijitali',
+            'goal' => 'Kuwasaidia wanafunzi kujenga picha ya pamoja na ya kweli ya mazingira ya kidijitali ambamo jumuiya yao tayari inafanya kazi, kabla ya kuanzisha teknolojia yoyote mpya.',
             'description' => '<p>Pata picha ya pamoja ya eneo la kidijitali ambalo jamii yako tayari imesimama juu yake: muunganisho wa intaneti, vifaa, ujuzi wa kidijitali, na ni nani anayedhibiti kipi.</p>',
             'learning_outcomes' => "Eleza muunganisho wa intaneti, vifaa na ujuzi wa kidijitali ambavyo jamii yako inafanya kazi navyo\nBainisha ni nani anayedhibiti mifumo ya kidijitali ambayo jamii yako inaitegemea kwa sasa\nTambua mahali ambapo mifumo mseto (ya karatasi na ya kidijitali) inafaa",
         ],
         'knowledge-justice' => [
             'title' => 'Kuelewa Maarifa, Usawa na Haki za Data',
+            'goal' => 'Kuwasaidia wanafunzi kutambua maarifa na haki za data za nani zilizo hatarini katika mifumo ya kidijitali, na kutumia mtazamo unaozingatia haki katika mazingira yao wenyewe.',
             'description' => '<p>Uliza maarifa ya nani yanahesabika, ni nani anamiliki data ambazo jamii inazalisha, na ni haki gani zinazolinda yote mawili.</p>',
             'learning_outcomes' => "Fafanua maarifa ya nani yanahesabika katika mifumo ya kidijitali, na ni nani anayefaidika nayo\nEleza haki ambazo jamii inazo juu ya data inazozalisha\nTumia mtazamo unaozingatia haki (kama vile kanuni za CARE) kwenye data za jamii",
         ],
         'community-needs' => [
             'title' => 'Kuelewa Mahitaji ya Jamii',
-            'description' => '<p>Chora ramani ya nani anayeshikilia madaraka na data katika mazingira yako, kisha geuza matatizo halisi kuwa tamko wazi la hitaji kabla ya kukimbilia zana yoyote.</p>',
-            'learning_outcomes' => "Chora ramani ya wadau wanaozalisha, kudhibiti na kupata faida kutokana na data katika mazingira yako\nTofautisha kati ya tatizo, kikwazo na hitaji halisi\nAndika tamko wazi la hitaji kabla ya kuchagua teknolojia yoyote",
+            'goal' => 'Kuwasaidia wanafunzi kuelewa vizuri zaidi mahitaji ya jumuiya au shirika lao ya data na zana za kidijitali kabla ya kufanya maamuzi ya kiteknolojia.',
+            'description' => '<p>Moduli hii inatoa mfumo wa kivitendo wa kutumia dhana zilizoanzishwa katika Moduli 1 na 2 katika mazingira yako mwenyewe. Inalenga jumuiya na mashirika, huku ikitambua kwamba mbinu nyingi zinaweza pia kutumika kwa mtu binafsi, mashirika mengi na mifumo mipana zaidi. Kupitia mazoezi ya kivitendo na mifano halisi, utajifunza kuelewa mazingira yako ya kazi, kutambua mahitaji na vikwazo halisi, na kufanya maamuzi sahihi kuhusu data na zana za kidijitali kabla ya kuchagua teknolojia.</p>',
+            // One entry per outcome, in the same order as the English source; in_practice may be omitted.
+            'learning_outcomes' => [
+                [
+                    'statement' => 'Kufanya uchunguzi wa kiwango cha mfumo wa mazingira ya shirika lako na ya kazi.',
+                    'in_practice' => 'utajaza Turubai ya Uchunguzi wa Mazingira na kuandika taarifa fupi ya uchunguzi kuhusu shirika lako mwenyewe.',
+                ],
+                [
+                    'statement' => 'Kufafanua mahitaji yako kwa kuzingatia vikwazo halisi vya kazi, badala ya suluhisho zilizodhaniwa.',
+                    'in_practice' => 'utatumia mbinu ya Tatizo → Kikwazo → Hitaji na kuunda Jedwali la Mahitaji la awali.',
+                ],
+                [
+                    'statement' => 'Kuelewa umuhimu wa kutathmini na kuchagua zana kwa kuzingatia vigezo vya uhuru, ikiwa ni pamoja na udhibiti, upatikanaji na uendelevu.',
+                    'in_practice' => 'utaweza kutaja vigezo hivi na kueleza kwa nini ni muhimu; tathmini kamili ya zana moja moja inashughulikiwa katika Moduli 4.',
+                ],
+                [
+                    'statement' => 'Kueleza kinachohitajika kushughulikia utawala wa data kwa mtazamo unaozingatia mahitaji, ikiwa ni pamoja na umiliki, upatikanaji na ulinzi.',
+                    'in_practice' => 'utaweza kueleza vipengele vinne vya mfumo wa utawala wa data na kuchora rasimu yake kwa shirika lako mwenyewe.',
+                ],
+            ],
+            'sessions' => [
+                'understanding-your-operational-context' => [
+                    'title' => 'Kuelewa Mazingira Yako ya Kazi',
+                    'summary' => 'Uchunguzi wa kiwango cha mfumo wa mazingira ya shirika na ya kazi',
+                ],
+                'defining-what-you-actually-need' => [
+                    'title' => 'Kufafanua Unachohitaji Kweli',
+                    'summary' => 'Mahitaji kutoka kwa vikwazo, si suluhisho zilizodhaniwa',
+                ],
+                'deciding-what-belongs-in-a-digital-system' => [
+                    'title' => 'Kuamua Kinachostahili Kuwa katika Mfumo wa Kidijitali',
+                    'summary' => 'Vigezo vya uhuru kwa tathmini ya zana',
+                ],
+                'why-data-governance-starts-with-your-needs' => [
+                    'title' => 'Kwa Nini Utawala wa Data Unaanza na Mahitaji Yako',
+                    'summary' => 'Utawala wa data unaozingatia mahitaji',
+                ],
+            ],
         ],
         'tech-assessment' => [
             'title' => 'Tathmini ya Teknolojia',
+            'goal' => 'Kuwasaidia wanafunzi kutathmini zana za kidijitali kwa kuzingatia umiliki, uwazi, kufanya kazi bila mtandao, gharama na hatari ya kufungwa kwenye mfumo mmoja kabla ya kujitolea kwa jukwaa lolote.',
             'description' => '<p>Pima chaguo mbalimbali dhidi ya umiliki, uwazi, uwezo wa kufanya kazi bila intaneti, gharama na hatari ya kufungiwa kwenye mfumo mmoja kabla ya kujifunga na jukwaa moja lolote.</p>',
             'learning_outcomes' => "Amua ni kipi kinapaswa kudijitishwa, kipi hakipaswi, na ni nani anayeamua\nTathmini zana dhidi ya umiliki, uwazi, uwezo wa kufanya kazi bila intaneti na gharama\nBaini hatari za kufungiwa kwenye mfumo mmoja kabla ya kujifunga na jukwaa",
         ],
         'tech-strategy' => [
             'title' => 'Mkakati wa Teknolojia',
+            'goal' => 'Kuwasaidia wanafunzi kutafsiri waliyojifunza kuwa mkakati mmoja wa uhuru wa kidijitali unaoweza kutekelezwa kwa jumuiya yao wenyewe.',
             'description' => '<p>Weka kanuni za namna data zinavyomilikiwa na kushirikishwa, unganisha zana na upatikanaji halisi wa soko, kisha kusanya yote kuwa mkakati mmoja wa eneo lako.</p>',
             'learning_outcomes' => "Weka kanuni za namna data za jamii yako zinavyomilikiwa, kufikiwa na kuhifadhiwa\nUnganisha zana za kidijitali na upatikanaji halisi wa soko bila kupoteza thamani kwa madalali\nLeta hatua zote pamoja kuwa mkakati mmoja wa mamlaka ya kidijitali kwa eneo lako",
         ],

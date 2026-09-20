@@ -9,26 +9,67 @@ return [
         ],
         'digital-landscape' => [
             'title' => 'Comprender el panorama digital',
+            'goal' => 'Ayudar a los participantes a construir una imagen compartida y honesta del panorama digital en el que su comunidad ya opera, antes de introducir cualquier tecnología nueva.',
             'description' => '<p>Construye una imagen compartida del terreno digital en el que ya se encuentra tu comunidad: conectividad, dispositivos, alfabetización y quién controla qué.</p>',
             'learning_outcomes' => "Describir la conectividad, los dispositivos y las habilidades digitales con las que cuenta tu comunidad\nIdentificar quién controla los sistemas digitales de los que depende actualmente tu comunidad\nReconocer dónde tienen sentido los sistemas híbridos (papel y digital)",
         ],
         'knowledge-justice' => [
             'title' => 'Comprender el conocimiento, la justicia y los derechos sobre los datos',
+            'goal' => 'Ayudar a los participantes a reconocer qué conocimientos y qué derechos sobre los datos están en juego en los sistemas digitales, y a aplicar un enfoque basado en derechos a su propio contexto.',
             'description' => '<p>Pregúntate de quién es el conocimiento que cuenta, a quién pertenecen los datos que produce una comunidad y qué derechos protegen a ambos.</p>',
             'learning_outcomes' => "Explicar de quién es el conocimiento que cuenta en los sistemas digitales y quién se beneficia de él\nDescribir los derechos que tiene una comunidad sobre los datos que produce\nAplicar un marco basado en derechos (como los principios CARE) a los datos comunitarios",
         ],
         'community-needs' => [
             'title' => 'Comprender las necesidades de la comunidad',
-            'description' => '<p>Mapea quién tiene el poder y los datos en tu contexto, y luego convierte los problemas reales en una declaración clara de necesidad antes de recurrir a cualquier herramienta.</p>',
-            'learning_outcomes' => "Mapear a los actores que producen, controlan y se benefician de los datos en tu contexto\nDistinguir entre un problema, una limitación y una necesidad genuina\nRedactar una declaración clara de necesidad antes de elegir cualquier tecnología",
+            'goal' => 'Ayudar a los participantes a comprender mejor las necesidades de datos y herramientas digitales de su comunidad u organización antes de tomar decisiones tecnológicas.',
+            'description' => '<p>Este módulo ofrece un marco práctico para aplicar los conceptos presentados en los módulos 1 y 2 a su propio contexto. Se centra en entornos comunitarios y organizacionales, reconociendo que muchos de los enfoques también pueden aplicarse a nivel individual, interorganizacional y de sistemas más amplios. Mediante ejercicios prácticos y ejemplos reales, aprenderá a comprender su contexto operativo, identificar necesidades y limitaciones reales, y tomar decisiones informadas sobre datos y herramientas digitales antes de elegir una tecnología.</p>',
+            // One entry per outcome, in the same order as the English source; in_practice may be omitted.
+            'learning_outcomes' => [
+                [
+                    'statement' => 'Realizar un diagnóstico a nivel de sistema de su contexto organizacional y operativo.',
+                    'in_practice' => 'completará un Lienzo de diagnóstico del contexto y redactará una breve declaración de diagnóstico sobre su propia organización.',
+                ],
+                [
+                    'statement' => 'Definir sus necesidades a partir de limitaciones operativas reales, y no de soluciones supuestas.',
+                    'in_practice' => 'aplicará el método Problema → Limitación → Necesidad y construirá una primera Matriz de necesidades.',
+                ],
+                [
+                    'statement' => 'Comprender la necesidad de evaluar y seleccionar herramientas según criterios de soberanía, incluidos control, accesibilidad y sostenibilidad.',
+                    'in_practice' => 'podrá nombrar estos criterios y explicar por qué importan; la evaluación detallada herramienta por herramienta se aborda en el módulo 4.',
+                ],
+                [
+                    'statement' => 'Explicar qué se requiere para abordar la gobernanza de datos desde una perspectiva basada en necesidades, incluidos propiedad, acceso y protección.',
+                    'in_practice' => 'podrá explicar los cuatro componentes de un marco de gobernanza de datos y esbozar uno para su propia organización.',
+                ],
+            ],
+            'sessions' => [
+                'understanding-your-operational-context' => [
+                    'title' => 'Comprender su contexto operativo',
+                    'summary' => 'Realizar un diagnóstico a nivel de sistema del contexto organizacional y operativo',
+                ],
+                'defining-what-you-actually-need' => [
+                    'title' => 'Definir lo que realmente necesita',
+                    'summary' => 'Necesidades a partir de limitaciones, no de soluciones supuestas',
+                ],
+                'deciding-what-belongs-in-a-digital-system' => [
+                    'title' => 'Decidir qué pertenece a un sistema digital',
+                    'summary' => 'Criterios de soberanía para evaluar herramientas',
+                ],
+                'why-data-governance-starts-with-your-needs' => [
+                    'title' => 'Por qué la gobernanza de datos empieza por sus necesidades',
+                    'summary' => 'Gobernanza de datos basada en necesidades',
+                ],
+            ],
         ],
         'tech-assessment' => [
             'title' => 'Evaluación tecnológica',
+            'goal' => 'Ayudar a los participantes a evaluar herramientas digitales según propiedad, apertura, funcionamiento sin conexión, costo y riesgo de dependencia antes de comprometerse con una plataforma.',
             'description' => '<p>Sopesa las opciones según la propiedad, la apertura, el funcionamiento sin conexión, el costo y el riesgo de dependencia antes de comprometerte con una sola plataforma.</p>',
             'learning_outcomes' => "Decidir qué debe digitalizarse, qué no, y quién lo decide\nEvaluar las herramientas según la propiedad, la apertura, el funcionamiento sin conexión y el costo\nDetectar los riesgos de dependencia antes de comprometerse con una plataforma",
         ],
         'tech-strategy' => [
             'title' => 'Estrategia tecnológica',
+            'goal' => 'Ayudar a los participantes a convertir lo aprendido en una única estrategia de soberanía digital, concreta y aplicable, para su propia comunidad.',
             'description' => '<p>Establece las reglas sobre cómo se poseen y comparten los datos, conecta las herramientas con un acceso real al mercado y reúnelo todo en una única estrategia local.</p>',
             'learning_outcomes' => "Establecer reglas sobre la propiedad, el acceso y el almacenamiento de los datos de tu comunidad\nConectar las herramientas digitales con un acceso real al mercado sin perder valor ante los intermediarios\nIntegrar todos los pasos en una única estrategia local de soberanía digital",
         ],

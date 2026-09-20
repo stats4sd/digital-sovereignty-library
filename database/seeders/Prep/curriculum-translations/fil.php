@@ -9,26 +9,67 @@ return [
         ],
         'digital-landscape' => [
             'title' => 'Pag-unawa sa Digital na Kalagayan',
+            'goal' => 'Tulungan ang mga mag-aaral na bumuo ng iisang tapat na larawan ng tanawing digital na kinikilusan na ng kanilang komunidad, bago magpakilala ng anumang bagong teknolohiya.',
             'description' => '<p>Bumuo ng iisang larawan ng digital na lupaing kinatatayuan na ng inyong komunidad: koneksyon, mga device, literasiya, at kung sino ang kumokontrol sa ano.</p>',
             'learning_outcomes' => "Ilarawan ang koneksyon, mga device, at mga digital na kasanayan na ginagamit ng inyong komunidad\nTukuyin kung sino ang kumokontrol sa mga digital na sistemang inaasahan ng inyong komunidad sa kasalukuyan\nKilalanin kung saan makatuwiran ang mga hybrid (papel at digital) na sistema",
         ],
         'knowledge-justice' => [
             'title' => 'Pag-unawa sa Kaalaman, Katarungan at mga Karapatan sa Data',
+            'goal' => 'Tulungan ang mga mag-aaral na kilalanin kung kaninong kaalaman at karapatan sa datos ang nakataya sa mga sistemang digital, at gamitin ang pananaw na nakabatay sa karapatan sa sarili nilang konteksto.',
             'description' => '<p>Itanong kung kaninong kaalaman ang binibigyang-halaga, sino ang nagmamay-ari ng data na nililikha ng isang komunidad, at anong mga karapatan ang nagpoprotekta sa dalawa.</p>',
             'learning_outcomes' => "Ipaliwanag kung kaninong kaalaman ang binibigyang-halaga sa mga digital na sistema, at sino ang nakikinabang dito\nIlarawan ang mga karapatan ng isang komunidad sa data na nililikha nito\nIlapat ang isang balangkas na nakabatay sa karapatan (gaya ng CARE principles) sa data ng komunidad",
         ],
         'community-needs' => [
             'title' => 'Pag-unawa sa mga Pangangailangan ng Komunidad',
-            'description' => '<p>Imapa kung sino ang may hawak ng kapangyarihan at data sa inyong konteksto, pagkatapos ay gawing malinaw na pahayag ng pangangailangan ang mga tunay na problema bago dumampot ng anumang kasangkapan.</p>',
-            'learning_outcomes' => "Imapa ang mga stakeholder na lumilikha, kumokontrol, at kumikita mula sa data sa inyong konteksto\nIbukod ang pagkakaiba ng isang problema, isang limitasyon, at isang tunay na pangangailangan\nSumulat ng malinaw na pahayag ng pangangailangan bago pumili ng anumang teknolohiya",
+            'goal' => 'Tulungan ang mga mag-aaral na mas maunawaan ang pangangailangan ng kanilang komunidad o organisasyon sa datos at mga digital na kasangkapan bago gumawa ng mga desisyon sa teknolohiya.',
+            'description' => '<p>Nagbibigay ang modyul na ito ng praktikal na balangkas para ilapat sa sarili mong konteksto ang mga konseptong ipinakilala sa Modyul 1 at 2. Nakatuon ito sa mga komunidad at organisasyon, ngunit kinikilala na maraming pamamaraan dito ang maaari ding gamitin sa antas ng indibidwal, ng maraming organisasyon, at ng mas malawak na sistema. Sa pamamagitan ng mga praktikal na gawain at totoong halimbawa, matututuhan mong unawain ang iyong operasyonal na konteksto, tukuyin ang tunay na pangangailangan at limitasyon, at gumawa ng matalinong desisyon tungkol sa datos at mga digital na kasangkapan bago pumili ng teknolohiya.</p>',
+            // One entry per outcome, in the same order as the English source; in_practice may be omitted.
+            'learning_outcomes' => [
+                [
+                    'statement' => 'Magsagawa ng diagnostic sa antas ng sistema ng iyong konteksto sa organisasyon at operasyon.',
+                    'in_practice' => 'kukumpletuhin mo ang isang Context Diagnostic Canvas at susulat ng maikling pahayag ng diagnostic tungkol sa sarili mong organisasyon.',
+                ],
+                [
+                    'statement' => 'Tukuyin ang iyong mga pangangailangan batay sa tunay na limitasyon sa operasyon, hindi sa mga ipinapalagay na solusyon.',
+                    'in_practice' => 'gagamitin mo ang pamamaraang Problema → Limitasyon → Pangangailangan at bubuo ng unang Needs Matrix.',
+                ],
+                [
+                    'statement' => 'Unawain ang pangangailangang suriin at pumili ng mga kasangkapan batay sa mga pamantayan ng soberanya, kabilang ang kontrol, accessibility, at pagpapanatili.',
+                    'in_practice' => 'mapapangalanan mo ang mga pamantayang ito at maipapaliwanag kung bakit mahalaga ang mga ito; ang buong pagsusuri sa bawat kasangkapan ay tatalakayin sa Modyul 4.',
+                ],
+                [
+                    'statement' => 'Ipaliwanag kung ano ang kailangan para lapitan ang pamamahala ng datos mula sa pananaw na nakabatay sa pangangailangan, kabilang ang pagmamay-ari, access, at proteksyon.',
+                    'in_practice' => 'maipapaliwanag mo ang apat na bahagi ng isang balangkas ng pamamahala ng datos at makakagawa ng burador nito para sa sarili mong organisasyon.',
+                ],
+            ],
+            'sessions' => [
+                'understanding-your-operational-context' => [
+                    'title' => 'Pag-unawa sa Iyong Operasyonal na Konteksto',
+                    'summary' => 'Diagnostic sa antas ng sistema ng konteksto sa organisasyon at operasyon',
+                ],
+                'defining-what-you-actually-need' => [
+                    'title' => 'Pagtukoy sa Tunay Mong Kailangan',
+                    'summary' => 'Pangangailangan mula sa limitasyon, hindi sa ipinapalagay na solusyon',
+                ],
+                'deciding-what-belongs-in-a-digital-system' => [
+                    'title' => 'Pagpapasya Kung Ano ang Nababagay sa Isang Digital na Sistema',
+                    'summary' => 'Mga pamantayan ng soberanya sa pagsusuri ng kasangkapan',
+                ],
+                'why-data-governance-starts-with-your-needs' => [
+                    'title' => 'Bakit Nagsisimula sa Iyong Pangangailangan ang Pamamahala ng Datos',
+                    'summary' => 'Pamamahala ng datos na nakabatay sa pangangailangan',
+                ],
+            ],
         ],
         'tech-assessment' => [
             'title' => 'Pagtatasa ng Teknolohiya',
+            'goal' => 'Tulungan ang mga mag-aaral na suriin ang mga digital na kasangkapan batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, gastos, at panganib ng lock-in bago tumalima sa anumang platform.',
             'description' => '<p>Timbangin ang mga opsyon batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, gastos, at panganib ng lock-in bago tumalaga sa iisang platform.</p>',
             'learning_outcomes' => "Magpasya kung ano ang dapat gawing digital, kung ano ang hindi, at sino ang magpapasya\nTasahin ang mga kasangkapan batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, at gastos\nMatukoy ang mga panganib ng lock-in bago tumalaga sa isang platform",
         ],
         'tech-strategy' => [
             'title' => 'Estratehiya sa Teknolohiya',
+            'goal' => 'Tulungan ang mga mag-aaral na isalin ang kanilang natutuhan sa iisang malinaw at maisasagawang estratehiya ng digital na soberanya para sa sarili nilang komunidad.',
             'description' => '<p>Itakda ang mga tuntunin kung paano pagmamay-arian at ibabahagi ang data, iugnay ang mga kasangkapan sa tunay na access sa merkado, at pagsama-samahin ang lahat sa iisang lokal na estratehiya.</p>',
             'learning_outcomes' => "Magtakda ng mga tuntunin kung paano pagmamay-arian, ina-access, at iniimbak ang data ng inyong komunidad\nIugnay ang mga digital na kasangkapan sa tunay na access sa merkado nang hindi nawawala ang halaga sa mga tagapamagitan\nPagsama-samahin ang bawat hakbang sa iisang lokal na estratehiya para sa digital na soberanya",
         ],
