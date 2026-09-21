@@ -1,6 +1,8 @@
 # The 'tools' TagType and its four pillar tags (one per toolkit pillar module key). Pillar tag names are locale => value maps.
 tag_type:
   slug: tools
+  freetext: false
+  show_in_filter: true
   label:
     en: Tools
     ar: الأدوات

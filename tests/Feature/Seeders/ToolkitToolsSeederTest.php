@@ -7,6 +7,7 @@ use App\Models\Trove;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Database\Seeders\Prep\ToolkitToolsSeeder;
 use Database\Seeders\Prep\TroveTypeSeeder;
+use Symfony\Component\Yaml\Yaml;
 
 beforeEach(function () {
     $this->seed(TroveTypeSeeder::class);
@@ -16,8 +17,9 @@ beforeEach(function () {
 it('merges every locale file into the seeded tools, tag type and pillar tags', function () {
     $this->seed(ToolkitToolsSeeder::class);
 
-    $locales = collect(glob(database_path('seeders/Prep/toolkit-translations/*.php')))
-        ->map(fn ($file) => basename($file, '.php'));
+    $locales = collect(Yaml::parseFile(database_path('curriculum/toolkit/tags.yaml'))['tag_type']['label'])
+        ->keys()
+        ->reject(fn (string $locale) => $locale === 'en');
     expect($locales)->toHaveCount(11);
 
     $liteFarm = Trove::withDrafts()->where('title->en', 'LiteFarm')->first();
@@ -53,7 +55,7 @@ it('seeds the toolkit tools and attaches them to the pillars in order', function
 it('seeds a filterable Tools tag type and tags each tool with its pillar', function () {
     $this->seed(ToolkitToolsSeeder::class);
 
-    $tagType = \App\Models\TagType::firstWhere('slug', 'tools');
+    $tagType = TagType::firstWhere('slug', 'tools');
     expect($tagType)->not->toBeNull()
         ->and($tagType->show_in_filter)->toBeTrue()
         ->and($tagType->tags()->count())->toBe(4);

@@ -180,6 +180,182 @@ sessions:
       ru: 'Системная диагностика организационного и операционного контекста'
       sw: 'Uchunguzi wa kiwango cha mfumo wa mazingira ya shirika na ya kazi'
       zh_CN: 对组织及运作环境进行系统层面的诊断
+    items:
+      -
+        key: e0826e46-ac59-411a-a27f-785d0912cff6
+        type: callout
+        config:
+          kind: recall
+          heading:
+            en: 'From food systems to your own organisation'
+          body:
+            en: |-
+              <p>Module 1 explored digital power at the level of food systems and how control can become concentrated through digital technologies. This session brings that lens closer to home by focusing on your own organisation. Before discussing tools or technologies, it is important to understand the environment in which they would operate.</p>
+      -
+        key: 1341a09a-d393-4b08-9b3d-bc8c919f042f
+        type: prose
+        config:
+          heading:
+            en: 'Why this matters'
+          body:
+            en: |-
+              <p>To understand your organisation's current situation, it helps to look at a few key areas that shape how it operates, how decisions are made, and how information is managed. Together, these provide a practical snapshot of your operational context and highlight the factors that may influence future decisions about data and digital tools.</p>
+              <p><strong>The six areas below provide a simple starting point for understanding your organisation's strengths, challenges, and digital needs.</strong></p>
+              <h3>Six things worth knowing about your own organisation</h3>
+              <table>
+              <thead>
+              <tr>
+              <th>Diagnostic area</th>
+              <th>Key questions and strategic considerations</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td>Connectivity</td>
+              <td>Is internet access reliable across all the places where you operate, or does it vary by location, season, or time of day? Understanding connectivity helps determine which digital approaches are realistic and sustainable.</td>
+              </tr>
+              <tr>
+              <td>Device access</td>
+              <td>Do people have their own devices, or are devices shared among several people? Access to devices influences who can use digital tools, when they can use them, and how consistently they can participate.</td>
+              </tr>
+              <tr>
+              <td>Digital literacy</td>
+              <td>Digital skills often vary across an organisation. Some people may be comfortable using digital tools every day, while others may require additional support. Understanding these differences helps ensure that digital solutions are practical and inclusive.</td>
+              </tr>
+              <tr>
+              <td>Existing hybrid systems</td>
+              <td>Most organisations already have systems for managing information and coordinating activities. These often combine paper records, messaging applications, spreadsheets, meetings, and informal communication. Understanding what already works is just as important as identifying what could be improved.</td>
+              </tr>
+              <tr>
+              <td>Governance structure</td>
+              <td>How are decisions made within your organisation? Is decision-making guided by formal structures, informal relationships, or a combination of both? Understanding how authority operates helps identify who should be involved in future digital decisions.</td>
+              </tr>
+              <tr>
+              <td>Actors and roles</td>
+              <td>Who creates information, who manages it, and who benefits from its use? Understanding these relationships provides insight into how information flows through your organisation and who has influence over decisions involving data and digital tools.</td>
+              </tr>
+              </tbody>
+              </table>
+      -
+        key: a301544a-7710-4e5b-9c1f-ba184810fd2a
+        type: prose
+        config:
+          body:
+            en: '<p>Complete the table below for your organisation. There are no right or wrong answers. The goal is to build an honest picture of your current situation.</p>'
+      -
+        key: ddbe9ded-9c76-4c68-8452-62e39a94d48e
+        type: note_canvas
+        config:
+          heading:
+            en: 'Worksheet: The Context Diagnostic Canvas'
+          columns:
+            label:
+              en: 'Diagnostic Area'
+            prompt:
+              en: 'Guiding Question'
+            notes:
+              en: 'Your Notes'
+          fields:
+            -
+              id: connectivity
+              label:
+                en: Connectivity
+              prompt:
+                en: 'Where and when is internet access reliable?'
+            -
+              id: device-access
+              label:
+                en: 'Device access'
+              prompt:
+                en: 'Who uses digital devices and how are they accessed?'
+            -
+              id: digital-literacy
+              label:
+                en: 'Digital literacy'
+              prompt:
+                en: 'What digital skills exist across different roles?'
+            -
+              id: hybrid-systems
+              label:
+                en: 'Hybrid systems in use'
+              prompt:
+                en: 'What systems are currently used to manage information and coordinate activities?'
+            -
+              id: governance-structure
+              label:
+                en: 'Governance structure'
+              prompt:
+                en: 'How are decisions made and who is involved?'
+            -
+              id: actors-and-roles
+              label:
+                en: 'Actors and roles'
+              prompt:
+                en: 'Who creates information, who controls it, and who benefits from it?'
+      -
+        key: 79b1f906-c394-44c8-9bbc-c95d3a004885
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'Community-led context assessment in Makueni County, Kenya'
+          body:
+            en: |-
+              <p>Before exploring digital solutions, stakeholders in Makueni County, Kenya, first worked to understand their local context, challenges, and priorities. Farmers, community organisations, researchers, and county officials examined the social, economic, agricultural, and governance factors affecting their food systems before discussing technology options.</p>
+              <p>The process highlighted important realities, including differences in digital access and skills, infrastructure constraints, the role of farmer organisations in information sharing, and the importance of data governance considerations such as privacy, consent, and equitable access.</p>
+              <p>Rather than starting with the question "Which technology should we use?", stakeholders first sought to understand their needs, existing systems, and local priorities. This helped ensure that future technology decisions reflect community realities rather than assumptions.</p>
+              <p><strong>Watch / listen:</strong> <a href="https://www.ecoagtube.org/content/what-kind-technologies-are-supporting-agroecology-open-discussion">What kind of technologies are supporting agroecology? An open discussion (EcoAgtube)</a></p>
+          lesson:
+            en: "Effective digital decisions start with understanding your context. Before choosing a technology, it is important to understand your organisation's needs, capacities, and priorities."
+      -
+        key: 4d0557cc-c452-4d35-bb43-1524d05a83a7
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'Digital traceability and West African cocoa cooperative systems'
+          body:
+            en: |-
+              <p>Across Ghana and Côte d'Ivoire, cocoa cooperatives are increasingly required to use digital systems that record information about farms, production, and supply chains. These systems help cooperatives meet traceability and sustainability requirements in international markets.</p>
+              <p>As these systems were introduced, cooperatives found that access to smartphones, internet connectivity, digital skills, and organisational capacity influenced how effectively the systems could be used. The move to digital record-keeping also raised important questions about who manages farmer data, who can access it, and how farmers participate in decisions about how information is collected and used.</p>
+              <p><strong>Watch / listen:</strong> <a href="https://www.ecoagtube.org/content/what-kind-technologies-are-supporting-agroecology-open-discussion">What kind of technologies are supporting agroecology? An open discussion (EcoAgtube)</a></p>
+          lesson:
+            en: 'Understanding your context is an essential first step in digital sovereignty. Before adopting digital tools, organisations need to understand their capacities, constraints, and how decisions about data and technology will be governed.'
+      -
+        key: 44f0ddac-783b-4a77-8096-b43ea47ec665
+        type: prose
+        config:
+          body:
+            en: |-
+              <p>Be as specific as you can — for instance "three of our five branch offices have intermittent connectivity, and no branch has more than one shared smartphone" is far more useful than "we need better technology."</p>
+      -
+        key: 3bf6e185-a827-4d4c-b88c-f3fe8c045f2a
+        type: note_prompt
+        config:
+          heading:
+            en: 'Try It Yourself — Your Diagnostic Statement'
+          label:
+            en: 'Your diagnostic statement'
+          prompt:
+            en: 'Using your completed Context Diagnostic Canvas, write three to five sentences describing your organisation''s primary challenge right now, and classify it as mainly data-related, coordination-related, or market-related.'
+          placeholder:
+            en: 'Three to five sentences…'
+          rows: 8
+      -
+        key: e2066b42-ab53-4023-ad1c-37b4a403525d
+        type: callout
+        config:
+          kind: takeaways
+          heading:
+            en: 'Key takeaways'
+          body:
+            en: |-
+              <ul>
+              <li>A good diagnostic is based on evidence and honest reflection, not assumptions.</li>
+              <li>Connectivity, device access, and digital skills often vary across an organisation, and these differences matter when considering digital tools.</li>
+              <li>Most organisations already use a combination of formal and informal systems. Understanding what already exists is an important starting point.</li>
+              <li>Understanding your context helps ensure that future decisions about data and digital tools are based on real needs and realities.</li>
+              </ul>
   -
     slug: defining-what-you-actually-need
     builds_toward: 2
@@ -209,6 +385,81 @@ sessions:
       ru: 'Потребности из ограничений, а не из предполагаемых решений'
       sw: 'Mahitaji kutoka kwa vikwazo, si suluhisho zilizodhaniwa'
       zh_CN: 从限制出发定义需求，而非预设解决方案
+    items:
+      -
+        key: b8c3a6e1-401b-436b-ac5d-bde62e90fab6
+        type: prose
+        config:
+          body:
+            en: '<p>Apply Problem → Constraint → Need to two or three real challenges facing your own organisation.</p>'
+      -
+        key: 018b8340-b84f-4507-9d32-bcbbc3400fda
+        type: note_matrix
+        config:
+          heading:
+            en: 'Worksheet: Your Needs Matrix'
+          rows: 3
+          rowLabel:
+            en: Challenge
+          fields:
+            -
+              id: problem
+              kind: text
+              label:
+                en: Problem
+              placeholder:
+                en: 'Your problem'
+            -
+              id: constraint
+              kind: text
+              label:
+                en: Constraint
+              placeholder:
+                en: 'Your constraint'
+            -
+              id: need
+              kind: text
+              label:
+                en: 'Need (capability, not tool)'
+              placeholder:
+                en: 'Your need'
+            -
+              id: priority
+              kind: select
+              label:
+                en: Priority
+              options:
+                -
+                  id: high
+                  text:
+                    en: High
+                -
+                  id: medium
+                  text:
+                    en: Medium
+                -
+                  id: low
+                  text:
+                    en: Low
+      -
+        key: bfac848f-b248-4356-9ad8-4d93659fd8c1
+        type: prose
+        config:
+          body:
+            en: '<p>The capability, not the tool itself, is your real need. When defining needs, focus on <strong>what your organisation needs to achieve</strong>, rather than the technology that might help achieve it. This will help ensure that future technology decisions are based on real needs rather than assumed solutions.</p>'
+      -
+        key: 8a90fd33-a515-45c3-99ae-839a0af15894
+        type: note_prompt
+        config:
+          heading:
+            en: 'Try It Yourself — Check Yourself'
+          label:
+            en: 'Your capability check'
+          prompt:
+            en: 'Review the needs you identified in your Needs Matrix. Do any of them describe a specific tool, such as an app, database, platform, or software solution? If so, take a step back and ask: what capability would that tool provide?'
+          placeholder:
+            en: 'Rewrite any tool-shaped need as the capability behind it…'
+          rows: 8
   -
     slug: deciding-what-belongs-in-a-digital-system
     builds_toward: 3
@@ -238,6 +489,118 @@ sessions:
       ru: 'Критерии суверенитета для оценки инструментов'
       sw: 'Vigezo vya uhuru kwa tathmini ya zana'
       zh_CN: 用于工具评估的主权标准
+    items:
+      -
+        key: 8894d04e-a634-4a08-b886-ae4a44faa760
+        type: prose
+        config:
+          body:
+            en: '<p>This quiz exists to test the quiz engine, not to teach anything. Every option says whether it is correct. Pick answers, submit, and check that the score, the pass mark and the feedback behave. Your attempts are kept so you can try again and compare.</p>'
+      -
+        key: c0684850-1b42-45d3-b260-b04fa451dbb0
+        type: quiz
+        config:
+          heading:
+            en: 'Test quiz — scoring check'
+          passMark: 3
+          items:
+            -
+              id: q1
+              kind: pick-one
+              stem:
+                en: 'TEST Q1 (pick one). Which option is marked correct in the content file?'
+              options:
+                -
+                  id: a
+                  text:
+                    en: 'Option A — wrong'
+                  correct: false
+                -
+                  id: b
+                  text:
+                    en: 'Option B — correct'
+                  correct: true
+                -
+                  id: c
+                  text:
+                    en: 'Option C — wrong'
+                  correct: false
+              feedback:
+                correct:
+                  en: 'Yes — B is the only correct answer for Q1.'
+                incorrect:
+                  en: 'No — the answer key for Q1 says B.'
+            -
+              id: q2
+              kind: pick-many
+              stem:
+                en: 'TEST Q2 (pick all that apply). Two options are correct. Picking exactly those two scores the mark; anything else scores nothing.'
+              options:
+                -
+                  id: a
+                  text:
+                    en: 'Option A — correct'
+                  correct: true
+                -
+                  id: b
+                  text:
+                    en: 'Option B — wrong'
+                  correct: false
+                -
+                  id: c
+                  text:
+                    en: 'Option C — correct'
+                  correct: true
+                -
+                  id: d
+                  text:
+                    en: 'Option D — wrong'
+                  correct: false
+              feedback:
+                correct:
+                  en: 'Yes — A and C, and only A and C.'
+                incorrect:
+                  en: 'No — Q2 needs A and C selected and nothing else.'
+            -
+              id: q3
+              kind: pick-one
+              stem:
+                en: 'TEST Q3 (pick one). This item has no per-item feedback, to check the renderer copes with it being absent.'
+              options:
+                -
+                  id: a
+                  text:
+                    en: 'Option A — correct'
+                  correct: true
+                -
+                  id: b
+                  text:
+                    en: 'Option B — wrong'
+                  correct: false
+            -
+              id: q4
+              kind: pick-many
+              stem:
+                en: 'TEST Q4 (pick all that apply). Only one option is correct. Selecting it plus any other scores nothing — this checks that extra selections lose the mark.'
+              options:
+                -
+                  id: a
+                  text:
+                    en: 'Option A — wrong'
+                  correct: false
+                -
+                  id: b
+                  text:
+                    en: 'Option B — wrong'
+                  correct: false
+                -
+                  id: c
+                  text:
+                    en: 'Option C — correct'
+                  correct: true
+              feedback:
+                incorrect:
+                  en: 'No — only C is correct for Q4.'
   -
     slug: why-data-governance-starts-with-your-needs
     builds_toward: 4

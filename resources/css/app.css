@@ -343,6 +343,19 @@
         @apply font-semibold underline underline-offset-2;
         text-decoration-color: var(--brand-secondary);
     }
+
+    .item-body table {
+        @apply mt-4 w-full border-collapse text-base;
+    }
+
+    .item-body th,
+    .item-body td {
+        @apply border border-brand-line p-3 text-start align-top;
+    }
+
+    .item-body th {
+        @apply bg-brand-surface-muted font-bold;
+    }
 }
 
 [x-cloak] {

@@ -57,6 +57,13 @@ class HtmlSanitizer
             ->allowElement('ul')
             ->allowElement('ol')
             ->allowElement('li')
+            // Tables
+            ->allowElement('table')
+            ->allowElement('thead')
+            ->allowElement('tbody')
+            ->allowElement('tr')
+            ->allowElement('th', ['colspan', 'rowspan'])
+            ->allowElement('td', ['colspan', 'rowspan'])
             // Inline formatting
             ->allowElement('strong')
             ->allowElement('b')

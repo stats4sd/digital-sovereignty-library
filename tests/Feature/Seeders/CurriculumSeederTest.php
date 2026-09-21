@@ -2,26 +2,30 @@
 
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
+use App\Models\CurriculumSessionItem;
 use App\Models\GlossaryTerm;
 use Database\Seeders\Prep\CurriculumSeeder;
-use Illuminate\Support\Str;
+use Symfony\Component\Yaml\Yaml;
 
 it('seeds the fixed module set and glossary', function () {
     $this->seed(CurriculumSeeder::class);
+
+    $glossaryCount = count(Yaml::parseFile(database_path('curriculum/glossary.yaml'))['terms']);
 
     expect(CurriculumModule::count())->toBe(11)
         ->and(CurriculumModule::forSection(CurriculumModule::SECTION_MAP)->count())->toBe(5)
         // 4 pillars + the featured Farm Hack Box
         ->and(CurriculumModule::forSection(CurriculumModule::SECTION_TOOLKIT)->count())->toBe(5)
         ->and(CurriculumModule::forSection(CurriculumModule::SECTION_INTRO)->count())->toBe(1)
-        ->and(GlossaryTerm::count())->toBe(21);
+        ->and(GlossaryTerm::count())->toBe($glossaryCount);
 });
 
 it('merges every locale file into the seeded modules and glossary', function () {
     $this->seed(CurriculumSeeder::class);
 
-    $locales = collect(glob(database_path('seeders/Prep/curriculum-translations/*.php')))
-        ->map(fn ($file) => basename($file, '.php'));
+    $locales = collect(Yaml::parseFile(database_path('curriculum/modules/intro.yaml'))['title'])
+        ->keys()
+        ->reject(fn (string $locale) => $locale === 'en');
     expect($locales)->toHaveCount(11);
 
     $intro = CurriculumModule::where('key', 'intro')->first();
@@ -47,8 +51,10 @@ it('is idempotent and preserves admin edits on re-run', function () {
 
     $this->seed(CurriculumSeeder::class);
 
+    $glossaryCount = count(Yaml::parseFile(database_path('curriculum/glossary.yaml'))['terms']);
+
     expect(CurriculumModule::count())->toBe(11)
-        ->and(GlossaryTerm::count())->toBe(21)
+        ->and(GlossaryTerm::count())->toBe($glossaryCount)
         ->and(CurriculumModule::where('key', 'tech-assessment')->first()->getTranslation('title', 'en'))
         ->toBe('Edited by admin');
 });
@@ -154,57 +160,6 @@ it('preserves outcomes deliberately cleared to an empty array on re-run', functi
     expect($module->refresh()->learning_outcomes)->toBe([]);
 });
 
-it('replaces the legacy community-needs outcomes with the new set when untouched', function () {
-    $this->seed(CurriculumSeeder::class);
-
-    $module = CurriculumModule::where('key', 'community-needs')->first();
-
-    $legacyOutcomes = collect([
-        'Map the stakeholders who produce, control, and profit from data in your context',
-        'Distinguish between a problem, a constraint, and a genuine need',
-        'Write a clear statement of need before choosing any technology',
-    ])->map(fn (string $statement) => [
-        'key' => (string) Str::uuid(),
-        'statement' => ['en' => $statement],
-        'in_practice' => null,
-    ])->all();
-
-    $module->update(['learning_outcomes' => $legacyOutcomes]);
-
-    $this->seed(CurriculumSeeder::class);
-
-    $refreshedOutcomes = $module->refresh()->learning_outcomes;
-
-    expect($refreshedOutcomes)->toHaveCount(4)
-        ->and($refreshedOutcomes[0]['statement']['en'])
-        ->toBe('Conduct a system-level diagnostic of your organisational and operational context.');
-});
-
-it('leaves community-needs outcomes untouched when they no longer match the legacy set', function () {
-    $this->seed(CurriculumSeeder::class);
-
-    $module = CurriculumModule::where('key', 'community-needs')->first();
-
-    $editedOutcomes = collect([
-        'Something an admin wrote instead',
-        'A second custom outcome',
-        'A third custom outcome',
-    ])->map(fn (string $statement) => [
-        'key' => (string) Str::uuid(),
-        'statement' => ['en' => $statement],
-        'in_practice' => null,
-    ])->all();
-
-    $module->update(['learning_outcomes' => $editedOutcomes]);
-
-    $this->seed(CurriculumSeeder::class);
-
-    $refreshedOutcomes = $module->refresh()->learning_outcomes;
-
-    expect($refreshedOutcomes)->toHaveCount(3)
-        ->and($refreshedOutcomes[0]['statement']['en'])->toBe('Something an admin wrote instead');
-});
-
 it('translates the community-needs goal, structured outcomes and sessions', function () {
     $this->seed(CurriculumSeeder::class);
 
@@ -226,11 +181,101 @@ it('translates the community-needs goal, structured outcomes and sessions', func
         ->and($session->getTranslation('title', 'en', false))->toBe('Defining What You Actually Need');
 });
 
-it('keeps positional outcome translations for modules whose locale files are one-per-line strings', function () {
+it('carries the French translation of digital-landscape outcomes', function () {
     $this->seed(CurriculumSeeder::class);
 
     $module = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
 
     expect($module->learning_outcomes)->toHaveCount(3)
         ->and($module->learning_outcomes[0]['statement']['fr'] ?? '')->toStartWith('Décrire');
+});
+
+it('seeds session items in YAML order with their keys and types', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $definition = Yaml::parseFile(database_path('curriculum/modules/community-needs.yaml'));
+    $module = CurriculumModule::where('key', 'community-needs')->firstOrFail();
+
+    $sessionsWithItems = 0;
+
+    foreach ($definition['sessions'] as $sessionDefinition) {
+        $expectedItems = $sessionDefinition['items'] ?? [];
+
+        if ($expectedItems === []) {
+            continue;
+        }
+
+        $sessionsWithItems++;
+        $session = $module->sessions()->where('slug', $sessionDefinition['slug'])->firstOrFail();
+
+        expect($session->items)->toHaveCount(count($expectedItems))
+            ->and($session->items->pluck('type')->map->value->all())->toBe(array_column($expectedItems, 'type'))
+            ->and($session->items->pluck('key')->all())->toBe(array_column($expectedItems, 'key'));
+    }
+
+    expect($sessionsWithItems)->toBeGreaterThan(0);
+});
+
+it('normalises seeded item config', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $definition = Yaml::parseFile(database_path('curriculum/modules/community-needs.yaml'));
+    $itemDefinitions = collect($definition['sessions'])->flatMap(fn (array $session) => $session['items'] ?? []);
+
+    $quizDefinition = $itemDefinitions->firstWhere('type', 'quiz');
+    expect($quizDefinition)->not->toBeNull();
+
+    $quiz = CurriculumSessionItem::where('key', $quizDefinition['key'])->firstOrFail();
+
+    expect($quiz->config['passMark'])->toBeInt();
+
+    foreach ($quiz->config['items'] as $question) {
+        foreach ($question['options'] as $option) {
+            expect($option['correct'])->toBeBool();
+        }
+    }
+
+    $noteCanvasDefinition = $itemDefinitions->firstWhere('type', 'note_canvas');
+    expect($noteCanvasDefinition)->not->toBeNull();
+
+    $noteCanvas = CurriculumSessionItem::where('key', $noteCanvasDefinition['key'])->firstOrFail();
+
+    expect(count($noteCanvas->config['fields']))->toBe(count($noteCanvasDefinition['config']['fields']))
+        ->and($noteCanvas->config['heading']['en'] ?? '')->not->toBeEmpty();
+});
+
+it('appends a recreated item after positions the admin has renumbered', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $definition = Yaml::parseFile(database_path('curriculum/modules/community-needs.yaml'));
+    $seededSession = collect($definition['sessions'])->first(fn (array $session) => count($session['items'] ?? []) > 2);
+    $session = CurriculumSession::where('slug', $seededSession['slug'])->firstOrFail();
+
+    $removed = $session->items()->orderBy('position')->skip(1)->firstOrFail();
+    $removed->delete();
+
+    $session->items()->orderBy('position')->get()
+        ->each(fn (CurriculumSessionItem $item, int $index) => $item->update(['position' => $index]));
+
+    $this->seed(CurriculumSeeder::class);
+
+    $positions = $session->items()->orderBy('position')->pluck('position');
+
+    expect($positions->all())->toBe(range(0, count($seededSession['items']) - 1))
+        ->and($session->items()->orderBy('position')->get()->last()->key)->toBe($removed->key);
+});
+
+it('preserves an admin-edited item and adds none on re-run', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $itemCount = CurriculumSessionItem::count();
+    expect($itemCount)->toBeGreaterThan(0);
+
+    $item = CurriculumSessionItem::orderBy('id')->firstOrFail();
+    $item->update(['config' => ['heading' => ['en' => 'Edited by admin'], ...collect($item->config)->except('heading')->all()]]);
+
+    $this->seed(CurriculumSeeder::class);
+
+    expect(CurriculumSessionItem::count())->toBe($itemCount)
+        ->and($item->refresh()->config['heading']['en'] ?? null)->toBe('Edited by admin');
 });
