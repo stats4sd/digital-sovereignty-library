@@ -179,7 +179,7 @@
                             {{ t("No resources or collections have been added yet.") }}
                         @endif
                     @else
-                        {{ t("Showing ") . $startOfPage . ' - ' . $endOfPage . ' ' . t("out of") . ' ' . $totalHits . t(" resources and collections") }}
+                        {{ t('Showing :start - :end out of :total resources and collections', [':start' => $startOfPage, ':end' => $endOfPage, ':total' => $totalHits]) }}
                     @endif
                     @if($hasActiveFilters)
                         <button type="button" wire:click="clearFilters" class="text-gray-500 hover:text-gray-700 underline text-sm">

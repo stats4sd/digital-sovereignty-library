@@ -288,3 +288,45 @@ it('never disables a filter checkbox even when its facet count is zero', functio
 
     expect($html)->not->toContain('disabled');
 });
+
+it('renders the result count line as one string with the numbers interpolated', function () {
+    $trove = publishedTrove();
+
+    bindFakeSearch(fn () => new LibrarySearchResult(
+        hits: [new LibraryHit('trove', $trove->id, 0.9)],
+        totalHits: 1,
+        totalPages: 1,
+        facets: null,
+    ));
+
+    $this->get('/browse-all?locale=en')
+        ->assertOk()
+        ->assertSee('Showing 1 - 1 out of 1 resources and collections');
+});
+
+it('translates the result count line as a whole in other locales', function () {
+    // The line used to be built from three t() fragments ("Showing ", "out of", " resources and
+    // collections") that had no entries in the gettext catalogues, so it always fell through to
+    // English. The catalogues carry the single key with :start/:end/:total placeholders instead.
+    $locales = ['en' => 'English', 'es' => 'Español'];
+    config([
+        'branding.locales' => $locales,
+        'app.locales' => $locales,
+        'translation.source_locale' => 'en',
+        'translation.target_locales' => ['es'],
+    ]);
+
+    $trove = publishedTrove();
+
+    bindFakeSearch(fn () => new LibrarySearchResult(
+        hits: [new LibraryHit('trove', $trove->id, 0.9)],
+        totalHits: 1,
+        totalPages: 1,
+        facets: null,
+    ));
+
+    $this->get('/browse-all?locale=es')
+        ->assertOk()
+        ->assertSee('Mostrando 1 - 1 de 1 recursos y colecciones')
+        ->assertDontSee('Showing');
+});
