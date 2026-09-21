@@ -44,7 +44,7 @@
 {{-- Pulled up over the map's empty bottom edge so the trail's tail meets the box mid-height. --}}
 <div class="text-center mt-2 {{ $mapModules->isNotEmpty() ? 'sm:-mt-8' : 'sm:mt-6' }}">
     <a href="#toolkit"
-        class="inline-flex items-center gap-2 border border-brand-primary/30 text-brand-primary font-semibold px-6 py-3 rounded-lg hover:border-brand-primary transition-colors">
+        class="inline-flex items-center gap-2 border-[3px] border-brand-primary/30 text-brand-primary font-semibold px-6 py-3 rounded-lg hover-effect">
         {{ t('Build your toolkit') }} &darr;
     </a>
 </div>
