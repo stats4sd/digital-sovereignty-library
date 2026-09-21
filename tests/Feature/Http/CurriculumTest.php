@@ -21,12 +21,11 @@ it('renders the curriculum page: stepper, then map, then toolkit', function () {
         ->assertSee('id="map"', false);      // #map anchor for deep links
 });
 
-it('renders the Farm Hack Box detail page (toolkit section) with outcomes and note', function () {
+it('renders the Farm Hack Box detail page (toolkit section) with outcomes', function () {
     $this->get('/toolkit/farm-hack-box')
         ->assertOk()
-        ->assertSee('Get Started with the Farm Hack Box')
-        ->assertSee('Learning outcomes')
-        ->assertSee('entirely optional');
+        ->assertSee('The Farm Hack Box')
+        ->assertSee('Learning outcomes');
 
     // It is a toolkit module, so the map-module route does not serve it.
     $this->get('/curriculum/farm-hack-box')->assertNotFound();
@@ -54,12 +53,12 @@ it('features the Farm Hack Box in the toolkit section before the pillars, not on
     $this->get('/curriculum')
         ->assertOk()
         // Featured card comes after the toolkit heading and before the first pillar…
-        ->assertSeeInOrder(['Build Your Sovereign Toolkit', 'Get Started with the Farm Hack Box', 'Collect, store and hold onto'])
+        ->assertSeeInOrder(['Build Your Sovereign Toolkit', 'The Farm Hack Box', 'Collect, store and hold onto'])
         // …and the map (which precedes the toolkit heading) does not list it.
         ->assertSeeInOrder(['Explore in any order', 'Build Your Sovereign Toolkit']);
 
     // Only one occurrence of the title on the page (the featured card, not a map node too).
-    expect(substr_count($this->get('/curriculum')->getContent(), 'Get Started with the Farm Hack Box'))->toBe(1);
+    expect(substr_count($this->get('/curriculum')->getContent(), 'The Farm Hack Box'))->toBe(1);
 });
 
 it('has no standalone toolkit index page', function () {

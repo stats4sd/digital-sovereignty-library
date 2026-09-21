@@ -33,9 +33,8 @@ return [
             'learning_outcomes' => "Menetapkan aturan tentang bagaimana data komunitas Anda dimiliki, diakses, dan disimpan\nMenghubungkan alat digital dengan akses pasar yang nyata tanpa kehilangan nilai kepada perantara\nMerangkai semua langkah menjadi satu strategi kedaulatan digital lokal",
         ],
         'farm-hack-box' => [
-            'title' => 'Memulai dengan Farm Hack Box',
+            'title' => 'Farm Hack Box',
             'description' => '<p>Sebuah kotak untuk menjalankan alat digital berdaulat Anda secara lokal. Farm Hack Box adalah perangkat keras yang dibangun oleh komunitas: sebuah server lokal kecil yang dimiliki dan dijalankan komunitas Anda, yang menampung alat dan data Anda sendiri (penyimpanan berkas, komunikasi, catatan pertanian), bahkan tanpa internet yang andal.</p>',
-            'note' => 'Tahap ini sepenuhnya opsional. Semua bagian lain dalam kurikulum dan perangkat alat tetap berfungsi dengan atau tanpa kotak ini.',
             'learning_outcomes' => "Menjelaskan apa itu Farm Hack Box dan apa yang dapat ditampungnya\nMenilai apakah hosting lokal sesuai dengan kebutuhan dan kapasitas komunitas Anda\nMengidentifikasi apa yang Anda perlukan untuk menyiapkannya",
         ],
         'knowledge' => [

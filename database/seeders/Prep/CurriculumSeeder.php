@@ -153,9 +153,8 @@ class CurriculumSeeder extends Seeder
             [
                 'key' => 'farm-hack-box',
                 'section' => CurriculumModule::SECTION_TOOLKIT,
-                'title' => ['en' => 'Get Started with the Farm Hack Box'],
+                'title' => ['en' => 'The Farm Hack Box'],
                 'description' => ['en' => '<p>A box to locally host your sovereign digital tools. The Farm Hack box is community-built hardware: a small local server your community owns and runs, hosting your own tools and data (file storage, communication, farm records), even without reliable internet.</p>'],
-                'note' => ['en' => 'This stop is entirely optional. Everything else in the curriculum and toolkit works with or without the box.'],
                 'learning_outcomes' => ['en' => implode("\n", [
                     'Explain what the Farm Hack box is and what it can host',
                     "Judge whether local hosting fits your community's needs and capacity",

@@ -33,9 +33,8 @@ return [
             'learning_outcomes' => "Definir regras sobre a propriedade, o acesso e o armazenamento dos dados da sua comunidade\nConectar ferramentas digitais a um acesso real ao mercado sem perder valor para intermediários\nReunir todas as etapas em uma única estratégia local de soberania digital",
         ],
         'farm-hack-box' => [
-            'title' => 'Comece com a Farm Hack Box',
+            'title' => 'A Farm Hack Box',
             'description' => '<p>Uma caixa para hospedar localmente as suas ferramentas digitais soberanas. A Farm Hack Box é hardware construído pela comunidade: um pequeno servidor local que a sua comunidade possui e opera, hospedando as suas próprias ferramentas e dados (armazenamento de arquivos, comunicação, registos agrícolas), mesmo sem internet confiável.</p>',
-            'note' => 'Esta etapa é totalmente opcional. Todo o resto no currículo e no kit de ferramentas funciona com ou sem a caixa.',
             'learning_outcomes' => "Explicar o que é a Farm Hack Box e o que ela pode hospedar\nAvaliar se a hospedagem local se adequa às necessidades e à capacidade da sua comunidade\nIdentificar o que seria necessário para montar uma",
         ],
         'knowledge' => [

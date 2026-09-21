@@ -33,9 +33,8 @@ return [
             'learning_outcomes' => "Weka kanuni za namna data za jamii yako zinavyomilikiwa, kufikiwa na kuhifadhiwa\nUnganisha zana za kidijitali na upatikanaji halisi wa soko bila kupoteza thamani kwa madalali\nLeta hatua zote pamoja kuwa mkakati mmoja wa mamlaka ya kidijitali kwa eneo lako",
         ],
         'farm-hack-box' => [
-            'title' => 'Anza Kutumia Farm Hack Box',
+            'title' => 'Farm Hack Box',
             'description' => '<p>Kisanduku cha kuhifadhi na kuendesha zana zako huru za kidijitali ndani ya eneo lako. Farm Hack Box ni vifaa vilivyoundwa na jamii: seva ndogo ya eneo ambayo jamii yako inaimiliki na kuiendesha, ikihifadhi zana na data zenu wenyewe (hifadhi ya faili, mawasiliano, kumbukumbu za shamba), hata bila intaneti ya kutegemewa.</p>',
-            'note' => 'Kituo hiki ni cha hiari kabisa. Kila kitu kingine katika mtaala na seti ya zana kinafanya kazi ukiwa na kisanduku au bila.',
             'learning_outcomes' => "Fafanua Farm Hack Box ni nini na inaweza kuhifadhi nini\nPima kama kuhifadhi zana ndani ya eneo lako kunakidhi mahitaji na uwezo wa jamii yako\nBainisha ungehitaji nini ili kuanzisha kisanduku kimoja",
         ],
         'knowledge' => [

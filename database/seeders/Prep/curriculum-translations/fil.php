@@ -33,9 +33,8 @@ return [
             'learning_outcomes' => "Magtakda ng mga tuntunin kung paano pagmamay-arian, ina-access, at iniimbak ang data ng inyong komunidad\nIugnay ang mga digital na kasangkapan sa tunay na access sa merkado nang hindi nawawala ang halaga sa mga tagapamagitan\nPagsama-samahin ang bawat hakbang sa iisang lokal na estratehiya para sa digital na soberanya",
         ],
         'farm-hack-box' => [
-            'title' => 'Magsimula sa Farm Hack Box',
+            'title' => 'Ang Farm Hack Box',
             'description' => '<p>Isang kahon para lokal na i-host ang inyong mga soberanong digital na kasangkapan. Ang Farm Hack box ay hardware na binuo ng komunidad: isang maliit na lokal na server na pagmamay-ari at pinapatakbo ng inyong komunidad, na nagho-host ng inyong sariling mga kasangkapan at data (imbakan ng file, komunikasyon, mga talaan ng bukid), kahit walang maaasahang internet.</p>',
-            'note' => 'Ganap na opsyonal ang hintuang ito. Gumagana ang lahat ng iba pa sa kurikulum at toolkit kahit mayroon o walang kahon.',
             'learning_outcomes' => "Ipaliwanag kung ano ang Farm Hack box at kung ano ang kaya nitong i-host\nHusgahan kung angkop ang lokal na pagho-host sa mga pangangailangan at kapasidad ng inyong komunidad\nTukuyin kung ano ang kakailanganin ninyo para makapagtayo ng isa",
         ],
         'knowledge' => [
