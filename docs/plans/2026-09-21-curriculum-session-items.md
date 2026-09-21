@@ -1,6 +1,6 @@
 # Curriculum session items: Builder-edited mixed content on session pages
 
-**Status:** Not Started
+**Status:** In Progress (Phase 0 complete 2026-09-21)
 
 **Spec:** [docs/specs/2026-09-21-curriculum-session-content-design.md](../specs/2026-09-21-curriculum-session-content-design.md)
 **Branch:** `content-updates` (builds on the completed sessions work in [2026-09-08-curriculum-sessions-module-page.md](2026-09-08-curriculum-sessions-module-page.md))
@@ -148,4 +148,14 @@ Manual, on a fresh `php artisan app:fresh`:
 
 ## Spike findings
 
-_(fill in after Phase 0)_
+Phase 0 done 2026-09-21 on the throwaway branch `spike/session-builder-translatable` (one commit: a scratch `Builder::make('spike_content')->dehydrated(false)` on `CurriculumSessionResource`, `mutateFormDataBeforeFill`/`afterSave` capture hooks on `EditCurriculumSession`, and `tests/Feature/Filament/SpikeBuilderTranslatableTest.php`, all green). Nothing from that branch is merged.
+
+**Decision: proceed with the Builder (D3). No fallback to the Repeater variant needed.**
+
+**0.1a State shape.** A `TranslatableComboField` inside a Builder block hydrates and round-trips as a flat locale dictionary per block (`data.body = ['en' => …, 'fr' => …]`). Locales without a value are present as `null`, so the sync layer must strip nulls before storing `intro`/`config` leaves. `$this->form->getRawState()['spike_content']` is available in `afterSave` even though the field is `dehydrated(false)`, and it carries the current block order.
+
+**0.1b Parent-record fallback confirmed.** On mount-time hydration (the path that loads item rows into blocks), a block sub-field named after a real `CurriculumSession` attribute (`summary` in the probe) is overwritten with the *parent record's* translations by `TranslatableComboField::formatStateUsing`; `body` is untouched. The test helper's `fillForm()` does not show this because it writes Livewire state directly and skips hydration hooks, so do not rely on `fillForm`-based tests to catch it. Phase 2 must therefore either (preferred) add an explicit opt-out to `TranslatableComboField` (e.g. `->fromRecord(false)` that skips the record lookup) and use it on every block field, or keep every block sub-field name off the session's attribute list (`title`, `summary`, `description`, `slug`, `builds_toward`, `order_column`). The opt-out is the safer choice because `intro` is a real column on the *item* table and the plan names it as a block field.
+
+**0.1c Content driver.** `EditCurriculumSession` uses the resource-level lara-zeus concern, which has no `HasActiveLocaleSwitcher`, so `getFilamentTranslatableContentDriver()` already returns `null` on this page. Saving with blocks present left the session's own translatables intact. Nothing to null out; keep it that way (do not switch the page to the `EditRecord` concern).
+
+**0.2 Block identity.** Filament 5 keys Builder items by a uuid from `CanGenerateUuids::generateUuid()`. Within one request cycle the uuid is stable through the `reorder` action (`callFormComponentAction('spike_content', 'reorder', arguments: ['items' => [...]])` preserved keys and reordered data) and is visible in `afterSave`. But `Builder::hydrateItems()` regenerates every uuid on each hydration, so uuids differ between page loads and cannot be the row identity. Use `Hidden::make('key')->default(fn () => Str::uuid())` in every block (as the module outcomes Repeater already does); the Builder uuid is only for intra-request drag/reorder. `generateUuidUsing()` receives no item data, so it cannot be used to derive the uuid from the row key.
