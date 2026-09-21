@@ -2,46 +2,57 @@
 
 use App\Support\Curriculum\MapLayout;
 
+const ORIGINAL_TRAIL = 'M12,12 C23,7 35,7 46,12 C57,7 69,7 80,12 C94,14 98,42 88,53 C78,55 70,55 60,55 C48,55 38,55 26,55 C10,55 4,72 16,86 C21,92 28,96 36,98';
+
 it('returns no nodes for an empty map', function () {
-    expect(MapLayout::nodes(0))->toBe([])
-        ->and(MapLayout::trail([]))->toBe('');
+    expect(MapLayout::nodes(0))->toBe([]);
 });
 
-it('centres a single node between the two rows', function () {
-    expect(MapLayout::nodes(1))->toBe([['x' => 50.0, 'y' => 35.0]]);
+it('always draws the same hand-drawn trail', function () {
+    expect(MapLayout::trail())->toBe(ORIGINAL_TRAIL);
 });
 
-it('spreads nodes evenly across the width and alternates rows', function () {
+it('puts a single node at the head of the trail', function () {
+    expect(MapLayout::nodes(1))->toBe([['x' => 12.0, 'y' => 12.0]]);
+});
+
+it('keeps the seeded five modules close to their original hand-placed positions', function () {
     $nodes = MapLayout::nodes(5);
+    $original = [[12, 12], [46, 12], [80, 12], [60, 55], [26, 55]];
 
-    expect(array_column($nodes, 'x'))->toBe([12.0, 31.0, 50.0, 69.0, 88.0])
-        ->and(array_column($nodes, 'y'))->toBe([14.0, 56.0, 14.0, 56.0, 14.0]);
+    foreach ($original as $index => [$x, $y]) {
+        expect(abs($nodes[$index]['x'] - $x))->toBeLessThanOrEqual(3.5)
+            ->and(abs($nodes[$index]['y'] - $y))->toBeLessThanOrEqual(1.5);
+    }
 });
 
-it('cycles three rows above the two-row limit and keeps nodes inside the horizontal margins', function () {
+it('anchors the first and last nodes to the ends of the rows', function () {
+    foreach ([2, 3, 6, 9] as $count) {
+        $nodes = MapLayout::nodes($count);
+
+        expect($nodes)->toHaveCount($count)
+            ->and($nodes[0])->toBe(['x' => 12.0, 'y' => 12.0])
+            ->and($nodes[$count - 1])->toBe(['x' => 26.0, 'y' => 55.0]);
+    }
+});
+
+it('never places a node on the connecting bend', function () {
+    foreach (range(2, 12) as $count) {
+        foreach (MapLayout::nodes($count) as $node) {
+            expect($node['x'])->toBeLessThanOrEqual(88.0)
+                ->and($node['y'] <= 13.0 || $node['y'] >= 53.0)->toBeTrue();
+        }
+    }
+});
+
+it('spaces nodes evenly along the rows so they reshuffle when the count changes', function () {
+    // Along the (straight-ish) rows, equal arc length means roughly equal horizontal gaps.
     $nodes = MapLayout::nodes(9);
+    $top = array_column(array_slice($nodes, 0, 5), 'x');
+    $bottom = array_column(array_slice($nodes, 5), 'x');
 
-    expect(count($nodes))->toBe(9)
-        ->and(min(array_column($nodes, 'x')))->toBe(MapLayout::LEFT)
-        ->and(max(array_column($nodes, 'x')))->toBe(MapLayout::RIGHT)
-        ->and(array_column($nodes, 'y'))->toBe([14.0, 35.0, 56.0, 14.0, 35.0, 56.0, 14.0, 35.0, 56.0]);
+    $gaps = [...array_map(fn ($i) => $top[$i] - $top[$i - 1], range(1, 4)),
+        ...array_map(fn ($i) => $bottom[$i - 1] - $bottom[$i], range(1, 3))];
 
-    expect(array_unique(array_column(MapLayout::nodes(7), 'y')))->toHaveCount(2);
-});
-
-it('draws an even-count trail whose tail leaves the bottom row', function () {
-    $trail = MapLayout::trail(MapLayout::nodes(2));
-
-    expect($trail)->toBe('M12,14 C50,14 50,56 88,56 C98,78 62,96 50,100');
-});
-
-it('draws the trail from the first node through each node to the toolkit tail', function () {
-    $nodes = MapLayout::nodes(3);
-    $trail = MapLayout::trail($nodes);
-
-    expect($trail)->toStartWith('M12,14 ')
-        ->toContain(' 50,56 ')
-        ->toContain(' 88,14 ')
-        ->toEndWith(' 62,96 50,100')
-        ->and(substr_count($trail, 'C'))->toBe(3);
+    expect(max($gaps) - min($gaps))->toBeLessThan(1.0);
 });

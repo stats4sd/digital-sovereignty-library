@@ -1,7 +1,7 @@
 @use('App\Support\Curriculum\MapLayout')
 @php
     $nodes = MapLayout::nodes($mapModules->count());
-    $trail = MapLayout::trail($nodes);
+    $trail = MapLayout::trail();
 @endphp
 
 <div class="text-center mb-4">
@@ -14,7 +14,7 @@
 @if($mapModules->isNotEmpty())
     <div class="relative max-w-4xl mx-auto mt-8 hidden sm:block" style="height: 300px;" data-learning-map data-node-count="{{ $mapModules->count() }}">
         <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full" preserveAspectRatio="none" aria-hidden="true">
-            {{-- Trail through the nodes in map order, ending in a tail that points at the toolkit button below. --}}
+            {{-- Fixed trail; nodes are spaced evenly along its two rows and the tail points at the toolkit button below. --}}
             <path d="{{ $trail }}" fill="none" stroke="var(--brand-primary)" stroke-width="0.4" stroke-dasharray="2,2" opacity="0.4" />
         </svg>
         @foreach($mapModules as $index => $module)

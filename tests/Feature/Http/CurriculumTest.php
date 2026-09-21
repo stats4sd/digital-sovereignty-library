@@ -120,9 +120,9 @@ it('lays out one map node per learning-map module, in module-number order, witho
     $this->get('/curriculum/new-node')->assertOk()->assertSee('Brand New Node');
 });
 
-it('renders a single centred node and an empty-state message as the map shrinks', function () {
+it('renders a single node at the trail head and an empty-state message as the map shrinks', function () {
     MapModule::query()->where('key', '!=', 'digital-landscape')->delete();
-    $this->get('/curriculum')->assertOk()->assertSee('left: 50%; top: 35%;', false);
+    $this->get('/curriculum')->assertOk()->assertSee('left: 12%; top: 12%;', false);
 
     MapModule::query()->delete();
     $this->get('/curriculum')
