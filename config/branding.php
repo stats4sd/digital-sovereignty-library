@@ -88,4 +88,13 @@ return [
      * Banner is hidden automatically if the file does not exist.
      */
 
+    /*
+     * Plausible Analytics
+     * -------------------
+     * The site-specific script ID from Plausible
+     * Leave blank to disable analytics.
+     * The script is only loaded when APP_ENV is not "local".
+     */
+    'plausible_script_id' => env('PLAUSIBLE_SCRIPT_ID', ''),
+
 ];
