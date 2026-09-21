@@ -125,9 +125,9 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook(
                 PanelsRenderHook::PAGE_HEADER_ACTIONS_BEFORE,
                 fn () => view('filament.translatable.secondary-locale-picker'),
-                scopes: [
-                    EditCurriculumModule::class,
-                ],
+                // scopes: [
+                //     EditCurriculumModule::class,
+                // ],
             )
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Inter', provider: LocalFontProvider::class);

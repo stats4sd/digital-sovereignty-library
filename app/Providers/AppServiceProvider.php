@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\ResolvesVideoLinks;
 use App\Contracts\SearchesLibrary;
+use App\Curriculum\Items\ItemRegistry;
 use App\Models\SiteSetting;
 use App\Services\Search\DatabaseLibrarySearch;
 use App\Services\Search\MeilisearchLibrarySearch;
@@ -43,6 +44,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(ResolvesVideoLinks::class, VideoLinkResolver::class);
+
+        $this->app->singleton(ItemRegistry::class, fn () => ItemRegistry::default());
 
         $this->app->bind(SearchesLibrary::class, function () {
             if (config('scout.driver') === 'meilisearch') {

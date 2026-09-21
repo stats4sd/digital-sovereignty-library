@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Curriculum\Items\ItemDefinition;
+use App\Curriculum\Items\ItemRegistry;
 use App\Enums\CurriculumItemType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -60,5 +62,13 @@ class CurriculumSessionItem extends Model
     public function trove(): BelongsTo
     {
         return $this->belongsTo(Trove::class);
+    }
+
+    /**
+     * The type definition: Builder block, config shape/validation and Blade view.
+     */
+    public function definition(): ItemDefinition
+    {
+        return app(ItemRegistry::class)->for($this->type);
     }
 }

@@ -9,7 +9,6 @@ use App\Support\TranslatableText;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
-use Filament\Actions\EditAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -39,7 +38,7 @@ class SessionsRelationManager extends RelationManager
     /**
      * The Translatable concern (via HasActiveLocaleSwitcher) defaults this to the lara-zeus
      * SpatieTranslatableContentDriver, which re-wraps whatever state each field already holds in
-     * setTranslation($attr, $activeLocale, $value) on save. The create/edit forms here use
+     * setTranslation($attr, $activeLocale, $value) on save. The create form here uses
      * TranslatableComboField, whose state is already a full locale dictionary (e.g. ['en' =>
      * '…', 'fr' => '…']), so the driver would nest that dictionary under $activeLocale again,
      * corrupting the stored JSON. Returning null disables the driver; the trait is kept only for
@@ -47,6 +46,18 @@ class SessionsRelationManager extends RelationManager
      * instead of relying on the driver/app locale.
      */
     public function getFilamentTranslatableContentDriver(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Filament's HasRecords::getTableRecord() calls
+     * makeFilamentTranslatableContentDriver()->setRecordLocale() whenever this is filled, so
+     * with the driver nulled above every record action (e.g. delete) would fatal with
+     * "setRecordLocale() on null". The columns read $this->activeLocale directly, so nothing
+     * here needs the table-level locale.
+     */
+    public function getActiveTableLocale(): ?string
     {
         return null;
     }
@@ -81,9 +92,9 @@ class SessionsRelationManager extends RelationManager
                         return $outcome === null ? null : 'LO'.$outcome['position'].' — '.$outcome['statement'];
                     })
                     ->placeholder('—'),
-                Tables\Columns\TextColumn::make('troves_count')
-                    ->counts('troves')
-                    ->label('# Resources'),
+                Tables\Columns\TextColumn::make('items_count')
+                    ->counts('items')
+                    ->label('# Content blocks'),
             ])
             ->headerActions([
                 CreateAction::make()
@@ -97,10 +108,9 @@ class SessionsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
-                EditAction::make()
-                    ->schema(fn () => CurriculumSessionResource::formSchema($this->getOwnerRecord())),
-                Action::make('resources')
-                    ->label('Resources')
+                Action::make('content')
+                    ->label('Edit Content')
+                    ->icon('heroicon-o-queue-list')
                     ->url(fn (CurriculumSession $record) => CurriculumSessionResource::getUrl('edit', ['record' => $record])),
                 DeleteAction::make(),
             ])

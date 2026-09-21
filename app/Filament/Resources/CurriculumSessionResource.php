@@ -2,14 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Components\ErrorBadgedTab;
+use App\Filament\Curriculum\SessionContentBuilder;
 use App\Filament\Resources\CurriculumSessionResource\Pages;
-use App\Filament\Resources\CurriculumSessionResource\RelationManagers;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Support\HtmlSanitizer;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -35,41 +37,56 @@ class CurriculumSessionResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema
-            ->schema([
-                Forms\Components\Placeholder::make('module')
-                    ->label('Module')
-                    ->content(function (?CurriculumSession $record): HtmlString {
-                        $module = $record?->module;
+            ->components([
+                Tabs::make('Session')
+                    ->persistTabInQueryString()
+                    ->columnSpanFull()
+                    ->tabs([
+                        ErrorBadgedTab::make('Session')
+                            ->icon('heroicon-o-information-circle')
+                            ->schema([
+                                Forms\Components\Placeholder::make('module')
+                                    ->label('Module')
+                                    ->content(function (?CurriculumSession $record): HtmlString {
+                                        $module = $record?->module;
 
-                        if ($module === null) {
-                            return new HtmlString('');
-                        }
+                                        if ($module === null) {
+                                            return new HtmlString('');
+                                        }
 
-                        $url = CurriculumModuleResource::getUrl('edit', ['record' => $module]);
+                                        $url = CurriculumModuleResource::getUrl('edit', ['record' => $module]);
 
-                        return new HtmlString('<a href="'.$url.'" class="underline">'.e($module->title).'</a>');
-                    }),
+                                        return new HtmlString('<a href="'.$url.'" class="underline">'.e($module->title).'</a>');
+                                    }),
 
-                ...static::formSchema(),
+                                ...static::formSchema(),
 
-                TranslatableComboField::make('description')
-                    ->icon('heroicon-o-document-text')
-                    ->iconColor('primary')
-                    ->extraAttributes(['class' => 'grey-box'])
-                    ->label('Description')
-                    ->childField(
-                        Forms\Components\RichEditor::make('description')
-                            ->disableToolbarButtons([
-                                'attachFiles',
-                            ])
-                            ->dehydrateStateUsing(fn (?string $state): ?string => HtmlSanitizer::clean($state)),
-                    ),
+                                TranslatableComboField::make('description')
+                                    ->icon('heroicon-o-document-text')
+                                    ->iconColor('primary')
+                                    ->extraAttributes(['class' => 'grey-box'])
+                                    ->label('Description')
+                                    ->childField(
+                                        Forms\Components\RichEditor::make('description')
+                                            ->disableToolbarButtons([
+                                                'attachFiles',
+                                            ])
+                                            ->dehydrateStateUsing(fn (?string $state): ?string => HtmlSanitizer::clean($state)),
+                                    ),
+                            ]),
+
+                        ErrorBadgedTab::make('Content')
+                            ->icon('heroicon-o-queue-list')
+                            ->schema([
+                                SessionContentBuilder::make('content'),
+                            ]),
+                    ]),
             ])->columns(1);
     }
 
     /**
      * The session field set shared between this resource's edit form and the
-     * SessionsRelationManager's create/edit modal on the module. When $module is
+     * SessionsRelationManager's create modal on the module. When $module is
      * given (the relation manager already knows its owner record) it is used
      * directly for the "builds toward" options; otherwise they fall back to the
      * session record's own module, injected by Filament at render time.
@@ -144,9 +161,9 @@ class CurriculumSessionResource extends Resource
                     ->wrap(),
                 Tables\Columns\TextColumn::make('number')
                     ->label('#'),
-                Tables\Columns\TextColumn::make('troves_count')
-                    ->counts(['troves' => fn (Builder $query) => $query->workingVersions()])
-                    ->label('# Resources'),
+                Tables\Columns\TextColumn::make('items_count')
+                    ->counts('items')
+                    ->label('# Content blocks'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Last Updated')
                     ->date()
@@ -157,9 +174,7 @@ class CurriculumSessionResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            RelationManagers\TrovesRelationManager::class,
-        ];
+        return [];
     }
 
     public static function getPages(): array

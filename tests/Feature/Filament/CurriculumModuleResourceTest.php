@@ -5,6 +5,7 @@ use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
 use App\Filament\Resources\CurriculumModuleResource\Pages\ListCurriculumModules;
 use App\Filament\Resources\CurriculumModuleResource\RelationManagers\SessionsRelationManager;
 use App\Filament\Resources\CurriculumModuleResource\RelationManagers\TrovesRelationManager;
+use App\Filament\Resources\CurriculumSessionResource;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use Illuminate\Support\Str;
@@ -233,4 +234,26 @@ it('reorders sessions via the relation manager table', function () {
 
     expect($second->fresh()->order_column)->toBe(1)
         ->and($first->fresh()->order_column)->toBe(2);
+});
+
+it('links each session to its edit page and deletes from the relation manager', function () {
+    $module = CurriculumModule::factory()->map()->create();
+    $session = CurriculumSession::factory()->for($module, 'module')->create();
+
+    $component = Livewire::test(SessionsRelationManager::class, [
+        'ownerRecord' => $module,
+        'pageClass' => EditCurriculumModule::class,
+        'activeLocale' => 'en',
+    ]);
+
+    // Metadata and content blocks are both edited on the full session page; there is no
+    // inline edit modal.
+    $component->assertTableActionDoesNotExist('edit')
+        ->assertTableActionHasUrl('content', CurriculumSessionResource::getUrl('edit', ['record' => $session]), $session);
+
+    // Regression: the table-record locale hook used to call setRecordLocale() on the
+    // (deliberately nulled) translatable content driver when any record action ran.
+    $component->callTableAction('delete', $session);
+
+    expect(CurriculumSession::query()->whereKey($session->getKey())->exists())->toBeFalse();
 });
