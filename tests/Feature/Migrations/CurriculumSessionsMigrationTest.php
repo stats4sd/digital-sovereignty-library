@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-it('converts legacy learning outcomes and moves map-module trove pivots into sessions', function () {
+it('converts legacy newline-separated learning outcomes into the structured shape, idempotently', function () {
     $moduleId = DB::table('curriculum_modules')->insertGetId([
         'key' => 'legacy-map-module',
         'section' => 'map',
@@ -12,19 +12,9 @@ it('converts legacy learning outcomes and moves map-module trove pivots into ses
         'updated_at' => now(),
     ]);
 
-    $trove = publishedTrove();
-
-    DB::table('curriculum_module_trove')->insert([
-        'curriculum_module_id' => $moduleId,
-        'trove_id' => $trove->id,
-        'order_column' => 5,
-    ]);
-
     $convertOutcomes = include base_path('database/migrations/2026_09_08_100300_convert_curriculum_learning_outcomes_to_structured.php');
-    $moveTroves = include base_path('database/migrations/2026_09_08_100400_move_map_module_troves_to_sessions.php');
 
     $convertOutcomes->up();
-    $moveTroves->up();
 
     $module = DB::table('curriculum_modules')->find($moduleId);
     $outcomes = json_decode($module->learning_outcomes, true);
@@ -36,27 +26,10 @@ it('converts legacy learning outcomes and moves map-module trove pivots into ses
         ->and($outcomes[0]['key'])->toBeString()
         ->and($outcomes[1]['statement'])->toBe(['en' => 'Apply the concept']);
 
-    expect(DB::table('curriculum_module_trove')->where('curriculum_module_id', $moduleId)->count())->toBe(0);
-
-    $session = DB::table('curriculum_sessions')->where('curriculum_module_id', $moduleId)->first();
-
-    expect($session)->not->toBeNull()
-        ->and($session->slug)->toBe('session-1')
-        ->and($session->order_column)->toBe(1)
-        ->and(json_decode($session->title, true))->toBe(['en' => 'Community Needs']);
-
-    $pivot = DB::table('curriculum_session_trove')->where('curriculum_session_id', $session->id)->first();
-
-    expect($pivot)->not->toBeNull()
-        ->and($pivot->trove_id)->toBe($trove->id)
-        ->and($pivot->order_column)->toBe(5);
-
-    // Re-running both migrations must be a no-op.
+    // Re-running must be a no-op.
     $convertOutcomes->up();
-    $moveTroves->up();
 
-    expect(DB::table('curriculum_sessions')->where('curriculum_module_id', $moduleId)->count())->toBe(1)
-        ->and(json_decode(DB::table('curriculum_modules')->find($moduleId)->learning_outcomes, true))->toBe($outcomes);
+    expect(json_decode(DB::table('curriculum_modules')->find($moduleId)->learning_outcomes, true))->toBe($outcomes);
 });
 
 it('skips modules with an already-structured or empty learning_outcomes value', function () {

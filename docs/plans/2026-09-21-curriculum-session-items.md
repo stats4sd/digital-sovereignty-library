@@ -1,6 +1,8 @@
 # Curriculum session items: Builder-edited mixed content on session pages
 
-**Status:** In Progress (Phase 0 complete 2026-09-21)
+**Status:** In Progress (Phases 0–1 complete 2026-09-21)
+
+Done: Phase 0 spike (findings below) and Phase 1 schema/models on `content-updates`: `CurriculumItemType` enum, `curriculum_session_items` table with the pivot→items data migration and the pivot drop, `CurriculumSessionItem` model + factory, `CurriculumSession::items()`/`troves()` and `Trove::curriculumSessions()` re-pointed at the items table, the session `TrovesRelationManager` patched to create item rows (it is deleted in Phase 3), and tests updated/added. Left: Phases 2–7 (item definitions, Builder + sync, public rendering + learner state, module STI + self-laying-out map, Module 3 seed content, docs). §1.3 was simplified: with no live data (deploy will `migrate:fresh`) the pivot's create/fill migrations were deleted instead of writing data and drop migrations, so the only new migration is the items table.
 
 **Spec:** [docs/specs/2026-09-21-curriculum-session-content-design.md](../specs/2026-09-21-curriculum-session-content-design.md)
 **Branch:** `content-updates` (builds on the completed sessions work in [2026-09-08-curriculum-sessions-module-page.md](2026-09-08-curriculum-sessions-module-page.md))
@@ -35,7 +37,7 @@ Exit: written note in this plan under "Spike findings" and a decision to proceed
 **1.2 Migration** `2026_09_21_100000_create_curriculum_session_items_table`:
 `id`, `curriculum_session_id` FK cascadeOnDelete, `position` unsignedInteger, `key` string(36), `type` string(32), `trove_id` nullable FK nullOnDelete, `intro` json nullable, `config` json nullable, timestamps. Unique `(curriculum_session_id, key)`; index `(curriculum_session_id, position)`; index `trove_id`.
 
-**1.3 Data migration** `2026_09_21_100100_move_session_troves_to_items` (DB facade only, re-run safe, `down()` no-op with docblock): for each `curriculum_session_trove` row ordered by `order_column, id` → insert item `type='trove'`, `position` = running index, `key` = `Str::uuid()`, `trove_id`, `intro = null`. Skip sessions that already have items. Then `2026_09_21_100200_drop_curriculum_session_trove_table`.
+**1.3 Pivot removal.** ~~Data migration `move_session_troves_to_items` + `drop_curriculum_session_trove_table`~~ — superseded 2026-09-21: there is no live data and deployment will `migrate:fresh`, so instead the pivot is removed from history. Deleted `2026_09_08_100200_create_curriculum_session_trove_table` and `2026_09_08_100400_move_map_module_troves_to_sessions` (which only existed to fill that pivot); `curriculum_session_trove` never exists on a fresh database.
 
 **1.4 Model** `app/Models/CurriculumSessionItem.php`: `HasTranslations` with `$translatable = ['intro']`; casts `type => CurriculumItemType`, `config => array`, `position => integer`; `session()` belongsTo; `trove()` belongsTo (note `PublishedScope` applies outside the panel, so an unpublished trove yields `null` publicly, and the view must handle it); `booted`: `creating` sets `key` if blank; `updating` throws if `key` changed. Accessor `definition(): ItemDefinition` (Phase 2).
 
@@ -129,8 +131,8 @@ Exit: written note in this plan under "Spike findings" and a decision to proceed
 - **Item `id`s inside `config` renamed after launch orphan learner notes** → helper text + a `normalise()` that refuses empty ids; a future "rename with migration" is out of scope.
 - **`PublishedScope` hides drafts publicly** → trove items with null `trove` are skipped in the view; admin shows a badge on such blocks.
 - **STI breaks lara-zeus `Translatable` or Filament record resolution** → `CurriculumModuleResource::$model` stays the parent; child classes only add relations. If `parental` conflicts with `HasTranslations`, hand-roll `newFromBuilder`.
-- **Nightly `scout:import` / reindex hooks reference the dropped pivot** → grep for `curriculum_session_trove` and `curriculumSessions` before 1.3 lands.
-- **Data migrations on production MySQL** → run 1.3 against a copy first (the previous plan's unfinished item applies here too).
+- **Nightly `scout:import` / reindex hooks reference the dropped pivot** → grep for `curriculum_session_trove` and `curriculumSessions` before 1.3 lands. (Done: none did.)
+- ~~**Data migrations on production MySQL**~~ → moot: no live data, deploy uses `migrate:fresh`.
 
 ## Verification
 

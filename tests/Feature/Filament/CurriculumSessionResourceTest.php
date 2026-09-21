@@ -1,10 +1,12 @@
 <?php
 
+use App\Enums\CurriculumItemType;
 use App\Filament\Resources\CurriculumSessionResource;
 use App\Filament\Resources\CurriculumSessionResource\Pages\EditCurriculumSession;
 use App\Filament\Resources\CurriculumSessionResource\RelationManagers\TrovesRelationManager;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
+use App\Models\CurriculumSessionItem;
 use Livewire\Livewire;
 
 beforeEach(fn () => actingAsEditor());
@@ -62,19 +64,55 @@ it('attaches published troves to a session but rejects shadow drafts', function 
     $component->callTableAction('attach', data: ['recordId' => $published->getKey()]);
     expect($session->troves()->pluck('troves.id'))->toContain($published->id);
 
+    $item = $session->items()->first();
+    expect($item->type)->toBe(CurriculumItemType::Trove)
+        ->and($item->trove_id)->toBe($published->id)
+        ->and($item->key)->toHaveLength(36);
+
     $component->callTableAction('attach', data: ['recordId' => $draft->getKey()])
         ->assertHasTableActionErrors(['recordId']);
     expect($session->troves()->pluck('troves.id'))->not->toContain($draft->id);
 });
 
-it('orders a session\'s attached troves by the pivot order column', function () {
+it('reorders and detaches trove items through the relation manager without touching other items', function () {
+    $module = CurriculumModule::factory()->map()->create();
+    $session = CurriculumSession::factory()->for($module, 'module')->create();
+    $alpha = publishedTrove(['title' => ['en' => 'Alpha']]);
+    $zebra = publishedTrove(['title' => ['en' => 'Zebra']]);
+
+    $prose = CurriculumSessionItem::factory()->for($session, 'session')->prose()->create(['position' => 0]);
+    $alphaItem = CurriculumSessionItem::factory()->for($session, 'session')->trove($alpha)->create(['position' => 1]);
+    $zebraItem = CurriculumSessionItem::factory()->for($session, 'session')->trove($zebra)->create(['position' => 2]);
+
+    $component = Livewire::test(TrovesRelationManager::class, [
+        'ownerRecord' => $session,
+        'pageClass' => EditCurriculumSession::class,
+        'activeLocale' => 'en',
+    ]);
+
+    $component->call('reorderTable', [$zebra->id, $alpha->id]);
+
+    expect($session->troves()->pluck('troves.id')->all())->toBe([$zebra->id, $alpha->id])
+        ->and($alphaItem->fresh()->key)->toBe($alphaItem->key)
+        ->and($zebraItem->fresh()->key)->toBe($zebraItem->key)
+        ->and($prose->fresh()->position)->toBe(0);
+
+    $component->callTableAction('detach', $zebra);
+
+    expect(CurriculumSessionItem::whereKey($zebraItem->id)->exists())->toBeFalse()
+        ->and(CurriculumSessionItem::whereKey($prose->id)->exists())->toBeTrue()
+        ->and($session->items()->count())->toBe(2)
+        ->and(CurriculumSession::withCount('troves')->find($session->id)->troves_count)->toBe(1);
+});
+
+it('orders a session\'s attached troves by item position', function () {
     $module = CurriculumModule::factory()->map()->create();
     $session = CurriculumSession::factory()->for($module, 'module')->create();
     $second = publishedTrove(['title' => ['en' => 'Second resource']]);
     $first = publishedTrove(['title' => ['en' => 'First resource']]);
 
-    $session->troves()->attach($second, ['order_column' => 2]);
-    $session->troves()->attach($first, ['order_column' => 1]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($second)->create(['position' => 2]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($first)->create(['position' => 1]);
 
     expect($session->troves()->pluck('title')->map(fn ($t) => $t['en'] ?? $t)->all())
         ->toBe(['First resource', 'Second resource']);

@@ -64,7 +64,7 @@ Trove (existing)
  └─ curriculumSessions()    belongsToMany via `curriculum_session_items` where type = trove
 ```
 
-`curriculum_session_trove` is migrated into items (`type = trove`, `position` from `order_column`, `key` = new uuid, `intro = null`) and then dropped.
+`curriculum_session_trove` no longer exists: its create/fill migrations were removed (no live data; deployment runs `migrate:fresh`), so trove attachments are only ever `type = trove` items.
 
 ## 5. Item types and `config` shapes
 

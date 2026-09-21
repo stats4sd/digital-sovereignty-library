@@ -2,6 +2,7 @@
 
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
+use App\Models\CurriculumSessionItem;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Illuminate\Support\Str;
 
@@ -194,13 +195,13 @@ it('no longer shows a trove attached directly to a map module', function () {
 
 // ---- Session page ----
 
-it("lists a session's attached published resources in pivot order and links to them", function () {
+it("lists a session's attached published resources in item order and links to them", function () {
     $module = CurriculumModule::where('key', 'tech-assessment')->first();
     $session = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 1]);
     $second = publishedTrove(['title' => ['en' => 'Zebra resource']]);
     $first = publishedTrove(['title' => ['en' => 'Alpha resource']]);
-    $session->troves()->attach($second, ['order_column' => 2]);
-    $session->troves()->attach($first, ['order_column' => 1]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($second)->create(['position' => 2]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($first)->create(['position' => 1]);
 
     $this->get("/curriculum/tech-assessment/{$session->slug}")
         ->assertOk()
@@ -212,7 +213,7 @@ it('hides attached draft resources on the public session page', function () {
     $module = CurriculumModule::where('key', 'tech-assessment')->first();
     $session = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 1]);
     $draft = draftTrove(['title' => ['en' => 'Unpublished resource']]);
-    $session->troves()->attach($draft, ['order_column' => 1]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($draft)->create(['position' => 1]);
 
     $this->get("/curriculum/tech-assessment/{$session->slug}")
         ->assertOk()

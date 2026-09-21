@@ -2,10 +2,13 @@
 
 namespace App\Filament\Resources\CurriculumSessionResource\RelationManagers;
 
+use App\Enums\CurriculumItemType;
+use App\Models\CurriculumSession;
 use App\Models\Trove;
 use Filament\Actions\AttachAction;
 use Filament\Actions\DetachAction;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,8 +34,8 @@ class TrovesRelationManager extends RelationManager
         return $table
             ->heading('Resources in this Session')
             ->recordTitleAttribute('title')
-            ->defaultSort('order_column')
-            ->reorderable('order_column')
+            ->defaultSort('position')
+            ->reorderable('position')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->wrap(),
@@ -49,7 +52,32 @@ class TrovesRelationManager extends RelationManager
                             ->whereNotNull('published_at')
                             ->whereNull('published_id')
                     )
-                    ->preloadRecordSelect(),
+                    ->preloadRecordSelect()
+                    // The pivot is a CurriculumSessionItem row whose NOT NULL key/position
+                    // the default attach() cannot fill, so create the item directly.
+                    ->action(function (array $arguments, array $data, AttachAction $action, Schema $schema): void {
+                        /** @var CurriculumSession $session */
+                        $session = $this->getOwnerRecord();
+                        $maxPosition = $session->items()->max('position');
+
+                        $session->items()->create([
+                            'type' => CurriculumItemType::Trove,
+                            'trove_id' => $data['recordId'],
+                            'position' => $maxPosition === null ? 0 : ((int) $maxPosition) + 1,
+                        ]);
+
+                        // Mirror AttachAction's default "attach another" handling.
+                        if ($arguments['another'] ?? false) {
+                            $action->callAfter();
+                            $action->sendSuccessNotification();
+                            $schema->fill();
+                            $action->halt();
+
+                            return;
+                        }
+
+                        $action->success();
+                    }),
             ])
             ->recordActions([
                 DetachAction::make()

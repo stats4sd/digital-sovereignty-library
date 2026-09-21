@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use App\Enums\CurriculumItemType;
 use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Spatie\Translatable\HasTranslations;
 
 /**
  * An ordered stop within a learning-map module (Database\Seeders\Prep\CurriculumSeeder /
- * admin-created). Troves attach here, not on the parent module, for map-section modules.
+ * admin-created). Its content is an ordered list of typed CurriculumSessionItem rows; troves
+ * attach here (as `trove` items), not on the parent module, for map-section modules.
  */
 class CurriculumSession extends Model
 {
@@ -46,11 +49,26 @@ class CurriculumSession extends Model
         return $this->belongsTo(CurriculumModule::class, 'curriculum_module_id');
     }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(CurriculumSessionItem::class)
+            ->orderBy('position')
+            ->orderBy('id')
+            ->chaperone('session');
+    }
+
+    /**
+     * The troves referenced by this session's `trove` items, in item order. A convenience
+     * view over items(): the item row is the pivot, so withPivotValue pins type = trove on
+     * both reads and attach(). Attaching through this relation cannot fill the item's
+     * NOT NULL key/position columns, so create trove items via items() instead.
+     */
     public function troves(): BelongsToMany
     {
-        return $this->belongsToMany(Trove::class)
-            ->withPivot('id', 'order_column')
-            ->orderByPivot('order_column');
+        return $this->belongsToMany(Trove::class, 'curriculum_session_items')
+            ->withPivotValue('type', CurriculumItemType::Trove->value)
+            ->withPivot('id', 'position', 'intro')
+            ->orderByPivot('position');
     }
 
     /**
