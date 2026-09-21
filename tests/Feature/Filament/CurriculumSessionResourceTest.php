@@ -32,6 +32,19 @@ it('saves translatable session content and sanitises the description', function 
         ->and($fresh->getTranslation('description', 'en'))->not->toContain('<script>');
 });
 
+it('does not change the slug on save', function () {
+    $module = CurriculumModule::factory()->map()->create();
+    $session = CurriculumSession::factory()->for($module, 'module')->create(['slug' => 'fixed-slug']);
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $session->getKey()])
+        ->assertFormFieldIsDisabled('slug')
+        ->fillForm(['title' => ['en' => 'Renamed'], 'slug' => 'new-slug'])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($session->fresh()->slug)->toBe('fixed-slug');
+});
+
 it('offers the module outcomes as builds_toward options', function () {
     $module = CurriculumModule::factory()->map()->create([
         'learning_outcomes' => [

@@ -105,7 +105,11 @@ class CurriculumSessionResource extends Resource
 
             Forms\Components\TextInput::make('slug')
                 ->label('Slug')
-                ->helperText('Leave blank to generate from the title.')
+                ->helperText(fn (string $operation): string => $operation === 'create'
+                    ? 'Leave blank to generate from the title. Cannot be changed after creation.'
+                    : 'Fixed identifier used in this session\'s public URL. Not editable.')
+                ->disabledOn('edit')
+                ->dehydrated(fn (string $operation): bool => $operation === 'create')
                 ->maxLength(255)
                 ->rule('alpha_dash')
                 ->mutateStateForValidationUsing(fn (?string $state): ?string => filled($state) ? Str::slug($state) : null)
