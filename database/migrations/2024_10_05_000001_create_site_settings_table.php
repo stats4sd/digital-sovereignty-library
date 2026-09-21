@@ -11,6 +11,8 @@ return new class extends Migration
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
             $table->boolean('show_language_filter')->default(true);
+            $table->boolean('show_trove_type_filter')->default(false);
+            $table->boolean('open_registration')->default(false);
             $table->json('locales')->nullable();
             $table->timestamps();
         });

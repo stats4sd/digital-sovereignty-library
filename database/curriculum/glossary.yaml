@@ -1,0 +1,641 @@
+# Glossary terms (base glossary by Marion Girard Cisneros, credited in the drawer footer). One entry per term; each field is a locale => value map.
+terms:
+  -
+    term:
+      en: 'Big data'
+      ar: 'البيانات الضخمة'
+      es: 'Big data'
+      fil: 'Big data'
+      fr: 'Mégadonnées (big data)'
+      hi: 'बिग डेटा'
+      id: 'Big data'
+      it: 'Big data'
+      pt: 'Big data'
+      ru: 'Большие данные'
+      sw: 'Data kubwa'
+      zh_CN: 大数据
+    definition:
+      en: 'Big data refers to vast volumes of structured, semistructured, and unstructured data collected by governments, business and organizations, which can be mined for valuable information.'
+      ar: 'تشير البيانات الضخمة إلى كميات هائلة من البيانات المهيكلة وشبه المهيكلة وغير المهيكلة التي تجمعها الحكومات والشركات والمنظمات، والتي يمكن استخراج معلومات قيّمة منها.'
+      es: 'El big data (o macrodatos) se refiere a enormes volúmenes de datos estructurados, semiestructurados y no estructurados recopilados por gobiernos, empresas y organizaciones, de los que se puede extraer información valiosa.'
+      fil: 'Ang big data ay tumutukoy sa napakalaking dami ng structured, semistructured, at unstructured na data na kinokolekta ng mga pamahalaan, negosyo at organisasyon, na maaaring minahin para sa mahalagang impormasyon.'
+      fr: "Les mégadonnées (big data) désignent d'immenses volumes de données structurées, semi-structurées et non structurées, collectées par les gouvernements, les entreprises et les organisations, et qui peuvent être exploitées pour en extraire des informations précieuses."
+      hi: 'बिग डेटा से आशय सरकारों, व्यवसायों और संगठनों द्वारा एकत्र किए गए संरचित, अर्ध-संरचित और असंरचित डेटा की विशाल मात्रा से है, जिसका खनन करके मूल्यवान जानकारी निकाली जा सकती है।'
+      id: 'Big data merujuk pada volume data yang sangat besar, baik terstruktur, semiterstruktur, maupun tidak terstruktur, yang dikumpulkan oleh pemerintah, pelaku usaha, dan organisasi, dan dapat ditambang untuk memperoleh informasi yang bernilai.'
+      it: 'Con big data si intendono enormi volumi di dati strutturati, semistrutturati e non strutturati raccolti da governi, imprese e organizzazioni, dai quali è possibile estrarre informazioni di valore.'
+      pt: 'Big data refere-se a enormes volumes de dados estruturados, semiestruturados e não estruturados, coletados por governos, empresas e organizações, que podem ser explorados para extrair informação valiosa.'
+      ru: 'Большие данные — это огромные объёмы структурированных, полуструктурированных и неструктурированных данных, собираемых правительствами, бизнесом и организациями, из которых можно извлекать ценную информацию.'
+      sw: 'Data kubwa inarejelea kiasi kikubwa sana cha data zenye muundo, zenye muundo-nusu na zisizo na muundo, zinazokusanywa na serikali, biashara na mashirika, ambazo zinaweza kuchimbwa ili kupata taarifa muhimu.'
+      zh_CN: 大数据指由政府、企业和各类组织收集的海量结构化、半结构化和非结构化数据，可以从中挖掘出有价值的信息。
+  -
+    term:
+      en: 'Community sovereignty'
+      ar: 'سيادة المجتمع'
+      es: 'Soberanía comunitaria'
+      fil: 'Soberanya ng komunidad'
+      fr: 'Souveraineté communautaire'
+      hi: 'सामुदायिक संप्रभुता'
+      id: 'Kedaulatan komunitas'
+      it: 'Sovranità della comunità'
+      pt: 'Soberania comunitária'
+      ru: 'Суверенитет сообщества'
+      sw: 'Mamlaka ya jamii'
+      zh_CN: 社区主权
+    definition:
+      en: 'Community sovereignty refers to the autonomy and political self-governance of a community. This concept is based on the principle that each community is free to determine its own destiny and relations with other communities. Data policies should respect the sovereignty of communities to refuse, restrict, or remain unconnected from data collection.'
+      ar: 'تشير سيادة المجتمع إلى استقلالية المجتمع المحلي وحكمه الذاتي السياسي. ويستند هذا المفهوم إلى مبدأ أن كل مجتمع حرّ في تقرير مصيره وعلاقاته مع المجتمعات الأخرى. وينبغي أن تحترم سياسات البيانات سيادة المجتمعات في رفض جمع البيانات أو تقييده أو البقاء خارج نطاقه.'
+      es: 'La soberanía comunitaria se refiere a la autonomía y el autogobierno político de una comunidad. Este concepto se basa en el principio de que cada comunidad es libre de determinar su propio destino y sus relaciones con otras comunidades. Las políticas de datos deben respetar la soberanía de las comunidades para rechazar, restringir o mantenerse desconectadas de la recolección de datos.'
+      fil: 'Ang soberanya ng komunidad ay tumutukoy sa awtonomiya at pampulitikang sariling pamamahala ng isang komunidad. Nakabatay ang konseptong ito sa prinsipyong malaya ang bawat komunidad na itakda ang sarili nitong kapalaran at mga ugnayan sa ibang mga komunidad. Dapat igalang ng mga patakaran sa data ang soberanya ng mga komunidad na tumanggi, maglimita, o manatiling hindi nakakonekta sa pangongolekta ng data.'
+      fr: "La souveraineté communautaire désigne l'autonomie et l'autogouvernance politique d'une communauté. Ce concept repose sur le principe selon lequel chaque communauté est libre de déterminer son propre destin et ses relations avec les autres communautés. Les politiques en matière de données doivent respecter la souveraineté des communautés, c'est-à-dire leur droit de refuser ou de restreindre la collecte de données, ou de rester à l'écart de celle-ci."
+      hi: 'सामुदायिक संप्रभुता से आशय किसी समुदाय की स्वायत्तता और राजनीतिक स्व-शासन से है। यह अवधारणा इस सिद्धांत पर आधारित है कि हर समुदाय अपना भविष्य और अन्य समुदायों के साथ अपने संबंध स्वयं तय करने के लिए स्वतंत्र है। डेटा नीतियों को समुदायों की इस संप्रभुता का सम्मान करना चाहिए कि वे डेटा संग्रह से इनकार कर सकें, उसे सीमित कर सकें या उससे असंबद्ध रह सकें।'
+      id: 'Kedaulatan komunitas merujuk pada otonomi dan pemerintahan mandiri secara politik dari suatu komunitas. Konsep ini didasarkan pada prinsip bahwa setiap komunitas bebas menentukan nasibnya sendiri dan hubungannya dengan komunitas lain. Kebijakan data harus menghormati kedaulatan komunitas untuk menolak, membatasi, atau tetap tidak terhubung dengan pengumpulan data.'
+      it: "La sovranità della comunità indica l'autonomia e l'autogoverno politico di una comunità. Questo concetto si basa sul principio che ogni comunità è libera di determinare il proprio destino e le proprie relazioni con le altre comunità. Le politiche sui dati dovrebbero rispettare la sovranità delle comunità di rifiutare, limitare o rimanere al di fuori della raccolta dei dati."
+      pt: 'Soberania comunitária refere-se à autonomia e ao autogoverno político de uma comunidade. Este conceito baseia-se no princípio de que cada comunidade é livre para determinar o seu próprio destino e as suas relações com outras comunidades. As políticas de dados devem respeitar a soberania das comunidades para recusar, restringir ou permanecer desconectadas da coleta de dados.'
+      ru: 'Суверенитет сообщества — это автономия и политическое самоуправление сообщества. Эта концепция основана на принципе, что каждое сообщество свободно определять собственную судьбу и свои отношения с другими сообществами. Политика в области данных должна уважать суверенитет сообществ: их право отказаться от сбора данных, ограничить его или оставаться вне его.'
+      sw: 'Mamlaka ya jamii inarejelea uhuru wa kujiamulia na kujitawala kisiasa kwa jamii. Dhana hii inatokana na kanuni kwamba kila jamii iko huru kuamua hatima yake na mahusiano yake na jamii nyingine. Sera za data zinapaswa kuheshimu mamlaka ya jamii kukataa, kuweka mipaka, au kubaki bila kuunganishwa na ukusanyaji wa data.'
+      zh_CN: 社区主权指一个社区的自治权和政治上的自我治理。这一概念基于以下原则：每个社区都有权自由决定自身的命运以及与其他社区的关系。数据政策应尊重社区的主权，包括拒绝、限制数据收集或不与数据收集相连接的权利。
+  -
+    term:
+      en: Data
+      ar: البيانات
+      es: Datos
+      fil: Data
+      fr: Données
+      hi: डेटा
+      id: Data
+      it: Dati
+      pt: Dados
+      ru: Данные
+      sw: Data
+      zh_CN: 数据
+    definition:
+      en: |-
+        Any set of codified symbols representing units of information regarding specific aspects of the world that can be captured or generated, recorded, stored, and transmitted in analogue or digital form.
+
+        From a farmer’s perspective, data is not an individual resource to be owned or controlled in isolation. It is embedded in their relationships—with their agroecological territories, shared resources, communities, and governments—and emerges from the questions, constraints, and challenges they confront in daily life. Data justice, therefore, cannot be universal or abstract; it must be grounded in these lived relationships. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      ar: |-
+        أي مجموعة من الرموز المقنّنة التي تمثّل وحدات من المعلومات حول جوانب محددة من العالم، ويمكن التقاطها أو توليدها وتسجيلها وتخزينها ونقلها في شكل تناظري أو رقمي.
+
+        من منظور المزارع، ليست البيانات موردًا فرديًا يُمتلك أو يُتحكَّم به بمعزل عن غيره. بل هي متجذّرة في علاقاته — بأقاليمه الزراعية الإيكولوجية، وموارده المشتركة، ومجتمعاته، وحكوماته — وتنبع من الأسئلة والقيود والتحديات التي يواجهها في حياته اليومية. ولذلك لا يمكن أن تكون عدالة البيانات كونية أو مجرّدة؛ بل يجب أن ترتكز على هذه العلاقات المعيشة. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      es: |-
+        Cualquier conjunto de símbolos codificados que representan unidades de información sobre aspectos específicos del mundo y que pueden ser captados o generados, registrados, almacenados y transmitidos en forma analógica o digital.
+
+        Desde la perspectiva de las personas agricultoras, los datos no son un recurso individual que se posee o controla de forma aislada. Están integrados en sus relaciones —con sus territorios agroecológicos, recursos compartidos, comunidades y gobiernos— y surgen de las preguntas, limitaciones y desafíos que enfrentan en su vida cotidiana. Por lo tanto, la justicia de datos no puede ser universal ni abstracta; debe estar arraigada en estas relaciones vividas. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      fil: |-
+        Anumang hanay ng mga naka-code na simbolo na kumakatawan sa mga yunit ng impormasyon tungkol sa mga tiyak na aspeto ng mundo na maaaring kunin o likhain, itala, iimbak, at ipadala sa analog o digital na anyo.
+
+        Mula sa pananaw ng isang magsasaka, ang data ay hindi isang indibidwal na yaman na pagmamay-arian o kokontrolin nang hiwalay. Nakaugat ito sa kanilang mga ugnayan—sa kanilang mga agroekolohikal na teritoryo, mga pinagsasaluhang yaman, mga komunidad, at mga pamahalaan—at lumilitaw mula sa mga tanong, limitasyon, at hamong hinaharap nila sa pang-araw-araw na buhay. Dahil dito, hindi maaaring maging unibersal o abstrakto ang katarungan sa data; kinakailangang nakaugat ito sa mga ugnayang ito na tunay na dinaranas. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      fr: |-
+        Tout ensemble de symboles codifiés représentant des unités d'information sur des aspects particuliers du monde, qui peuvent être capturées ou générées, enregistrées, stockées et transmises sous forme analogique ou numérique.
+
+        Du point de vue d'un agriculteur ou d'une agricultrice, les données ne sont pas une ressource individuelle à posséder ou à contrôler de manière isolée. Elles sont ancrées dans leurs relations — avec leurs territoires agroécologiques, leurs ressources partagées, leurs communautés et leurs gouvernements — et émergent des questions, des contraintes et des défis qu'ils affrontent au quotidien. La justice des données ne peut donc être universelle ou abstraite ; elle doit être ancrée dans ces relations vécues. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      hi: |-
+        संहिताबद्ध प्रतीकों का कोई भी समुच्चय जो दुनिया के विशिष्ट पहलुओं के बारे में जानकारी की इकाइयों का प्रतिनिधित्व करता है और जिसे एनालॉग या डिजिटल रूप में ग्रहण या उत्पन्न किया जा सकता है, दर्ज किया जा सकता है, संग्रहीत किया जा सकता है और प्रसारित किया जा सकता है।
+
+        एक किसान के दृष्टिकोण से, डेटा कोई ऐसा व्यक्तिगत संसाधन नहीं है जिसका स्वामित्व या नियंत्रण अलग-थलग रहकर किया जाए। यह उनके संबंधों में रचा-बसा है—उनके कृषि-पारिस्थितिक क्षेत्रों, साझा संसाधनों, समुदायों और सरकारों के साथ—और उन प्रश्नों, बाधाओं और चुनौतियों से उभरता है जिनका वे रोज़मर्रा के जीवन में सामना करते हैं। इसलिए डेटा न्याय सार्वभौमिक या अमूर्त नहीं हो सकता; इसे इन जीवंत संबंधों में जड़ें जमानी होंगी। https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      id: |-
+        Setiap rangkaian simbol terkodifikasi yang mewakili satuan informasi mengenai aspek-aspek tertentu dari dunia, yang dapat ditangkap atau dihasilkan, direkam, disimpan, dan disalurkan dalam bentuk analog maupun digital.
+
+        Dari sudut pandang petani, data bukanlah sumber daya individual yang dimiliki atau dikendalikan secara terpisah. Data melekat dalam relasi mereka—dengan wilayah agroekologis, sumber daya bersama, komunitas, dan pemerintah—dan lahir dari pertanyaan, kendala, dan tantangan yang mereka hadapi dalam kehidupan sehari-hari. Oleh karena itu, keadilan data tidak dapat bersifat universal atau abstrak; ia harus berpijak pada relasi-relasi yang dihidupi tersebut. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      it: |-
+        Qualsiasi insieme di simboli codificati che rappresentano unità di informazione relative ad aspetti specifici del mondo, che possono essere acquisiti o generati, registrati, conservati e trasmessi in forma analogica o digitale.
+
+        Dal punto di vista di un agricoltore, i dati non sono una risorsa individuale da possedere o controllare in isolamento. Sono radicati nelle sue relazioni—con i territori agroecologici, le risorse condivise, le comunità e i governi—ed emergono dalle domande, dai vincoli e dalle sfide che affronta nella vita quotidiana. La giustizia dei dati, quindi, non può essere universale o astratta; deve essere fondata su queste relazioni vissute. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      pt: |-
+        Qualquer conjunto de símbolos codificados que representam unidades de informação sobre aspectos específicos do mundo e que podem ser capturados ou gerados, registados, armazenados e transmitidos em forma analógica ou digital.
+
+        Da perspectiva dos agricultores, os dados não são um recurso individual que se possa possuir ou controlar isoladamente. Estão incorporados nas suas relações — com os seus territórios agroecológicos, os recursos compartilhados, as comunidades e os governos — e emergem das perguntas, limitações e desafios que enfrentam no dia a dia. A justiça de dados, portanto, não pode ser universal nem abstrata; deve estar enraizada nessas relações vividas. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      ru: |-
+        Любой набор кодифицированных символов, представляющих единицы информации о конкретных аспектах мира, которые могут быть зафиксированы или сгенерированы, записаны, сохранены и переданы в аналоговой или цифровой форме.
+
+        С точки зрения фермера, данные — это не индивидуальный ресурс, которым можно владеть или который можно контролировать в отрыве от всего остального. Они встроены в его отношения — с агроэкологическими территориями, общими ресурсами, сообществами и правительствами — и возникают из вопросов, ограничений и трудностей, с которыми он сталкивается в повседневной жизни. Поэтому справедливость в отношении данных не может быть универсальной или абстрактной; она должна опираться на эти живые отношения. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      sw: |-
+        Seti yoyote ya alama zilizosimbwa zinazowakilisha vipashio vya taarifa kuhusu vipengele mahususi vya dunia, ambazo zinaweza kunaswa au kuzalishwa, kurekodiwa, kuhifadhiwa na kusambazwa katika mfumo wa analogi au wa kidijitali.
+
+        Kwa mtazamo wa mkulima, data si rasilimali ya mtu mmoja ya kumilikiwa au kudhibitiwa kwa kujitenga. Zimefungamana na mahusiano yake—na maeneo yake ya kilimo-ikolojia, rasilimali za pamoja, jamii na serikali—na zinaibuka kutokana na maswali, vikwazo na changamoto anazokabiliana nazo katika maisha ya kila siku. Hivyo basi, haki ya data haiwezi kuwa ya jumla au ya kidhahania; ni lazima ijikite katika mahusiano haya ya maisha halisi. https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+      zh_CN: |-
+        任何一组经过编码的符号，用以表示关于世界特定方面的信息单元，这些信息可以以模拟或数字形式被采集或生成、记录、存储和传输。
+
+        从农民的视角来看，数据并不是一种可以被孤立地拥有或控制的个人资源。它嵌入在农民的各种关系之中——与其农业生态地域、共享资源、社区和政府的关系——并源于他们在日常生活中所面对的问题、限制和挑战。因此，数据正义不可能是普世的或抽象的；它必须植根于这些真实的生活关系之中。 https://agroecologynow.net/what-does-data-justice-mean-for-african-small-holder-farmers-towards-envisioning-a-human-rights-based-approach-in-africa/
+  -
+    term:
+      en: 'Data extraction'
+      ar: 'استخراج البيانات'
+      es: 'Extracción de datos'
+      fil: 'Ekstraksyon ng data'
+      fr: 'Extraction de données'
+      hi: 'डेटा निष्कर्षण'
+      id: 'Ekstraksi data'
+      it: 'Estrazione di dati'
+      pt: 'Extração de dados'
+      ru: 'Извлечение данных'
+      sw: 'Uchukuaji wa data'
+      zh_CN: 数据提取
+    definition:
+      en: "Data extraction is the process of retrieving data from data sources for further processing or storage. It's often used to migrate data to a new system, integrate data from various sources, or to analyze data."
+      ar: 'استخراج البيانات هو عملية استرجاع البيانات من مصادرها بغرض معالجتها أو تخزينها لاحقًا. ويُستخدم غالبًا لنقل البيانات إلى نظام جديد، أو لدمج البيانات من مصادر متعددة، أو لتحليلها.'
+      es: 'La extracción de datos es el proceso de recuperar datos de distintas fuentes para su posterior procesamiento o almacenamiento. Se utiliza a menudo para migrar datos a un nuevo sistema, integrar datos de diversas fuentes o analizar datos.'
+      fil: "Ang ekstraksyon ng data ay ang proseso ng pagkuha ng data mula sa mga pinagmulan ng data para sa karagdagang pagproseso o pag-iimbak. Kadalasan itong ginagamit upang ilipat ang data sa isang bagong sistema, pagsamahin ang data mula sa iba't ibang pinagmulan, o suriin ang data."
+      fr: "L'extraction de données est le processus qui consiste à récupérer des données depuis des sources de données afin de les traiter ou de les stocker ultérieurement. Elle est souvent utilisée pour migrer des données vers un nouveau système, intégrer des données provenant de diverses sources ou analyser des données."
+      hi: 'डेटा निष्कर्षण डेटा स्रोतों से डेटा को आगे की प्रोसेसिंग या भंडारण के लिए निकालने की प्रक्रिया है। इसका उपयोग अक्सर डेटा को किसी नई प्रणाली में स्थानांतरित करने, विभिन्न स्रोतों के डेटा को एकीकृत करने या डेटा का विश्लेषण करने के लिए किया जाता है।'
+      id: 'Ekstraksi data adalah proses pengambilan data dari berbagai sumber data untuk diproses atau disimpan lebih lanjut. Proses ini sering digunakan untuk memigrasikan data ke sistem baru, mengintegrasikan data dari berbagai sumber, atau menganalisis data.'
+      it: "L'estrazione di dati è il processo di recupero dei dati da una o più fonti per la successiva elaborazione o conservazione. Viene spesso utilizzata per migrare dati verso un nuovo sistema, integrare dati provenienti da fonti diverse o analizzare dati."
+      pt: 'A extração de dados é o processo de obter dados a partir de fontes de dados para posterior processamento ou armazenamento. É frequentemente usada para migrar dados para um novo sistema, integrar dados de várias fontes ou analisar dados.'
+      ru: 'Извлечение данных — это процесс получения данных из источников для дальнейшей обработки или хранения. Его часто используют для переноса данных в новую систему, объединения данных из различных источников или для анализа данных.'
+      sw: 'Uchukuaji wa data ni mchakato wa kuchukua data kutoka kwenye vyanzo vya data kwa ajili ya uchakataji zaidi au uhifadhi. Mara nyingi hutumika kuhamisha data kwenda kwenye mfumo mpya, kuunganisha data kutoka vyanzo mbalimbali, au kuchanganua data.'
+      zh_CN: 数据提取是从数据源中获取数据以便进一步处理或存储的过程。它通常用于将数据迁移到新系统、整合来自不同来源的数据，或对数据进行分析。
+  -
+    term:
+      en: 'Data for FSN'
+      ar: 'البيانات من أجل الأمن الغذائي والتغذية (FSN)'
+      es: 'Datos para la FSN'
+      fil: 'Data para sa FSN'
+      fr: 'Données pour la sécurité alimentaire et la nutrition (FSN)'
+      hi: 'FSN के लिए डेटा'
+      id: 'Data untuk FSN'
+      it: 'Dati per la FSN'
+      pt: 'Dados para FSN'
+      ru: 'Данные для FSN'
+      sw: 'Data kwa ajili ya FSN'
+      zh_CN: 粮食安全与营养（FSN）数据
+    definition:
+      en: 'Data for Food Security and Nutrition refers to the information collected and analyzed to design and evaluate effective policies in ensuring food security and nutrition.'
+      ar: 'تشير البيانات من أجل الأمن الغذائي والتغذية إلى المعلومات التي تُجمع وتُحلَّل لتصميم وتقييم سياسات فعّالة لضمان الأمن الغذائي والتغذية.'
+      es: 'Los datos para la seguridad alimentaria y la nutrición (FSN, por sus siglas en inglés) se refieren a la información recopilada y analizada para diseñar y evaluar políticas eficaces que garanticen la seguridad alimentaria y la nutrición.'
+      fil: 'Ang Data para sa Seguridad sa Pagkain at Nutrisyon (FSN) ay tumutukoy sa impormasyong kinokolekta at sinusuri upang bumuo at suriin ang mga epektibong patakaran sa pagtiyak ng seguridad sa pagkain at nutrisyon.'
+      fr: "Les données pour la sécurité alimentaire et la nutrition (FSN) désignent les informations collectées et analysées afin de concevoir et d'évaluer des politiques efficaces pour garantir la sécurité alimentaire et la nutrition."
+      hi: 'खाद्य सुरक्षा और पोषण के लिए डेटा से आशय उस जानकारी से है जिसे खाद्य सुरक्षा और पोषण सुनिश्चित करने के लिए प्रभावी नीतियाँ बनाने और उनका मूल्यांकन करने के उद्देश्य से एकत्र और विश्लेषित किया जाता है।'
+      id: 'Data untuk Ketahanan Pangan dan Gizi (FSN) merujuk pada informasi yang dikumpulkan dan dianalisis untuk merancang dan mengevaluasi kebijakan yang efektif dalam menjamin ketahanan pangan dan gizi.'
+      it: 'I dati per la sicurezza alimentare e la nutrizione (FSN) sono le informazioni raccolte e analizzate per progettare e valutare politiche efficaci volte a garantire la sicurezza alimentare e la nutrizione.'
+      pt: 'Dados para a Segurança Alimentar e Nutricional (FSN) referem-se à informação coletada e analisada para conceber e avaliar políticas eficazes que garantam a segurança alimentar e nutricional.'
+      ru: 'Данные для продовольственной безопасности и питания (FSN) — это информация, собираемая и анализируемая для разработки и оценки эффективной политики по обеспечению продовольственной безопасности и питания.'
+      sw: 'Data kwa ajili ya Usalama wa Chakula na Lishe inarejelea taarifa zinazokusanywa na kuchanganuliwa ili kubuni na kutathmini sera zenye ufanisi katika kuhakikisha usalama wa chakula na lishe.'
+      zh_CN: 粮食安全与营养数据指为设计和评估保障粮食安全与营养的有效政策而收集和分析的信息。
+  -
+    term:
+      en: 'Data governance'
+      ar: 'حوكمة البيانات'
+      es: 'Gobernanza de datos'
+      fil: 'Pamamahala ng data'
+      fr: 'Gouvernance des données'
+      hi: 'डेटा शासन'
+      id: 'Tata kelola data'
+      it: 'Governance dei dati'
+      pt: 'Governança de dados'
+      ru: 'Управление данными'
+      sw: 'Utawala wa data'
+      zh_CN: 数据治理
+    definition:
+      en: |-
+        A political and economic regime that sets boundaries for data collection by upholding human rights and outlawing any form of data processing that infringes individual and collective autonomy or self-determination. Only data governance for food security and nutrition based on a human rights approach will ensure the availability of high-quality, timely and relevant qualitative and quantitative data that improves food security and nutrition and contribute to the progressive realization of the right to healthy and sustainable food. Small food producers across the world are advocating for new approaches to data governance that protect not only their privacy, but also their sovereignty and autonomy.
+
+        See also: https://digifoodproject.org/what-is-data-governance
+      ar: |-
+        نظام سياسي واقتصادي يضع حدودًا لجمع البيانات من خلال صون حقوق الإنسان وتجريم أي شكل من أشكال معالجة البيانات ينتهك الاستقلالية الفردية والجماعية أو حق تقرير المصير. وحوكمة البيانات من أجل الأمن الغذائي والتغذية القائمة على نهج حقوق الإنسان هي وحدها التي تضمن توافر بيانات نوعية وكمية عالية الجودة وحسنة التوقيت وذات صلة، تحسّن الأمن الغذائي والتغذية وتساهم في الإعمال التدريجي للحق في غذاء صحي ومستدام. ويدعو صغار منتجي الأغذية في مختلف أنحاء العالم إلى مقاربات جديدة لحوكمة البيانات تحمي لا خصوصيتهم فحسب، بل سيادتهم واستقلاليتهم أيضًا.
+
+        انظر أيضًا: https://digifoodproject.org/what-is-data-governance
+      es: |-
+        Un régimen político y económico que establece límites a la recolección de datos defendiendo los derechos humanos y prohibiendo cualquier forma de procesamiento de datos que vulnere la autonomía o la autodeterminación individual y colectiva. Solo una gobernanza de datos para la seguridad alimentaria y la nutrición basada en un enfoque de derechos humanos garantizará la disponibilidad de datos cualitativos y cuantitativos de alta calidad, oportunos y pertinentes, que mejoren la seguridad alimentaria y la nutrición y contribuyan a la realización progresiva del derecho a una alimentación sana y sostenible. Las y los pequeños productores de alimentos de todo el mundo reclaman nuevos enfoques de gobernanza de datos que protejan no solo su privacidad, sino también su soberanía y autonomía.
+
+        Véase también: https://digifoodproject.org/what-is-data-governance
+      fil: |-
+        Isang pampulitika at pang-ekonomiyang rehimen na nagtatakda ng mga hangganan sa pangongolekta ng data sa pamamagitan ng pagtataguyod ng mga karapatang pantao at pagbabawal sa anumang anyo ng pagproseso ng data na lumalabag sa indibidwal at kolektibong awtonomiya o sariling pagpapasya. Tanging ang pamamahala ng data para sa seguridad sa pagkain at nutrisyon na nakabatay sa pamamaraang nakaangkla sa karapatang pantao ang titiyak sa pagkakaroon ng mataas ang kalidad, napapanahon at makabuluhang kwalitatibo at kwantitatibong data na nagpapabuti sa seguridad sa pagkain at nutrisyon at nag-aambag sa unti-unting pagsasakatuparan ng karapatan sa malusog at napapanatiling pagkain. Nagsusulong ang maliliit na prodyuser ng pagkain sa buong mundo ng mga bagong pamamaraan sa pamamahala ng data na nagpoprotekta hindi lamang sa kanilang pribasiya, kundi pati sa kanilang soberanya at awtonomiya.
+
+        Tingnan din: https://digifoodproject.org/what-is-data-governance
+      fr: |-
+        Un régime politique et économique qui fixe des limites à la collecte de données en faisant respecter les droits humains et en interdisant toute forme de traitement de données portant atteinte à l'autonomie ou à l'autodétermination individuelle et collective. Seule une gouvernance des données pour la sécurité alimentaire et la nutrition fondée sur une approche par les droits humains garantira la disponibilité de données qualitatives et quantitatives de grande qualité, actuelles et pertinentes, qui améliorent la sécurité alimentaire et la nutrition et contribuent à la réalisation progressive du droit à une alimentation saine et durable. Partout dans le monde, les petits producteurs et petites productrices d'aliments plaident pour de nouvelles approches de la gouvernance des données qui protègent non seulement leur vie privée, mais aussi leur souveraineté et leur autonomie.
+
+        Voir aussi : https://digifoodproject.org/what-is-data-governance
+      hi: |-
+        एक राजनीतिक और आर्थिक व्यवस्था जो मानवाधिकारों को बरकरार रखते हुए और व्यक्तिगत तथा सामूहिक स्वायत्तता या आत्मनिर्णय का उल्लंघन करने वाली किसी भी प्रकार की डेटा प्रोसेसिंग को गैरकानूनी ठहराते हुए डेटा संग्रह की सीमाएँ निर्धारित करती है। केवल मानवाधिकार-आधारित दृष्टिकोण पर टिका खाद्य सुरक्षा और पोषण के लिए डेटा शासन ही उच्च-गुणवत्ता वाले, समयबद्ध और प्रासंगिक गुणात्मक व मात्रात्मक डेटा की उपलब्धता सुनिश्चित करेगा, जो खाद्य सुरक्षा और पोषण में सुधार लाए और स्वस्थ व टिकाऊ भोजन के अधिकार की क्रमिक प्राप्ति में योगदान दे। दुनिया भर के छोटे खाद्य उत्पादक डेटा शासन के ऐसे नए दृष्टिकोणों की वकालत कर रहे हैं जो न केवल उनकी निजता की, बल्कि उनकी संप्रभुता और स्वायत्तता की भी रक्षा करें।
+
+        यह भी देखें: https://digifoodproject.org/what-is-data-governance
+      id: |-
+        Sebuah rezim politik dan ekonomi yang menetapkan batas-batas pengumpulan data dengan menjunjung hak asasi manusia dan melarang segala bentuk pemrosesan data yang melanggar otonomi atau hak menentukan nasib sendiri, baik individu maupun kolektif. Hanya tata kelola data untuk ketahanan pangan dan gizi yang berlandaskan pendekatan hak asasi manusia yang akan menjamin tersedianya data kualitatif dan kuantitatif yang bermutu tinggi, tepat waktu, dan relevan, yang meningkatkan ketahanan pangan dan gizi serta berkontribusi pada pemenuhan progresif hak atas pangan yang sehat dan berkelanjutan. Produsen pangan skala kecil di seluruh dunia memperjuangkan pendekatan baru terhadap tata kelola data yang melindungi bukan hanya privasi mereka, tetapi juga kedaulatan dan otonomi mereka.
+
+        Lihat juga: https://digifoodproject.org/what-is-data-governance
+      it: |-
+        Un regime politico ed economico che stabilisce limiti alla raccolta dei dati difendendo i diritti umani e vietando qualsiasi forma di trattamento dei dati che leda l'autonomia o l'autodeterminazione individuale e collettiva. Solo una governance dei dati per la sicurezza alimentare e la nutrizione fondata su un approccio basato sui diritti umani garantirà la disponibilità di dati qualitativi e quantitativi di alta qualità, tempestivi e pertinenti, che migliorino la sicurezza alimentare e la nutrizione e contribuiscano alla progressiva realizzazione del diritto a un cibo sano e sostenibile. I piccoli produttori alimentari di tutto il mondo chiedono nuovi approcci alla governance dei dati che tutelino non solo la loro privacy, ma anche la loro sovranità e autonomia.
+
+        Vedi anche: https://digifoodproject.org/what-is-data-governance
+      pt: |-
+        Um regime político e económico que estabelece limites à coleta de dados, defendendo os direitos humanos e proibindo qualquer forma de processamento de dados que viole a autonomia ou a autodeterminação individual e coletiva. Só uma governança de dados para a segurança alimentar e nutricional baseada em uma abordagem de direitos humanos garantirá a disponibilidade de dados qualitativos e quantitativos de alta qualidade, oportunos e relevantes, que melhorem a segurança alimentar e nutricional e contribuam para a realização progressiva do direito a uma alimentação saudável e sustentável. Pequenos produtores de alimentos em todo o mundo defendem novas abordagens à governança de dados que protejam não só a sua privacidade, mas também a sua soberania e autonomia.
+
+        Ver também: https://digifoodproject.org/what-is-data-governance
+      ru: |-
+        Политико-экономический режим, устанавливающий границы сбора данных путём защиты прав человека и запрета любых форм обработки данных, посягающих на индивидуальную и коллективную автономию или самоопределение. Только управление данными в сфере продовольственной безопасности и питания, основанное на правозащитном подходе, обеспечит доступность высококачественных, своевременных и актуальных качественных и количественных данных, которые улучшают продовольственную безопасность и питание и способствуют постепенной реализации права на здоровое и устойчивое питание. Мелкие производители продовольствия по всему миру выступают за новые подходы к управлению данными, защищающие не только их частную жизнь, но и их суверенитет и автономию.
+
+        См. также: https://digifoodproject.org/what-is-data-governance
+      sw: |-
+        Utaratibu wa kisiasa na kiuchumi unaoweka mipaka ya ukusanyaji wa data kwa kuzingatia haki za binadamu na kuharamisha aina yoyote ya uchakataji wa data unaokiuka uhuru au haki ya kujiamulia ya mtu binafsi na ya pamoja. Ni utawala wa data kwa ajili ya usalama wa chakula na lishe unaozingatia mtazamo wa haki za binadamu pekee ndio utakaohakikisha upatikanaji wa data bora, za wakati na zinazofaa, za kimaelezo na za kiidadi, zinazoboresha usalama wa chakula na lishe na kuchangia katika utimizaji wa hatua kwa hatua wa haki ya chakula chenye afya na endelevu. Wazalishaji wadogo wa chakula duniani kote wanatetea mbinu mpya za utawala wa data zinazolinda si tu faragha yao, bali pia mamlaka na uhuru wao.
+
+        Tazama pia: https://digifoodproject.org/what-is-data-governance
+      zh_CN: |-
+        一种政治和经济制度，通过维护人权并禁止任何侵犯个人和集体自主权或自决权的数据处理形式，为数据收集划定边界。只有基于人权方法的粮食安全与营养数据治理，才能确保获得高质量、及时且相关的定性和定量数据，从而改善粮食安全与营养，并推动获得健康和可持续食物的权利逐步实现。世界各地的小型食物生产者正在倡导新的数据治理方式，不仅保护他们的隐私，也保护他们的主权和自主权。
+
+        另见：https://digifoodproject.org/what-is-data-governance
+  -
+    term:
+      en: 'Data infrastructures'
+      ar: 'البنى التحتية للبيانات'
+      es: 'Infraestructuras de datos'
+      fil: 'Mga imprastraktura ng data'
+      fr: 'Infrastructures de données'
+      hi: 'डेटा अवसंरचनाएँ'
+      id: 'Infrastruktur data'
+      it: 'Infrastrutture di dati'
+      pt: 'Infraestruturas de dados'
+      ru: 'Инфраструктуры данных'
+      sw: 'Miundombinu ya data'
+      zh_CN: 数据基础设施
+    definition:
+      en: 'Data infrastructures refer to the underlying frameworks and services that are necessary for the collection, processing, storage, and distribution of data. This includes hardware, software, networks, and facilities used to develop, test, operate, monitor, manage, and support data applications.'
+      ar: 'تشير البنى التحتية للبيانات إلى الأطر والخدمات الأساسية اللازمة لجمع البيانات ومعالجتها وتخزينها وتوزيعها. ويشمل ذلك العتاد والبرمجيات والشبكات والمنشآت المستخدمة في تطوير تطبيقات البيانات واختبارها وتشغيلها ومراقبتها وإدارتها ودعمها.'
+      es: 'Las infraestructuras de datos se refieren a los marcos y servicios subyacentes necesarios para la recolección, el procesamiento, el almacenamiento y la distribución de datos. Esto incluye el hardware, el software, las redes y las instalaciones que se utilizan para desarrollar, probar, operar, monitorear, gestionar y dar soporte a las aplicaciones de datos.'
+      fil: 'Ang mga imprastraktura ng data ay tumutukoy sa mga pinagbabatayang balangkas at serbisyo na kinakailangan para sa pangongolekta, pagproseso, pag-iimbak, at pamamahagi ng data. Kabilang dito ang hardware, software, mga network, at mga pasilidad na ginagamit upang bumuo, sumubok, magpatakbo, magmonitor, mamahala, at sumuporta sa mga aplikasyon ng data.'
+      fr: 'Les infrastructures de données désignent les cadres et services sous-jacents nécessaires à la collecte, au traitement, au stockage et à la diffusion des données. Cela inclut le matériel, les logiciels, les réseaux et les installations utilisés pour développer, tester, exploiter, surveiller, gérer et prendre en charge les applications de données.'
+      hi: 'डेटा अवसंरचनाओं से आशय उन बुनियादी ढाँचों और सेवाओं से है जो डेटा के संग्रह, प्रोसेसिंग, भंडारण और वितरण के लिए आवश्यक हैं। इसमें डेटा अनुप्रयोगों को विकसित करने, परखने, संचालित करने, उनकी निगरानी करने, उन्हें प्रबंधित करने और उन्हें सहारा देने के लिए उपयोग किए जाने वाले हार्डवेयर, सॉफ़्टवेयर, नेटवर्क और सुविधाएँ शामिल हैं।'
+      id: 'Infrastruktur data merujuk pada kerangka dan layanan dasar yang diperlukan untuk pengumpulan, pemrosesan, penyimpanan, dan distribusi data. Ini mencakup perangkat keras, perangkat lunak, jaringan, dan fasilitas yang digunakan untuk mengembangkan, menguji, mengoperasikan, memantau, mengelola, dan mendukung aplikasi data.'
+      it: "Le infrastrutture di dati sono le strutture e i servizi sottostanti necessari per la raccolta, l'elaborazione, la conservazione e la distribuzione dei dati. Comprendono hardware, software, reti e impianti utilizzati per sviluppare, testare, far funzionare, monitorare, gestire e supportare le applicazioni di dati."
+      pt: 'Infraestruturas de dados referem-se às estruturas e serviços de base necessários para a coleta, o processamento, o armazenamento e a distribuição de dados. Isso inclui hardware, software, redes e instalações usadas para desenvolver, testar, operar, acompanhar, administrar e dar suporte a aplicações de dados.'
+      ru: 'Инфраструктуры данных — это базовые структуры и сервисы, необходимые для сбора, обработки, хранения и распространения данных. Сюда входят аппаратное обеспечение, программное обеспечение, сети и объекты, используемые для разработки, тестирования, эксплуатации, мониторинга, управления и поддержки приложений для работы с данными.'
+      sw: 'Miundombinu ya data inarejelea mifumo na huduma za msingi zinazohitajika kwa ukusanyaji, uchakataji, uhifadhi na usambazaji wa data. Hii inajumuisha maunzi, programu, mitandao na vituo vinavyotumika kuunda, kupima, kuendesha, kufuatilia, kusimamia na kusaidia programu-tumizi za data.'
+      zh_CN: 数据基础设施指数据的收集、处理、存储和分发所必需的底层框架和服务。这包括用于开发、测试、运行、监控、管理和支持数据应用的硬件、软件、网络和设施。
+  -
+    term:
+      en: 'Data justice'
+      ar: 'عدالة البيانات'
+      es: 'Justicia de datos'
+      fil: 'Katarungan sa data'
+      fr: 'Justice des données'
+      hi: 'डेटा न्याय'
+      id: 'Keadilan data'
+      it: 'Giustizia dei dati'
+      pt: 'Justiça de dados'
+      ru: 'Справедливость в отношении данных'
+      sw: 'Haki ya data'
+      zh_CN: 数据正义
+    definition:
+      en: "Data justice refers to the equitable distribution of benefits and burdens related to data. It's a concept that uses social justice ideas to address rights, fairness, and protections in the context of datafication."
+      ar: 'تشير عدالة البيانات إلى التوزيع المنصف للمنافع والأعباء المرتبطة بالبيانات. وهي مفهوم يستند إلى أفكار العدالة الاجتماعية لمعالجة الحقوق والإنصاف والحمايات في سياق التحويل إلى بيانات.'
+      es: 'La justicia de datos se refiere a la distribución equitativa de los beneficios y las cargas relacionados con los datos. Es un concepto que utiliza ideas de la justicia social para abordar los derechos, la equidad y las protecciones en el contexto de la datificación.'
+      fil: 'Ang katarungan sa data ay tumutukoy sa pantay na pamamahagi ng mga benepisyo at pasanin na may kaugnayan sa data. Isa itong konsepto na gumagamit ng mga ideya ng panlipunang katarungan upang tugunan ang mga karapatan, pagiging patas, at mga proteksyon sa konteksto ng datafication.'
+      fr: "La justice des données désigne la répartition équitable des avantages et des charges liés aux données. C'est un concept qui s'appuie sur les idées de justice sociale pour traiter des droits, de l'équité et des protections dans le contexte de la datafication."
+      hi: 'डेटा न्याय से आशय डेटा से जुड़े लाभों और बोझों के न्यायसंगत वितरण से है। यह एक ऐसी अवधारणा है जो डेटाफ़िकेशन के संदर्भ में अधिकारों, निष्पक्षता और सुरक्षा उपायों पर विचार करने के लिए सामाजिक न्याय के विचारों का उपयोग करती है।'
+      id: 'Keadilan data merujuk pada pembagian yang adil atas manfaat dan beban yang terkait dengan data. Konsep ini menggunakan gagasan keadilan sosial untuk menangani hak, kesetaraan, dan perlindungan dalam konteks datafikasi.'
+      it: 'La giustizia dei dati riguarda la distribuzione equa dei benefici e degli oneri legati ai dati. È un concetto che utilizza le idee della giustizia sociale per affrontare diritti, equità e tutele nel contesto della datificazione.'
+      pt: 'Justiça de dados refere-se à distribuição equitativa dos benefícios e dos encargos ligados aos dados. É um conceito que usa ideias de justiça social para abordar direitos, equidade e proteções no contexto da dataficação.'
+      ru: 'Справедливость в отношении данных — это равноправное распределение выгод и издержек, связанных с данными. Эта концепция использует идеи социальной справедливости для решения вопросов прав, честности и защиты в условиях датафикации.'
+      sw: 'Haki ya data inarejelea mgawanyo wa usawa wa manufaa na mizigo inayohusiana na data. Ni dhana inayotumia mawazo ya haki ya kijamii kushughulikia haki, usawa na ulinzi katika mazingira ya udatishaji.'
+      zh_CN: 数据正义指与数据相关的利益和负担的公平分配。这一概念运用社会正义的理念，来应对数据化背景下的权利、公平和保护问题。
+  -
+    term:
+      en: 'Data literacy'
+      ar: 'الإلمام بالبيانات'
+      es: 'Alfabetización en datos'
+      fil: 'Literasiya sa data'
+      fr: 'Littératie des données'
+      hi: 'डेटा साक्षरता'
+      id: 'Literasi data'
+      it: 'Alfabetizzazione ai dati'
+      pt: 'Literacia de dados'
+      ru: 'Грамотность в области данных'
+      sw: 'Ujuzi wa data'
+      zh_CN: 数据素养
+    definition:
+      en: 'Data literacy is the ability to read, understand, create, and communicate data as information. It includes the essential skills to critically analyze, interpret, and use data effectively.'
+      ar: 'الإلمام بالبيانات هو القدرة على قراءة البيانات وفهمها وإنشائها والتواصل بها بوصفها معلومات. ويشمل المهارات الأساسية لتحليل البيانات وتفسيرها واستخدامها بفعالية وبنظرة نقدية.'
+      es: 'La alfabetización en datos es la capacidad de leer, comprender, crear y comunicar datos como información. Incluye las habilidades esenciales para analizar de forma crítica, interpretar y utilizar los datos con eficacia.'
+      fil: 'Ang literasiya sa data ay ang kakayahang basahin, unawain, likhain, at ipahayag ang data bilang impormasyon. Kabilang dito ang mga mahahalagang kasanayan upang kritikal na suriin, bigyang-kahulugan, at epektibong gamitin ang data.'
+      fr: "La littératie des données est la capacité à lire, comprendre, créer et communiquer des données en tant qu'information. Elle comprend les compétences essentielles pour analyser, interpréter et utiliser les données de manière critique et efficace."
+      hi: 'डेटा साक्षरता डेटा को जानकारी के रूप में पढ़ने, समझने, बनाने और संप्रेषित करने की क्षमता है। इसमें डेटा का आलोचनात्मक विश्लेषण करने, उसकी व्याख्या करने और उसका प्रभावी उपयोग करने के आवश्यक कौशल शामिल हैं।'
+      id: 'Literasi data adalah kemampuan untuk membaca, memahami, membuat, dan mengomunikasikan data sebagai informasi. Literasi data mencakup keterampilan penting untuk menganalisis secara kritis, menafsirkan, dan menggunakan data secara efektif.'
+      it: "L'alfabetizzazione ai dati è la capacità di leggere, comprendere, creare e comunicare i dati come informazione. Comprende le competenze essenziali per analizzare in modo critico, interpretare e utilizzare i dati in modo efficace."
+      pt: 'Literacia de dados é a capacidade de ler, compreender, criar e comunicar dados como informação. Inclui as competências essenciais para analisar criticamente, interpretar e usar dados de forma eficaz.'
+      ru: 'Грамотность в области данных — это способность читать, понимать, создавать и передавать данные как информацию. Она включает ключевые навыки критического анализа, интерпретации и эффективного использования данных.'
+      sw: 'Ujuzi wa data ni uwezo wa kusoma, kuelewa, kuunda na kuwasilisha data kama taarifa. Unajumuisha stadi muhimu za kuchanganua kwa kina, kufasiri na kutumia data ipasavyo.'
+      zh_CN: 数据素养是将数据作为信息来阅读、理解、创建和传达的能力。它包括批判性地分析、解读和有效使用数据的基本技能。
+  -
+    term:
+      en: 'Data privacy'
+      ar: 'خصوصية البيانات'
+      es: 'Privacidad de los datos'
+      fil: 'Pribasiya ng data'
+      fr: 'Confidentialité des données'
+      hi: 'डेटा निजता'
+      id: 'Privasi data'
+      it: 'Privacy dei dati'
+      pt: 'Privacidade de dados'
+      ru: 'Конфиденциальность данных'
+      sw: 'Faragha ya data'
+      zh_CN: 数据隐私
+    definition:
+      en: "Data privacy, also known as information privacy, involves the handling and protection of sensitive data from unauthorized access, use, disclosure, disruption, modification, or destruction. It's a key aspect of data governance that ensures the confidentiality and privacy of personal data."
+      ar: 'خصوصية البيانات، وتُعرف أيضًا بخصوصية المعلومات، تتعلق بالتعامل مع البيانات الحساسة وحمايتها من الوصول غير المصرّح به أو الاستخدام أو الإفشاء أو التعطيل أو التعديل أو التدمير. وهي جانب أساسي من حوكمة البيانات يضمن سرية البيانات الشخصية وخصوصيتها.'
+      es: 'La privacidad de los datos, también conocida como privacidad de la información, implica el manejo y la protección de los datos sensibles frente al acceso, uso, divulgación, interrupción, modificación o destrucción no autorizados. Es un aspecto clave de la gobernanza de datos que garantiza la confidencialidad y la privacidad de los datos personales.'
+      fil: 'Ang pribasiya ng data, na kilala rin bilang pribasiya ng impormasyon, ay sumasaklaw sa paghawak at pagprotekta ng sensitibong data mula sa hindi awtorisadong pag-access, paggamit, pagsisiwalat, panggambala, pagbabago, o pagwasak. Isa itong pangunahing aspeto ng pamamahala ng data na tumitiyak sa pagiging kumpidensyal at pribasiya ng personal na data.'
+      fr: "La confidentialité des données, également appelée protection de la vie privée en matière d'information, concerne le traitement et la protection des données sensibles contre tout accès, utilisation, divulgation, perturbation, modification ou destruction non autorisés. C'est un aspect clé de la gouvernance des données qui garantit la confidentialité des données personnelles et le respect de la vie privée."
+      hi: 'डेटा निजता, जिसे सूचना निजता भी कहा जाता है, संवेदनशील डेटा को संभालने और उसे अनधिकृत पहुँच, उपयोग, प्रकटीकरण, व्यवधान, संशोधन या विनाश से बचाने से संबंधित है। यह डेटा शासन का एक प्रमुख पहलू है जो व्यक्तिगत डेटा की गोपनीयता और निजता सुनिश्चित करता है।'
+      id: 'Privasi data, yang juga dikenal sebagai privasi informasi, mencakup penanganan dan perlindungan data sensitif dari akses, penggunaan, pengungkapan, gangguan, pengubahan, atau pemusnahan yang tidak sah. Privasi data adalah aspek kunci dari tata kelola data yang menjamin kerahasiaan dan privasi data pribadi.'
+      it: 'La privacy dei dati, nota anche come riservatezza delle informazioni, riguarda la gestione e la protezione dei dati sensibili da accesso, uso, divulgazione, interruzione, modifica o distruzione non autorizzati. È un aspetto fondamentale della governance dei dati che garantisce la confidenzialità e la privacy dei dati personali.'
+      pt: 'A privacidade de dados, também conhecida como privacidade da informação, envolve o tratamento e a proteção de dados sensíveis contra acesso, uso, divulgação, perturbação, modificação ou destruição não autorizados. É um aspecto fundamental da governança de dados que garante a confidencialidade e a privacidade dos dados pessoais.'
+      ru: 'Конфиденциальность данных, также известная как информационная конфиденциальность, подразумевает обращение с чувствительными данными и их защиту от несанкционированного доступа, использования, раскрытия, нарушения, изменения или уничтожения. Это ключевой аспект управления данными, обеспечивающий конфиденциальность и приватность персональных данных.'
+      sw: 'Faragha ya data, inayojulikana pia kama faragha ya taarifa, inahusu ushughulikiaji na ulinzi wa data nyeti dhidi ya ufikiaji, matumizi, ufichuaji, uvurugaji, ubadilishaji au uharibifu usioidhinishwa. Ni kipengele muhimu cha utawala wa data kinachohakikisha usiri na faragha ya data za kibinafsi.'
+      zh_CN: 数据隐私，又称信息隐私，涉及对敏感数据的处理和保护，防止其遭到未经授权的访问、使用、泄露、干扰、修改或销毁。它是数据治理的一个关键方面，确保个人数据的机密性和隐私。
+  -
+    term:
+      en: 'Data sovereignty'
+      ar: 'سيادة البيانات'
+      es: 'Soberanía de datos'
+      fil: 'Soberanya sa data'
+      fr: 'Souveraineté des données'
+      hi: 'डेटा संप्रभुता'
+      id: 'Kedaulatan data'
+      it: 'Sovranità dei dati'
+      pt: 'Soberania de dados'
+      ru: 'Суверенитет данных'
+      sw: 'Mamlaka ya data'
+      zh_CN: 数据主权
+    definition:
+      en: 'The capacity of various actors of food systems to exercise control and make autonomous decisions over the data collected within their operations.'
+      ar: 'قدرة مختلف الفاعلين في النظم الغذائية على ممارسة الرقابة واتخاذ قرارات مستقلة بشأن البيانات التي تُجمع ضمن عملياتهم.'
+      es: 'La capacidad de los distintos actores de los sistemas alimentarios para ejercer control y tomar decisiones autónomas sobre los datos recopilados en sus actividades.'
+      fil: "Ang kapasidad ng iba't ibang aktor sa mga sistema ng pagkain na gumamit ng kontrol at gumawa ng malayang mga desisyon sa data na kinokolekta sa loob ng kanilang mga operasyon."
+      fr: 'La capacité des différents acteurs des systèmes alimentaires à exercer un contrôle et à prendre des décisions autonomes sur les données collectées dans le cadre de leurs activités.'
+      hi: 'खाद्य प्रणालियों के विभिन्न कर्ताओं की अपने कार्यों के भीतर एकत्र किए गए डेटा पर नियंत्रण रखने और स्वायत्त निर्णय लेने की क्षमता।'
+      id: 'Kemampuan berbagai pelaku dalam sistem pangan untuk menjalankan kendali dan mengambil keputusan secara mandiri atas data yang dikumpulkan dalam kegiatan mereka.'
+      it: "La capacità dei diversi attori dei sistemi alimentari di esercitare il controllo e prendere decisioni autonome sui dati raccolti nell'ambito delle proprie attività."
+      pt: 'A capacidade dos diversos atores dos sistemas alimentares de controlar os dados coletados nas suas atividades e de tomar decisões autónomas sobre eles.'
+      ru: 'Способность различных участников продовольственных систем осуществлять контроль и принимать самостоятельные решения в отношении данных, собираемых в рамках их деятельности.'
+      sw: 'Uwezo wa wadau mbalimbali wa mifumo ya chakula kudhibiti na kufanya maamuzi huru kuhusu data zinazokusanywa ndani ya shughuli zao.'
+      zh_CN: 食物系统中的各类行动者对其运营过程中所收集的数据行使控制权并作出自主决定的能力。
+  -
+    term:
+      en: Datafication
+      ar: 'التحويل إلى بيانات (Datafication)'
+      es: Datificación
+      fil: Datafication
+      fr: Datafication
+      hi: डेटाफ़िकेशन
+      id: Datafikasi
+      it: Datificazione
+      pt: Dataficação
+      ru: Датафикация
+      sw: 'Udatishaji (datafication)'
+      zh_CN: 数据化
+    definition:
+      en: "With the advent of data-driven technologies like AI-enabled plant breeding, digital farm platforms, and online food retail, immense quantities of data are being generated, leading to what is referred to as 'datafication'. This process encompasses a diverse range of activities, purposes, organisms, communities, and applications across the entire food supply chain. However, the question of who benefits from this transformation and how it addresses existing inequalities leading to the perpetuation of food insecurity largely depends on the governance of this data."
+      ar: 'مع ظهور التقنيات القائمة على البيانات، مثل تربية النباتات المدعومة بالذكاء الاصطناعي، والمنصات الزراعية الرقمية، وتجارة الأغذية بالتجزئة عبر الإنترنت، تُولَّد كميات هائلة من البيانات، مما يؤدي إلى ما يُعرف بـ«التحويل إلى بيانات». وتشمل هذه العملية طيفًا متنوعًا من الأنشطة والأغراض والكائنات الحية والمجتمعات والتطبيقات على امتداد سلسلة الإمداد الغذائي بأكملها. غير أن مسألة من يستفيد من هذا التحوّل، وكيف يعالج أوجه اللامساواة القائمة التي تؤدي إلى استمرار انعدام الأمن الغذائي، تعتمد إلى حد كبير على حوكمة هذه البيانات.'
+      es: "Con la llegada de tecnologías basadas en datos, como el fitomejoramiento asistido por IA, las plataformas agrícolas digitales y la venta de alimentos en línea, se generan inmensas cantidades de datos, lo que da lugar a lo que se conoce como 'datificación'. Este proceso abarca una amplia gama de actividades, propósitos, organismos, comunidades y aplicaciones a lo largo de toda la cadena de suministro alimentario. Sin embargo, la cuestión de quién se beneficia de esta transformación y de cómo aborda las desigualdades existentes que perpetúan la inseguridad alimentaria depende en gran medida de la gobernanza de estos datos."
+      fil: "Sa pagdating ng mga teknolohiyang nakabatay sa data gaya ng pagpaparami ng halaman na pinapagana ng AI, mga digital na platform para sa bukid, at online na pagtitingi ng pagkain, napakalaking dami ng data ang nalilikha, na humahantong sa tinatawag na 'datafication'. Sumasaklaw ang prosesong ito sa iba't ibang gawain, layunin, organismo, komunidad, at aplikasyon sa buong kadena ng suplay ng pagkain. Gayunpaman, ang tanong kung sino ang nakikinabang sa pagbabagong ito at kung paano nito tinutugunan ang mga umiiral na di-pagkakapantay-pantay na nagpapatuloy sa kawalan ng seguridad sa pagkain ay lubhang nakasalalay sa pamamahala ng data na ito."
+      fr: "Avec l'avènement des technologies fondées sur les données, comme la sélection végétale assistée par l'IA, les plateformes agricoles numériques et la vente alimentaire en ligne, d'immenses quantités de données sont générées, ce qui conduit à ce que l'on appelle la « datafication ». Ce processus englobe un large éventail d'activités, de finalités, d'organismes, de communautés et d'applications tout au long de la chaîne d'approvisionnement alimentaire. Toutefois, la question de savoir qui bénéficie de cette transformation et comment elle répond aux inégalités existantes qui perpétuent l'insécurité alimentaire dépend largement de la gouvernance de ces données."
+      hi: "AI-सक्षम पौध प्रजनन, डिजिटल खेत प्लेटफ़ॉर्म और ऑनलाइन खाद्य खुदरा जैसी डेटा-संचालित तकनीकों के आगमन के साथ, भारी मात्रा में डेटा उत्पन्न हो रहा है, जिससे वह स्थिति बन रही है जिसे 'डेटाफ़िकेशन' कहा जाता है। यह प्रक्रिया संपूर्ण खाद्य आपूर्ति श्रृंखला में गतिविधियों, उद्देश्यों, जीवों, समुदायों और अनुप्रयोगों की एक विविध श्रेणी को अपने में समेटती है। हालाँकि, यह प्रश्न कि इस परिवर्तन से किसे लाभ होता है और यह खाद्य असुरक्षा को बनाए रखने वाली मौजूदा असमानताओं से कैसे निपटता है, काफ़ी हद तक इस डेटा के शासन पर निर्भर करता है।"
+      id: "Dengan hadirnya teknologi berbasis data seperti pemuliaan tanaman berbantuan AI, platform pertanian digital, dan penjualan pangan daring, data dalam jumlah sangat besar terus dihasilkan, sehingga memunculkan apa yang disebut sebagai 'datafikasi'. Proses ini mencakup beragam kegiatan, tujuan, organisme, komunitas, dan aplikasi di seluruh rantai pasok pangan. Namun, pertanyaan tentang siapa yang diuntungkan dari transformasi ini dan bagaimana transformasi ini menjawab ketimpangan yang ada—yang melanggengkan kerawanan pangan—sangat bergantung pada tata kelola data tersebut."
+      it: "Con l'avvento di tecnologie basate sui dati come il miglioramento genetico delle piante assistito dall'IA, le piattaforme agricole digitali e la vendita di cibo online, si generano quantità immense di dati, dando luogo a ciò che viene chiamato \"datificazione\". Questo processo abbraccia una gamma diversificata di attività, finalità, organismi, comunità e applicazioni lungo l'intera filiera alimentare. Tuttavia, la questione di chi tragga beneficio da questa trasformazione e di come essa affronti le disuguaglianze esistenti che portano al perpetuarsi dell'insicurezza alimentare dipende in larga misura dalla governance di questi dati."
+      pt: "Com o surgimento de tecnologias baseadas em dados, como o melhoramento de plantas assistido por IA, as plataformas agrícolas digitais e a venda de alimentos online, são geradas imensas quantidades de dados, dando origem ao que se conhece como 'dataficação'. Este processo abrange uma gama diversa de atividades, finalidades, organismos, comunidades e aplicações ao longo de toda a cadeia de abastecimento alimentar. No entanto, a questão de quem se beneficia desta transformação e de como ela responde às desigualdades existentes que levam à perpetuação da insegurança alimentar depende, em grande medida, da governança desses dados."
+      ru: 'С появлением технологий, основанных на данных, — таких как селекция растений с помощью ИИ, цифровые фермерские платформы и онлайн-торговля продовольствием, — генерируются огромные объёмы данных, что приводит к так называемой «датафикации». Этот процесс охватывает самые разные виды деятельности, цели, организмы, сообщества и приложения по всей цепочке поставок продовольствия. Однако вопрос о том, кто выигрывает от этой трансформации и как она решает существующее неравенство, ведущее к сохранению отсутствия продовольственной безопасности, во многом зависит от управления этими данными.'
+      sw: "Kwa kuja kwa teknolojia zinazoendeshwa na data kama vile ukuzaji wa aina bora za mimea unaowezeshwa na akili bandia (AI), majukwaa ya kidijitali ya mashamba, na uuzaji wa chakula mtandaoni, kiasi kikubwa mno cha data kinazalishwa, na hivyo kusababisha kile kinachoitwa 'udatishaji'. Mchakato huu unajumuisha wigo mpana wa shughuli, malengo, viumbe, jamii na matumizi katika mnyororo mzima wa usambazaji wa chakula. Hata hivyo, swali la ni nani anayefaidika na mabadiliko haya, na namna yanavyoshughulikia ukosefu wa usawa uliopo unaosababisha kuendelea kwa ukosefu wa usalama wa chakula, kwa kiasi kikubwa linategemea utawala wa data hizi."
+      zh_CN: 随着人工智能辅助的植物育种、数字农场平台和在线食品零售等数据驱动技术的出现，海量数据正在不断产生，由此形成了所谓的“数据化”。这一过程涵盖整个食物供应链中各种各样的活动、目的、生物、社区和应用。然而，谁能从这一转变中获益，以及它如何应对导致粮食不安全长期存在的既有不平等，在很大程度上取决于对这些数据的治理。
+  -
+    term:
+      en: 'Digital food chain'
+      ar: 'السلسلة الغذائية الرقمية'
+      es: 'Cadena alimentaria digital'
+      fil: 'Digital na kadena ng pagkain'
+      fr: 'Chaîne alimentaire numérique'
+      hi: 'डिजिटल खाद्य श्रृंखला'
+      id: 'Rantai pangan digital'
+      it: 'Filiera alimentare digitale'
+      pt: 'Cadeia alimentar digital'
+      ru: 'Цифровая продовольственная цепочка'
+      sw: 'Mnyororo wa chakula wa kidijitali'
+      zh_CN: 数字食物链
+    definition:
+      en: 'The application of digital technologies and datafication in agricultural and food systems, transforming traditional food production, distribution, and consumption processes into data-driven ones.'
+      ar: 'تطبيق التقنيات الرقمية والتحويل إلى بيانات في النظم الزراعية والغذائية، بما يحوّل العمليات التقليدية لإنتاج الغذاء وتوزيعه واستهلاكه إلى عمليات قائمة على البيانات.'
+      es: 'La aplicación de tecnologías digitales y de la datificación en los sistemas agrícolas y alimentarios, que transforma los procesos tradicionales de producción, distribución y consumo de alimentos en procesos basados en datos.'
+      fil: 'Ang paggamit ng mga digital na teknolohiya at datafication sa mga sistema ng agrikultura at pagkain, na nagbabago sa mga tradisyonal na proseso ng produksyon, pamamahagi, at pagkonsumo ng pagkain tungo sa mga prosesong nakabatay sa data.'
+      fr: "L'application des technologies numériques et de la datafication aux systèmes agricoles et alimentaires, transformant les processus traditionnels de production, de distribution et de consommation alimentaires en processus fondés sur les données."
+      hi: 'कृषि और खाद्य प्रणालियों में डिजिटल तकनीकों और डेटाफ़िकेशन का अनुप्रयोग, जो पारंपरिक खाद्य उत्पादन, वितरण और उपभोग की प्रक्रियाओं को डेटा-संचालित प्रक्रियाओं में बदल देता है।'
+      id: 'Penerapan teknologi digital dan datafikasi dalam sistem pertanian dan pangan, yang mengubah proses produksi, distribusi, dan konsumsi pangan tradisional menjadi proses yang digerakkan oleh data.'
+      it: "L'applicazione delle tecnologie digitali e della datificazione nei sistemi agricoli e alimentari, che trasforma i processi tradizionali di produzione, distribuzione e consumo del cibo in processi basati sui dati."
+      pt: 'A aplicação de tecnologias digitais e da dataficação nos sistemas agrícolas e alimentares, transformando os processos tradicionais de produção, distribuição e consumo de alimentos em processos orientados por dados.'
+      ru: 'Применение цифровых технологий и датафикации в сельскохозяйственных и продовольственных системах, превращающее традиционные процессы производства, распределения и потребления продовольствия в процессы, управляемые данными.'
+      sw: 'Matumizi ya teknolojia za kidijitali na udatishaji katika mifumo ya kilimo na chakula, yakibadilisha michakato ya kawaida ya uzalishaji, usambazaji na ulaji wa chakula kuwa michakato inayoendeshwa na data.'
+      zh_CN: 数字技术和数据化在农业和食物系统中的应用，将传统的食物生产、分配和消费过程转变为数据驱动的过程。
+  -
+    term:
+      en: 'Digital grocery'
+      ar: 'البقالة الرقمية'
+      es: 'Supermercado digital'
+      fil: 'Digital na groseri'
+      fr: 'Épicerie numérique'
+      hi: 'डिजिटल किराना'
+      id: 'Belanja bahan pangan digital'
+      it: 'Spesa digitale'
+      pt: 'Mercearia digital'
+      ru: 'Цифровая торговля продуктами'
+      sw: 'Duka la vyakula la kidijitali'
+      zh_CN: 数字杂货
+    definition:
+      en: 'Digital grocery refers to online platforms where customers can buy food and other grocery items and get them delivered to their doorstep.'
+      ar: 'تشير البقالة الرقمية إلى المنصات الإلكترونية التي يمكن للعملاء من خلالها شراء الأغذية وغيرها من مواد البقالة وتوصيلها إلى عتبة منازلهم.'
+      es: 'El supermercado digital se refiere a las plataformas en línea donde los clientes pueden comprar alimentos y otros productos de uso cotidiano y recibirlos en la puerta de su casa.'
+      fil: 'Ang digital na groseri ay tumutukoy sa mga online na platform kung saan makakabili ang mga mamimili ng pagkain at iba pang mga bilihin sa groseri at maipapadala ang mga ito hanggang sa kanilang pintuan.'
+      fr: "L'épicerie numérique désigne les plateformes en ligne où les clients peuvent acheter des aliments et d'autres produits d'épicerie et se les faire livrer à domicile."
+      hi: 'डिजिटल किराना से आशय ऐसे ऑनलाइन प्लेटफ़ॉर्मों से है जहाँ ग्राहक भोजन और अन्य किराना सामान खरीद सकते हैं और उन्हें अपने घर के दरवाज़े तक पहुँचवा सकते हैं।'
+      id: 'Belanja bahan pangan digital merujuk pada platform daring tempat pelanggan dapat membeli makanan dan kebutuhan pokok lainnya dan mendapatkannya diantar langsung ke depan pintu rumah mereka.'
+      it: 'Con spesa digitale si intendono le piattaforme online sulle quali i clienti possono acquistare cibo e altri prodotti della spesa e farseli recapitare direttamente a casa.'
+      pt: 'Mercearia digital refere-se a plataformas online onde os clientes podem comprar alimentos e outros produtos de mercearia e recebê-los à porta de casa.'
+      ru: 'Цифровая торговля продуктами — это онлайн-платформы, где покупатели могут приобретать продукты питания и другие товары повседневного спроса с доставкой на дом.'
+      sw: 'Duka la vyakula la kidijitali linarejelea majukwaa ya mtandaoni ambapo wateja wanaweza kununua chakula na bidhaa nyingine za matumizi ya nyumbani na kuletewa hadi mlangoni mwao.'
+      zh_CN: 数字杂货指顾客可以在线购买食品和其他日用杂货并送货到家的网络平台。
+  -
+    term:
+      en: 'Digital technologies'
+      ar: 'التقنيات الرقمية'
+      es: 'Tecnologías digitales'
+      fil: 'Mga digital na teknolohiya'
+      fr: 'Technologies numériques'
+      hi: 'डिजिटल तकनीकें'
+      id: 'Teknologi digital'
+      it: 'Tecnologie digitali'
+      pt: 'Tecnologias digitais'
+      ru: 'Цифровые технологии'
+      sw: 'Teknolojia za kidijitali'
+      zh_CN: 数字技术
+    definition:
+      en: 'Tools and methods that use digital information to solve problems, communicate, and create products.'
+      ar: 'أدوات وأساليب تستخدم المعلومات الرقمية لحل المشكلات والتواصل وإنشاء المنتجات.'
+      es: 'Herramientas y métodos que utilizan información digital para resolver problemas, comunicarse y crear productos.'
+      fil: 'Mga kasangkapan at pamamaraan na gumagamit ng digital na impormasyon upang lutasin ang mga problema, makipag-ugnayan, at lumikha ng mga produkto.'
+      fr: "Outils et méthodes qui utilisent l'information numérique pour résoudre des problèmes, communiquer et créer des produits."
+      hi: 'ऐसे उपकरण और विधियाँ जो समस्याओं को हल करने, संवाद करने और उत्पाद बनाने के लिए डिजिटल जानकारी का उपयोग करती हैं।'
+      id: 'Alat dan metode yang menggunakan informasi digital untuk memecahkan masalah, berkomunikasi, dan menciptakan produk.'
+      it: 'Strumenti e metodi che utilizzano informazioni digitali per risolvere problemi, comunicare e creare prodotti.'
+      pt: 'Ferramentas e métodos que usam informação digital para resolver problemas, comunicar e criar produtos.'
+      ru: 'Инструменты и методы, использующие цифровую информацию для решения задач, общения и создания продуктов.'
+      sw: 'Zana na mbinu zinazotumia taarifa za kidijitali kutatua matatizo, kuwasiliana na kuunda bidhaa.'
+      zh_CN: 利用数字信息来解决问题、进行交流和创造产品的工具和方法。
+  -
+    term:
+      en: 'Digitalization of food systems'
+      ar: 'رقمنة النظم الغذائية'
+      es: 'Digitalización de los sistemas alimentarios'
+      fil: 'Digitalisasyon ng mga sistema ng pagkain'
+      fr: 'Numérisation des systèmes alimentaires'
+      hi: 'खाद्य प्रणालियों का डिजिटलीकरण'
+      id: 'Digitalisasi sistem pangan'
+      it: 'Digitalizzazione dei sistemi alimentari'
+      pt: 'Digitalização dos sistemas alimentares'
+      ru: 'Цифровизация продовольственных систем'
+      sw: 'Udijitishaji wa mifumo ya chakula'
+      zh_CN: 食物系统的数字化
+    definition:
+      en: 'The digitalization of food systems involves the application of digital technologies and datafication in the agricultural sector, transforming traditional food production, distribution, and consumption processes into data-driven ones.'
+      ar: 'تتضمن رقمنة النظم الغذائية تطبيق التقنيات الرقمية والتحويل إلى بيانات في القطاع الزراعي، بما يحوّل العمليات التقليدية لإنتاج الغذاء وتوزيعه واستهلاكه إلى عمليات قائمة على البيانات.'
+      es: 'La digitalización de los sistemas alimentarios implica la aplicación de tecnologías digitales y de la datificación en el sector agrícola, transformando los procesos tradicionales de producción, distribución y consumo de alimentos en procesos basados en datos.'
+      fil: 'Ang digitalisasyon ng mga sistema ng pagkain ay sumasaklaw sa paggamit ng mga digital na teknolohiya at datafication sa sektor ng agrikultura, na nagbabago sa mga tradisyonal na proseso ng produksyon, pamamahagi, at pagkonsumo ng pagkain tungo sa mga prosesong nakabatay sa data.'
+      fr: 'La numérisation des systèmes alimentaires consiste à appliquer les technologies numériques et la datafication au secteur agricole, transformant les processus traditionnels de production, de distribution et de consommation alimentaires en processus fondés sur les données.'
+      hi: 'खाद्य प्रणालियों के डिजिटलीकरण में कृषि क्षेत्र में डिजिटल तकनीकों और डेटाफ़िकेशन का अनुप्रयोग शामिल है, जो पारंपरिक खाद्य उत्पादन, वितरण और उपभोग की प्रक्रियाओं को डेटा-संचालित प्रक्रियाओं में बदल देता है।'
+      id: 'Digitalisasi sistem pangan mencakup penerapan teknologi digital dan datafikasi di sektor pertanian, yang mengubah proses produksi, distribusi, dan konsumsi pangan tradisional menjadi proses yang digerakkan oleh data.'
+      it: "La digitalizzazione dei sistemi alimentari consiste nell'applicazione delle tecnologie digitali e della datificazione nel settore agricolo, trasformando i processi tradizionali di produzione, distribuzione e consumo del cibo in processi basati sui dati."
+      pt: 'A digitalização dos sistemas alimentares envolve a aplicação de tecnologias digitais e da dataficação no setor agrícola, transformando os processos tradicionais de produção, distribuição e consumo de alimentos em processos orientados por dados.'
+      ru: 'Цифровизация продовольственных систем подразумевает применение цифровых технологий и датафикации в сельскохозяйственном секторе, превращая традиционные процессы производства, распределения и потребления продовольствия в процессы, управляемые данными.'
+      sw: 'Udijitishaji wa mifumo ya chakula unahusisha matumizi ya teknolojia za kidijitali na udatishaji katika sekta ya kilimo, yakibadilisha michakato ya kawaida ya uzalishaji, usambazaji na ulaji wa chakula kuwa michakato inayoendeshwa na data.'
+      zh_CN: 食物系统的数字化涉及数字技术和数据化在农业领域的应用，将传统的食物生产、分配和消费过程转变为数据驱动的过程。
+  -
+    term:
+      en: 'FAIR and CARE principles'
+      ar: 'مبادئ FAIR و CARE'
+      es: 'Principios FAIR y CARE'
+      fil: 'Mga prinsipyong FAIR at CARE'
+      fr: 'Principes FAIR et CARE'
+      hi: 'FAIR और CARE सिद्धांत'
+      id: 'Prinsip FAIR dan CARE'
+      it: 'Principi FAIR e CARE'
+      pt: 'Princípios FAIR e CARE'
+      ru: 'Принципы FAIR и CARE'
+      sw: 'Kanuni za FAIR na CARE'
+      zh_CN: 'FAIR 与 CARE 原则'
+    definition:
+      en: 'The FAIR and CARE principles are guidelines for data management and stewardship, with FAIR standing for Findable, Accessible, Interoperable, and Reusable, while CARE stands for Collective benefit, Authority to control, Responsibility, and Ethics.'
+      ar: 'مبادئ FAIR و CARE هي إرشادات لإدارة البيانات والإشراف عليها؛ إذ يرمز FAIR إلى: قابلة للعثور عليها (Findable)، وقابلة للوصول (Accessible)، وقابلة للتشغيل المتبادل (Interoperable)، وقابلة لإعادة الاستخدام (Reusable)، بينما يرمز CARE إلى: المنفعة الجماعية (Collective benefit)، وسلطة التحكم (Authority to control)، والمسؤولية (Responsibility)، والأخلاقيات (Ethics).'
+      es: 'Los principios FAIR y CARE son directrices para la gestión y la custodia de los datos. FAIR significa, por sus siglas en inglés, localizables (Findable), accesibles (Accessible), interoperables (Interoperable) y reutilizables (Reusable), mientras que CARE significa beneficio colectivo (Collective benefit), autoridad para controlar (Authority to control), responsabilidad (Responsibility) y ética (Ethics).'
+      fil: 'Ang mga prinsipyong FAIR at CARE ay mga gabay para sa pamamahala at pangangalaga ng data, kung saan ang FAIR ay nangangahulugang Findable (Mahahanap), Accessible (Maa-access), Interoperable (Magkakatugma), at Reusable (Magagamit muli), habang ang CARE ay nangangahulugang Collective benefit (Kolektibong benepisyo), Authority to control (Awtoridad na kontrolin), Responsibility (Pananagutan), at Ethics (Etika).'
+      fr: "Les principes FAIR et CARE sont des lignes directrices pour la gestion et l'intendance des données. FAIR signifie Findable, Accessible, Interoperable, Reusable (trouvables, accessibles, interopérables et réutilisables), tandis que CARE signifie Collective benefit, Authority to control, Responsibility, Ethics (bénéfice collectif, autorité de contrôle, responsabilité et éthique)."
+      hi: 'FAIR और CARE सिद्धांत डेटा प्रबंधन और संरक्षण के लिए दिशानिर्देश हैं, जिनमें FAIR का अर्थ है Findable (खोजने योग्य), Accessible (सुलभ), Interoperable (अंतर-संचालनीय) और Reusable (पुनः उपयोग योग्य), जबकि CARE का अर्थ है Collective benefit (सामूहिक लाभ), Authority to control (नियंत्रण का अधिकार), Responsibility (ज़िम्मेदारी) और Ethics (नैतिकता)।'
+      id: 'Prinsip FAIR dan CARE adalah pedoman untuk pengelolaan dan penatagunaan data; FAIR merupakan singkatan dari Findable (dapat ditemukan), Accessible (dapat diakses), Interoperable (dapat saling beroperasi), dan Reusable (dapat digunakan kembali), sedangkan CARE merupakan singkatan dari Collective benefit (manfaat kolektif), Authority to control (kewenangan untuk mengendalikan), Responsibility (tanggung jawab), dan Ethics (etika).'
+      it: 'I principi FAIR e CARE sono linee guida per la gestione e la custodia responsabile dei dati: FAIR sta per Findable, Accessible, Interoperable e Reusable (reperibili, accessibili, interoperabili e riutilizzabili), mentre CARE sta per Collective benefit, Authority to control, Responsibility ed Ethics (beneficio collettivo, autorità di controllo, responsabilità ed etica).'
+      pt: 'Os princípios FAIR e CARE são orientações para a gestão e a custódia de dados: FAIR significa Findable, Accessible, Interoperable e Reusable (localizáveis, acessíveis, interoperáveis e reutilizáveis), enquanto CARE significa Collective benefit, Authority to control, Responsibility e Ethics (benefício coletivo, autoridade para controlar, responsabilidade e ética).'
+      ru: 'Принципы FAIR и CARE — это руководящие принципы управления данными и ответственного обращения с ними. FAIR расшифровывается как Findable, Accessible, Interoperable, Reusable (находимые, доступные, интероперабельные и пригодные для повторного использования), а CARE — как Collective benefit, Authority to control, Responsibility, Ethics (коллективная выгода, полномочия контролировать, ответственность и этика).'
+      sw: 'Kanuni za FAIR na CARE ni miongozo ya usimamizi na uangalizi wa data, ambapo FAIR inasimamia Findable, Accessible, Interoperable na Reusable (Zinazopatikana, Zinazofikika, Zinazoingiliana na Zinazoweza kutumika tena), na CARE inasimamia Collective benefit, Authority to control, Responsibility na Ethics (Manufaa ya pamoja, Mamlaka ya kudhibiti, Uwajibikaji na Maadili).'
+      zh_CN: 'FAIR 与 CARE 原则是数据管理和数据监管的指导方针。FAIR 代表可发现（Findable）、可访问（Accessible）、可互操作（Interoperable）和可重用（Reusable）；CARE 则代表集体利益（Collective benefit）、控制权（Authority to control）、责任（Responsibility）和伦理（Ethics）。'
+  -
+    term:
+      en: 'False climate solutions'
+      ar: 'الحلول المناخية الزائفة'
+      es: 'Falsas soluciones climáticas'
+      fil: 'Mga huwad na solusyon sa klima'
+      fr: 'Fausses solutions climatiques'
+      hi: 'झूठे जलवायु समाधान'
+      id: 'Solusi iklim palsu'
+      it: 'False soluzioni climatiche'
+      pt: 'Falsas soluções climáticas'
+      ru: 'Ложные климатические решения'
+      sw: 'Suluhisho bandia za tabianchi'
+      zh_CN: 虚假气候解决方案
+    definition:
+      en: 'Measures or technologies that claim to address climate change but do not reduce greenhouse gas emissions at the source or create other social and environmental harms.'
+      ar: 'تدابير أو تقنيات تزعم أنها تعالج تغيّر المناخ لكنها لا تقلّل انبعاثات غازات الدفيئة من مصدرها، أو تُسبّب أضرارًا اجتماعية وبيئية أخرى.'
+      es: 'Medidas o tecnologías que afirman hacer frente al cambio climático pero que no reducen las emisiones de gases de efecto invernadero en su origen o que generan otros daños sociales y ambientales.'
+      fil: 'Mga hakbang o teknolohiya na nagsasabing tumutugon sa pagbabago ng klima ngunit hindi nagpapababa ng mga emisyon ng greenhouse gas sa pinagmulan o lumilikha ng iba pang panlipunan at pangkapaligirang pinsala.'
+      fr: "Mesures ou technologies qui prétendent lutter contre le changement climatique mais qui ne réduisent pas les émissions de gaz à effet de serre à la source, ou qui engendrent d'autres préjudices sociaux et environnementaux."
+      hi: 'ऐसे उपाय या तकनीकें जो जलवायु परिवर्तन से निपटने का दावा करती हैं लेकिन स्रोत पर ग्रीनहाउस गैस उत्सर्जन कम नहीं करतीं या अन्य सामाजिक और पर्यावरणीय हानियाँ पैदा करती हैं।'
+      id: 'Tindakan atau teknologi yang mengklaim mengatasi perubahan iklim tetapi tidak mengurangi emisi gas rumah kaca dari sumbernya, atau justru menimbulkan kerugian sosial dan lingkungan lainnya.'
+      it: 'Misure o tecnologie che affermano di contrastare il cambiamento climatico ma che non riducono le emissioni di gas serra alla fonte o che creano altri danni sociali e ambientali.'
+      pt: 'Medidas ou tecnologias que afirmam combater as mudanças climáticas, mas que não reduzem as emissões de gases com efeito de estufa na fonte ou que criam outros danos sociais e ambientais.'
+      ru: 'Меры или технологии, которые заявляют о решении проблемы изменения климата, но не сокращают выбросы парниковых газов у источника или наносят иной социальный и экологический вред.'
+      sw: 'Hatua au teknolojia zinazodai kukabiliana na mabadiliko ya tabianchi lakini hazipunguzi utoaji wa gesi joto kwenye chanzo, au zinasababisha madhara mengine ya kijamii na kimazingira.'
+      zh_CN: 声称应对气候变化，但并未从源头减少温室气体排放，或者造成其他社会和环境危害的措施或技术。
+  -
+    term:
+      en: 'Free, Prior, Informed Consent (FPIC)'
+      ar: 'الموافقة الحرة والمسبقة والمستنيرة (FPIC)'
+      es: 'Consentimiento libre, previo e informado (FPIC)'
+      fil: 'Malaya, Nauuna at May-Kaalamang Pagsang-ayon (FPIC)'
+      fr: 'Consentement libre, préalable et éclairé (FPIC / CLIP)'
+      hi: 'स्वतंत्र, पूर्व और सूचित सहमति (FPIC)'
+      id: 'Persetujuan Atas Dasar Informasi Awal Tanpa Paksaan (FPIC)'
+      it: 'Consenso libero, previo e informato (FPIC)'
+      pt: 'Consentimento Livre, Prévio e Informado (CLPI/FPIC)'
+      ru: 'Свободное, предварительное и осознанное согласие (FPIC)'
+      sw: 'Ridhaa Huru, ya Awali na yenye Taarifa (FPIC)'
+      zh_CN: 自由、事先和知情同意（FPIC）
+    definition:
+      en: 'Free, Prior, Informed Consent (FPIC) is a principle that seeks to protect the rights of Indigenous Peoples and local communities in decision-making processes, particularly in relation to their lands, territories, and resources.'
+      ar: 'الموافقة الحرة والمسبقة والمستنيرة (FPIC) مبدأ يسعى إلى حماية حقوق الشعوب الأصلية والمجتمعات المحلية في عمليات اتخاذ القرار، لا سيما فيما يتعلق بأراضيها وأقاليمها ومواردها.'
+      es: 'El consentimiento libre, previo e informado (FPIC, por sus siglas en inglés) es un principio que busca proteger los derechos de los Pueblos Indígenas y las comunidades locales en los procesos de toma de decisiones, en particular en relación con sus tierras, territorios y recursos.'
+      fil: 'Ang Malaya, Nauuna at May-Kaalamang Pagsang-ayon (Free, Prior, Informed Consent, FPIC) ay isang prinsipyong naglalayong protektahan ang mga karapatan ng mga Katutubong Mamamayan at mga lokal na komunidad sa mga proseso ng pagpapasya, lalo na kaugnay ng kanilang mga lupain, teritoryo, at yaman.'
+      fr: 'Le consentement libre, préalable et éclairé (FPIC, ou CLIP en français) est un principe qui vise à protéger les droits des peuples autochtones et des communautés locales dans les processus décisionnels, en particulier en ce qui concerne leurs terres, leurs territoires et leurs ressources.'
+      hi: 'स्वतंत्र, पूर्व और सूचित सहमति (FPIC) एक ऐसा सिद्धांत है जो निर्णय-प्रक्रियाओं में, विशेष रूप से उनकी भूमि, क्षेत्रों और संसाधनों के संबंध में, मूलनिवासी लोगों और स्थानीय समुदायों के अधिकारों की रक्षा करना चाहता है।'
+      id: 'Persetujuan Atas Dasar Informasi Awal Tanpa Paksaan (FPIC) adalah prinsip yang bertujuan melindungi hak Masyarakat Adat dan komunitas lokal dalam proses pengambilan keputusan, khususnya yang berkaitan dengan tanah, wilayah, dan sumber daya mereka.'
+      it: 'Il consenso libero, previo e informato (FPIC) è un principio che mira a tutelare i diritti dei Popoli Indigeni e delle comunità locali nei processi decisionali, in particolare in relazione alle loro terre, ai loro territori e alle loro risorse.'
+      pt: 'O Consentimento Livre, Prévio e Informado (CLPI/FPIC) é um princípio que procura proteger os direitos dos Povos Indígenas e das comunidades locais nos processos de tomada de decisão, em particular em relação às suas terras, territórios e recursos.'
+      ru: 'Свободное, предварительное и осознанное согласие (FPIC) — это принцип, направленный на защиту прав коренных народов и местных сообществ в процессах принятия решений, особенно в отношении их земель, территорий и ресурсов.'
+      sw: 'Ridhaa Huru, ya Awali na yenye Taarifa (FPIC) ni kanuni inayolenga kulinda haki za Watu wa Asili na jamii za wenyeji katika michakato ya kufanya maamuzi, hasa kuhusiana na ardhi, maeneo na rasilimali zao.'
+      zh_CN: 自由、事先和知情同意（FPIC）是一项旨在保护原住民和当地社区在决策过程中的权利的原则，特别是涉及其土地、领地和资源的决策。
+  -
+    term:
+      en: Hyper-nudging
+      ar: 'التوجيه المفرط (Hyper-nudging)'
+      es: Hiper-nudging
+      fil: Hyper-nudging
+      fr: Hyper-nudging
+      hi: हाइपर-नजिंग
+      id: Hyper-nudging
+      it: Hyper-nudging
+      pt: Hyper-nudging
+      ru: Гипер-наджинг
+      sw: 'Usukumaji wa kupindukia (hyper-nudging)'
+      zh_CN: 超级助推
+    definition:
+      en: 'Hyper-nudging is a concept that involves the use of big data and machine learning to provide highly personalized nudges, influencing individual behavior in real-time.'
+      ar: 'التوجيه المفرط مفهوم يقوم على استخدام البيانات الضخمة والتعلّم الآلي لتقديم دفعات توجيهية شديدة التخصيص تؤثر في سلوك الأفراد في الوقت الفعلي.'
+      es: 'El hiper-nudging es un concepto que implica el uso de big data y aprendizaje automático para ofrecer "empujones" (nudges) altamente personalizados que influyen en el comportamiento individual en tiempo real.'
+      fil: 'Ang hyper-nudging ay isang konsepto na sumasaklaw sa paggamit ng big data at machine learning upang magbigay ng lubos na personalisadong mga "nudge" o pagtulak, na nakakaimpluwensya sa indibidwal na pag-uugali sa real-time.'
+      fr: "L'hyper-nudging est un concept qui repose sur l'utilisation des mégadonnées et de l'apprentissage automatique pour proposer des incitations (nudges) hautement personnalisées, influençant le comportement individuel en temps réel."
+      hi: 'हाइपर-नजिंग एक ऐसी अवधारणा है जिसमें बिग डेटा और मशीन लर्निंग का उपयोग करके अत्यधिक व्यक्तिगत रूप से अनुकूलित संकेत (नज) दिए जाते हैं, जो वास्तविक समय में व्यक्ति के व्यवहार को प्रभावित करते हैं।'
+      id: 'Hyper-nudging adalah konsep yang melibatkan penggunaan big data dan pembelajaran mesin untuk memberikan dorongan (nudge) yang sangat dipersonalisasi, sehingga memengaruhi perilaku individu secara waktu nyata.'
+      it: "L'hyper-nudging è un concetto che prevede l'uso di big data e apprendimento automatico per fornire spinte gentili (nudge) altamente personalizzate, influenzando il comportamento individuale in tempo reale."
+      pt: 'Hyper-nudging é um conceito que envolve o uso de big data e de aprendizagem automática (machine learning) para fornecer estímulos (nudges) altamente personalizados, influenciando o comportamento individual em tempo real.'
+      ru: 'Гипер-наджинг — это концепция, предполагающая использование больших данных и машинного обучения для высоко персонализированного «подталкивания», влияющего на поведение человека в режиме реального времени.'
+      sw: 'Usukumaji wa kupindukia ni dhana inayohusisha matumizi ya data kubwa na ujifunzaji wa mashine kutoa misukumo iliyobinafsishwa kwa kiwango cha juu, ikiathiri tabia ya mtu binafsi kwa wakati halisi.'
+      zh_CN: 超级助推是一个概念，指利用大数据和机器学习提供高度个性化的助推，从而实时影响个人行为。
+  -
+    term:
+      en: 'Internet of Things'
+      ar: 'إنترنت الأشياء'
+      es: 'Internet de las cosas'
+      fil: 'Internet of Things'
+      fr: 'Internet des objets'
+      hi: 'इंटरनेट ऑफ़ थिंग्स'
+      id: 'Internet of Things'
+      it: 'Internet delle cose'
+      pt: 'Internet das Coisas'
+      ru: 'Интернет вещей'
+      sw: 'Intaneti ya Vitu'
+      zh_CN: 物联网
+    definition:
+      en: 'The network of physical objects—"things"—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet.'
+      ar: 'شبكة الأشياء المادية — «الأشياء» — المزوّدة بأجهزة استشعار وبرمجيات وتقنيات أخرى بغرض الاتصال بأجهزة ونظم أخرى وتبادل البيانات معها عبر الإنترنت.'
+      es: 'La red de objetos físicos —"cosas"— que incorporan sensores, software y otras tecnologías con el fin de conectarse e intercambiar datos con otros dispositivos y sistemas a través de internet.'
+      fil: 'Ang network ng mga pisikal na bagay—mga "things" o "bagay"—na may nakakabit na mga sensor, software, at iba pang teknolohiya para sa layuning kumonekta at magpalitan ng data sa ibang mga device at sistema sa pamamagitan ng internet.'
+      fr: "Le réseau d'objets physiques — les « objets » — équipés de capteurs, de logiciels et d'autres technologies dans le but de se connecter et d'échanger des données avec d'autres appareils et systèmes via internet."
+      hi: 'भौतिक वस्तुओं—"चीज़ों"—का वह नेटवर्क जिनमें इंटरनेट के माध्यम से अन्य उपकरणों और प्रणालियों के साथ जुड़ने और डेटा का आदान-प्रदान करने के उद्देश्य से सेंसर, सॉफ़्टवेयर और अन्य तकनीकें अंतर्निहित होती हैं।'
+      id: 'Jaringan objek fisik—"benda-benda"—yang dilengkapi dengan sensor, perangkat lunak, dan teknologi lain dengan tujuan menghubungkan dan bertukar data dengan perangkat dan sistem lain melalui internet.'
+      it: 'La rete di oggetti fisici—le "cose"—dotati di sensori, software e altre tecnologie allo scopo di connettersi e scambiare dati con altri dispositivi e sistemi attraverso internet.'
+      pt: 'A rede de objetos físicos — as "coisas" — equipados com sensores, software e outras tecnologias com o objetivo de se conectarem e trocarem dados com outros dispositivos e sistemas através da internet.'
+      ru: 'Сеть физических объектов — «вещей», — оснащённых датчиками, программным обеспечением и другими технологиями для подключения к другим устройствам и системам через интернет и обмена данными с ними.'
+      sw: 'Mtandao wa vitu halisi—"vitu"—vilivyowekwa vitambuzi, programu na teknolojia nyingine kwa lengo la kuunganishwa na kubadilishana data na vifaa na mifumo mingine kupitia intaneti.'
+      zh_CN: 由实体物品——即“物”——组成的网络，这些物品内嵌传感器、软件和其他技术，目的是通过互联网与其他设备和系统连接并交换数据。

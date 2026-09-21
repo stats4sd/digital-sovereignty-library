@@ -11,12 +11,14 @@ return new class extends Migration
         Schema::create('curriculum_modules', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
+            $table->unsignedTinyInteger('number')->nullable();
             $table->string('section')->index();
             $table->json('title');
             $table->json('subtitle')->nullable();
             $table->json('description')->nullable();
             $table->json('note')->nullable();
             $table->json('learning_outcomes')->nullable();
+            $table->json('goal')->nullable();
             $table->timestamps();
         });
     }

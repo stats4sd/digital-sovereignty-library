@@ -1,0 +1,86 @@
+# Curriculum module 'digital-landscape'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: digital-landscape
+section: map
+number: 1
+title:
+  en: 'Understanding the Digital Landscape'
+  ar: 'فهم المشهد الرقمي'
+  es: 'Comprender el panorama digital'
+  fil: 'Pag-unawa sa Digital na Kalagayan'
+  fr: 'Comprendre le paysage numérique'
+  hi: 'डिजिटल परिदृश्य को समझना'
+  id: 'Memahami Lanskap Digital'
+  it: 'Comprendere il panorama digitale'
+  pt: 'Compreender o Panorama Digital'
+  ru: 'Понимание цифрового ландшафта'
+  sw: 'Kuelewa Mandhari ya Kidijitali'
+  zh_CN: 认识数字环境
+description:
+  en: '<p>Get a shared picture of the digital terrain your community is already standing on: connectivity, devices, literacy, and who controls what.</p>'
+  ar: '<p>كوّنوا صورة مشتركة عن الأرضية الرقمية التي يقف عليها مجتمعكم بالفعل: الاتصال بالإنترنت، والأجهزة، والمهارات الرقمية، ومن يتحكم بماذا.</p>'
+  es: '<p>Construye una imagen compartida del terreno digital en el que ya se encuentra tu comunidad: conectividad, dispositivos, alfabetización y quién controla qué.</p>'
+  fil: '<p>Bumuo ng iisang larawan ng digital na lupaing kinatatayuan na ng inyong komunidad: koneksyon, mga device, literasiya, at kung sino ang kumokontrol sa ano.</p>'
+  fr: '<p>Obtenez une vision commune du terrain numérique sur lequel votre communauté se trouve déjà : connectivité, appareils, littératie numérique, et qui contrôle quoi.</p>'
+  hi: '<p>उस डिजिटल ज़मीन की एक साझा तस्वीर बनाएँ जिस पर आपका समुदाय पहले से खड़ा है: कनेक्टिविटी, उपकरण, साक्षरता, और किसका किस पर नियंत्रण है।</p>'
+  id: '<p>Dapatkan gambaran bersama tentang medan digital yang sudah dipijak komunitas Anda: konektivitas, perangkat, literasi, dan siapa yang mengendalikan apa.</p>'
+  it: '<p>Costruite un quadro condiviso del terreno digitale su cui la vostra comunità già si trova: connettività, dispositivi, alfabetizzazione e chi controlla cosa.</p>'
+  pt: '<p>Construa uma visão comum do terreno digital em que a sua comunidade já se encontra: conectividade, dispositivos, literacia digital e quem controla o quê.</p>'
+  ru: '<p>Сформируйте общее представление о цифровой среде, в которой ваше сообщество уже находится: связь, устройства, цифровая грамотность и кто что контролирует.</p>'
+  sw: '<p>Pata picha ya pamoja ya eneo la kidijitali ambalo jamii yako tayari imesimama juu yake: muunganisho wa intaneti, vifaa, ujuzi wa kidijitali, na ni nani anayedhibiti kipi.</p>'
+  zh_CN: '<p>对您的社区当前所处的数字环境形成共同的认识：网络连接、设备、数字素养，以及谁在控制什么。</p>'
+goal:
+  en: 'To help learners build a shared, honest picture of the digital landscape their community already operates in before introducing any new technology.'
+  ar: 'مساعدة المتعلمين على بناء صورة مشتركة وصادقة عن المشهد الرقمي الذي يعمل فيه مجتمعهم بالفعل، قبل إدخال أي تقنية جديدة.'
+  es: 'Ayudar a los participantes a construir una imagen compartida y honesta del panorama digital en el que su comunidad ya opera, antes de introducir cualquier tecnología nueva.'
+  fil: 'Tulungan ang mga mag-aaral na bumuo ng iisang tapat na larawan ng tanawing digital na kinikilusan na ng kanilang komunidad, bago magpakilala ng anumang bagong teknolohiya.'
+  fr: "Aider les apprenants à se construire une image commune et honnête du paysage numérique dans lequel leur communauté évolue déjà, avant d'introduire toute nouvelle technologie."
+  hi: 'प्रतिभागियों को किसी भी नई तकनीक को लाने से पहले उस डिजिटल परिदृश्य की एक साझा और ईमानदार तस्वीर बनाने में मदद करना, जिसमें उनका समुदाय पहले से काम कर रहा है।'
+  id: 'Membantu peserta membangun gambaran bersama yang jujur tentang lanskap digital yang sudah menjadi ruang kerja komunitas mereka, sebelum memperkenalkan teknologi baru.'
+  it: 'Aiutare i partecipanti a costruire un quadro condiviso e onesto del panorama digitale in cui la loro comunità già opera, prima di introdurre qualsiasi nuova tecnologia.'
+  pt: 'Ajudar os participantes a construir uma imagem partilhada e honesta do panorama digital em que a sua comunidade já opera, antes de introduzir qualquer nova tecnologia.'
+  ru: 'Помочь участникам сформировать общее и честное представление о цифровой среде, в которой их сообщество уже работает, прежде чем внедрять любую новую технологию.'
+  sw: 'Kuwasaidia wanafunzi kujenga picha ya pamoja na ya kweli ya mazingira ya kidijitali ambamo jumuiya yao tayari inafanya kazi, kabla ya kuanzisha teknolojia yoyote mpya.'
+  zh_CN: 帮助学习者在引入任何新技术之前，对所在社区已经身处的数字环境形成一幅共同而真实的图景。
+learning_outcomes:
+  -
+    statement:
+      en: 'Describe the connectivity, devices, and digital skills your community is working with'
+      ar: 'وصف إمكانات الاتصال والأجهزة والمهارات الرقمية التي يعمل بها مجتمعكم'
+      es: 'Describir la conectividad, los dispositivos y las habilidades digitales con las que cuenta tu comunidad'
+      fil: 'Ilarawan ang koneksyon, mga device, at mga digital na kasanayan na ginagamit ng inyong komunidad'
+      fr: 'Décrire la connectivité, les appareils et les compétences numériques dont dispose votre communauté'
+      hi: 'उस कनेक्टिविटी, उपकरणों और डिजिटल कौशल का वर्णन करें जिनके साथ आपका समुदाय काम कर रहा है'
+      id: 'Menggambarkan konektivitas, perangkat, dan keterampilan digital yang dimiliki komunitas Anda'
+      it: 'Descrivere la connettività, i dispositivi e le competenze digitali di cui dispone la vostra comunità'
+      pt: 'Descrever a conectividade, os dispositivos e as competências digitais com que a sua comunidade trabalha'
+      ru: 'Описать связь, устройства и цифровые навыки, которыми располагает ваше сообщество'
+      sw: 'Eleza muunganisho wa intaneti, vifaa na ujuzi wa kidijitali ambavyo jamii yako inafanya kazi navyo'
+      zh_CN: 描述您的社区目前所使用的网络连接、设备和数字技能
+  -
+    statement:
+      en: 'Identify who controls the digital systems your community currently relies on'
+      ar: 'تحديد من يتحكم في النظم الرقمية التي يعتمد عليها مجتمعكم حاليًا'
+      es: 'Identificar quién controla los sistemas digitales de los que depende actualmente tu comunidad'
+      fil: 'Tukuyin kung sino ang kumokontrol sa mga digital na sistemang inaasahan ng inyong komunidad sa kasalukuyan'
+      fr: 'Identifier qui contrôle les systèmes numériques dont votre communauté dépend actuellement'
+      hi: 'पहचानें कि आपका समुदाय वर्तमान में जिन डिजिटल प्रणालियों पर निर्भर है, उन पर किसका नियंत्रण है'
+      id: 'Mengidentifikasi siapa yang mengendalikan sistem digital yang saat ini diandalkan komunitas Anda'
+      it: 'Individuare chi controlla i sistemi digitali su cui la vostra comunità fa attualmente affidamento'
+      pt: 'Identificar quem controla os sistemas digitais de que a sua comunidade depende atualmente'
+      ru: 'Определить, кто контролирует цифровые системы, на которые ваше сообщество сейчас опирается'
+      sw: 'Bainisha ni nani anayedhibiti mifumo ya kidijitali ambayo jamii yako inaitegemea kwa sasa'
+      zh_CN: 识别谁在控制您的社区目前所依赖的数字系统
+  -
+    statement:
+      en: 'Recognize where hybrid (paper and digital) systems make sense'
+      ar: 'إدراك المواضع التي تكون فيها النظم الهجينة (الورقية والرقمية) خيارًا منطقيًا'
+      es: 'Reconocer dónde tienen sentido los sistemas híbridos (papel y digital)'
+      fil: 'Kilalanin kung saan makatuwiran ang mga hybrid (papel at digital) na sistema'
+      fr: 'Reconnaître les situations où des systèmes hybrides (papier et numérique) ont du sens'
+      hi: 'समझें कि मिश्रित (कागज़ और डिजिटल) प्रणालियाँ कहाँ उचित हैं'
+      id: 'Mengenali di mana sistem hibrida (kertas dan digital) masuk akal'
+      it: 'Riconoscere dove hanno senso i sistemi ibridi (carta e digitale)'
+      pt: 'Reconhecer onde os sistemas híbridos (papel e digital) fazem sentido'
+      ru: 'Распознать, где имеют смысл гибридные (бумажные и цифровые) системы'
+      sw: 'Tambua mahali ambapo mifumo mseto (ya karatasi na ya kidijitali) inafaa'
+      zh_CN: 认识到在哪些情况下混合（纸质与数字）系统是合理的选择

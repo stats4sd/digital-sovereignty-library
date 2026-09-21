@@ -1,6 +1,6 @@
 # Collapse alter/data migrations into their `create` migrations
 
-**Status:** Not Started
+**Status:** Completed. See [collapse-migrations-for-fresh-deploy.md](../change-logs/collapse-migrations-for-fresh-deploy.md). Step 4 (seeder cleanup) was skipped, the seeders are being reworked separately; step 5 took option (a). Two additions not in the plan: the stale `database/schema/mysql-schema.sql` dump was deleted, and `tests/Pest.php` now seeds `RoleSeeder` per test because the deleted `assign_admin_role` migration had been creating the roles for the suite.
 
 **Branch:** `content-updates` (or a short-lived branch off it)
 **Context:** There is no live database. Staging and production will both be brought up with `php artisan migrate:fresh --seed`, and [2026-09-21-curriculum-session-items.md](2026-09-21-curriculum-session-items.md) §1.3 already deleted two pivot migrations on that basis. This plan applies the same reasoning to the rest of the history.

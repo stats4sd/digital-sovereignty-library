@@ -12,8 +12,6 @@ return new class extends Migration
             $table->id();
             $table->json('term');
             $table->json('definition');
-            $table->string('source')->nullable();
-            $table->string('source_url')->nullable();
             $table->timestamps();
         });
     }

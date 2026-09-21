@@ -1,0 +1,269 @@
+# Curriculum module 'community-needs'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: community-needs
+section: map
+number: 3
+title:
+  en: 'Understanding Community Needs'
+  ar: 'فهم احتياجات المجتمع'
+  es: 'Comprender las necesidades de la comunidad'
+  fil: 'Pag-unawa sa mga Pangangailangan ng Komunidad'
+  fr: 'Comprendre les besoins de la communauté'
+  hi: 'सामुदायिक ज़रूरतों को समझना'
+  id: 'Memahami Kebutuhan Komunitas'
+  it: 'Comprendere i bisogni della comunità'
+  pt: 'Compreender as Necessidades da Comunidade'
+  ru: 'Понимание потребностей сообщества'
+  sw: 'Kuelewa Mahitaji ya Jamii'
+  zh_CN: 认识社区需求
+description:
+  en: '<p>This module provides a practical framework for applying the concepts introduced in Modules 1 and 2 to your own context. It focuses on community and organisational settings, while recognising that many of the approaches can also be applied at individual, multi-organisational, and broader system levels. Through practical exercises and real-world examples, you will learn how to understand your operational context, identify genuine needs and constraints, and make informed decisions about data and digital tools before choosing a technology.</p>'
+  ar: '<p>توفر هذه الوحدة إطاراً عملياً لتطبيق المفاهيم المقدمة في الوحدتين 1 و2 على سياقكم الخاص. وهي تركز على السياقات المجتمعية والتنظيمية، مع الإقرار بأن كثيراً من هذه المقاربات يمكن تطبيقها أيضاً على مستوى الأفراد والمنظمات المتعددة والأنظمة الأوسع. ومن خلال تمارين عملية وأمثلة واقعية، ستتعلمون كيف تفهمون سياقكم التشغيلي، وتحددون الاحتياجات والقيود الحقيقية، وتتخذون قرارات مدروسة بشأن البيانات والأدوات الرقمية قبل اختيار أي تقنية.</p>'
+  es: '<p>Este módulo ofrece un marco práctico para aplicar los conceptos presentados en los módulos 1 y 2 a su propio contexto. Se centra en entornos comunitarios y organizacionales, reconociendo que muchos de los enfoques también pueden aplicarse a nivel individual, interorganizacional y de sistemas más amplios. Mediante ejercicios prácticos y ejemplos reales, aprenderá a comprender su contexto operativo, identificar necesidades y limitaciones reales, y tomar decisiones informadas sobre datos y herramientas digitales antes de elegir una tecnología.</p>'
+  fil: '<p>Nagbibigay ang modyul na ito ng praktikal na balangkas para ilapat sa sarili mong konteksto ang mga konseptong ipinakilala sa Modyul 1 at 2. Nakatuon ito sa mga komunidad at organisasyon, ngunit kinikilala na maraming pamamaraan dito ang maaari ding gamitin sa antas ng indibidwal, ng maraming organisasyon, at ng mas malawak na sistema. Sa pamamagitan ng mga praktikal na gawain at totoong halimbawa, matututuhan mong unawain ang iyong operasyonal na konteksto, tukuyin ang tunay na pangangailangan at limitasyon, at gumawa ng matalinong desisyon tungkol sa datos at mga digital na kasangkapan bago pumili ng teknolohiya.</p>'
+  fr: "<p>Ce module propose un cadre pratique pour appliquer les concepts introduits dans les modules 1 et 2 à votre propre contexte. Il se concentre sur les contextes communautaires et organisationnels, tout en reconnaissant que de nombreuses approches s'appliquent aussi aux niveaux individuel, inter-organisationnel et systémique. À travers des exercices pratiques et des exemples concrets, vous apprendrez à comprendre votre contexte opérationnel, à identifier les besoins et contraintes réels, et à prendre des décisions éclairées sur les données et les outils numériques avant de choisir une technologie.</p>"
+  hi: '<p>यह मॉड्यूल मॉड्यूल 1 और 2 में प्रस्तुत अवधारणाओं को आपके अपने संदर्भ में लागू करने के लिए एक व्यावहारिक ढांचा प्रदान करता है। यह सामुदायिक और संगठनात्मक परिवेशों पर केंद्रित है, यह मानते हुए कि इनमें से कई तरीके व्यक्तिगत, बहु-संगठनात्मक और व्यापक प्रणाली स्तर पर भी लागू किए जा सकते हैं। व्यावहारिक अभ्यासों और वास्तविक उदाहरणों के माध्यम से आप अपने परिचालन संदर्भ को समझना, वास्तविक ज़रूरतों और सीमाओं की पहचान करना, और तकनीक चुनने से पहले डेटा और डिजिटल उपकरणों के बारे में सूचित निर्णय लेना सीखेंगे।</p>'
+  id: '<p>Modul ini menyediakan kerangka praktis untuk menerapkan konsep yang diperkenalkan di Modul 1 dan 2 pada konteks Anda sendiri. Fokusnya pada lingkungan komunitas dan organisasi, dengan menyadari bahwa banyak pendekatan ini juga dapat diterapkan di tingkat individu, antarorganisasi, dan sistem yang lebih luas. Melalui latihan praktis dan contoh nyata, Anda akan belajar memahami konteks operasional Anda, mengenali kebutuhan dan keterbatasan yang sesungguhnya, serta mengambil keputusan yang tepat tentang data dan alat digital sebelum memilih teknologi.</p>'
+  it: '<p>Questo modulo offre un quadro pratico per applicare i concetti introdotti nei moduli 1 e 2 al proprio contesto. Si concentra sui contesti comunitari e organizzativi, riconoscendo che molti approcci possono essere applicati anche a livello individuale, interorganizzativo e di sistema più ampio. Attraverso esercizi pratici ed esempi reali, imparerai a comprendere il tuo contesto operativo, a individuare bisogni e vincoli reali e a prendere decisioni informate su dati e strumenti digitali prima di scegliere una tecnologia.</p>'
+  pt: '<p>Este módulo oferece um quadro prático para aplicar os conceitos introduzidos nos módulos 1 e 2 ao seu próprio contexto. Centra-se em contextos comunitários e organizacionais, reconhecendo que muitas das abordagens também se aplicam a nível individual, interorganizacional e de sistemas mais amplos. Através de exercícios práticos e exemplos reais, aprenderá a compreender o seu contexto operacional, identificar necessidades e restrições reais, e tomar decisões informadas sobre dados e ferramentas digitais antes de escolher uma tecnologia.</p>'
+  ru: '<p>Этот модуль предлагает практическую основу для применения концепций из модулей 1 и 2 к вашему собственному контексту. Он сосредоточен на сообществах и организациях, при этом многие подходы применимы и на индивидуальном, межорганизационном и более широком системном уровне. Через практические упражнения и реальные примеры вы научитесь понимать свой операционный контекст, выявлять подлинные потребности и ограничения и принимать обоснованные решения о данных и цифровых инструментах до выбора технологии.</p>'
+  sw: '<p>Moduli hii inatoa mfumo wa kivitendo wa kutumia dhana zilizoanzishwa katika Moduli 1 na 2 katika mazingira yako mwenyewe. Inalenga jumuiya na mashirika, huku ikitambua kwamba mbinu nyingi zinaweza pia kutumika kwa mtu binafsi, mashirika mengi na mifumo mipana zaidi. Kupitia mazoezi ya kivitendo na mifano halisi, utajifunza kuelewa mazingira yako ya kazi, kutambua mahitaji na vikwazo halisi, na kufanya maamuzi sahihi kuhusu data na zana za kidijitali kabla ya kuchagua teknolojia.</p>'
+  zh_CN: '<p>本模块提供一个实用框架，帮助你把模块 1 和模块 2 介绍的概念应用到自身情境中。它聚焦于社区和组织层面，同时也认识到许多方法同样适用于个人、多组织协作以及更广泛的系统层面。通过实践练习和真实案例，你将学会理解自己的运作环境，识别真正的需求和限制，并在选择技术之前就数据和数字工具做出明智决策。</p>'
+goal:
+  en: 'To help learners better understand their community or organisational needs for data and digital tools before making technology decisions.'
+  ar: 'مساعدة المتعلمين على فهم أفضل لاحتياجات مجتمعهم أو منظمتهم من البيانات والأدوات الرقمية قبل اتخاذ قرارات تقنية.'
+  es: 'Ayudar a los participantes a comprender mejor las necesidades de datos y herramientas digitales de su comunidad u organización antes de tomar decisiones tecnológicas.'
+  fil: 'Tulungan ang mga mag-aaral na mas maunawaan ang pangangailangan ng kanilang komunidad o organisasyon sa datos at mga digital na kasangkapan bago gumawa ng mga desisyon sa teknolohiya.'
+  fr: "Aider les apprenants à mieux comprendre les besoins de leur communauté ou de leur organisation en matière de données et d'outils numériques avant de prendre des décisions technologiques."
+  hi: 'प्रतिभागियों को तकनीकी निर्णय लेने से पहले डेटा और डिजिटल उपकरणों से जुड़ी अपने समुदाय या संगठन की ज़रूरतों को बेहतर समझने में मदद करना।'
+  id: 'Membantu peserta memahami lebih baik kebutuhan komunitas atau organisasi mereka akan data dan alat digital sebelum mengambil keputusan teknologi.'
+  it: 'Aiutare i partecipanti a comprendere meglio i bisogni di dati e strumenti digitali della propria comunità o organizzazione prima di prendere decisioni tecnologiche.'
+  pt: 'Ajudar os participantes a compreender melhor as necessidades de dados e ferramentas digitais da sua comunidade ou organização antes de tomar decisões tecnológicas.'
+  ru: 'Помочь участникам лучше понять потребности своего сообщества или организации в данных и цифровых инструментах до принятия технологических решений.'
+  sw: 'Kuwasaidia wanafunzi kuelewa vizuri zaidi mahitaji ya jumuiya au shirika lao ya data na zana za kidijitali kabla ya kufanya maamuzi ya kiteknolojia.'
+  zh_CN: 帮助学习者在做出技术决策之前，更好地理解所在社区或组织对数据和数字工具的需求。
+learning_outcomes:
+  -
+    statement:
+      en: 'Conduct a system-level diagnostic of your organisational and operational context.'
+      ar: 'إجراء تشخيص على مستوى النظام لسياقكم التنظيمي والتشغيلي.'
+      es: 'Realizar un diagnóstico a nivel de sistema de su contexto organizacional y operativo.'
+      fil: 'Magsagawa ng diagnostic sa antas ng sistema ng iyong konteksto sa organisasyon at operasyon.'
+      fr: 'Réaliser un diagnostic systémique de votre contexte organisationnel et opérationnel.'
+      hi: 'अपने संगठनात्मक और परिचालन संदर्भ का प्रणाली-स्तर पर निदान करना।'
+      id: 'Melakukan diagnosis tingkat sistem terhadap konteks organisasi dan operasional Anda.'
+      it: 'Condurre una diagnosi a livello di sistema del proprio contesto organizzativo e operativo.'
+      pt: 'Realizar um diagnóstico ao nível do sistema do seu contexto organizacional e operacional.'
+      ru: 'Провести системную диагностику организационного и операционного контекста.'
+      sw: 'Kufanya uchunguzi wa kiwango cha mfumo wa mazingira ya shirika lako na ya kazi.'
+      zh_CN: 对你所在组织及其运作环境进行系统层面的诊断。
+    in_practice:
+      en: 'you will complete a Context Diagnostic Canvas and write a short diagnostic statement about your own organisation.'
+      ar: 'ستُكملون لوحة تشخيص السياق وتكتبون بياناً تشخيصياً قصيراً عن منظمتكم.'
+      es: 'completará un Lienzo de diagnóstico del contexto y redactará una breve declaración de diagnóstico sobre su propia organización.'
+      fil: 'kukumpletuhin mo ang isang Context Diagnostic Canvas at susulat ng maikling pahayag ng diagnostic tungkol sa sarili mong organisasyon.'
+      fr: 'vous compléterez un Canevas de diagnostic du contexte et rédigerez un court énoncé de diagnostic sur votre propre organisation.'
+      hi: 'आप एक संदर्भ निदान कैनवास पूरा करेंगे और अपने संगठन के बारे में एक संक्षिप्त निदान वक्तव्य लिखेंगे।'
+      id: 'Anda akan mengisi Kanvas Diagnosis Konteks dan menulis pernyataan diagnosis singkat tentang organisasi Anda sendiri.'
+      it: 'completerai un Canvas di diagnosi del contesto e scriverai una breve dichiarazione diagnostica sulla tua organizzazione.'
+      pt: 'irá preencher um Canvas de diagnóstico do contexto e escrever uma breve declaração de diagnóstico sobre a sua própria organização.'
+      ru: 'вы заполните Канву диагностики контекста и напишете краткое диагностическое заключение о своей организации.'
+      sw: 'utajaza Turubai ya Uchunguzi wa Mazingira na kuandika taarifa fupi ya uchunguzi kuhusu shirika lako mwenyewe.'
+      zh_CN: 你将完成一份“情境诊断画布”，并为自己的组织写出一段简短的诊断陈述。
+  -
+    statement:
+      en: 'Define your needs based on real operational constraints, rather than assumed solutions.'
+      ar: 'تحديد احتياجاتكم بناءً على القيود التشغيلية الحقيقية، لا على حلول مفترضة.'
+      es: 'Definir sus necesidades a partir de limitaciones operativas reales, y no de soluciones supuestas.'
+      fil: 'Tukuyin ang iyong mga pangangailangan batay sa tunay na limitasyon sa operasyon, hindi sa mga ipinapalagay na solusyon.'
+      fr: 'Définir vos besoins à partir de contraintes opérationnelles réelles, plutôt que de solutions présupposées.'
+      hi: 'मान ली गई समाधानों के बजाय वास्तविक परिचालन सीमाओं के आधार पर अपनी ज़रूरतें परिभाषित करना।'
+      id: 'Menentukan kebutuhan Anda berdasarkan keterbatasan operasional yang nyata, bukan solusi yang diasumsikan.'
+      it: 'Definire i propri bisogni a partire da vincoli operativi reali, anziché da soluzioni presunte.'
+      pt: 'Definir as suas necessidades com base em restrições operacionais reais, e não em soluções presumidas.'
+      ru: 'Определить свои потребности исходя из реальных операционных ограничений, а не из предполагаемых решений.'
+      sw: 'Kufafanua mahitaji yako kwa kuzingatia vikwazo halisi vya kazi, badala ya suluhisho zilizodhaniwa.'
+      zh_CN: 基于真实的运作限制而非预设的解决方案来定义需求。
+    in_practice:
+      en: 'you will apply the Problem → Constraint → Need method and build a first Needs Matrix.'
+      ar: 'ستطبّقون منهجية المشكلة → القيد → الاحتياج وتبنون أول مصفوفة احتياجات.'
+      es: 'aplicará el método Problema → Limitación → Necesidad y construirá una primera Matriz de necesidades.'
+      fil: 'gagamitin mo ang pamamaraang Problema → Limitasyon → Pangangailangan at bubuo ng unang Needs Matrix.'
+      fr: 'vous appliquerez la méthode Problème → Contrainte → Besoin et construirez une première Matrice des besoins.'
+      hi: 'आप समस्या → सीमा → ज़रूरत पद्धति लागू करेंगे और पहला ज़रूरत मैट्रिक्स बनाएंगे।'
+      id: 'Anda akan menerapkan metode Masalah → Keterbatasan → Kebutuhan dan menyusun Matriks Kebutuhan pertama.'
+      it: 'applicherai il metodo Problema → Vincolo → Bisogno e costruirai una prima Matrice dei bisogni.'
+      pt: 'irá aplicar o método Problema → Restrição → Necessidade e construir uma primeira Matriz de necessidades.'
+      ru: 'вы примените метод «Проблема → Ограничение → Потребность» и составите первую Матрицу потребностей.'
+      sw: 'utatumia mbinu ya Tatizo → Kikwazo → Hitaji na kuunda Jedwali la Mahitaji la awali.'
+      zh_CN: '你将运用“问题 → 限制 → 需求”方法，并建立第一份需求矩阵。'
+  -
+    statement:
+      en: 'Understand the need to evaluate and select tools based on sovereignty criteria, including control, accessibility, and sustainability.'
+      ar: 'فهم الحاجة إلى تقييم الأدوات واختيارها وفق معايير السيادة، بما فيها التحكم وسهولة الوصول والاستدامة.'
+      es: 'Comprender la necesidad de evaluar y seleccionar herramientas según criterios de soberanía, incluidos control, accesibilidad y sostenibilidad.'
+      fil: 'Unawain ang pangangailangang suriin at pumili ng mga kasangkapan batay sa mga pamantayan ng soberanya, kabilang ang kontrol, accessibility, at pagpapanatili.'
+      fr: "Comprendre la nécessité d'évaluer et de choisir les outils selon des critères de souveraineté, notamment le contrôle, l'accessibilité et la durabilité."
+      hi: 'नियंत्रण, पहुंच और स्थायित्व सहित संप्रभुता मानदंडों के आधार पर उपकरणों का मूल्यांकन और चयन करने की ज़रूरत को समझना।'
+      id: 'Memahami perlunya mengevaluasi dan memilih alat berdasarkan kriteria kedaulatan, termasuk kontrol, aksesibilitas, dan keberlanjutan.'
+      it: 'Comprendere la necessità di valutare e selezionare gli strumenti in base a criteri di sovranità, tra cui controllo, accessibilità e sostenibilità.'
+      pt: 'Compreender a necessidade de avaliar e selecionar ferramentas com base em critérios de soberania, incluindo controlo, acessibilidade e sustentabilidade.'
+      ru: 'Понять необходимость оценивать и выбирать инструменты по критериям суверенитета, включая контроль, доступность и устойчивость.'
+      sw: 'Kuelewa umuhimu wa kutathmini na kuchagua zana kwa kuzingatia vigezo vya uhuru, ikiwa ni pamoja na udhibiti, upatikanaji na uendelevu.'
+      zh_CN: 理解为何需要依据主权标准（包括控制权、可及性和可持续性）来评估和选择工具。
+    in_practice:
+      en: 'you will be able to name these criteria and explain why they matter — full tool-by-tool evaluation is covered in Module 4.'
+      ar: 'ستتمكنون من تسمية هذه المعايير وتوضيح سبب أهميتها؛ أما التقييم الكامل لكل أداة فيُتناول في الوحدة 4.'
+      es: 'podrá nombrar estos criterios y explicar por qué importan; la evaluación detallada herramienta por herramienta se aborda en el módulo 4.'
+      fil: 'mapapangalanan mo ang mga pamantayang ito at maipapaliwanag kung bakit mahalaga ang mga ito; ang buong pagsusuri sa bawat kasangkapan ay tatalakayin sa Modyul 4.'
+      fr: "vous saurez nommer ces critères et expliquer pourquoi ils comptent — l'évaluation détaillée outil par outil est traitée dans le module 4."
+      hi: 'आप इन मानदंडों के नाम बता पाएंगे और समझा पाएंगे कि ये क्यों महत्वपूर्ण हैं; हर उपकरण का विस्तृत मूल्यांकन मॉड्यूल 4 में किया जाएगा।'
+      id: 'Anda akan mampu menyebutkan kriteria ini dan menjelaskan mengapa penting; evaluasi lengkap per alat dibahas di Modul 4.'
+      it: 'saprai nominare questi criteri e spiegare perché sono importanti; la valutazione dettagliata strumento per strumento è trattata nel modulo 4.'
+      pt: 'será capaz de nomear estes critérios e explicar porque importam; a avaliação detalhada ferramenta a ferramenta é tratada no módulo 4.'
+      ru: 'вы сможете назвать эти критерии и объяснить, почему они важны; подробная оценка каждого инструмента рассматривается в модуле 4.'
+      sw: 'utaweza kutaja vigezo hivi na kueleza kwa nini ni muhimu; tathmini kamili ya zana moja moja inashughulikiwa katika Moduli 4.'
+      zh_CN: '你将能够说出这些标准并解释其重要性；逐个工具的完整评估将在模块 4 中展开。'
+  -
+    statement:
+      en: 'Explain what is required to approach data governance from a needs-based perspective, including ownership, access, and protection.'
+      ar: 'توضيح ما يلزم لمقاربة حوكمة البيانات من منظور قائم على الاحتياجات، بما في ذلك الملكية والوصول والحماية.'
+      es: 'Explicar qué se requiere para abordar la gobernanza de datos desde una perspectiva basada en necesidades, incluidos propiedad, acceso y protección.'
+      fil: 'Ipaliwanag kung ano ang kailangan para lapitan ang pamamahala ng datos mula sa pananaw na nakabatay sa pangangailangan, kabilang ang pagmamay-ari, access, at proteksyon.'
+      fr: "Expliquer ce qu'implique une approche de la gouvernance des données fondée sur les besoins, y compris la propriété, l'accès et la protection."
+      hi: 'स्वामित्व, पहुंच और सुरक्षा सहित ज़रूरत-आधारित दृष्टिकोण से डेटा शासन के लिए क्या आवश्यक है, यह समझाना।'
+      id: 'Menjelaskan apa yang diperlukan untuk mendekati tata kelola data dari perspektif berbasis kebutuhan, termasuk kepemilikan, akses, dan perlindungan.'
+      it: 'Spiegare cosa serve per affrontare la governance dei dati da una prospettiva basata sui bisogni, inclusi proprietà, accesso e protezione.'
+      pt: 'Explicar o que é necessário para abordar a governação de dados a partir de uma perspetiva baseada em necessidades, incluindo propriedade, acesso e proteção.'
+      ru: 'Объяснить, что требуется для подхода к управлению данными с точки зрения потребностей, включая владение, доступ и защиту.'
+      sw: 'Kueleza kinachohitajika kushughulikia utawala wa data kwa mtazamo unaozingatia mahitaji, ikiwa ni pamoja na umiliki, upatikanaji na ulinzi.'
+      zh_CN: 说明从需求出发开展数据治理需要什么，包括所有权、访问和保护。
+    in_practice:
+      en: 'you will be able to explain the four components of a data governance framework and sketch one for your own organisation.'
+      ar: 'ستتمكنون من شرح المكونات الأربعة لإطار حوكمة البيانات ورسم مخطط أولي له لمنظمتكم.'
+      es: 'podrá explicar los cuatro componentes de un marco de gobernanza de datos y esbozar uno para su propia organización.'
+      fil: 'maipapaliwanag mo ang apat na bahagi ng isang balangkas ng pamamahala ng datos at makakagawa ng burador nito para sa sarili mong organisasyon.'
+      fr: "vous saurez expliquer les quatre composantes d'un cadre de gouvernance des données et en esquisser un pour votre propre organisation."
+      hi: 'आप डेटा शासन ढांचे के चार घटकों को समझा पाएंगे और अपने संगठन के लिए उसका खाका बना पाएंगे।'
+      id: 'Anda akan mampu menjelaskan empat komponen kerangka tata kelola data dan membuat sketsanya untuk organisasi Anda sendiri.'
+      it: 'saprai spiegare le quattro componenti di un quadro di governance dei dati e abbozzarne uno per la tua organizzazione.'
+      pt: 'será capaz de explicar as quatro componentes de um quadro de governação de dados e esboçar um para a sua própria organização.'
+      ru: 'вы сможете объяснить четыре компонента системы управления данными и набросать такую систему для своей организации.'
+      sw: 'utaweza kueleza vipengele vinne vya mfumo wa utawala wa data na kuchora rasimu yake kwa shirika lako mwenyewe.'
+      zh_CN: 你将能够解释数据治理框架的四个组成部分，并为自己的组织勾画一份框架草案。
+sessions:
+  -
+    slug: understanding-your-operational-context
+    builds_toward: 1
+    title:
+      en: 'Understanding Your Operational Context'
+      ar: 'فهم سياقكم التشغيلي'
+      es: 'Comprender su contexto operativo'
+      fil: 'Pag-unawa sa Iyong Operasyonal na Konteksto'
+      fr: 'Comprendre votre contexte opérationnel'
+      hi: 'अपने परिचालन संदर्भ को समझना'
+      id: 'Memahami Konteks Operasional Anda'
+      it: 'Comprendere il proprio contesto operativo'
+      pt: 'Compreender o seu contexto operacional'
+      ru: 'Понимание вашего операционного контекста'
+      sw: 'Kuelewa Mazingira Yako ya Kazi'
+      zh_CN: 理解你的运作环境
+    summary:
+      en: 'Conduct a system-level diagnostic of organisational and operational context'
+      ar: 'تشخيص على مستوى النظام للسياق التنظيمي والتشغيلي'
+      es: 'Realizar un diagnóstico a nivel de sistema del contexto organizacional y operativo'
+      fil: 'Diagnostic sa antas ng sistema ng konteksto sa organisasyon at operasyon'
+      fr: 'Réaliser un diagnostic systémique du contexte organisationnel et opérationnel'
+      hi: 'संगठनात्मक और परिचालन संदर्भ का प्रणाली-स्तर पर निदान'
+      id: 'Melakukan diagnosis tingkat sistem terhadap konteks organisasi dan operasional'
+      it: 'Condurre una diagnosi a livello di sistema del contesto organizzativo e operativo'
+      pt: 'Realizar um diagnóstico ao nível do sistema do contexto organizacional e operacional'
+      ru: 'Системная диагностика организационного и операционного контекста'
+      sw: 'Uchunguzi wa kiwango cha mfumo wa mazingira ya shirika na ya kazi'
+      zh_CN: 对组织及运作环境进行系统层面的诊断
+  -
+    slug: defining-what-you-actually-need
+    builds_toward: 2
+    title:
+      en: 'Defining What You Actually Need'
+      ar: 'تحديد ما تحتاجونه فعلاً'
+      es: 'Definir lo que realmente necesita'
+      fil: 'Pagtukoy sa Tunay Mong Kailangan'
+      fr: 'Définir ce dont vous avez réellement besoin'
+      hi: 'यह तय करना कि आपको वास्तव में क्या चाहिए'
+      id: 'Menentukan Apa yang Benar-Benar Anda Butuhkan'
+      it: 'Definire ciò di cui si ha davvero bisogno'
+      pt: 'Definir o que realmente precisa'
+      ru: 'Определение того, что вам действительно нужно'
+      sw: 'Kufafanua Unachohitaji Kweli'
+      zh_CN: 明确你真正需要什么
+    summary:
+      en: 'Needs from constraints, not assumed solutions'
+      ar: 'احتياجات نابعة من القيود، لا من حلول مفترضة'
+      es: 'Necesidades a partir de limitaciones, no de soluciones supuestas'
+      fil: 'Pangangailangan mula sa limitasyon, hindi sa ipinapalagay na solusyon'
+      fr: 'Des besoins issus des contraintes, pas de solutions présupposées'
+      hi: 'मान ली गई समाधानों से नहीं, सीमाओं से ज़रूरतें'
+      id: 'Kebutuhan dari keterbatasan, bukan solusi yang diasumsikan'
+      it: 'Bisogni a partire dai vincoli, non da soluzioni presunte'
+      pt: 'Necessidades a partir de restrições, não de soluções presumidas'
+      ru: 'Потребности из ограничений, а не из предполагаемых решений'
+      sw: 'Mahitaji kutoka kwa vikwazo, si suluhisho zilizodhaniwa'
+      zh_CN: 从限制出发定义需求，而非预设解决方案
+  -
+    slug: deciding-what-belongs-in-a-digital-system
+    builds_toward: 3
+    title:
+      en: 'Deciding What Belongs in a Digital System'
+      ar: 'تقرير ما ينبغي أن يكون في نظام رقمي'
+      es: 'Decidir qué pertenece a un sistema digital'
+      fil: 'Pagpapasya Kung Ano ang Nababagay sa Isang Digital na Sistema'
+      fr: 'Décider ce qui a sa place dans un système numérique'
+      hi: 'यह तय करना कि डिजिटल प्रणाली में क्या शामिल हो'
+      id: 'Memutuskan Apa yang Layak Masuk ke Sistem Digital'
+      it: 'Decidere cosa appartiene a un sistema digitale'
+      pt: 'Decidir o que pertence a um sistema digital'
+      ru: 'Решение о том, что должно быть в цифровой системе'
+      sw: 'Kuamua Kinachostahili Kuwa katika Mfumo wa Kidijitali'
+      zh_CN: 决定哪些内容应纳入数字系统
+    summary:
+      en: 'Sovereignty criteria for tool evaluation'
+      ar: 'معايير السيادة لتقييم الأدوات'
+      es: 'Criterios de soberanía para evaluar herramientas'
+      fil: 'Mga pamantayan ng soberanya sa pagsusuri ng kasangkapan'
+      fr: 'Des critères de souveraineté pour évaluer les outils'
+      hi: 'उपकरण मूल्यांकन के लिए संप्रभुता मानदंड'
+      id: 'Kriteria kedaulatan untuk mengevaluasi alat'
+      it: 'Criteri di sovranità per valutare gli strumenti'
+      pt: 'Critérios de soberania para avaliar ferramentas'
+      ru: 'Критерии суверенитета для оценки инструментов'
+      sw: 'Vigezo vya uhuru kwa tathmini ya zana'
+      zh_CN: 用于工具评估的主权标准
+  -
+    slug: why-data-governance-starts-with-your-needs
+    builds_toward: 4
+    title:
+      en: 'Why Data Governance Starts with Your Needs'
+      ar: 'لماذا تبدأ حوكمة البيانات من احتياجاتكم'
+      es: 'Por qué la gobernanza de datos empieza por sus necesidades'
+      fil: 'Bakit Nagsisimula sa Iyong Pangangailangan ang Pamamahala ng Datos'
+      fr: 'Pourquoi la gouvernance des données commence par vos besoins'
+      hi: 'डेटा शासन आपकी ज़रूरतों से क्यों शुरू होता है'
+      id: 'Mengapa Tata Kelola Data Dimulai dari Kebutuhan Anda'
+      it: 'Perché la governance dei dati parte dai propri bisogni'
+      pt: 'Porque a governação de dados começa pelas suas necessidades'
+      ru: 'Почему управление данными начинается с ваших потребностей'
+      sw: 'Kwa Nini Utawala wa Data Unaanza na Mahitaji Yako'
+      zh_CN: 为什么数据治理要从你的需求出发
+    summary:
+      en: 'Needs-based data governance'
+      ar: 'حوكمة بيانات قائمة على الاحتياجات'
+      es: 'Gobernanza de datos basada en necesidades'
+      fil: 'Pamamahala ng datos na nakabatay sa pangangailangan'
+      fr: 'Une gouvernance des données fondée sur les besoins'
+      hi: 'ज़रूरत-आधारित डेटा शासन'
+      id: 'Tata kelola data berbasis kebutuhan'
+      it: 'Governance dei dati basata sui bisogni'
+      pt: 'Governação de dados baseada em necessidades'
+      ru: 'Управление данными на основе потребностей'
+      sw: 'Utawala wa data unaozingatia mahitaji'
+      zh_CN: 基于需求的数据治理

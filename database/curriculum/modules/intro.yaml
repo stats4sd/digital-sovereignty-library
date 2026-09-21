@@ -1,0 +1,29 @@
+# Curriculum module 'intro'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: intro
+section: intro
+title:
+  en: 'What is digital sovereignty?'
+  ar: 'ما هي السيادة الرقمية؟'
+  es: '¿Qué es la soberanía digital?'
+  fil: 'Ano ang digital na soberanya?'
+  fr: "Qu'est-ce que la souveraineté numérique ?"
+  hi: 'डिजिटल संप्रभुता क्या है?'
+  id: 'Apa itu kedaulatan digital?'
+  it: "Che cos'è la sovranità digitale?"
+  pt: 'O que é soberania digital?'
+  ru: 'Что такое цифровой суверенитет?'
+  sw: 'Mamlaka ya kidijitali ni nini?'
+  zh_CN: 什么是数字主权？
+description:
+  en: '<p>In short: the right of a community, not a distant company, to decide how its data, tools, and digital systems are owned, governed, and used. These resources lay out the idea before you start choosing tools.</p>'
+  ar: '<p>باختصار: هي حق المجتمع المحلي، لا حق شركة بعيدة، في أن يقرر كيفية امتلاك بياناته وأدواته ونظمه الرقمية وإدارتها واستخدامها. تعرض هذه الموارد الفكرة قبل أن تبدأ باختيار الأدوات.</p>'
+  es: '<p>En pocas palabras: el derecho de una comunidad, y no de una empresa lejana, a decidir cómo se poseen, gobiernan y utilizan sus datos, herramientas y sistemas digitales. Estos recursos explican la idea antes de que empieces a elegir herramientas.</p>'
+  fil: '<p>Sa madaling salita: ang karapatan ng isang komunidad, hindi ng isang malayong kumpanya, na magpasya kung paano pagmamay-arian, pamamahalaan, at gagamitin ang kanilang data, mga kasangkapan, at mga digital na sistema. Inilalatag ng mga sangguniang ito ang ideya bago ka magsimulang pumili ng mga kasangkapan.</p>'
+  fr: "<p>En bref : le droit d'une communauté, et non d'une entreprise lointaine, de décider comment ses données, ses outils et ses systèmes numériques sont détenus, gouvernés et utilisés. Ces ressources présentent l'idée avant que vous ne commenciez à choisir des outils.</p>"
+  hi: '<p>संक्षेप में: यह किसी दूर बैठी कंपनी का नहीं, बल्कि समुदाय का अधिकार है कि वह तय करे कि उसके डेटा, उपकरणों और डिजिटल प्रणालियों का स्वामित्व, शासन और उपयोग कैसे हो। ये संसाधन उपकरण चुनना शुरू करने से पहले इस विचार को स्पष्ट करते हैं।</p>'
+  id: '<p>Singkatnya: hak sebuah komunitas, bukan perusahaan yang jauh di sana, untuk menentukan bagaimana data, alat, dan sistem digitalnya dimiliki, dikelola, dan digunakan. Sumber-sumber ini memaparkan gagasan tersebut sebelum Anda mulai memilih alat.</p>'
+  it: "<p>In breve: il diritto di una comunità, e non di un'azienda lontana, di decidere come i propri dati, strumenti e sistemi digitali vengono posseduti, governati e utilizzati. Queste risorse espongono l'idea prima che iniziate a scegliere gli strumenti.</p>"
+  pt: '<p>Em resumo: o direito de uma comunidade, e não de uma empresa distante, de decidir a quem pertencem os seus dados, ferramentas e sistemas digitais e como são governados e utilizados. Estes recursos apresentam a ideia antes de começar a escolher ferramentas.</p>'
+  ru: '<p>Коротко: это право сообщества, а не далёкой компании, решать, кому принадлежат его данные, инструменты и цифровые системы, кто ими управляет и как они используются. Эти материалы раскрывают саму идею, прежде чем вы начнёте выбирать инструменты.</p>'
+  sw: '<p>Kwa kifupi: ni haki ya jamii, si ya kampuni iliyo mbali, kuamua namna data, zana na mifumo yake ya kidijitali inavyomilikiwa, inavyotawaliwa na inavyotumika. Rasilimali hizi zinaweka wazi wazo hilo kabla hujaanza kuchagua zana.</p>'
+  zh_CN: '<p>简而言之：这是一个社区——而非远方的某家公司——自行决定其数据、工具和数字系统如何被拥有、治理和使用的权利。在您开始选择工具之前，这些资源将为您阐明这一理念。</p>'

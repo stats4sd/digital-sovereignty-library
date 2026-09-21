@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('uploader_id')->constrained('users');
 
             $table->json('external_links')->nullable();
-            $table->json('youtube_links')->nullable();
+            $table->json('video_links')->nullable();
 
             $table->integer('download_count')->default(0);
 

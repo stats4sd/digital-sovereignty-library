@@ -10,7 +10,7 @@ Implements the plan above: the public curriculum module page now follows the cou
 
 - `curriculum_modules`: new `number` (tinyint, "Module 3") and `goal` (translatable JSON). `learning_outcomes` is now a non-translatable array cast: `[{key: uuid, statement: {locale: text}, in_practice: {locale: text} | null}]`.
 - New `curriculum_sessions` (module FK, slug, order_column, translatable title/summary/description, `builds_toward` = the `key` of an outcome item, unique(module, slug)) and `curriculum_session_trove` pivot (ordered).
-- Data migrations (DB facade only, one-way, re-run safe): `2026_09_08_100300` converts newline outcomes to the structured shape; `2026_09_08_100400` moves any map-module trove attachments into an auto-created `session-1` per module.
+- Data migrations (DB facade only, one-way, re-run safe): `2026_09_08_100300` converts newline outcomes to the structured shape; `2026_09_08_100400` moves any map-module trove attachments into an auto-created `session-1` per module. *Both were later deleted, and `number`/`goal` folded into the create migration, by [collapse-migrations-for-fresh-deploy.md](collapse-migrations-for-fresh-deploy.md).*
 
 ## Backend
 

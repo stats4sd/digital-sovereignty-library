@@ -1,0 +1,86 @@
+# Curriculum module 'knowledge-justice'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: knowledge-justice
+section: map
+number: 2
+title:
+  en: 'Understanding Knowledge, Justice & Data Rights'
+  ar: 'فهم المعرفة والعدالة وحقوق البيانات'
+  es: 'Comprender el conocimiento, la justicia y los derechos sobre los datos'
+  fil: 'Pag-unawa sa Kaalaman, Katarungan at mga Karapatan sa Data'
+  fr: 'Comprendre les savoirs, la justice et les droits sur les données'
+  hi: 'ज्ञान, न्याय और डेटा अधिकारों को समझना'
+  id: 'Memahami Pengetahuan, Keadilan & Hak atas Data'
+  it: 'Comprendere conoscenza, giustizia e diritti sui dati'
+  pt: 'Compreender Conhecimento, Justiça e Direitos sobre os Dados'
+  ru: 'Понимание знаний, справедливости и прав на данные'
+  sw: 'Kuelewa Maarifa, Usawa na Haki za Data'
+  zh_CN: 认识知识、正义与数据权利
+description:
+  en: '<p>Ask whose knowledge counts, who owns the data a community produces, and what rights protect both.</p>'
+  ar: '<p>اسألوا: معرفة من هي التي تُحتسب؟ ومن يملك البيانات التي ينتجها المجتمع؟ وما الحقوق التي تحمي كليهما؟</p>'
+  es: '<p>Pregúntate de quién es el conocimiento que cuenta, a quién pertenecen los datos que produce una comunidad y qué derechos protegen a ambos.</p>'
+  fil: '<p>Itanong kung kaninong kaalaman ang binibigyang-halaga, sino ang nagmamay-ari ng data na nililikha ng isang komunidad, at anong mga karapatan ang nagpoprotekta sa dalawa.</p>'
+  fr: "<p>Demandez-vous quels savoirs comptent, à qui appartiennent les données qu'une communauté produit, et quels droits protègent les uns comme les autres.</p>"
+  hi: '<p>पूछें कि किसका ज्ञान मायने रखता है, समुदाय द्वारा उत्पन्न डेटा का मालिक कौन है, और कौन-से अधिकार दोनों की रक्षा करते हैं।</p>'
+  id: '<p>Bertanya pengetahuan siapa yang diperhitungkan, siapa yang memiliki data yang dihasilkan komunitas, dan hak apa yang melindungi keduanya.</p>'
+  it: '<p>Chiedetevi quale conoscenza conta, a chi appartengono i dati che una comunità produce e quali diritti tutelano entrambi.</p>'
+  pt: '<p>Pergunte de quem é o conhecimento que conta, a quem pertencem os dados que uma comunidade produz e que direitos protegem ambos.</p>'
+  ru: '<p>Задайте вопросы: чьи знания имеют значение, кому принадлежат данные, которые производит сообщество, и какие права защищают и то, и другое.</p>'
+  sw: '<p>Uliza maarifa ya nani yanahesabika, ni nani anamiliki data ambazo jamii inazalisha, na ni haki gani zinazolinda yote mawili.</p>'
+  zh_CN: '<p>追问谁的知识被重视、社区所产生的数据归谁所有，以及哪些权利在保护这两者。</p>'
+goal:
+  en: 'To help learners recognise whose knowledge and data rights are at stake in digital systems, and apply a rights-based lens to their own context.'
+  ar: 'مساعدة المتعلمين على إدراك معارف مَن وحقوق بيانات مَن المعرّضة للخطر في الأنظمة الرقمية، وتطبيق منظور قائم على الحقوق في سياقهم الخاص.'
+  es: 'Ayudar a los participantes a reconocer qué conocimientos y qué derechos sobre los datos están en juego en los sistemas digitales, y a aplicar un enfoque basado en derechos a su propio contexto.'
+  fil: 'Tulungan ang mga mag-aaral na kilalanin kung kaninong kaalaman at karapatan sa datos ang nakataya sa mga sistemang digital, at gamitin ang pananaw na nakabatay sa karapatan sa sarili nilang konteksto.'
+  fr: 'Aider les apprenants à reconnaître quels savoirs et quels droits sur les données sont en jeu dans les systèmes numériques, et à appliquer une approche fondée sur les droits à leur propre contexte.'
+  hi: 'प्रतिभागियों को यह पहचानने में मदद करना कि डिजिटल प्रणालियों में किसके ज्ञान और डेटा अधिकार दांव पर हैं, और अपने संदर्भ में अधिकार-आधारित दृष्टिकोण लागू करना।'
+  id: 'Membantu peserta mengenali pengetahuan dan hak atas data siapa yang dipertaruhkan dalam sistem digital, serta menerapkan sudut pandang berbasis hak pada konteks mereka sendiri.'
+  it: 'Aiutare i partecipanti a riconoscere quali saperi e quali diritti sui dati sono in gioco nei sistemi digitali, e ad applicare un approccio basato sui diritti al proprio contesto.'
+  pt: 'Ajudar os participantes a reconhecer que conhecimentos e que direitos sobre os dados estão em jogo nos sistemas digitais, e a aplicar uma abordagem baseada em direitos ao seu próprio contexto.'
+  ru: 'Помочь участникам понять, чьи знания и права на данные затрагиваются в цифровых системах, и применить подход, основанный на правах, к собственному контексту.'
+  sw: 'Kuwasaidia wanafunzi kutambua maarifa na haki za data za nani zilizo hatarini katika mifumo ya kidijitali, na kutumia mtazamo unaozingatia haki katika mazingira yao wenyewe.'
+  zh_CN: 帮助学习者认识数字系统中谁的知识和数据权利受到影响，并将基于权利的视角应用到自身情境中。
+learning_outcomes:
+  -
+    statement:
+      en: 'Explain whose knowledge counts in digital systems, and who benefits from it'
+      ar: 'توضيح معرفة من هي التي تُحتسب في النظم الرقمية، ومن يستفيد منها'
+      es: 'Explicar de quién es el conocimiento que cuenta en los sistemas digitales y quién se beneficia de él'
+      fil: 'Ipaliwanag kung kaninong kaalaman ang binibigyang-halaga sa mga digital na sistema, at sino ang nakikinabang dito'
+      fr: 'Expliquer quels savoirs comptent dans les systèmes numériques, et qui en tire profit'
+      hi: 'बताएँ कि डिजिटल प्रणालियों में किसका ज्ञान मायने रखता है, और उससे किसे लाभ होता है'
+      id: 'Menjelaskan pengetahuan siapa yang diperhitungkan dalam sistem digital, dan siapa yang diuntungkan darinya'
+      it: 'Spiegare quale conoscenza conta nei sistemi digitali e chi ne trae beneficio'
+      pt: 'Explicar de quem é o conhecimento que conta nos sistemas digitais e quem se beneficia dele'
+      ru: 'Объяснить, чьи знания имеют значение в цифровых системах и кто извлекает из них выгоду'
+      sw: 'Fafanua maarifa ya nani yanahesabika katika mifumo ya kidijitali, na ni nani anayefaidika nayo'
+      zh_CN: 解释在数字系统中谁的知识被重视，以及谁从中获益
+  -
+    statement:
+      en: 'Describe the rights a community holds over the data it produces'
+      ar: 'وصف الحقوق التي يمتلكها المجتمع على البيانات التي ينتجها'
+      es: 'Describir los derechos que tiene una comunidad sobre los datos que produce'
+      fil: 'Ilarawan ang mga karapatan ng isang komunidad sa data na nililikha nito'
+      fr: "Décrire les droits qu'une communauté détient sur les données qu'elle produit"
+      hi: 'उन अधिकारों का वर्णन करें जो समुदाय को अपने उत्पन्न किए गए डेटा पर हैं'
+      id: 'Menggambarkan hak-hak yang dimiliki komunitas atas data yang dihasilkannya'
+      it: 'Descrivere i diritti che una comunità detiene sui dati che produce'
+      pt: 'Descrever os direitos que uma comunidade detém sobre os dados que produz'
+      ru: 'Описать права сообщества на данные, которые оно производит'
+      sw: 'Eleza haki ambazo jamii inazo juu ya data inazozalisha'
+      zh_CN: 描述社区对其所产生的数据所享有的权利
+  -
+    statement:
+      en: 'Apply a rights-based frame (like the CARE principles) to community data'
+      ar: 'تطبيق إطار قائم على الحقوق (مثل مبادئ CARE) على بيانات المجتمع'
+      es: 'Aplicar un marco basado en derechos (como los principios CARE) a los datos comunitarios'
+      fil: 'Ilapat ang isang balangkas na nakabatay sa karapatan (gaya ng CARE principles) sa data ng komunidad'
+      fr: 'Appliquer un cadre fondé sur les droits (comme les principes CARE) aux données communautaires'
+      hi: 'सामुदायिक डेटा पर अधिकार-आधारित ढाँचा (जैसे CARE principles) लागू करें'
+      id: 'Menerapkan kerangka berbasis hak (seperti prinsip CARE) pada data komunitas'
+      it: 'Applicare un approccio basato sui diritti (come i principi CARE) ai dati della comunità'
+      pt: 'Aplicar uma abordagem baseada em direitos (como os princípios CARE) aos dados comunitários'
+      ru: 'Применить правозащитный подход (например, принципы CARE) к данным сообщества'
+      sw: 'Tumia mtazamo unaozingatia haki (kama vile kanuni za CARE) kwenye data za jamii'
+      zh_CN: '将基于权利的框架（如 CARE 原则）应用于社区数据'

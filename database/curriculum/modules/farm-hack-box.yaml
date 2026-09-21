@@ -1,0 +1,85 @@
+# Curriculum module 'farm-hack-box'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: farm-hack-box
+section: toolkit
+title:
+  en: 'Get Started with the Farm Hack Box'
+  ar: 'ابدأ مع Farm Hack Box'
+  es: 'Primeros pasos con la Farm Hack Box'
+  fil: 'Magsimula sa Farm Hack Box'
+  fr: 'Démarrer avec la Farm Hack Box'
+  hi: 'Farm Hack Box के साथ शुरुआत करें'
+  id: 'Memulai dengan Farm Hack Box'
+  it: 'Iniziare con la Farm Hack Box'
+  pt: 'Comece com a Farm Hack Box'
+  ru: 'Начните работу с Farm Hack Box'
+  sw: 'Anza Kutumia Farm Hack Box'
+  zh_CN: 'Farm Hack Box 入门'
+description:
+  en: '<p>A box to locally host your sovereign digital tools. The Farm Hack box is community-built hardware: a small local server your community owns and runs, hosting your own tools and data (file storage, communication, farm records), even without reliable internet.</p>'
+  ar: '<p>صندوق لاستضافة أدواتكم الرقمية السيادية محليًا. صندوق Farm Hack هو عتاد يبنيه المجتمع: خادم محلي صغير يملكه مجتمعكم ويديره، ويستضيف أدواتكم وبياناتكم (تخزين الملفات، والتواصل، وسجلات المزرعة)، حتى من دون اتصال موثوق بالإنترنت.</p>'
+  es: '<p>Una caja para alojar localmente tus herramientas digitales soberanas. La Farm Hack Box es hardware construido por la comunidad: un pequeño servidor local que tu comunidad posee y gestiona, y que aloja tus propias herramientas y datos (almacenamiento de archivos, comunicación, registros de la finca), incluso sin una conexión a internet fiable.</p>'
+  fil: '<p>Isang kahon para lokal na i-host ang inyong mga soberanong digital na kasangkapan. Ang Farm Hack box ay hardware na binuo ng komunidad: isang maliit na lokal na server na pagmamay-ari at pinapatakbo ng inyong komunidad, na nagho-host ng inyong sariling mga kasangkapan at data (imbakan ng file, komunikasyon, mga talaan ng bukid), kahit walang maaasahang internet.</p>'
+  fr: '<p>Une box pour héberger localement vos outils numériques souverains. La Farm Hack Box est un matériel construit par la communauté : un petit serveur local que votre communauté possède et fait fonctionner, qui héberge vos propres outils et données (stockage de fichiers, communication, registres agricoles), même sans connexion internet fiable.</p>'
+  hi: '<p>अपने संप्रभु डिजिटल उपकरणों को स्थानीय रूप से होस्ट करने के लिए एक बॉक्स। Farm Hack box समुदाय द्वारा बनाया गया हार्डवेयर है: एक छोटा स्थानीय सर्वर जिसका मालिक आपका समुदाय है और जिसे वही चलाता है, जो भरोसेमंद इंटरनेट के बिना भी आपके अपने उपकरण और डेटा (फ़ाइल भंडारण, संचार, खेत के रिकॉर्ड) होस्ट करता है।</p>'
+  id: '<p>Sebuah kotak untuk menjalankan alat digital berdaulat Anda secara lokal. Farm Hack Box adalah perangkat keras yang dibangun oleh komunitas: sebuah server lokal kecil yang dimiliki dan dijalankan komunitas Anda, yang menampung alat dan data Anda sendiri (penyimpanan berkas, komunikasi, catatan pertanian), bahkan tanpa internet yang andal.</p>'
+  it: "<p>Una scatola per ospitare in locale i vostri strumenti digitali sovrani. La Farm Hack box è hardware costruito dalla comunità: un piccolo server locale che la vostra comunità possiede e gestisce, che ospita i vostri strumenti e i vostri dati (archiviazione di file, comunicazione, registri dell'azienda agricola), anche senza una connessione internet affidabile.</p>"
+  pt: '<p>Uma caixa para hospedar localmente as suas ferramentas digitais soberanas. A Farm Hack Box é hardware construído pela comunidade: um pequeno servidor local que a sua comunidade possui e opera, hospedando as suas próprias ferramentas e dados (armazenamento de arquivos, comunicação, registos agrícolas), mesmo sem internet confiável.</p>'
+  ru: '<p>Коробка для локального размещения ваших суверенных цифровых инструментов. Farm Hack Box — это оборудование, собранное силами сообщества: небольшой локальный сервер, которым ваше сообщество владеет и управляет и на котором размещаются ваши собственные инструменты и данные (хранение файлов, связь, учёт хозяйства) даже без надёжного интернета.</p>'
+  sw: '<p>Kisanduku cha kuhifadhi na kuendesha zana zako huru za kidijitali ndani ya eneo lako. Farm Hack Box ni vifaa vilivyoundwa na jamii: seva ndogo ya eneo ambayo jamii yako inaimiliki na kuiendesha, ikihifadhi zana na data zenu wenyewe (hifadhi ya faili, mawasiliano, kumbukumbu za shamba), hata bila intaneti ya kutegemewa.</p>'
+  zh_CN: '<p>一个用于在本地托管您的自主数字工具的盒子。Farm Hack Box 是由社区自行搭建的硬件：一台由您的社区拥有并运行的小型本地服务器，用于托管您自己的工具和数据（文件存储、通讯、农场记录），即使没有稳定的互联网连接也能使用。</p>'
+note:
+  en: 'This stop is entirely optional. Everything else in the curriculum and toolkit works with or without the box.'
+  ar: 'هذه المحطة اختيارية تمامًا. كل ما عدا ذلك في المنهج ومجموعة الأدوات يعمل مع الصندوق أو من دونه.'
+  es: 'Esta parada es totalmente opcional. Todo lo demás en el currículo y el kit de herramientas funciona con o sin la caja.'
+  fil: 'Ganap na opsyonal ang hintuang ito. Gumagana ang lahat ng iba pa sa kurikulum at toolkit kahit mayroon o walang kahon.'
+  fr: 'Cette étape est entièrement facultative. Tout le reste du programme et de la boîte à outils fonctionne avec ou sans la box.'
+  hi: 'यह पड़ाव पूरी तरह वैकल्पिक है। पाठ्यक्रम और टूलकिट में बाकी सब कुछ बॉक्स के साथ या उसके बिना भी काम करता है।'
+  id: 'Tahap ini sepenuhnya opsional. Semua bagian lain dalam kurikulum dan perangkat alat tetap berfungsi dengan atau tanpa kotak ini.'
+  it: 'Questa tappa è del tutto facoltativa. Tutto il resto del percorso formativo e del toolkit funziona con o senza la scatola.'
+  pt: 'Esta etapa é totalmente opcional. Todo o resto no currículo e no kit de ferramentas funciona com ou sem a caixa.'
+  ru: 'Этот этап полностью необязателен. Всё остальное в учебной программе и наборе инструментов работает как с коробкой, так и без неё.'
+  sw: 'Kituo hiki ni cha hiari kabisa. Kila kitu kingine katika mtaala na seti ya zana kinafanya kazi ukiwa na kisanduku au bila.'
+  zh_CN: 这一站完全是可选的。课程和工具包中的其他所有内容，无论有没有这个盒子都可以使用。
+learning_outcomes:
+  -
+    statement:
+      en: 'Explain what the Farm Hack box is and what it can host'
+      ar: 'توضيح ما هو صندوق Farm Hack وما الذي يمكنه استضافته'
+      es: 'Explicar qué es la Farm Hack Box y qué puede alojar'
+      fil: 'Ipaliwanag kung ano ang Farm Hack box at kung ano ang kaya nitong i-host'
+      fr: "Expliquer ce qu'est la Farm Hack Box et ce qu'elle peut héberger"
+      hi: 'बताएँ कि Farm Hack box क्या है और यह क्या-क्या होस्ट कर सकता है'
+      id: 'Menjelaskan apa itu Farm Hack Box dan apa yang dapat ditampungnya'
+      it: "Spiegare che cos'è la Farm Hack box e che cosa può ospitare"
+      pt: 'Explicar o que é a Farm Hack Box e o que ela pode hospedar'
+      ru: 'Объяснить, что такое Farm Hack Box и что на нём можно размещать'
+      sw: 'Fafanua Farm Hack Box ni nini na inaweza kuhifadhi nini'
+      zh_CN: '解释 Farm Hack Box 是什么以及它可以托管哪些内容'
+  -
+    statement:
+      en: "Judge whether local hosting fits your community's needs and capacity"
+      ar: 'تقدير ما إذا كانت الاستضافة المحلية تناسب احتياجات مجتمعكم وقدراته'
+      es: 'Valorar si el alojamiento local se ajusta a las necesidades y la capacidad de tu comunidad'
+      fil: 'Husgahan kung angkop ang lokal na pagho-host sa mga pangangailangan at kapasidad ng inyong komunidad'
+      fr: "Juger si l'hébergement local correspond aux besoins et aux capacités de votre communauté"
+      hi: 'आँकें कि स्थानीय होस्टिंग आपके समुदाय की ज़रूरतों और क्षमता के अनुकूल है या नहीं'
+      id: 'Menilai apakah hosting lokal sesuai dengan kebutuhan dan kapasitas komunitas Anda'
+      it: "Valutare se l'hosting locale è adatto ai bisogni e alle capacità della vostra comunità"
+      pt: 'Avaliar se a hospedagem local se adequa às necessidades e à capacidade da sua comunidade'
+      ru: 'Оценить, соответствует ли локальный хостинг потребностям и возможностям вашего сообщества'
+      sw: 'Pima kama kuhifadhi zana ndani ya eneo lako kunakidhi mahitaji na uwezo wa jamii yako'
+      zh_CN: 判断本地托管是否符合您社区的需求和能力
+  -
+    statement:
+      en: "Identify what you'd need to set one up"
+      ar: 'تحديد ما تحتاجون إليه لإعداد صندوق خاص بكم'
+      es: 'Identificar qué necesitarías para instalar una'
+      fil: 'Tukuyin kung ano ang kakailanganin ninyo para makapagtayo ng isa'
+      fr: 'Identifier ce dont vous auriez besoin pour en installer une'
+      hi: 'पहचानें कि इसे स्थापित करने के लिए आपको क्या-क्या चाहिए होगा'
+      id: 'Mengidentifikasi apa yang Anda perlukan untuk menyiapkannya'
+      it: 'Individuare che cosa vi servirebbe per configurarne una'
+      pt: 'Identificar o que seria necessário para montar uma'
+      ru: 'Определить, что понадобится для его установки'
+      sw: 'Bainisha ungehitaji nini ili kuanzisha kisanduku kimoja'
+      zh_CN: 确定自行搭建一台需要哪些条件

@@ -1,0 +1,42 @@
+# Curriculum module 'market'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: market
+section: toolkit
+title:
+  en: Market
+  ar: السوق
+  es: Mercado
+  fil: Merkado
+  fr: Marché
+  hi: बाज़ार
+  id: Pasar
+  it: Mercato
+  pt: Mercado
+  ru: Рынок
+  sw: Soko
+  zh_CN: 市场
+subtitle:
+  en: 'Market Access'
+  ar: 'الوصول إلى الأسواق'
+  es: 'Acceso al mercado'
+  fil: 'Access sa Merkado'
+  fr: 'Accès au marché'
+  hi: 'बाज़ार तक पहुँच'
+  id: 'Akses Pasar'
+  it: 'Accesso al mercato'
+  pt: 'Acesso ao Mercado'
+  ru: 'Доступ к рынкам'
+  sw: 'Kufikia Masoko'
+  zh_CN: 市场准入
+description:
+  en: '<p>Reach buyers and run sales without losing value to a middleman platform.</p>'
+  ar: '<p>تواصلوا مع المشترين وأديروا عمليات البيع دون أن تضيع القيمة لصالح منصة وسيطة.</p>'
+  es: '<p>Llega a los compradores y gestiona las ventas sin perder valor ante una plataforma intermediaria.</p>'
+  fil: '<p>Abutin ang mga mamimili at magbenta nang hindi nawawala ang halaga sa isang platform ng tagapamagitan.</p>'
+  fr: "<p>Atteignez des acheteurs et réalisez des ventes sans perdre de valeur au profit d'une plateforme intermédiaire.</p>"
+  hi: '<p>किसी बिचौलिये प्लेटफ़ॉर्म को मूल्य खोए बिना खरीदारों तक पहुँचें और बिक्री करें।</p>'
+  id: '<p>Jangkau pembeli dan lakukan penjualan tanpa kehilangan nilai kepada platform perantara.</p>'
+  it: '<p>Raggiungete gli acquirenti e gestite le vendite senza perdere valore a favore di una piattaforma intermediaria.</p>'
+  pt: '<p>Chegue aos compradores e faça as suas vendas sem perder valor para uma plataforma intermediária.</p>'
+  ru: '<p>Находите покупателей и ведите продажи, не теряя стоимость в пользу платформы-посредника.</p>'
+  sw: '<p>Fikia wanunuzi na endesha mauzo bila kupoteza thamani kwa jukwaa la udalali.</p>'
+  zh_CN: '<p>直接联系买家并开展销售，而不让价值流失给中间商平台。</p>'

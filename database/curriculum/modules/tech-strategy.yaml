@@ -1,0 +1,86 @@
+# Curriculum module 'tech-strategy'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: tech-strategy
+section: map
+number: 5
+title:
+  en: 'Tech Strategy'
+  ar: 'الاستراتيجية التقنية'
+  es: 'Estrategia tecnológica'
+  fil: 'Estratehiya sa Teknolohiya'
+  fr: 'Stratégie technologique'
+  hi: 'तकनीक की रणनीति'
+  id: 'Strategi Teknologi'
+  it: 'Strategia tecnologica'
+  pt: 'Estratégia Tecnológica'
+  ru: 'Технологическая стратегия'
+  sw: 'Mkakati wa Teknolojia'
+  zh_CN: 技术策略
+description:
+  en: '<p>Set the rules for how data is owned and shared, connect tools to real market access, and pull it all into one local strategy.</p>'
+  ar: '<p>ضعوا قواعد امتلاك البيانات وتبادلها، واربطوا الأدوات بوصول حقيقي إلى الأسواق، واجمعوا ذلك كله في استراتيجية محلية واحدة.</p>'
+  es: '<p>Establece las reglas sobre cómo se poseen y comparten los datos, conecta las herramientas con un acceso real al mercado y reúnelo todo en una única estrategia local.</p>'
+  fil: '<p>Itakda ang mga tuntunin kung paano pagmamay-arian at ibabahagi ang data, iugnay ang mga kasangkapan sa tunay na access sa merkado, at pagsama-samahin ang lahat sa iisang lokal na estratehiya.</p>'
+  fr: '<p>Fixez les règles de propriété et de partage des données, reliez les outils à un véritable accès au marché et rassemblez le tout dans une seule stratégie locale.</p>'
+  hi: '<p>डेटा के स्वामित्व और साझेदारी के नियम तय करें, उपकरणों को वास्तविक बाज़ार पहुँच से जोड़ें, और इन सबको एक स्थानीय रणनीति में समेटें।</p>'
+  id: '<p>Tetapkan aturan tentang bagaimana data dimiliki dan dibagikan, hubungkan alat dengan akses pasar yang nyata, dan rangkum semuanya ke dalam satu strategi lokal.</p>'
+  it: "<p>Stabilite le regole su come i dati vengono posseduti e condivisi, collegate gli strumenti a un accesso reale al mercato e riunite tutto in un'unica strategia locale.</p>"
+  pt: '<p>Defina as regras sobre a quem pertencem os dados e como são compartilhados, conecte as ferramentas a um acesso real ao mercado e reúna tudo em uma única estratégia local.</p>'
+  ru: '<p>Установите правила владения данными и обмена ими, свяжите инструменты с реальным доступом к рынкам и сведите всё в единую местную стратегию.</p>'
+  sw: '<p>Weka kanuni za namna data zinavyomilikiwa na kushirikishwa, unganisha zana na upatikanaji halisi wa soko, kisha kusanya yote kuwa mkakati mmoja wa eneo lako.</p>'
+  zh_CN: '<p>制定数据如何被拥有和共享的规则，将工具与真实的市场准入联系起来，并将这一切整合为一套本地策略。</p>'
+goal:
+  en: "To help learners translate what they've learned into a single, actionable digital sovereignty strategy for their own community."
+  ar: 'مساعدة المتعلمين على تحويل ما تعلموه إلى استراتيجية واحدة عملية للسيادة الرقمية لمجتمعهم الخاص.'
+  es: 'Ayudar a los participantes a convertir lo aprendido en una única estrategia de soberanía digital, concreta y aplicable, para su propia comunidad.'
+  fil: 'Tulungan ang mga mag-aaral na isalin ang kanilang natutuhan sa iisang malinaw at maisasagawang estratehiya ng digital na soberanya para sa sarili nilang komunidad.'
+  fr: "Aider les apprenants à traduire ce qu'ils ont appris en une stratégie de souveraineté numérique unique et concrète pour leur propre communauté."
+  hi: 'प्रतिभागियों को अपनी सीख को अपने समुदाय के लिए एक एकीकृत और व्यवहार्य डिजिटल संप्रभुता रणनीति में बदलने में मदद करना।'
+  id: 'Membantu peserta menerjemahkan apa yang telah dipelajari menjadi satu strategi kedaulatan digital yang konkret dan dapat dijalankan untuk komunitas mereka sendiri.'
+  it: "Aiutare i partecipanti a tradurre ciò che hanno imparato in un'unica strategia di sovranità digitale, concreta e attuabile, per la propria comunità."
+  pt: 'Ajudar os participantes a transformar o que aprenderam numa única estratégia de soberania digital, concreta e aplicável, para a sua própria comunidade.'
+  ru: 'Помочь участникам превратить полученные знания в единую практическую стратегию цифрового суверенитета для собственного сообщества.'
+  sw: 'Kuwasaidia wanafunzi kutafsiri waliyojifunza kuwa mkakati mmoja wa uhuru wa kidijitali unaoweza kutekelezwa kwa jumuiya yao wenyewe.'
+  zh_CN: 帮助学习者把所学内容转化为一份面向自身社区、切实可行的数字主权战略。
+learning_outcomes:
+  -
+    statement:
+      en: "Set rules for how your community's data is owned, accessed, and stored"
+      ar: 'وضع قواعد لكيفية امتلاك بيانات مجتمعكم والوصول إليها وتخزينها'
+      es: 'Establecer reglas sobre la propiedad, el acceso y el almacenamiento de los datos de tu comunidad'
+      fil: 'Magtakda ng mga tuntunin kung paano pagmamay-arian, ina-access, at iniimbak ang data ng inyong komunidad'
+      fr: "Fixer les règles de propriété, d'accès et de stockage des données de votre communauté"
+      hi: 'नियम तय करें कि आपके समुदाय के डेटा का स्वामित्व, उस तक पहुँच और उसका भंडारण कैसे हो'
+      id: 'Menetapkan aturan tentang bagaimana data komunitas Anda dimiliki, diakses, dan disimpan'
+      it: 'Stabilire le regole su come i dati della vostra comunità vengono posseduti, consultati e conservati'
+      pt: 'Definir regras sobre a propriedade, o acesso e o armazenamento dos dados da sua comunidade'
+      ru: 'Установить правила владения данными вашего сообщества, доступа к ним и их хранения'
+      sw: 'Weka kanuni za namna data za jamii yako zinavyomilikiwa, kufikiwa na kuhifadhiwa'
+      zh_CN: 为您的社区数据如何被拥有、访问和存储制定规则
+  -
+    statement:
+      en: 'Connect digital tools to real market access without losing value to middlemen'
+      ar: 'ربط الأدوات الرقمية بوصول حقيقي إلى الأسواق دون أن تضيع القيمة لصالح الوسطاء'
+      es: 'Conectar las herramientas digitales con un acceso real al mercado sin perder valor ante los intermediarios'
+      fil: 'Iugnay ang mga digital na kasangkapan sa tunay na access sa merkado nang hindi nawawala ang halaga sa mga tagapamagitan'
+      fr: 'Relier les outils numériques à un véritable accès au marché sans perdre de valeur au profit des intermédiaires'
+      hi: 'बिचौलियों को मूल्य खोए बिना डिजिटल उपकरणों को वास्तविक बाज़ार पहुँच से जोड़ें'
+      id: 'Menghubungkan alat digital dengan akses pasar yang nyata tanpa kehilangan nilai kepada perantara'
+      it: 'Collegare gli strumenti digitali a un accesso reale al mercato senza perdere valore a favore degli intermediari'
+      pt: 'Conectar ferramentas digitais a um acesso real ao mercado sem perder valor para intermediários'
+      ru: 'Связать цифровые инструменты с реальным доступом к рынкам, не теряя стоимость в пользу посредников'
+      sw: 'Unganisha zana za kidijitali na upatikanaji halisi wa soko bila kupoteza thamani kwa madalali'
+      zh_CN: 将数字工具与真实的市场准入联系起来，而不让价值流失给中间商
+  -
+    statement:
+      en: 'Draw every step together into one local digital sovereignty strategy'
+      ar: 'جمع كل الخطوات معًا في استراتيجية محلية واحدة للسيادة الرقمية'
+      es: 'Integrar todos los pasos en una única estrategia local de soberanía digital'
+      fil: 'Pagsama-samahin ang bawat hakbang sa iisang lokal na estratehiya para sa digital na soberanya'
+      fr: 'Rassembler toutes les étapes en une seule stratégie locale de souveraineté numérique'
+      hi: 'हर कदम को एक साथ जोड़कर एक स्थानीय डिजिटल संप्रभुता रणनीति बनाएँ'
+      id: 'Merangkai semua langkah menjadi satu strategi kedaulatan digital lokal'
+      it: "Riunire tutti i passaggi in un'unica strategia locale di sovranità digitale"
+      pt: 'Reunir todas as etapas em uma única estratégia local de soberania digital'
+      ru: 'Свести все шаги в единую местную стратегию цифрового суверенитета'
+      sw: 'Leta hatua zote pamoja kuwa mkakati mmoja wa mamlaka ya kidijitali kwa eneo lako'
+      zh_CN: 将每一步整合为一套本地数字主权策略

@@ -95,6 +95,8 @@ Exit: written note in this plan under "Spike findings" and a decision to proceed
 
 ### Phase 6 — Seed Module 3 content
 
+**6.0 Content source.** All current seeded content (modules, outcomes, sessions, glossary, toolkit tags and tool Troves) was extracted 2026-09-21 into plain YAML under `database/curriculum/` with English and the eleven translations merged per field (see its `README.md`). The rebuilt seeders should load from there, after which `CurriculumSeeder`, `ToolkitToolsSeeder` and both `*-translations/` directories are deleted.
+
 **6.1** `CurriculumSeeder`: session definitions gain `items => [ ['key' => '<fixed uuid>', 'type' => 'callout', 'config' => [...], 'intro' => ...], … ]`. Port `spike-1/content/module-3/session-1/*.md` (recall, why-this-matters, canvas, example-makueni, example-cocoa, diagnostic-statement, key-takeaways), `session-2/*.md` (needs-matrix, check-yourself), `session-3/quiz.md`. Existing seeded trove attachments stay (already migrated to trove items by 1.3; seeder must not duplicate: `firstOrCreate(['key' => …])`).
 **6.2 Translations**: `curriculum-translations/<locale>.php` → `modules.community-needs.sessions.<slug>.items.<itemKey>` with the translatable leaves from `ItemDefinition::translatableLeaves()`. English only in the first pass if translations are not ready; merge is tolerant of missing keys as today.
 **6.3** `CurriculumSeederTest`: items seeded in order, idempotent on re-run, translation merge fills a leaf.

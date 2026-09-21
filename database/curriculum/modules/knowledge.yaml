@@ -1,0 +1,42 @@
+# Curriculum module 'knowledge'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: knowledge
+section: toolkit
+title:
+  en: Knowledge
+  ar: المعرفة
+  es: Conocimiento
+  fil: Kaalaman
+  fr: Savoirs
+  hi: ज्ञान
+  id: Pengetahuan
+  it: Conoscenza
+  pt: Conhecimento
+  ru: Знания
+  sw: Maarifa
+  zh_CN: 知识
+subtitle:
+  en: 'Data & Knowledge Repositories'
+  ar: 'مستودعات البيانات والمعرفة'
+  es: 'Repositorios de datos y conocimiento'
+  fil: 'Mga Imbakan ng Data at Kaalaman'
+  fr: 'Référentiels de données et de savoirs'
+  hi: 'डेटा और ज्ञान भंडार'
+  id: 'Repositori Data & Pengetahuan'
+  it: 'Archivi di dati e conoscenze'
+  pt: 'Repositórios de Dados e Conhecimento'
+  ru: 'Хранилища данных и знаний'
+  sw: 'Hazina za Data na Maarifa'
+  zh_CN: 数据与知识库
+description:
+  en: '<p>Collect, store and hold onto your own records and community knowledge.</p>'
+  ar: '<p>اجمعوا سجلاتكم ومعارف مجتمعكم وخزّنوها واحتفظوا بها بأنفسكم.</p>'
+  es: '<p>Recopila, almacena y conserva tus propios registros y el conocimiento de tu comunidad.</p>'
+  fil: '<p>Kolektahin, iimbak at panatilihin ang inyong sariling mga talaan at kaalaman ng komunidad.</p>'
+  fr: '<p>Collectez, stockez et conservez vos propres registres et les savoirs de votre communauté.</p>'
+  hi: '<p>अपने रिकॉर्ड और सामुदायिक ज्ञान को स्वयं एकत्र करें, संग्रहीत करें और अपने पास सुरक्षित रखें।</p>'
+  id: '<p>Kumpulkan, simpan, dan pertahankan catatan dan pengetahuan komunitas Anda sendiri.</p>'
+  it: '<p>Raccogliete, conservate e custodite i vostri registri e le conoscenze della vostra comunità.</p>'
+  pt: '<p>Reúna, armazene e preserve os seus próprios registos e o conhecimento da comunidade.</p>'
+  ru: '<p>Собирайте, храните и сохраняйте за собой собственные записи и знания сообщества.</p>'
+  sw: '<p>Kusanya, hifadhi na shikilia kumbukumbu zako mwenyewe na maarifa ya jamii.</p>'
+  zh_CN: '<p>收集、存储并牢牢掌握您自己的记录和社区知识。</p>'

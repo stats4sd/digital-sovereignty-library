@@ -28,6 +28,8 @@ The page keeps this site's existing header/footer/layout; only the body follows 
 ## Steps
 
 ### A. Migrations (`database/migrations/2026_09_08_*`)
+
+> **Note (2026-09-21):** items 1, 3 and 4 and the migration test below were later removed by [2026-09-21-collapse-migrations-for-fresh-deploy.md](2026-09-21-collapse-migrations-for-fresh-deploy.md); `number`/`goal` now live in the `create_curriculum_modules_table` migration.
 1. `100000_add_number_and_goal_to_curriculum_modules` — two columns; down drops them.
 2. `100100_create_curriculum_sessions_table`, `100200_create_curriculum_session_trove_table` (sessions first; SQLite inline FK).
 3. `100300_convert_curriculum_learning_outcomes_to_structured` — `DB` facade only (no Eloquent: casts changed, and `Trove` has a global scope). For each module: decode; skip if null/empty/already a list (`array_is_list`) so re-runs are safe; for each locale split lines, line *i* → item *i* `statement[locale]`, `in_practice = null`, `key = Str::uuid()`. `down()` no-op with docblock.
