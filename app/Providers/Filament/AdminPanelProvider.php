@@ -8,14 +8,24 @@ use App\Filament\Pages\Login;
 use App\Filament\Pages\SiteContentPage;
 use App\Filament\Pages\SiteOptionsPage;
 use App\Filament\Resources\CollectionResource;
+use App\Filament\Resources\CollectionResource\Pages\CreateCollection;
+use App\Filament\Resources\CollectionResource\Pages\EditCollection;
 use App\Filament\Resources\CurriculumModuleResource;
 use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
+use App\Filament\Resources\CurriculumSessionResource\Pages\EditCurriculumSession;
 use App\Filament\Resources\GlossaryTermResource;
+use App\Filament\Resources\GlossaryTermResource\Pages\ListGlossaryTerms;
 use App\Filament\Resources\InviteResource;
 use App\Filament\Resources\TagResource;
+use App\Filament\Resources\TagResource\Pages\ListTags;
 use App\Filament\Resources\TagTypeResource;
+use App\Filament\Resources\TagTypeResource\Pages\EditTagType;
+use App\Filament\Resources\TagTypeResource\Pages\ListTagTypes;
 use App\Filament\Resources\TroveResource;
+use App\Filament\Resources\TroveResource\Pages\CreateTrove;
+use App\Filament\Resources\TroveResource\Pages\EditTrove;
 use App\Filament\Resources\TroveTypeResource;
+use App\Filament\Resources\TroveTypeResource\Pages\ListTroveTypes;
 use App\Filament\Resources\UserResource;
 use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
@@ -120,14 +130,26 @@ class AdminPanelProvider extends PanelProvider
                 SpatieTranslatablePlugin::make()
                     ->defaultLocales(array_keys(config('branding.locales', ['en' => 'English']))),
             ])
-            // Page-wide "also show <language>" picker for TranslatableComboField. Opt-in per
-            // page: add the page class to `scopes` to enable it there.
+            // Page-wide "also show <language>" picker for TranslatableComboField. Scoped to the
+            // pages that host translatable fields, so it never appears where nothing reads it.
+            // The ManageRecords pages below edit via modal, so the picker belongs on the list page.
             ->renderHook(
                 PanelsRenderHook::PAGE_HEADER_ACTIONS_BEFORE,
                 fn () => view('filament.translatable.secondary-locale-picker'),
-                // scopes: [
-                //     EditCurriculumModule::class,
-                // ],
+                scopes: [
+                    SiteContentPage::class,
+                    CreateCollection::class,
+                    EditCollection::class,
+                    EditCurriculumModule::class,
+                    EditCurriculumSession::class,
+                    ListGlossaryTerms::class,
+                    ListTags::class,
+                    ListTagTypes::class,
+                    EditTagType::class,
+                    CreateTrove::class,
+                    EditTrove::class,
+                    ListTroveTypes::class,
+                ],
             )
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Inter', provider: LocalFontProvider::class);

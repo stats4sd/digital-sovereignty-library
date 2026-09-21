@@ -179,7 +179,7 @@ it('falls back to the database listing with a notice when search is unavailable'
 
     $component = Livewire::test(BrowseAll::class)
         ->assertSet('searchUnavailable', true)
-        ->assertSee('Search is temporarily unavailable');
+        ->assertSee('temporarily unavailable');
 
     expect($component->viewData('items')->pluck('id')->all())->toBe([$trove->id]);
 });

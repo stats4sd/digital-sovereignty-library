@@ -1,7 +1,8 @@
 <?php
 
 use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
-use App\Filament\Resources\TagTypeResource\Pages\EditTagType;
+use App\Filament\Resources\TagTypeResource\Pages\ListTagTypes;
+use App\Filament\Resources\TroveResource\Pages\ListTroves;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
 use App\Models\TagType;
@@ -53,12 +54,19 @@ it('renders the secondary-locale picker and store on the curriculum module edit 
         ->assertSeeHtml("isVisible('fr')");
 });
 
-it('does not render the picker on pages that have not opted in', function () {
+it('renders the picker on a list page whose records are edited in a modal', function () {
     Filament::bootCurrentPanel();
 
-    $tagType = TagType::factory()->create();
+    TagType::factory()->create();
 
-    Livewire::test(EditTagType::class, ['record' => $tagType->getKey()])
+    Livewire::test(ListTagTypes::class)
+        ->assertSeeHtml('data-translatable-secondary-locale-picker');
+});
+
+it('does not render the picker on pages that have no translatable fields', function () {
+    Filament::bootCurrentPanel();
+
+    Livewire::test(ListTroves::class)
         ->assertDontSeeHtml('data-translatable-secondary-locale-picker');
 });
 
