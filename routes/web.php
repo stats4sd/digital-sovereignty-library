@@ -85,7 +85,7 @@ Route::group([
             abort(404);
         }
 
-        $session->load('troves.troveType');
+        $session->load('items.trove.troveType');
 
         $index = $module->sessions->search(fn ($candidate) => $candidate->is($session));
         $previous = $index > 0 ? $module->sessions->get($index - 1) : null;

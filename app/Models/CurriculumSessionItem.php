@@ -5,9 +5,11 @@ namespace App\Models;
 use App\Curriculum\Items\ItemDefinition;
 use App\Curriculum\Items\ItemRegistry;
 use App\Enums\CurriculumItemType;
+use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use LogicException;
 use Spatie\Translatable\HasTranslations;
@@ -70,5 +72,29 @@ class CurriculumSessionItem extends Model
     public function definition(): ItemDefinition
     {
         return app(ItemRegistry::class)->for($this->type);
+    }
+
+    /**
+     * The current-locale string for a translatable leaf inside `config` (dot path), with the
+     * same locale fallback as TranslatableText::pick(). Null when the leaf is absent or empty.
+     */
+    public function text(string $path): ?string
+    {
+        $leaf = Arr::get($this->config ?? [], $path);
+
+        return is_array($leaf) ? TranslatableText::pick($leaf) : null;
+    }
+
+    /**
+     * Whether the item can be shown publicly: a trove item whose trove is unpublished (and
+     * so hidden by PublishedScope) or deleted renders nothing.
+     */
+    public function isRenderable(): bool
+    {
+        if ($this->type !== CurriculumItemType::Trove) {
+            return true;
+        }
+
+        return $this->trove !== null;
     }
 }

@@ -25,18 +25,18 @@
             <div class="description mt-10 text-lg leading-relaxed text-gray-700" data-glossary-scope>{!! $session->description !!}</div>
         @endif
 
-        <div class="divider mt-12"></div>
-        <h2 class="mb-4 text-2xl font-bold text-brand-ink">{{ t('Resources') }}</h2>
-
-        @if($session->troves->isNotEmpty())
-            <div class="flex flex-col gap-3">
-                @foreach($session->troves as $trove)
-                    <x-curriculum-resource-row :trove="$trove" />
+        @if($session->items->contains(fn ($item) => $item->isRenderable()))
+            <div class="session-items" data-session-items>
+                @foreach($session->items as $item)
+                    <x-curriculum-item :item="$item" />
                 @endforeach
             </div>
         @else
-            <p class="text-gray-500">{{ t('Resources for this session are coming soon.') }}</p>
+            <div class="divider mt-12"></div>
+            <p class="text-gray-500">{{ t('Content for this session is coming soon.') }}</p>
         @endif
+
+        <x-learner-store :namespace="'dsl:v1:'.$module->key.':'.$session->slug" />
 
         <nav class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-brand-line pt-8" aria-label="{{ t('Session navigation') }}">
             @if($previous)

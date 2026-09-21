@@ -26,6 +26,9 @@
     --color-brand-ink: var(--brand-ink);
     --color-brand-ink-muted: var(--brand-ink-muted);
     --color-brand-line: var(--brand-line);
+    --color-brand-success: var(--brand-success);
+    --color-brand-info: var(--brand-info);
+    --color-brand-warning: var(--brand-warning);
     --font-display: var(--brand-font-display);
 }
 
@@ -315,6 +318,35 @@
     .brand-pill:hover {
         opacity: 0.9;
     }
+
+    .brand-pill-outline {
+        background-color: transparent;
+        color: var(--brand-primary);
+        box-shadow: none;
+        border: 2px solid var(--brand-primary);
+    }
+
+    /* Session item bodies are RichEditor HTML; give lists and links the callout treatment. */
+    .item-body ul {
+        @apply mt-2 list-disc ps-6;
+    }
+
+    .item-body ol {
+        @apply mt-2 list-decimal ps-6;
+    }
+
+    .item-body li + li {
+        @apply mt-2;
+    }
+
+    .item-body a {
+        @apply font-semibold underline underline-offset-2;
+        text-decoration-color: var(--brand-secondary);
+    }
+}
+
+[x-cloak] {
+    display: none !important;
 }
 /*
  * Indic scripts (Devanagari and relatives) carry a headstroke plus vowel marks above and
