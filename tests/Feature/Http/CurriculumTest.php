@@ -3,6 +3,7 @@
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use App\Models\MapModule;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Illuminate\Support\Str;
 
@@ -91,11 +92,43 @@ it('404s a toolkit key requested as a map module (sections are distinct)', funct
     $this->get('/curriculum/knowledge')->assertNotFound();
 });
 
-it('fails soft on the map when a coded node has no DB row', function () {
+it('drops a deleted module from the map and 404s its page', function () {
     CurriculumModule::where('key', 'tech-assessment')->delete();
 
-    $this->get('/curriculum')->assertOk()->assertDontSee('Tech Assessment');
+    $this->get('/curriculum')
+        ->assertOk()
+        ->assertDontSee('Tech Assessment')
+        ->assertSee('data-node-count="4"', false);
     $this->get('/curriculum/tech-assessment')->assertNotFound();
+});
+
+it('lays out one map node per learning-map module, in module-number order, without touching the toolkit', function () {
+    $response = $this->get('/curriculum')->assertOk()->assertSee('data-node-count="5"', false);
+    expect(substr_count($response->getContent(), 'class="curriculum-node group"'))->toBe(5);
+
+    MapModule::create(['key' => 'new-node', 'title' => ['en' => 'Brand New Node'], 'number' => 6]);
+
+    $response = $this->get('/curriculum')
+        ->assertOk()
+        ->assertSee('data-node-count="6"', false)
+        ->assertSee('Brand New Node')
+        ->assertSee(route('curriculum.show', 'new-node'))
+        ->assertSeeInOrder(['Understanding the Digital Landscape', 'Tech Strategy', 'Brand New Node', 'Build Your Sovereign Toolkit']);
+    expect(substr_count($response->getContent(), 'class="curriculum-node group"'))->toBe(6);
+    $response->assertSeeInOrder(['Knowledge', 'Collaboration', 'Farm', 'Market']);
+
+    $this->get('/curriculum/new-node')->assertOk()->assertSee('Brand New Node');
+});
+
+it('renders a single centred node and an empty-state message as the map shrinks', function () {
+    MapModule::query()->where('key', '!=', 'digital-landscape')->delete();
+    $this->get('/curriculum')->assertOk()->assertSee('left: 50%; top: 35%;', false);
+
+    MapModule::query()->delete();
+    $this->get('/curriculum')
+        ->assertOk()
+        ->assertSee('Learning-map modules are coming soon.')
+        ->assertDontSee('sm:-mt-8');
 });
 
 it('shows the curriculum nav item', function () {

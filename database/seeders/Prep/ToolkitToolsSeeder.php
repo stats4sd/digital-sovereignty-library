@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Prep;
 
-use App\Models\CurriculumModule;
 use App\Models\Tag;
 use App\Models\TagType;
+use App\Models\ToolkitModule;
 use App\Models\Trove;
 use App\Models\TroveType;
 use App\Models\User;
@@ -50,9 +50,7 @@ class ToolkitToolsSeeder extends Seeder
         ));
 
         foreach ($this->tools() as $pillarKey => $tools) {
-            $pillar = CurriculumModule::forSection(CurriculumModule::SECTION_TOOLKIT)
-                ->where('key', $pillarKey)
-                ->first();
+            $pillar = ToolkitModule::where('key', $pillarKey)->first();
 
             foreach (array_values($tools) as $index => $tool) {
                 $trove = Trove::withDrafts()

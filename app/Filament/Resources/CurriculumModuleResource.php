@@ -6,7 +6,9 @@ use App\Filament\Resources\CurriculumModuleResource\Pages;
 use App\Filament\Resources\CurriculumModuleResource\RelationManagers;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
+use App\Models\CurriculumSessionItem;
 use App\Support\HtmlSanitizer;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
@@ -32,9 +34,17 @@ class CurriculumModuleResource extends Resource
 
     public ?string $activeLocale;
 
-    public static function canCreate(): bool
+    /**
+     * Only learning-map modules can be created (the create page fixes section = map); the
+     * intro and toolkit rows are seeded and matched to fixed layout positions by key.
+     */
+    public static function isMapModule(?CurriculumModule $record, string $operation): bool
     {
-        return false;
+        if ($operation === 'create') {
+            return true;
+        }
+
+        return $record?->isMapModule() ?? false;
     }
 
     public static function form(Schema $schema): Schema
@@ -43,15 +53,17 @@ class CurriculumModuleResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('key')
                     ->label('Key')
-                    ->helperText('Fixed identifier linking this module to its place in the curriculum layout. Not editable.')
+                    ->helperText('Fixed identifier linking this module to its place in the curriculum layout and to its public URL. Generated from the English title on creation; not editable.')
                     ->disabled()
-                    ->dehydrated(false),
+                    ->dehydrated(false)
+                    ->hiddenOn('create'),
 
                 Forms\Components\TextInput::make('section')
                     ->label('Section')
                     ->helperText('Where this module appears: the intro, the learning map, or the toolkit. Not editable.')
                     ->disabled()
-                    ->dehydrated(false),
+                    ->dehydrated(false)
+                    ->hiddenOn('create'),
 
                 TranslatableComboField::make('title')
                     ->icon('heroicon-o-exclamation-circle')
@@ -74,10 +86,11 @@ class CurriculumModuleResource extends Resource
 
                 Forms\Components\TextInput::make('number')
                     ->label('Module number')
+                    ->helperText('Sets the order of nodes on the learning map. Defaults to the next free number for a new module.')
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(255)
-                    ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_MAP),
+                    ->visible(fn (?CurriculumModule $record, string $operation) => static::isMapModule($record, $operation)),
 
                 TranslatableComboField::make('goal')
                     ->icon('heroicon-o-flag')
@@ -88,7 +101,7 @@ class CurriculumModuleResource extends Resource
                         Forms\Components\Textarea::make('goal')
                             ->rows(2),
                     )
-                    ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_MAP),
+                    ->visible(fn (?CurriculumModule $record, string $operation) => static::isMapModule($record, $operation)),
 
                 TranslatableComboField::make('description')
                     ->icon('heroicon-o-document-text')
@@ -177,8 +190,27 @@ class CurriculumModuleResource extends Resource
             ])
             ->recordActions([
                 EditAction::make(),
+                static::deleteAction(),
             ])
             ->toolbarActions([]);
+    }
+
+    /**
+     * Deleting a learning-map module cascades to its sessions and their content items; the
+     * confirmation spells that out. The policy hides this for intro and toolkit rows.
+     */
+    public static function deleteAction(): DeleteAction
+    {
+        return DeleteAction::make()
+            ->modalHeading(fn (CurriculumModule $record): string => 'Delete module "'.$record->title.'"?')
+            ->modalDescription(function (CurriculumModule $record): string {
+                $sessions = $record->sessions()->count();
+                $items = CurriculumSessionItem::query()
+                    ->whereIn('curriculum_session_id', $record->sessions()->select('id'))
+                    ->count();
+
+                return "This removes the module from the learning map, along with its {$sessions} session(s) and {$items} content item(s). Learners' browser-side notes for those sessions become unreachable. This cannot be undone.";
+            });
     }
 
     public static function getRelations(): array
@@ -193,6 +225,7 @@ class CurriculumModuleResource extends Resource
     {
         return [
             'index' => Pages\ListCurriculumModules::route('/'),
+            'create' => Pages\CreateCurriculumModule::route('/create'),
             'edit' => Pages\EditCurriculumModule::route('/{record}/edit'),
         ];
     }

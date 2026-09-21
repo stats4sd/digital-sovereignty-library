@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Resources\CurriculumModuleResource\Pages\CreateCurriculumModule;
 use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
 use App\Filament\Resources\TagTypeResource\Pages\ListTagTypes;
 use App\Filament\Resources\TroveResource\Pages\ListTroves;
@@ -51,6 +52,14 @@ it('renders the secondary-locale picker and store on the curriculum module edit 
         ->assertSeeHtml('<option value="">English only</option>')
         ->assertSeeHtml('<option value="fr">French</option>')
         ->assertSeeHtml('<option value="*">All languages</option>')
+        ->assertSeeHtml("isVisible('fr')");
+});
+
+it('renders the secondary-locale picker on the curriculum module create page', function () {
+    Filament::bootCurrentPanel();
+
+    Livewire::test(CreateCurriculumModule::class)
+        ->assertSeeHtml('data-translatable-secondary-locale-picker')
         ->assertSeeHtml("isVisible('fr')");
 });
 

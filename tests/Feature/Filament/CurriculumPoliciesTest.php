@@ -32,3 +32,11 @@ it('lets an editor edit a curriculum module and a curriculum session', function 
     $this->get(CurriculumModuleResource::getUrl('edit', ['record' => $module]))->assertOk();
     $this->get(CurriculumSessionResource::getUrl('edit', ['record' => $session]))->assertOk();
 });
+
+it('forbids a viewer from creating a curriculum module but lets an editor', function () {
+    actingAsViewer();
+    $this->get(CurriculumModuleResource::getUrl('create'))->assertForbidden();
+
+    actingAsEditor();
+    $this->get(CurriculumModuleResource::getUrl('create'))->assertOk();
+});

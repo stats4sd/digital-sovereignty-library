@@ -23,6 +23,10 @@ class TrovesRelationManager extends RelationManager
 
     protected static string $relationship = 'troves';
 
+    // The owner is hydrated as a ToolkitModule, so Filament would otherwise guess
+    // Trove::toolkitModules() for the attach action's inverse.
+    protected static ?string $inverseRelationship = 'curriculumModules';
+
     public function isReadOnly(): bool
     {
         return false;

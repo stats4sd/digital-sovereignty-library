@@ -46,7 +46,7 @@ class CurriculumSession extends Model
 
     public function module(): BelongsTo
     {
-        return $this->belongsTo(CurriculumModule::class, 'curriculum_module_id');
+        return $this->belongsTo(MapModule::class, 'curriculum_module_id');
     }
 
     public function items(): HasMany

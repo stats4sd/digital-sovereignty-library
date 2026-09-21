@@ -11,6 +11,7 @@ use App\Filament\Resources\CollectionResource;
 use App\Filament\Resources\CollectionResource\Pages\CreateCollection;
 use App\Filament\Resources\CollectionResource\Pages\EditCollection;
 use App\Filament\Resources\CurriculumModuleResource;
+use App\Filament\Resources\CurriculumModuleResource\Pages\CreateCurriculumModule;
 use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
 use App\Filament\Resources\CurriculumSessionResource\Pages\EditCurriculumSession;
 use App\Filament\Resources\GlossaryTermResource;
@@ -140,6 +141,7 @@ class AdminPanelProvider extends PanelProvider
                     SiteContentPage::class,
                     CreateCollection::class,
                     EditCollection::class,
+                    CreateCurriculumModule::class,
                     EditCurriculumModule::class,
                     EditCurriculumSession::class,
                     ListGlossaryTerms::class,

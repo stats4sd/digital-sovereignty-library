@@ -6,6 +6,7 @@ use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
@@ -14,6 +15,18 @@ use Illuminate\Support\Str;
 class CurriculumModuleFactory extends Factory
 {
     protected $model = CurriculumModule::class;
+
+    /**
+     * Rows carrying a section are built as the matching child class (IntroModule / MapModule /
+     * ToolkitModule), the same way Eloquent hydrates them, so factory-made instances can be
+     * handed straight to Livewire components without a fresh() round-trip.
+     */
+    public function newModel(array $attributes = []): Model
+    {
+        $class = CurriculumModule::classForSection($attributes['section'] ?? null);
+
+        return new $class($attributes);
+    }
 
     public function definition(): array
     {
@@ -32,20 +45,30 @@ class CurriculumModuleFactory extends Factory
 
     public function map(): static
     {
-        return $this->state(fn () => [
-            'section' => CurriculumModule::SECTION_MAP,
-            'number' => $this->faker->numberBetween(1, 5),
-            'goal' => ['en' => rtrim($this->faker->sentence(8), '.')],
-        ]);
+        return $this->state(fn () => $this->mapAttributes());
     }
 
     public function toolkit(): static
     {
-        return $this->state(fn () => [
+        return $this->state(fn () => $this->toolkitAttributes());
+    }
+
+    protected function mapAttributes(): array
+    {
+        return [
+            'section' => CurriculumModule::SECTION_MAP,
+            'number' => $this->faker->numberBetween(1, 5),
+            'goal' => ['en' => rtrim($this->faker->sentence(8), '.')],
+        ];
+    }
+
+    protected function toolkitAttributes(): array
+    {
+        return [
             'section' => CurriculumModule::SECTION_TOOLKIT,
             'subtitle' => ['en' => rtrim($this->faker->sentence(3), '.')],
             'learning_outcomes' => null,
-        ]);
+        ];
     }
 
     public function intro(): static

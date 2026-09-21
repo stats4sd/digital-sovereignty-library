@@ -1,6 +1,6 @@
 <?php
 
-use App\Filament\Resources\CurriculumModuleResource;
+use App\Filament\Resources\CurriculumModuleResource\Pages\CreateCurriculumModule;
 use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
 use App\Filament\Resources\CurriculumModuleResource\Pages\ListCurriculumModules;
 use App\Filament\Resources\CurriculumModuleResource\RelationManagers\SessionsRelationManager;
@@ -8,6 +8,8 @@ use App\Filament\Resources\CurriculumModuleResource\RelationManagers\TrovesRelat
 use App\Filament\Resources\CurriculumSessionResource;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
+use App\Models\CurriculumSessionItem;
+use App\Models\MapModule;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
 
@@ -21,9 +23,66 @@ it('lists modules on the index page', function () {
         ->assertSee($module->key);
 });
 
-it('does not allow creating modules (fixed set)', function () {
-    expect(CurriculumModuleResource::canCreate())->toBeFalse()
-        ->and(CurriculumModuleResource::getPages())->not->toHaveKey('create');
+it('creates a learning-map module with a generated key and the next module number', function () {
+    CurriculumModule::factory()->map()->create(['number' => 3]);
+    CurriculumModule::factory()->toolkit()->create();
+
+    Livewire::test(CreateCurriculumModule::class)
+        ->fillForm([
+            'title' => ['en' => 'Digital Cooperatives'],
+            'goal' => ['en' => 'Run a co-op online'],
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
+
+    $module = CurriculumModule::where('key', 'digital-cooperatives')->first();
+
+    expect($module)->toBeInstanceOf(MapModule::class)
+        ->and($module->section)->toBe(CurriculumModule::SECTION_MAP)
+        ->and($module->number)->toBe(4)
+        ->and($module->getTranslation('goal', 'en'))->toBe('Run a co-op online');
+});
+
+it('suffixes the generated key when the slug is already taken in any section', function () {
+    CurriculumModule::factory()->toolkit()->create(['key' => 'knowledge']);
+    CurriculumModule::factory()->map()->create(['key' => 'knowledge-2']);
+
+    expect(CreateCurriculumModule::uniqueKeyFor(['en' => 'Knowledge']))->toBe('knowledge-3')
+        ->and(CreateCurriculumModule::uniqueKeyFor(['fr' => 'Savoir']))->toBe('savoir')
+        ->and(CreateCurriculumModule::uniqueKeyFor([]))->toBe('module');
+});
+
+it('requires a title to create a module', function () {
+    config(['app.locales' => ['en' => 'English', 'fr' => 'French']]);
+
+    Livewire::test(CreateCurriculumModule::class)
+        ->fillForm(['title' => ['en' => '', 'fr' => '']])
+        ->call('create')
+        ->assertHasFormErrors(['title.en']);
+
+    expect(CurriculumModule::count())->toBe(0);
+});
+
+it('offers delete on learning-map modules only and cascades to sessions and items', function () {
+    $mapModule = CurriculumModule::factory()->map()->withSessions(2)->create();
+    $session = $mapModule->sessions()->first();
+    CurriculumSessionItem::factory()->for($session, 'session')->prose()->create();
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $mapModule->getKey()])
+        ->assertActionVisible('delete')
+        ->callAction('delete');
+
+    expect(CurriculumModule::whereKey($mapModule->id)->exists())->toBeFalse()
+        ->and(CurriculumSession::where('curriculum_module_id', $mapModule->id)->exists())->toBeFalse()
+        ->and(CurriculumSessionItem::where('curriculum_session_id', $session->id)->exists())->toBeFalse();
+
+    $toolkitModule = CurriculumModule::factory()->toolkit()->create();
+    Livewire::test(EditCurriculumModule::class, ['record' => $toolkitModule->getKey()])
+        ->assertActionHidden('delete');
+
+    $intro = CurriculumModule::factory()->intro()->create();
+    Livewire::test(EditCurriculumModule::class, ['record' => $intro->getKey()])
+        ->assertActionHidden('delete');
 });
 
 it('updates translatable module content and keeps per-locale JSON flat', function () {

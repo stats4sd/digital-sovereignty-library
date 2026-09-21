@@ -2,7 +2,9 @@
 
 use App\Livewire\BrowseAll;
 use App\Models\Collection;
-use App\Models\CurriculumModule;
+use App\Models\IntroModule;
+use App\Models\MapModule;
+use App\Models\ToolkitModule;
 use App\Models\Trove;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +29,7 @@ Route::group([
 
     Route::get('/home', function () {
         return view('home_digital_sovereignty', [
-            'intro' => CurriculumModule::forSection(CurriculumModule::SECTION_INTRO)->with('troves.troveType')->first(),
+            'intro' => IntroModule::with('troves.troveType')->first(),
         ]);
     })->name('home');
 
@@ -58,15 +60,14 @@ Route::group([
     // Curriculum: onboarding + learning map (single page, Alpine step machine).
     Route::get('/curriculum', function () {
         return view('curriculum.index', [
-            'intro' => CurriculumModule::forSection(CurriculumModule::SECTION_INTRO)->with('troves.troveType')->first(),
-            'mapModules' => CurriculumModule::forSection(CurriculumModule::SECTION_MAP)->get()->keyBy('key'),
-            'pillars' => CurriculumModule::forSection(CurriculumModule::SECTION_TOOLKIT)->withCount('troves')->get()->keyBy('key'),
+            'intro' => IntroModule::with('troves.troveType')->first(),
+            'mapModules' => MapModule::inMapOrder()->get(),
+            'pillars' => ToolkitModule::withCount('troves')->get()->keyBy('key'),
         ]);
     })->name('curriculum');
 
     Route::get('/curriculum/{key}', function ($key) {
-        $module = CurriculumModule::forSection(CurriculumModule::SECTION_MAP)
-            ->where('key', $key)
+        $module = MapModule::where('key', $key)
             ->with('sessions')
             ->firstOrFail();
 
@@ -74,8 +75,7 @@ Route::group([
     })->name('curriculum.show');
 
     Route::get('/curriculum/{key}/{session}', function ($key, $sessionSlug) {
-        $module = CurriculumModule::forSection(CurriculumModule::SECTION_MAP)
-            ->where('key', $key)
+        $module = MapModule::where('key', $key)
             ->with('sessions')
             ->firstOrFail();
 
@@ -102,8 +102,7 @@ Route::group([
     // Toolkit pillars render as a section of /curriculum (no standalone index page);
     // only the per-pillar detail pages have their own route.
     Route::get('/toolkit/{key}', function ($key) {
-        $pillar = CurriculumModule::forSection(CurriculumModule::SECTION_TOOLKIT)
-            ->where('key', $key)
+        $pillar = ToolkitModule::where('key', $key)
             ->with('troves.troveType')
             ->firstOrFail();
 

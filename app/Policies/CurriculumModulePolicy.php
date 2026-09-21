@@ -6,8 +6,9 @@ use App\Models\CurriculumModule;
 use App\Models\User;
 
 /**
- * Curriculum modules are fixed content rows seeded by CurriculumSeeder and matched to layout
- * positions by key; admins/editors edit them but never create or delete rows.
+ * Everyone may view modules; editors and admins may edit any module and may create or delete
+ * learning-map modules. The intro and toolkit rows are seeded, matched to fixed layout
+ * positions by key, and can never be deleted.
  */
 class CurriculumModulePolicy
 {
@@ -23,7 +24,7 @@ class CurriculumModulePolicy
 
     public function create(User $user): bool
     {
-        return false;
+        return $user->canEdit();
     }
 
     public function update(User $user, CurriculumModule $curriculumModule): bool
@@ -33,7 +34,11 @@ class CurriculumModulePolicy
 
     public function delete(User $user, CurriculumModule $curriculumModule): bool
     {
-        return false;
+        if (! $curriculumModule->isMapModule()) {
+            return false;
+        }
+
+        return $user->canEdit();
     }
 
     public function restore(User $user, CurriculumModule $curriculumModule): bool
