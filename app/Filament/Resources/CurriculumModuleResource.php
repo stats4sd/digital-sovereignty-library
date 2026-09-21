@@ -58,7 +58,7 @@ class CurriculumModuleResource extends Resource
                     ->iconColor('primary')
                     ->extraAttributes(['class' => 'grey-box'])
                     ->label('Title')
-                    ->columns(3)
+                    ->columns(['default' => 1, 'lg' => 2])
                     ->childField(Forms\Components\TextInput::class)
                     ->required(),
 
@@ -68,7 +68,7 @@ class CurriculumModuleResource extends Resource
                     ->extraAttributes(['class' => 'grey-box'])
                     ->label('Subtitle')
                     ->description('Short category label shown on the toolkit pillar card (e.g. "Data & Knowledge Repositories").')
-                    ->columns(3)
+                    ->columns(['default' => 1, 'lg' => 2])
                     ->childField(Forms\Components\TextInput::class)
                     ->visible(fn (?CurriculumModule $record) => $record?->section === CurriculumModule::SECTION_TOOLKIT),
 
@@ -127,7 +127,7 @@ class CurriculumModuleResource extends Resource
 
                         TranslatableComboField::make('statement')
                             ->label('Outcome')
-                            ->columns(3)
+                            ->columns(['default' => 1, 'lg' => 2])
                             ->childField(Forms\Components\TextInput::class)
                             ->required(),
 

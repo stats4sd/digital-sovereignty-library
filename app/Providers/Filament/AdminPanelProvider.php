@@ -9,6 +9,7 @@ use App\Filament\Pages\SiteContentPage;
 use App\Filament\Pages\SiteOptionsPage;
 use App\Filament\Resources\CollectionResource;
 use App\Filament\Resources\CurriculumModuleResource;
+use App\Filament\Resources\CurriculumModuleResource\Pages\EditCurriculumModule;
 use App\Filament\Resources\GlossaryTermResource;
 use App\Filament\Resources\InviteResource;
 use App\Filament\Resources\TagResource;
@@ -25,6 +26,7 @@ use Filament\Navigation\NavigationGroup;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -118,6 +120,15 @@ class AdminPanelProvider extends PanelProvider
                 SpatieTranslatablePlugin::make()
                     ->defaultLocales(array_keys(config('branding.locales', ['en' => 'English']))),
             ])
+            // Page-wide "also show <language>" picker for TranslatableComboField. Opt-in per
+            // page: add the page class to `scopes` to enable it there.
+            ->renderHook(
+                PanelsRenderHook::PAGE_HEADER_ACTIONS_BEFORE,
+                fn () => view('filament.translatable.secondary-locale-picker'),
+                scopes: [
+                    EditCurriculumModule::class,
+                ],
+            )
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Inter', provider: LocalFontProvider::class);
     }

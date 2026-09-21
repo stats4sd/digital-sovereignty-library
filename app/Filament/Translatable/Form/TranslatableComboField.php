@@ -13,6 +13,7 @@ use Filament\Support\Concerns\HasIcon;
 use Filament\Support\Concerns\HasIconColor;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Js;
 
 //
 class TranslatableComboField extends Field
@@ -30,9 +31,18 @@ class TranslatableComboField extends Field
     // Is a wrapper around a set of fields that all populate the same value in the database, but in different languages.
 
 
+    /**
+     * Name of the page-wide Alpine store that decides which secondary locale is shown.
+     * Registered by the <x-filament.translatable.secondary-locale-picker> view; when a page
+     * doesn't render the picker the store is absent and every locale stays visible.
+     */
+    public const LOCALE_STORE = 'translatableLocales';
+
     protected string $view = 'filament.shared.forms.translatable-combo-field';
 
     public Closure|array|null $locales = null;
+
+    public Closure|string|null $primaryLocale = null;
 
     protected function setUp(): void
     {
@@ -65,6 +75,22 @@ class TranslatableComboField extends Field
         }
 
         return $this->evaluate($this->locales);
+    }
+
+    /**
+     * The locale whose input is always visible (content is authored in it). Every other
+     * locale's input is toggled client-side by the secondary-locale picker.
+     */
+    public function primaryLocale(Closure|string|null $locale): static
+    {
+        $this->primaryLocale = $locale;
+
+        return $this;
+    }
+
+    public function getPrimaryLocale(): string
+    {
+        return $this->evaluate($this->primaryLocale) ?? config('app.fallback_locale', 'en');
     }
 
     public function getDescription(): string|Htmlable|null
@@ -114,7 +140,7 @@ class TranslatableComboField extends Field
                     ->label($localeLabel);
             }
 
-            $localeFields[] = $newField;
+            $localeFields[] = $this->applySecondaryLocaleVisibility($newField, $locale);
         }
 
 
@@ -143,6 +169,28 @@ class TranslatableComboField extends Field
 
         $this->childComponents($localeFields);
         return $this;
+    }
+
+    /**
+     * Non-primary locale inputs are shown only when the page-wide picker selects them.
+     * visibleJs() keeps the field in form state and dehydration (unlike visible()), and
+     * Filament toggles `fi-hidden` on the grid wrapper so hidden locales free their column.
+     */
+    protected function applySecondaryLocaleVisibility(Field $field, string $locale): Field
+    {
+        if ($locale === $this->getPrimaryLocale()) {
+            return $field;
+        }
+
+        $js = sprintf('($store.%s?.isVisible(%s) ?? true)', self::LOCALE_STORE, Js::from($locale));
+
+        try {
+            $existing = $field->getVisibleJs();
+        } catch (\Throwable) {
+            $existing = null;
+        }
+
+        return $field->visibleJs(filled($existing) ? "({$existing}) && {$js}" : $js);
     }
 
     public function required(bool|Closure $condition = true): static
