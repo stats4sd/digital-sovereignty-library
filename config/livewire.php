@@ -157,4 +157,23 @@ return [
     */
 
     'pagination_theme' => 'tailwind',
+
+    /*
+    |---------------------------------------------------------------------------
+    | Payload Guards
+    |---------------------------------------------------------------------------
+    |
+    | Livewire rejects property paths deeper than `max_nesting_depth` (package
+    | default 10). The session content Builder nests a RichEditor (TipTap JSON)
+    | inside a translatable block, so a plain paragraph already reaches 11
+    | levels and lists / marks go deeper still. Set to null to disable.
+    |
+    */
+
+    'payload' => [
+        'max_size' => 1024 * 1024,
+        'max_nesting_depth' => 50,
+        'max_calls' => 50,
+        'max_components' => 200,
+    ],
 ];
