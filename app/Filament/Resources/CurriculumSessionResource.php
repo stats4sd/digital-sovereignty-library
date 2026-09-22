@@ -11,6 +11,7 @@ use App\Models\CurriculumSession;
 use App\Support\HtmlSanitizer;
 use Filament\Forms;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -38,41 +39,48 @@ class CurriculumSessionResource extends Resource
     {
         return $schema
             ->components([
+                // Not contained: the tabs sit directly on the grey page so the Content tab's
+                // Builder blocks are the first white layer (see docs/specs/2026-09-21-session-
+                // builder-visual-hierarchy-design.md, option A). The Session tab keeps a card.
                 Tabs::make('Session')
                     ->persistTabInQueryString()
+                    ->contained(false)
                     ->columnSpanFull()
                     ->tabs([
                         ErrorBadgedTab::make('Session')
                             ->icon('heroicon-o-information-circle')
                             ->schema([
-                                Forms\Components\Placeholder::make('module')
-                                    ->label('Module')
-                                    ->content(function (?CurriculumSession $record): HtmlString {
-                                        $module = $record?->module;
+                                Section::make()
+                                    ->schema([
+                                        Forms\Components\Placeholder::make('module')
+                                            ->label('Module')
+                                            ->content(function (?CurriculumSession $record): HtmlString {
+                                                $module = $record?->module;
 
-                                        if ($module === null) {
-                                            return new HtmlString('');
-                                        }
+                                                if ($module === null) {
+                                                    return new HtmlString('');
+                                                }
 
-                                        $url = CurriculumModuleResource::getUrl('edit', ['record' => $module]);
+                                                $url = CurriculumModuleResource::getUrl('edit', ['record' => $module]);
 
-                                        return new HtmlString('<a href="'.$url.'" class="underline">'.e($module->title).'</a>');
-                                    }),
+                                                return new HtmlString('<a href="'.$url.'" class="underline">'.e($module->title).'</a>');
+                                            }),
 
-                                ...static::formSchema(),
+                                        ...static::formSchema(),
 
-                                TranslatableComboField::make('description')
-                                    ->icon('heroicon-o-document-text')
-                                    ->iconColor('primary')
-                                    ->extraAttributes(['class' => 'grey-box'])
-                                    ->label('Description')
-                                    ->childField(
-                                        Forms\Components\RichEditor::make('description')
-                                            ->disableToolbarButtons([
-                                                'attachFiles',
-                                            ])
-                                            ->dehydrateStateUsing(fn (?string $state): ?string => HtmlSanitizer::clean($state)),
-                                    ),
+                                        TranslatableComboField::make('description')
+                                            ->icon('heroicon-o-document-text')
+                                            ->iconColor('primary')
+                                            ->extraAttributes(['class' => 'grey-box'])
+                                            ->label('Description')
+                                            ->childField(
+                                                Forms\Components\RichEditor::make('description')
+                                                    ->disableToolbarButtons([
+                                                        'attachFiles',
+                                                    ])
+                                                    ->dehydrateStateUsing(fn (?string $state): ?string => HtmlSanitizer::clean($state)),
+                                            ),
+                                    ]),
                             ]),
 
                         ErrorBadgedTab::make('Content')
