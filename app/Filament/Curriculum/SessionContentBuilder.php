@@ -3,6 +3,7 @@
 namespace App\Filament\Curriculum;
 
 use App\Curriculum\Items\ItemRegistry;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Builder;
 
 /**
@@ -28,6 +29,9 @@ class SessionContentBuilder
             ->blockPickerColumns(2)
             ->collapsible()
             ->addActionLabel('Add content block')
+            // Solid primary: the top of the add-button hierarchy (block > question > option),
+            // see ItemDefinition::listRepeater() for the two levels below it.
+            ->addAction(fn (Action $action): Action => $action->button()->color('primary')->icon('heroicon-o-plus-circle'))
             ->addBetweenActionLabel('Insert here')
             ->columnSpanFull();
     }

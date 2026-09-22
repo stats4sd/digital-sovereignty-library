@@ -6,9 +6,12 @@ use App\Enums\CurriculumItemType;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Support\HtmlSanitizer;
 use App\Support\TranslatableText;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Illuminate\Support\Arr;
@@ -274,12 +277,15 @@ abstract class ItemDefinition
     */
 
     /**
-     * A per-locale field reading from block state only (never the session record).
+     * A per-locale field reading from block state only (never the session record). $inline
+     * drops the Section card around the locale inputs; use it for leaves nested inside a
+     * Repeater item (option text, column label, …) and keep the card for block-level fields.
      */
-    protected function translatable(string $name, string $label, string|Field $child, bool $required = false): TranslatableComboField
+    protected function translatable(string $name, string $label, string|Field $child, bool $required = false, bool $inline = false): TranslatableComboField
     {
         $field = TranslatableComboField::make($name)
             ->fromRecord(false)
+            ->inline($inline)
             ->label($label)
             ->childField($child);
 
@@ -288,6 +294,49 @@ abstract class ItemDefinition
         }
 
         return $required ? $field->required() : $field;
+    }
+
+    /**
+     * A list of repeated sub-structures inside a block. The "Add" button's look encodes the
+     * list's depth so the three add actions that can share a screen (block, question, option)
+     * read differently: the Builder's is a solid primary button, a level-1 list (questions,
+     * columns, rows) gets a small grey button, a level-2 list (options, choices) a small link.
+     */
+    protected function listRepeater(string $name, string $label, string $addLabel, int $level = 1): Repeater
+    {
+        return Repeater::make($name)
+            ->label($label)
+            ->addActionLabel($addLabel)
+            ->addAction(fn (Action $action): Action => $level === 1
+                ? $action->button()->color('gray')->size('sm')
+                : $action->link()->size('sm')->icon('heroicon-m-plus'))
+            ->reorderable();
+    }
+
+    /**
+     * A level-2 list rendered as a compact table (one row per item, no per-item card) for
+     * short repeated structures: quiz options, matrix choices. Columns are matched to the
+     * item schema's visible components in order, so the schema must list them in the same
+     * order as $columns.
+     *
+     * @param  list<TableColumn>  $columns
+     */
+    protected function tableRepeater(string $name, string $label, string $addLabel, array $columns): Repeater
+    {
+        return $this->listRepeater($name, $label, $addLabel, level: 2)
+            ->table($columns);
+    }
+
+    /**
+     * A repeater item header that says what it is even when collapsed: "Q2 · Which of these…",
+     * "Column 1 · Challenge". $index is the Repeater's zero-based item index.
+     */
+    protected function numberedLabel(string $prefix, int $index, mixed $text): string
+    {
+        $number = strlen($prefix) === 1 ? $prefix.($index + 1) : $prefix.' '.($index + 1);
+        $text = is_array($text) ? TranslatableText::pick($text) : null;
+
+        return filled($text) ? "{$number} · {$text}" : $number;
     }
 
     protected function headingField(bool $required): TranslatableComboField
@@ -299,14 +348,22 @@ abstract class ItemDefinition
      * The author-entered identifier of a repeated sub-structure (a canvas field, matrix
      * column, quiz question or option). Learners' notes are stored under it in their browser.
      */
-    protected function idField(string $stores): TextInput
+    protected function idField(string $stores, bool $withHelperText = true): TextInput
     {
-        return TextInput::make('id')
+        $field = TextInput::make('id')
             ->label('ID')
             ->required()
             ->rule('alpha_dash')
             ->maxLength(40)
-            ->default(fn (): string => Str::lower(Str::random(6)))
-            ->helperText("Short identifier that learners' {$stores} are saved under in their browser. Renaming it once the session is live orphans anything they have already saved.");
+            ->default(fn (): string => Str::lower(Str::random(6)));
+
+        return $withHelperText
+            ? $field->helperText(static::idHelperText($stores))
+            : $field;
+    }
+
+    protected static function idHelperText(string $stores): string
+    {
+        return "Short identifier that learners' {$stores} are saved under in their browser. Renaming it once the session is live orphans anything they have already saved.";
     }
 }

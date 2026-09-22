@@ -3,9 +3,9 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
-use App\Support\TranslatableText;
+use App\Filament\Translatable\Form\TranslatableTableColumn;
 use Closure;
-use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -135,14 +135,14 @@ class QuizItem extends ItemDefinition
                 ->default(1)
                 ->required(),
 
-            Repeater::make('items')
-                ->label('Questions')
-                ->addActionLabel('Add question')
-                ->reorderable()
+            $this->listRepeater('items', 'Questions', 'Add question', level: 1)
                 ->collapsible()
+                // Collapsed by default: a quiz block reads as a list of question headers and
+                // one question is opened at a time, which caps the visible nesting depth.
+                ->collapsed()
                 ->defaultItems(1)
                 ->minItems(1)
-                ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['stem'] ?? null) ? $state['stem'] : null))
+                ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Q', $index, $state['stem'] ?? null))
                 ->schema([
                     $this->idField('attempts'),
                     Select::make('kind')
@@ -151,17 +151,18 @@ class QuizItem extends ItemDefinition
                         ->default('pick-one')
                         ->required()
                         ->native(false),
-                    $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true),
-                    Repeater::make('options')
-                        ->label('Options')
-                        ->addActionLabel('Add option')
-                        ->reorderable()
+                    $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true, inline: true),
+                    $this->tableRepeater('options', 'Options', 'Add option', [
+                        TableColumn::make('ID')->markAsRequired()->width('9rem'),
+                        TranslatableTableColumn::make('Text')->markAsRequired(),
+                        TableColumn::make('Correct')->width('7rem'),
+                    ])
+                        ->helperText(static::idHelperText('answers'))
                         ->defaultItems(2)
                         ->minItems(2)
-                        ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null))
                         ->schema([
-                            $this->idField('answers'),
-                            $this->translatable('text', 'Text', TextInput::class, required: true),
+                            $this->idField('answers', withHelperText: false),
+                            $this->translatable('text', 'Text', TextInput::class, required: true, inline: true),
                             Toggle::make('correct')
                                 ->label('Correct answer')
                                 ->default(false),
@@ -170,8 +171,8 @@ class QuizItem extends ItemDefinition
                         ->statePath('feedback')
                         ->columns(1)
                         ->schema([
-                            $this->translatable('correct', 'When answered correctly', Textarea::make('correct')->rows(2)),
-                            $this->translatable('incorrect', 'When answered incorrectly', Textarea::make('incorrect')->rows(2)),
+                            $this->translatable('correct', 'When answered correctly', Textarea::make('correct')->rows(2), inline: true),
+                            $this->translatable('incorrect', 'When answered incorrectly', Textarea::make('incorrect')->rows(2), inline: true),
                         ]),
                 ]),
         ];

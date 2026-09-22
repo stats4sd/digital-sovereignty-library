@@ -46,6 +46,8 @@ class TranslatableComboField extends Field
 
     protected bool|Closure $readsFromRecord = true;
 
+    protected bool|Closure $isInline = false;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -82,6 +84,24 @@ class TranslatableComboField extends Field
     public function readsFromRecord(): bool
     {
         return (bool) $this->evaluate($this->readsFromRecord);
+    }
+
+    /**
+     * Render as a plain labelled field (label, then the locale inputs side by side) instead of
+     * a titled Section card. Opt-in, for leaves nested inside Repeater items where the card
+     * chrome adds a level of nesting the content does not need. The description, if any, is
+     * shown as helper text.
+     */
+    public function inline(bool|Closure $condition = true): static
+    {
+        $this->isInline = $condition;
+
+        return $this;
+    }
+
+    public function isInline(): bool
+    {
+        return (bool) $this->evaluate($this->isInline);
     }
 
     public function locales(Closure|array|null $locales): static

@@ -13,3 +13,57 @@
 .grey-box .fi-section {
     background-color: #E6E6E6;
 }
+
+/* Session content Builder: alternate white and grey at each nesting depth so any two adjacent
+   containers contrast (docs/specs/2026-09-21-session-builder-visual-hierarchy-design.md, A).
+   Depth 1 is the page (grey, the Tabs are not contained), depth 2 the Builder block (white,
+   Filament default). Scoped to .fi-fo-builder-item so Trove and Tag forms are untouched. */
+.fi-fo-builder-item .fi-fo-repeater-item,
+.fi-fo-builder-item .fi-section,
+.fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item .fi-section {
+    background-color: #f3f4f6; /* depth 3 and 5: grey */
+}
+
+.fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item,
+.fi-fo-builder-item .fi-fo-repeater-item .fi-section {
+    background-color: #fff; /* depth 4: white */
+}
+
+.dark .fi-fo-builder-item .fi-fo-repeater-item,
+.dark .fi-fo-builder-item .fi-section,
+.dark .fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item .fi-section {
+    background-color: rgb(255 255 255 / 0.05);
+}
+
+.dark .fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item,
+.dark .fi-fo-builder-item .fi-fo-repeater-item .fi-section {
+    background-color: #111827;
+}
+
+/* Depth accent stripe (spec option D): primary on Builder blocks, grey on level-1 repeater
+   items (questions, columns, rows); level-2 items (options, choices) carry none. */
+.fi-fo-builder-item {
+    border-inline-start: 3px solid var(--color-primary-600);
+}
+
+.fi-fo-builder-item .fi-fo-repeater-item {
+    border-inline-start: 3px solid var(--color-gray-400);
+}
+
+.fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item {
+    border-inline-start: none;
+}
+
+/* TranslatableTableColumn: second header line naming the locales whose inputs are on screen
+   ("English · Español"), standing in for the per-input labels the table hides. */
+.fi-fo-table-repeater th .fi-translatable-table-column-locales {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 400;
+    color: var(--color-gray-500);
+}
+
+.dark .fi-fo-table-repeater th .fi-translatable-table-column-locales {
+    color: var(--color-gray-400);
+}
