@@ -1,2 +1,8 @@
-<!-- Plausible Analytics Tag -->
-<script defer data-domain="{{ \Illuminate\Support\Str::replace('https://', '', config('app.url')) }}" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+@if(config('branding.plausible_script_id'))
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/{{ config('branding.plausible_script_id') }}.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+@endif

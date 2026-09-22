@@ -34,17 +34,3 @@ it('passes through entries already in the new shape and drops empty ones', funct
     expect(LegacyYoutubeLinksConverter::convertLocaleEntries([$newShape, ['youtube_id' => ''], 'junk']))
         ->toBe([$newShape]);
 });
-
-it('converts a whole translations dictionary and drops empty locales', function () {
-    $converted = LegacyYoutubeLinksConverter::convertTranslations([
-        'en' => [['youtube_id' => 'q76bMs-NwRk']],
-        'fr' => [],
-    ]);
-
-    expect($converted)->toBe(['en' => [expectedRecord('q76bMs-NwRk')]]);
-});
-
-it('returns null for non-array or fully-empty input', function () {
-    expect(LegacyYoutubeLinksConverter::convertTranslations(null))->toBeNull()
-        ->and(LegacyYoutubeLinksConverter::convertTranslations(['en' => []]))->toBeNull();
-});

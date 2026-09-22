@@ -19,7 +19,7 @@
 
             <!-- Social icons -->
             @if(config('branding.linkedin_url') || config('branding.youtube_url'))
-                <div class="flex space-x-4">
+                <div class="flex gap-4">
                     @if(config('branding.linkedin_url'))
                         <a href="{{ config('branding.linkedin_url') }}" target="_blank" rel="noopener">
                             <img src="{{ asset('/images/linkedin_logo.png') }}" class="w-8 h-8" alt="LinkedIn">

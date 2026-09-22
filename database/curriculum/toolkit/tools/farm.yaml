@@ -1,0 +1,130 @@
+# Seeded tool Troves for the 'farm' pillar, in display order. Each is tagged with the pillar tag and attached to the pillar module. 'published: false' marks tools seeded as drafts.
+pillar: farm
+tools:
+  -
+    title:
+      en: LiteFarm
+      ar: LiteFarm
+      es: LiteFarm
+      fil: LiteFarm
+      fr: LiteFarm
+      hi: LiteFarm
+      id: LiteFarm
+      it: LiteFarm
+      pt: LiteFarm
+      ru: LiteFarm
+      sw: LiteFarm
+      zh_CN: LiteFarm
+    description:
+      en: |-
+        <p>LiteFarm is free, open-source farm management software built with and for farmers (crop planning, task management, harvest records and certification paperwork), developed at the University of British Columbia with sustainability at its core.</p>
+        <h2>How to use it</h2>
+        <p>Create a free account, map your farm, and start planning crops and logging tasks; records build up into reports you own and can export. Two linked videos cover it from both sides: the principles behind LiteFarm, and a practical walkthrough from a farming association using it day to day.</p>
+      ar: |-
+        <p>LiteFarm برنامج مجاني مفتوح المصدر لإدارة المزارع، بُني مع المزارعين ومن أجلهم (تخطيط المحاصيل، وإدارة المهام، وسجلات الحصاد، وأوراق الحصول على الشهادات)، وطُوّر في جامعة كولومبيا البريطانية والاستدامة في صميمه.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>أنشئ حسابًا مجانيًا، وارسم خريطة مزرعتك، وابدأ بتخطيط المحاصيل وتسجيل المهام؛ تتراكم السجلات لتشكّل تقارير تملكها ويمكنك تصديرها. يتناوله فيديوان مرتبطان من الجانبين: المبادئ التي يقوم عليها LiteFarm، وشرح عملي من جمعية زراعية تستخدمه يومًا بيوم.</p>
+      es: |-
+        <p>LiteFarm es un software gratuito y de código abierto para la gestión de fincas, creado con y para agricultores (planificación de cultivos, gestión de tareas, registros de cosecha y documentación para certificaciones), desarrollado en la University of British Columbia con la sostenibilidad como eje central.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Crea una cuenta gratuita, mapea tu finca y empieza a planificar cultivos y registrar tareas; los registros se van acumulando en informes que son tuyos y que puedes exportar. Dos videos enlazados lo abordan desde ambos lados: los principios detrás de LiteFarm y un recorrido práctico de una asociación de agricultores que lo usa en su día a día.</p>
+      fil: |-
+        <p>Ang LiteFarm ay libre at open-source na software sa pamamahala ng sakahan na ginawa kasama at para sa mga magsasaka (pagpaplano ng pananim, pamamahala ng mga gawain, rekord ng ani at mga papeles para sa sertipikasyon), na binuo sa University of British Columbia na may sustainability bilang pundasyon nito.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Gumawa ng libreng account, imapa ang iyong sakahan, at simulang magplano ng mga pananim at magtala ng mga gawain; nabubuo ang mga rekord sa mga ulat na pag-aari mo at maaari mong i-export. Dalawang naka-link na video ang tumatalakay dito mula sa magkabilang panig: ang mga prinsipyo sa likod ng LiteFarm, at isang praktikal na gabay mula sa isang samahan ng mga magsasaka na gumagamit nito araw-araw.</p>
+      fr: |-
+        <p>LiteFarm est un logiciel libre et gratuit de gestion agricole conçu avec et pour les agriculteurs (planification des cultures, gestion des tâches, registres de récolte et documents de certification), développé à l'University of British Columbia avec la durabilité au cœur de sa conception.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Créez un compte gratuit, cartographiez votre ferme, puis commencez à planifier vos cultures et à consigner vos tâches ; les enregistrements s'accumulent pour former des rapports qui vous appartiennent et que vous pouvez exporter. Deux vidéos en lien l'abordent sous deux angles : les principes qui sous-tendent LiteFarm, et une démonstration pratique par une association agricole qui l'utilise au quotidien.</p>
+      hi: |-
+        <p>LiteFarm किसानों के साथ और किसानों के लिए बनाया गया मुफ़्त, ओपन-सोर्स खेत प्रबंधन सॉफ़्टवेयर है (फ़सल योजना, कार्य प्रबंधन, फ़सल कटाई के रिकॉर्ड और प्रमाणन की कागज़ी कार्रवाई), जिसे University of British Columbia में टिकाऊपन को केंद्र में रखकर विकसित किया गया है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>एक मुफ़्त खाता बनाएँ, अपने खेत का नक्शा बनाएँ, और फ़सलों की योजना बनाना और कार्य दर्ज करना शुरू करें; रिकॉर्ड जमा होकर ऐसी रिपोर्टों में बदल जाते हैं जो आपकी अपनी हैं और जिन्हें आप एक्सपोर्ट कर सकते हैं। दो लिंक किए गए वीडियो इसे दोनों पक्षों से समझाते हैं: LiteFarm के पीछे के सिद्धांत, और इसे रोज़ाना इस्तेमाल करने वाले एक किसान संघ का व्यावहारिक प्रदर्शन।</p>
+      id: |-
+        <p>LiteFarm adalah perangkat lunak manajemen usaha tani yang gratis dan bersumber terbuka, dibangun bersama dan untuk petani (perencanaan tanaman, pengelolaan tugas, catatan panen, dan dokumen sertifikasi), dikembangkan di University of British Columbia dengan keberlanjutan sebagai intinya.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Buat akun gratis, petakan lahan Anda, lalu mulai merencanakan tanaman dan mencatat tugas; catatan-catatan itu terhimpun menjadi laporan yang Anda miliki dan dapat Anda ekspor. Dua video yang ditautkan membahasnya dari dua sisi: prinsip-prinsip di balik LiteFarm, dan panduan praktis dari sebuah asosiasi petani yang menggunakannya sehari-hari.</p>
+      it: |-
+        <p>LiteFarm è un software gratuito e open source per la gestione dell'azienda agricola, costruito con e per gli agricoltori (pianificazione delle colture, gestione delle attività, registri dei raccolti e documentazione per le certificazioni), sviluppato presso la University of British Columbia con la sostenibilità al centro.</p>
+        <h2>Come usarlo</h2>
+        <p>Crea un account gratuito, mappa la tua azienda agricola e inizia a pianificare le colture e a registrare le attività; i dati si accumulano in report che ti appartengono e che puoi esportare. Due video linkati lo presentano da entrambi i lati: i principi alla base di LiteFarm e una guida pratica di un'associazione di agricoltori che lo usa ogni giorno.</p>
+      pt: |-
+        <p>O LiteFarm é software gratuito e de código aberto para gestão agrícola, construído com e para agricultores (planeamento de culturas, gestão de tarefas, registos de colheita e documentação de certificação), desenvolvido na University of British Columbia com a sustentabilidade no centro.</p>
+        <h2>Como usar</h2>
+        <p>Crie uma conta gratuita, mapeie a sua exploração e comece a planear culturas e a registar tarefas; os registos acumulam-se em relatórios que são seus e que pode exportar. Dois vídeos ligados cobrem-no de ambos os lados: os princípios por trás do LiteFarm e um percurso prático de uma associação de agricultores que o usa no dia a dia.</p>
+      ru: |-
+        <p>LiteFarm — это бесплатное программное обеспечение с открытым исходным кодом для управления хозяйством, созданное вместе с фермерами и для фермеров (планирование посевов, управление задачами, учёт урожая и документы для сертификации), разработанное в Университете Британской Колумбии с устойчивостью в основе.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Создайте бесплатный аккаунт, нанесите своё хозяйство на карту и начните планировать посевы и записывать задачи; записи накапливаются в отчёты, которые принадлежат вам и которые можно экспортировать. Два видео по ссылкам раскрывают инструмент с обеих сторон: принципы, лежащие в основе LiteFarm, и практический разбор от фермерской ассоциации, которая пользуется им каждый день.</p>
+      sw: |-
+        <p>LiteFarm ni programu huria ya bure ya usimamizi wa shamba iliyoundwa pamoja na wakulima na kwa ajili yao (upangaji wa mazao, usimamizi wa kazi, kumbukumbu za mavuno na nyaraka za uthibitishaji), iliyotengenezwa katika Chuo Kikuu cha British Columbia ikiweka uendelevu kama msingi wake.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Fungua akaunti ya bure, chora ramani ya shamba lako, kisha anza kupanga mazao na kuandika kumbukumbu za kazi; kumbukumbu hizo hujengeka kuwa ripoti unazozimiliki na kuweza kuzihamisha. Video mbili zilizounganishwa hapa zinaielezea kwa pande zote mbili: misingi ya LiteFarm, na maelekezo ya vitendo kutoka kwa chama cha wakulima kinachoitumia kila siku.</p>
+      zh_CN: |-
+        <p>LiteFarm 是一款免费的开源农场管理软件，与农民共同打造、为农民服务（作物规划、任务管理、收获记录和认证文书），由 University of British Columbia 开发，以可持续性为核心。</p>
+        <h2>如何使用</h2>
+        <p>注册一个免费账户，绘制您的农场地图，然后开始规划作物并记录任务；这些记录会逐步积累成归您所有、可随时导出的报告。链接的两个视频从两个方面进行了介绍：LiteFarm 背后的理念，以及一家日常使用它的农民协会所做的实操演示。</p>
+  -
+    title:
+      en: farmOS
+      ar: farmOS
+      es: farmOS
+      fil: farmOS
+      fr: farmOS
+      hi: farmOS
+      id: farmOS
+      it: farmOS
+      pt: farmOS
+      ru: farmOS
+      sw: farmOS
+      zh_CN: farmOS
+    description:
+      en: |-
+        <p>farmOS is open-source farm record-keeping you can self-host: plantings, animals, inputs, observations and maps, stored in a system your farm or cooperative controls completely.</p>
+        <h2>How to use it</h2>
+        <p>Use the hosted Farmier service or install farmOS on your own server (including a local box), then record activities as logs against your fields and assets. Start simple, with a few key records, and grow into it.</p>
+      ar: |-
+        <p>farmOS نظام مفتوح المصدر لحفظ سجلات المزرعة يمكنك استضافته بنفسك: المزروعات، والحيوانات، والمدخلات، والملاحظات، والخرائط، مخزّنة في نظام تتحكم فيه مزرعتك أو تعاونيتك بالكامل.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>استخدم خدمة Farmier المستضافة أو ثبّت farmOS على خادمك الخاص (بما في ذلك جهاز محلي)، ثم سجّل الأنشطة كسجلات مرتبطة بحقولك وأصولك. ابدأ ببساطة، ببعض السجلات الأساسية، وتوسّع تدريجيًا.</p>
+      es: |-
+        <p>farmOS es un sistema de código abierto para llevar los registros de la finca que puedes alojar tú mismo: siembras, animales, insumos, observaciones y mapas, almacenados en un sistema que tu finca o cooperativa controla por completo.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Usa el servicio alojado Farmier o instala farmOS en tu propio servidor (incluso en un equipo local), y luego anota las actividades como registros asociados a tus parcelas y activos. Empieza de forma sencilla, con unos pocos registros clave, y ve ampliándolo con el tiempo.</p>
+      fil: |-
+        <p>Ang farmOS ay open-source na sistema ng pagtatala ng rekord ng sakahan na maaari mong i-self-host: mga taniman, hayop, input, obserbasyon at mapa, na nakaimbak sa isang sistemang ganap na kontrolado ng iyong sakahan o kooperatiba.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Gamitin ang hosted na serbisyo ng Farmier o i-install ang farmOS sa iyong sariling server (kabilang ang isang lokal na makina), pagkatapos ay itala ang mga aktibidad bilang mga log para sa iyong mga bukirin at ari-arian. Magsimula sa simple, sa ilang mahahalagang rekord, at unti-unting palawakin.</p>
+      fr: |-
+        <p>farmOS est un outil libre de tenue de registres agricoles que vous pouvez auto-héberger : plantations, animaux, intrants, observations et cartes, stockés dans un système que votre ferme ou votre coopérative contrôle entièrement.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Utilisez le service hébergé Farmier ou installez farmOS sur votre propre serveur (y compris une machine locale), puis enregistrez vos activités sous forme de journaux liés à vos parcelles et à vos actifs. Commencez simplement, avec quelques enregistrements clés, puis élargissez progressivement.</p>
+      hi: |-
+        <p>farmOS एक ओपन-सोर्स खेत रिकॉर्ड-कीपिंग प्रणाली है जिसे आप स्वयं होस्ट कर सकते हैं: रोपाई, पशु, इनपुट, अवलोकन और नक्शे, एक ऐसी प्रणाली में संग्रहीत जिस पर आपके खेत या सहकारी समिति का पूरा नियंत्रण होता है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>होस्टेड Farmier सेवा का उपयोग करें या farmOS को अपने सर्वर पर (स्थानीय मशीन सहित) इंस्टॉल करें, फिर अपने खेतों और संपत्तियों के लिए गतिविधियों को लॉग के रूप में दर्ज करें। कुछ मुख्य रिकॉर्ड के साथ सरल शुरुआत करें, और धीरे-धीरे इसमें आगे बढ़ें।</p>
+      id: |-
+        <p>farmOS adalah sistem pencatatan usaha tani sumber terbuka yang dapat Anda hosting sendiri: penanaman, hewan ternak, input, pengamatan, dan peta, tersimpan dalam sistem yang sepenuhnya dikendalikan oleh usaha tani atau koperasi Anda.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Gunakan layanan hosting Farmier atau pasang farmOS di server Anda sendiri (termasuk komputer lokal), lalu catat kegiatan sebagai log yang terhubung dengan lahan dan aset Anda. Mulailah dengan sederhana, dengan beberapa catatan penting, lalu kembangkan seiring waktu.</p>
+      it: |-
+        <p>farmOS è un software open source per la tenuta dei registri agricoli che puoi ospitare sul tuo server: piantagioni, animali, input, osservazioni e mappe, conservati in un sistema che la tua azienda agricola o cooperativa controlla completamente.</p>
+        <h2>Come usarlo</h2>
+        <p>Usa il servizio in hosting Farmier oppure installa farmOS sul tuo server (anche su una macchina locale), poi registra le attività come log associati ai tuoi campi e alle tue risorse. Inizia in modo semplice, con pochi registri fondamentali, e cresci gradualmente.</p>
+      pt: |-
+        <p>O farmOS é um sistema de registos agrícolas de código aberto que pode alojar por conta própria: plantações, animais, insumos, observações e mapas, guardados num sistema que a sua exploração ou cooperativa controla por completo.</p>
+        <h2>Como usar</h2>
+        <p>Use o serviço alojado Farmier ou instale o farmOS no seu próprio servidor (incluindo uma caixa local), depois registe as atividades como registos associados aos seus campos e ativos. Comece de forma simples, com alguns registos-chave, e vá crescendo.</p>
+      ru: |-
+        <p>farmOS — это система учёта в хозяйстве с открытым исходным кодом, которую можно разместить на собственном сервере: посадки, животные, вносимые ресурсы, наблюдения и карты хранятся в системе, которую ваше хозяйство или кооператив контролирует полностью.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Используйте хостинг-сервис Farmier или установите farmOS на собственный сервер (в том числе на локальный компьютер), а затем фиксируйте действия в виде записей журнала, привязанных к вашим полям и активам. Начните с простого — с нескольких ключевых записей — и постепенно осваивайте остальное.</p>
+      sw: |-
+        <p>farmOS ni programu huria ya kutunza kumbukumbu za shamba unayoweza kuiendesha kwenye seva yako mwenyewe: upandaji, wanyama, pembejeo, uchunguzi na ramani, vikihifadhiwa katika mfumo unaodhibitiwa kikamilifu na shamba lako au ushirika wako.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Tumia huduma ya Farmier inayohifadhiwa mtandaoni au sakinisha farmOS kwenye seva yako mwenyewe (ikiwa ni pamoja na kompyuta ya hapo hapo shambani), kisha andika shughuli kama rekodi zinazohusiana na mashamba na mali zako. Anza kwa urahisi, kwa kumbukumbu chache muhimu, kisha ukue nayo hatua kwa hatua.</p>
+      zh_CN: |-
+        <p>farmOS 是一款可自行托管的开源农场记录工具：种植、牲畜、投入品、观察记录和地图，全部存储在一个由您的农场或合作社完全掌控的系统中。</p>
+        <h2>如何使用</h2>
+        <p>使用托管的 Farmier 服务，或在您自己的服务器（包括本地的一台机器）上安装 farmOS，然后将各项活动作为日志记录到您的田地和资产上。从简单开始，先记录几项关键内容，再逐步深入。</p>
+    published: false

@@ -41,6 +41,13 @@ return [
     'locales' => ['en' => 'English'],
 
     /*
+     * Right-to-left locales. When the active locale's code (or its language prefix,
+     * e.g. "ar" for "ar_EG") is in this list, the public layout renders <html dir="rtl">
+     * so the browser flips text alignment and layout direction.
+     */
+    'rtl_locales' => ['ar', 'he', 'fa', 'ur'],
+
+    /*
      * Supported Languages
      * -------------------
      * Languages are managed via the admin panel (Site Options) and stored in
@@ -80,5 +87,14 @@ return [
      * Recommended:                 Wide landscape photo, at least 1400px wide.
      * Banner is hidden automatically if the file does not exist.
      */
+
+    /*
+     * Plausible Analytics
+     * -------------------
+     * The site-specific script ID from Plausible
+     * Leave blank to disable analytics.
+     * The script is only loaded when APP_ENV is not "local".
+     */
+    'plausible_script_id' => env('PLAUSIBLE_SCRIPT_ID', ''),
 
 ];

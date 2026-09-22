@@ -29,9 +29,18 @@ class HtmlSanitizer
         return static::sanitizer()->sanitize($html);
     }
 
+    /**
+     * Whether rich-text HTML carries no visible text (e.g. the "<p></p>" an empty editor
+     * produces). Only text counts: this sanitiser allows no images or embeds.
+     */
+    public static function isEmpty(?string $html): bool
+    {
+        return trim(strip_tags($html ?? '')) === '';
+    }
+
     protected static function sanitizer(): SymfonyHtmlSanitizer
     {
-        $config = (new HtmlSanitizerConfig())
+        $config = (new HtmlSanitizerConfig)
             // Block-level & structural
             ->allowElement('p')
             ->allowElement('br')
@@ -48,6 +57,13 @@ class HtmlSanitizer
             ->allowElement('ul')
             ->allowElement('ol')
             ->allowElement('li')
+            // Tables
+            ->allowElement('table')
+            ->allowElement('thead')
+            ->allowElement('tbody')
+            ->allowElement('tr')
+            ->allowElement('th', ['colspan', 'rowspan'])
+            ->allowElement('td', ['colspan', 'rowspan'])
             // Inline formatting
             ->allowElement('strong')
             ->allowElement('b')

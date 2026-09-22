@@ -1,0 +1,42 @@
+# Curriculum module 'collaboration'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: collaboration
+section: toolkit
+title:
+  en: Collaboration
+  ar: التعاون
+  es: Colaboración
+  fil: Pakikipagtulungan
+  fr: Collaboration
+  hi: सहयोग
+  id: Kolaborasi
+  it: Collaborazione
+  pt: Colaboração
+  ru: Сотрудничество
+  sw: Ushirikiano
+  zh_CN: 协作
+subtitle:
+  en: 'Social Coordination'
+  ar: 'التنسيق الاجتماعي'
+  es: 'Coordinación social'
+  fil: 'Panlipunang Koordinasyon'
+  fr: 'Coordination sociale'
+  hi: 'सामाजिक समन्वय'
+  id: 'Koordinasi Sosial'
+  it: 'Coordinamento sociale'
+  pt: 'Coordenação Social'
+  ru: 'Социальная координация'
+  sw: 'Uratibu wa Kijamii'
+  zh_CN: 社会协调
+description:
+  en: '<p>Talk, organize and make decisions together without handing the conversation to Big Tech.</p>'
+  ar: '<p>تحدّثوا ونظّموا أنفسكم واتخذوا القرارات معًا من دون تسليم الحوار إلى شركات Big Tech.</p>'
+  es: '<p>Conversa, organízate y toma decisiones en conjunto sin entregar la conversación a las Big Tech.</p>'
+  fil: '<p>Mag-usap, mag-organisa at magpasya nang sama-sama nang hindi isinusuko ang usapan sa Big Tech.</p>'
+  fr: '<p>Discutez, organisez-vous et prenez des décisions ensemble sans confier la conversation aux Big Tech.</p>'
+  hi: '<p>बातचीत को Big Tech के हवाले किए बिना आपस में बात करें, संगठित हों और मिलकर निर्णय लें।</p>'
+  id: '<p>Berbicara, berorganisasi, dan mengambil keputusan bersama tanpa menyerahkan percakapan kepada Big Tech.</p>'
+  it: '<p>Parlate, organizzatevi e prendete decisioni insieme senza consegnare la conversazione alle Big Tech.</p>'
+  pt: '<p>Converse, organize-se e tome decisões em conjunto sem entregar a conversa às Big Tech.</p>'
+  ru: '<p>Общайтесь, организуйтесь и принимайте решения вместе, не отдавая разговор в руки Big Tech.</p>'
+  sw: '<p>Zungumza, jipange na fanya maamuzi kwa pamoja bila kukabidhi mazungumzo kwa Big Tech.</p>'
+  zh_CN: '<p>共同交流、组织和决策，而不必把对话交到科技巨头（Big Tech）手中。</p>'

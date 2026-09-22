@@ -35,6 +35,7 @@
         "spatie/laravel-permission": "^8.3",
         "symfony/http-client": "^8.0",
         "symfony/mailgun-mailer": "^8.0",
+        "symfony/yaml": "^8.1",
         "tio/laravel": "^1.23"
     },
     "require-dev": {

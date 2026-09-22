@@ -2,9 +2,9 @@
 
 use App\Models\Trove;
 use App\Models\User;
+use Database\Seeders\Prep\RoleSeeder;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Spatie\Permission\PermissionRegistrar;
 use Tests\TestCase;
 
 /*
@@ -32,9 +32,11 @@ uses(
     TestCase::class,
     RefreshDatabase::class,
 )->beforeEach(function () {
-    // The array cache driver persists spatie's role/permission cache across tests in the
-    // same process; forget it so each test resolves roles against its own migrated DB state.
-    app(PermissionRegistrar::class)->forgetCachedPermissions();
+    // Production always runs `migrate --seed`, so the three fixed roles exist before any
+    // code path assigns one by name. Mirror that here: RoleSeeder is idempotent and also
+    // flushes spatie's role/permission cache, which the array cache driver would otherwise
+    // persist across tests in the same process.
+    $this->seed(RoleSeeder::class);
 })->in('Feature', 'Unit', 'Integration');
 
 /*

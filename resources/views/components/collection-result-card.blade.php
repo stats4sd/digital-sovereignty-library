@@ -1,10 +1,10 @@
 @props(['item'])
 
-<div class="card hover-effect relative min-h-96 overflow-hidden  shadow-2xl rounded-t-3xl rounded-bl-3xl "
+<div class="card hover-effect relative min-h-96 overflow-hidden  shadow-2xl rounded-t-3xl rounded-es-3xl "
     role="img" aria-label="{{ $item['title'] }}"
     style="background: linear-gradient(#00000000, #000000cc 85%), url('{{ $item['cover_image_thumb'] }}'); background-size: cover; background-position: center; ">
     <a href="{{ url('collections/' . $item['id']) }}" class="absolute inset-0 z-0" target="_blank">
-    <div class="absolute top-4 left-4 h-12 w-12  rounded-full text-white text-center py-auto bg-brand-secondary">
+    <div class="absolute top-4 start-4 h-12 w-12  rounded-full text-white text-center py-auto bg-brand-secondary">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"
             class="mx-auto my-3">
             <path

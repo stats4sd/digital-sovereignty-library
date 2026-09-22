@@ -1,0 +1,193 @@
+# Seeded tool Troves for the 'market' pillar, in display order. Each is tagged with the pillar tag and attached to the pillar module. 'published: false' marks tools seeded as drafts.
+pillar: market
+tools:
+  -
+    title:
+      en: 'Open Food Network'
+      ar: 'Open Food Network'
+      es: 'Open Food Network'
+      fil: 'Open Food Network'
+      fr: 'Open Food Network'
+      hi: 'Open Food Network'
+      id: 'Open Food Network'
+      it: 'Open Food Network'
+      pt: 'Open Food Network'
+      ru: 'Open Food Network'
+      sw: 'Open Food Network'
+      zh_CN: 'Open Food Network'
+    description:
+      en: |-
+        <p>Open Food Network is open-source software for selling food directly: farmers and food hubs run their own online shops and manage orders without losing a cut, or their customer relationships, to a commercial marketplace.</p>
+        <h2>How to use it</h2>
+        <p>Set up a producer profile and shopfront on your local OFN instance, list products, and manage orders and pickups/deliveries through the platform. The linked video shows how farmers and buyers connect through it.</p>
+      ar: |-
+        <p>Open Food Network برنامج مفتوح المصدر لبيع الأغذية مباشرةً: يدير المزارعون ومراكز الأغذية متاجرهم الإلكترونية الخاصة ويتعاملون مع الطلبات دون أن يخسروا حصة من أرباحهم، أو علاقاتهم مع عملائهم، لصالح سوق تجارية.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>أنشئ ملفًا تعريفيًا للمنتِج وواجهة متجر على نسخة OFN المحلية لديك، وأدرج المنتجات، وأدِر الطلبات وعمليات الاستلام/التوصيل عبر المنصة. يعرض الفيديو المرتبط كيف يتواصل المزارعون والمشترون من خلاله.</p>
+      es: |-
+        <p>Open Food Network es un software de código abierto para vender alimentos directamente: los agricultores y los centros de acopio de alimentos gestionan sus propias tiendas en línea y administran los pedidos sin ceder una parte de sus ingresos, ni la relación con sus clientes, a un mercado comercial.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Configura un perfil de productor y una tienda en línea en tu instancia local de OFN, publica tus productos y gestiona los pedidos y las recogidas o entregas a través de la plataforma. El video enlazado muestra cómo se conectan agricultores y compradores a través de ella.</p>
+      fil: |-
+        <p>Ang Open Food Network ay open-source software para sa direktang pagbebenta ng pagkain: pinatatakbo ng mga magsasaka at food hub ang kanilang sariling mga online na tindahan at pinamamahalaan ang mga order nang hindi nawawalan ng bahagi ng kita, o ng kanilang relasyon sa mga mamimili, sa isang komersyal na marketplace.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Mag-set up ng profile ng prodyuser at tindahan sa iyong lokal na OFN instance, ilista ang mga produkto, at pamahalaan ang mga order at pickup/delivery sa pamamagitan ng plataporma. Ipinapakita ng naka-link na video kung paano nagkakaugnay ang mga magsasaka at mamimili sa pamamagitan nito.</p>
+      fr: |-
+        <p>Open Food Network est un logiciel libre pour la vente directe de produits alimentaires : les agriculteurs et les pôles alimentaires gèrent leurs propres boutiques en ligne et leurs commandes sans céder une commission, ni leurs relations avec leurs clients, à une place de marché commerciale.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Créez un profil de producteur et une vitrine sur votre instance OFN locale, référencez vos produits, puis gérez les commandes ainsi que les retraits et livraisons via la plateforme. La vidéo en lien montre comment agriculteurs et acheteurs se mettent en relation grâce à cet outil.</p>
+      hi: |-
+        <p>Open Food Network सीधे भोजन बेचने के लिए ओपन-सोर्स सॉफ़्टवेयर है: किसान और फ़ूड हब अपनी ऑनलाइन दुकानें चलाते हैं और ऑर्डर प्रबंधित करते हैं, बिना अपनी कमाई का हिस्सा या अपने ग्राहक संबंध किसी व्यावसायिक मार्केटप्लेस को खोए।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>अपने स्थानीय OFN इंस्टेंस पर एक उत्पादक प्रोफ़ाइल और ऑनलाइन दुकान बनाएँ, उत्पाद सूचीबद्ध करें, और प्लेटफ़ॉर्म के ज़रिए ऑर्डर और पिकअप/डिलीवरी प्रबंधित करें। लिंक किया गया वीडियो दिखाता है कि किसान और खरीदार इसके माध्यम से कैसे जुड़ते हैं।</p>
+      id: |-
+        <p>Open Food Network adalah perangkat lunak sumber terbuka untuk menjual pangan secara langsung: petani dan hub pangan menjalankan toko daring mereka sendiri dan mengelola pesanan tanpa kehilangan sebagian pendapatan, maupun hubungan dengan pelanggan, kepada marketplace komersial.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Siapkan profil produsen dan etalase toko di instans OFN lokal Anda, daftarkan produk, lalu kelola pesanan serta pengambilan/pengiriman melalui platform tersebut. Video yang ditautkan menunjukkan bagaimana petani dan pembeli terhubung melaluinya.</p>
+      it: |-
+        <p>Open Food Network è un software open source per la vendita diretta di cibo: agricoltori e food hub gestiscono i propri negozi online e i propri ordini senza cedere una percentuale, né le relazioni con i clienti, a un marketplace commerciale.</p>
+        <h2>Come usarlo</h2>
+        <p>Crea un profilo da produttore e una vetrina sull'istanza OFN locale, inserisci i prodotti e gestisci ordini e ritiri/consegne attraverso la piattaforma. Il video linkato mostra come agricoltori e acquirenti si incontrano attraverso di essa.</p>
+      pt: |-
+        <p>A Open Food Network é software de código aberto para vender alimentos diretamente: agricultores e hubs alimentares gerem as suas próprias lojas online e os pedidos sem perder uma comissão, nem as relações com os clientes, para um mercado comercial.</p>
+        <h2>Como usar</h2>
+        <p>Configure um perfil de produtor e uma loja na sua instância local da OFN, liste produtos e faça a gestão de pedidos e recolhas/entregas através da plataforma. O vídeo ligado mostra como agricultores e compradores se ligam através dela.</p>
+      ru: |-
+        <p>Open Food Network — это программное обеспечение с открытым исходным кодом для прямых продаж продовольствия: фермеры и продовольственные хабы ведут собственные онлайн-магазины и управляют заказами, не отдавая коммерческой торговой площадке ни часть выручки, ни отношения со своими покупателями.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Создайте профиль производителя и витрину на локальном экземпляре OFN, добавьте товары и управляйте заказами, самовывозом и доставкой через платформу. Видео по ссылке показывает, как через неё связываются фермеры и покупатели.</p>
+      sw: |-
+        <p>Open Food Network ni programu huria ya kuuza chakula moja kwa moja: wakulima na vituo vya chakula huendesha maduka yao wenyewe ya mtandaoni na kusimamia oda bila kupoteza sehemu ya mapato, au mahusiano yao na wateja, kwa soko la kibiashara la mtandaoni.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Sanidi wasifu wa mzalishaji na duka lako kwenye mfumo wa OFN wa eneo lako, orodhesha bidhaa, kisha simamia oda na uchukuaji/uwasilishaji kupitia jukwaa hilo. Video iliyounganishwa hapa inaonyesha jinsi wakulima na wanunuzi wanavyounganishwa kupitia jukwaa hilo.</p>
+      zh_CN: |-
+        <p>Open Food Network 是一款用于直接销售食品的开源软件：农民和食品中心可以自行运营网上商店并管理订单，无需向商业交易平台让出利润分成，也不会失去与顾客的关系。</p>
+        <h2>如何使用</h2>
+        <p>在您当地的 OFN 实例上建立生产者资料和店面，上架产品，并通过平台管理订单以及自取和配送。链接的视频展示了农民与买家如何通过它建立联系。</p>
+  -
+    title:
+      en: 'Points of Sales'
+      ar: 'نقاط البيع'
+      es: 'Puntos de venta'
+      fil: 'Mga Point of Sale'
+      fr: 'Points de vente'
+      hi: 'पॉइंट ऑफ़ सेल'
+      id: 'Titik Penjualan'
+      it: 'Punti vendita'
+      pt: 'Pontos de venda'
+      ru: 'Точки продаж'
+      sw: 'Vituo vya Mauzo'
+      zh_CN: 销售点系统
+    description:
+      en: |-
+        <p>Point-of-sale tools your community can own: taking payments and tracking sales at markets and farm stands without locking your transaction data into a commercial provider.</p>
+        <h2>How to use it</h2>
+        <p>A practical walkthrough video is being recorded and will be linked here. It will cover choosing and setting up a point-of-sale tool for a small farm or co-op stand.</p>
+      ar: |-
+        <p>أدوات نقاط بيع يمكن لمجتمعك امتلاكها: لاستلام المدفوعات وتتبّع المبيعات في الأسواق ومنافذ البيع في المزارع دون حصر بيانات معاملاتك لدى مزوّد تجاري.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>يجري حاليًا تسجيل فيديو شرح عملي وسيُربط هنا. سيتناول اختيار أداة نقاط البيع وإعدادها لمزرعة صغيرة أو منفذ بيع تابع لتعاونية.</p>
+      es: |-
+        <p>Herramientas de punto de venta que tu comunidad puede poseer: cobrar pagos y llevar el control de las ventas en mercados y puestos de venta en la finca sin que los datos de tus transacciones queden atrapados en un proveedor comercial.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Se está grabando un video práctico que se enlazará aquí. Explicará cómo elegir y configurar una herramienta de punto de venta para el puesto de una pequeña finca o cooperativa.</p>
+      fil: |-
+        <p>Mga kasangkapan sa point-of-sale na maaaring pag-aari ng iyong komunidad: pagtanggap ng bayad at pagsubaybay sa mga benta sa mga palengke at tindahan sa sakahan nang hindi nakakulong ang datos ng iyong mga transaksyon sa isang komersyal na provider.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Kasalukuyang nire-record ang isang praktikal na gabay na video at ila-link ito dito. Tatalakayin nito ang pagpili at pag-setup ng isang kasangkapan sa point-of-sale para sa isang maliit na sakahan o tindahan ng kooperatiba.</p>
+      fr: |-
+        <p>Des outils de point de vente que votre communauté peut posséder : encaisser les paiements et suivre les ventes sur les marchés et les étals à la ferme sans enfermer vos données de transaction chez un prestataire commercial.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Une vidéo de démonstration pratique est en cours d'enregistrement et sera mise en lien ici. Elle expliquera comment choisir et configurer un outil de point de vente pour une petite ferme ou un étal de coopérative.</p>
+      hi: |-
+        <p>पॉइंट-ऑफ़-सेल उपकरण जिनके मालिक आपका समुदाय स्वयं हो सकता है: बाज़ारों और खेत के स्टॉलों पर भुगतान लेना और बिक्री का हिसाब रखना, बिना अपने लेन-देन के डेटा को किसी व्यावसायिक प्रदाता के पास बंद किए।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>एक व्यावहारिक प्रदर्शन वीडियो रिकॉर्ड किया जा रहा है और यहाँ लिंक किया जाएगा। इसमें एक छोटे खेत या सहकारी स्टॉल के लिए पॉइंट-ऑफ़-सेल उपकरण चुनने और सेटअप करने के बारे में बताया जाएगा।</p>
+      id: |-
+        <p>Alat titik penjualan (kasir) yang dapat dimiliki komunitas Anda: menerima pembayaran dan melacak penjualan di pasar dan lapak tani tanpa mengunci data transaksi Anda pada penyedia komersial.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Video panduan praktis sedang direkam dan akan ditautkan di sini. Video ini akan membahas cara memilih dan menyiapkan alat titik penjualan untuk lapak usaha tani kecil atau koperasi.</p>
+      it: |-
+        <p>Strumenti per il punto vendita che la tua comunità può possedere: incassare i pagamenti e tracciare le vendite ai mercati e ai banchi in azienda senza vincolare i dati delle transazioni a un fornitore commerciale.</p>
+        <h2>Come usarlo</h2>
+        <p>Un video con una guida pratica è in fase di registrazione e sarà linkato qui. Tratterà la scelta e la configurazione di uno strumento per il punto vendita per il banco di una piccola azienda agricola o di una cooperativa.</p>
+      pt: |-
+        <p>Ferramentas de ponto de venda que a sua comunidade pode possuir: receber pagamentos e acompanhar vendas em mercados e bancas agrícolas sem prender os seus dados de transações a um fornecedor comercial.</p>
+        <h2>Como usar</h2>
+        <p>Um vídeo com um percurso prático está a ser gravado e será ligado aqui. Vai cobrir a escolha e a configuração de uma ferramenta de ponto de venda para uma pequena exploração ou banca de cooperativa.</p>
+      ru: |-
+        <p>Кассовые инструменты, которыми может владеть ваше сообщество: приём платежей и учёт продаж на рынках и фермерских прилавках без привязки данных о ваших операциях к коммерческому поставщику.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Практическое обучающее видео сейчас записывается и будет размещено здесь по ссылке. В нём будет рассказано, как выбрать и настроить кассовый инструмент для небольшого хозяйства или кооперативного прилавка.</p>
+      sw: |-
+        <p>Zana za vituo vya mauzo ambazo jamii yako inaweza kuzimiliki: kupokea malipo na kufuatilia mauzo sokoni na kwenye vibanda vya shambani bila kufungia data ya miamala yako kwa mtoa huduma wa kibiashara.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Video ya maelekezo ya vitendo inarekodiwa na itaunganishwa hapa. Itahusu kuchagua na kusanidi zana ya kituo cha mauzo kwa ajili ya shamba dogo au kibanda cha ushirika.</p>
+      zh_CN: |-
+        <p>您的社区可以自主拥有的销售点工具：在集市和农场摊位上收款并追踪销售情况，而不会让您的交易数据被锁定在商业服务商手中。</p>
+        <h2>如何使用</h2>
+        <p>一段实操演示视频正在录制中，完成后将在此处链接。视频将介绍如何为小型农场或合作社摊位选择并设置销售点工具。</p>
+    published: false
+  -
+    title:
+      en: 'KPL Food Coop Market Hub'
+      ar: 'KPL Food Coop Market Hub'
+      es: 'KPL Food Coop Market Hub'
+      fil: 'KPL Food Coop Market Hub'
+      fr: 'KPL Food Coop Market Hub'
+      hi: 'KPL Food Coop Market Hub'
+      id: 'KPL Food Coop Market Hub'
+      it: 'KPL Food Coop Market Hub'
+      pt: 'KPL Food Coop Market Hub'
+      ru: 'KPL Food Coop Market Hub'
+      sw: 'KPL Food Coop Market Hub'
+      zh_CN: 'KPL Food Coop Market Hub'
+    description:
+      en: |-
+        <p>The Kenyan Peasant League built its own cooperative food-market platform: a homegrown alternative to commercial marketplaces, showing what a community-owned market hub can look like in practice.</p>
+        <h2>How to use it</h2>
+        <p>Listen to the linked recording to hear how KPL designed, built and runs the hub: the decisions, the difficulties, and what it changed for members. Use it as a blueprint if your cooperative is considering the same path.</p>
+      ar: |-
+        <p>بنت منظمة Kenyan Peasant League (رابطة الفلاحين الكينية) منصتها الخاصة لسوق الأغذية التعاونية: بديل محلي الصنع عن الأسواق التجارية، يُظهر كيف يمكن أن يبدو مركز سوق مملوك للمجتمع في الواقع العملي.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>استمع إلى التسجيل المرتبط لتعرف كيف صمّمت KPL المركز وبنته وتديره: القرارات، والصعوبات، وما غيّره بالنسبة إلى الأعضاء. استخدمه كمخطط إرشادي إذا كانت تعاونيتك تفكر في السير على الطريق نفسه.</p>
+      es: |-
+        <p>La Kenyan Peasant League construyó su propia plataforma cooperativa de mercado de alimentos: una alternativa de creación propia a los mercados comerciales, que muestra cómo puede ser en la práctica un centro de mercado de propiedad comunitaria.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Escucha la grabación enlazada para conocer cómo la KPL diseñó, construyó y gestiona el centro de mercado: las decisiones, las dificultades y lo que cambió para sus miembros. Úsalo como modelo si tu cooperativa está considerando seguir el mismo camino.</p>
+      fil: |-
+        <p>Binuo ng Kenyan Peasant League ang sarili nitong plataporma ng kooperatibang pamilihan ng pagkain: isang lokal na binuong alternatibo sa mga komersyal na marketplace, na nagpapakita kung ano ang maaaring maging hitsura ng isang market hub na pag-aari ng komunidad sa aktuwal na praktika.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Pakinggan ang naka-link na recording upang malaman kung paano dinisenyo, binuo at pinatatakbo ng KPL ang hub: ang mga desisyon, ang mga hirap, at kung ano ang nabago nito para sa mga miyembro. Gamitin ito bilang huwaran kung ang iyong kooperatiba ay nag-iisip na tahakin ang parehong landas.</p>
+      fr: |-
+        <p>La Kenyan Peasant League a construit sa propre plateforme coopérative de marché alimentaire : une alternative locale aux places de marché commerciales, qui montre concrètement ce à quoi peut ressembler un pôle de marché détenu par la communauté.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Écoutez l'enregistrement en lien pour découvrir comment la KPL a conçu, construit et fait fonctionner ce pôle : les décisions, les difficultés, et ce que cela a changé pour ses membres. Servez-vous-en comme modèle si votre coopérative envisage la même voie.</p>
+      hi: |-
+        <p>Kenyan Peasant League ने अपना स्वयं का सहकारी खाद्य-बाज़ार प्लेटफ़ॉर्म बनाया: व्यावसायिक मार्केटप्लेस का एक स्वदेशी विकल्प, जो दिखाता है कि समुदाय के स्वामित्व वाला बाज़ार हब व्यवहार में कैसा दिख सकता है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>लिंक की गई रिकॉर्डिंग सुनें और जानें कि KPL ने इस हब को कैसे डिज़ाइन किया, बनाया और चलाता है: निर्णय, कठिनाइयाँ, और इसने सदस्यों के लिए क्या बदला। यदि आपकी सहकारी समिति भी इसी राह पर विचार कर रही है, तो इसे एक खाके के रूप में उपयोग करें।</p>
+      id: |-
+        <p>Kenyan Peasant League membangun platform pasar pangan koperasinya sendiri: alternatif buatan sendiri dari marketplace komersial, yang menunjukkan seperti apa wujud hub pasar milik komunitas dalam praktiknya.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Dengarkan rekaman yang ditautkan untuk mengetahui bagaimana KPL merancang, membangun, dan menjalankan hub ini: keputusan-keputusannya, kesulitan-kesulitannya, dan apa yang berubah bagi para anggota. Gunakan sebagai cetak biru jika koperasi Anda mempertimbangkan jalan yang sama.</p>
+      it: |-
+        <p>La Kenyan Peasant League ha costruito la propria piattaforma cooperativa per il mercato alimentare: un'alternativa fatta in casa ai marketplace commerciali, che mostra come può essere nella pratica un hub di mercato di proprietà della comunità.</p>
+        <h2>Come usarlo</h2>
+        <p>Ascolta la registrazione linkata per scoprire come KPL ha progettato, costruito e gestisce l'hub: le decisioni, le difficoltà e cosa è cambiato per i soci. Usala come modello se la tua cooperativa sta valutando lo stesso percorso.</p>
+      pt: |-
+        <p>A Kenyan Peasant League construiu a sua própria plataforma cooperativa de mercado alimentar: uma alternativa caseira aos mercados comerciais, que mostra como pode ser, na prática, um hub de mercado detido pela comunidade.</p>
+        <h2>Como usar</h2>
+        <p>Ouça a gravação ligada para saber como a KPL desenhou, construiu e opera o hub: as decisões, as dificuldades e o que mudou para os membros. Use-a como modelo se a sua cooperativa estiver a considerar o mesmo caminho.</p>
+      ru: |-
+        <p>Kenyan Peasant League (KPL) построила собственную кооперативную платформу продовольственного рынка: самостоятельно разработанную альтернативу коммерческим торговым площадкам, которая показывает, как на практике может выглядеть рыночный хаб, принадлежащий сообществу.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Послушайте запись по ссылке, чтобы узнать, как KPL спроектировала, построила и ведёт этот хаб: решения, трудности и то, что изменилось для участников. Используйте её как образец, если ваш кооператив рассматривает тот же путь.</p>
+      sw: |-
+        <p>Kenyan Peasant League ilijenga jukwaa lake lenyewe la soko la chakula la ushirika: mbadala uliobuniwa nyumbani wa masoko ya kibiashara ya mtandaoni, unaoonyesha jinsi kituo cha soko kinachomilikiwa na jamii kinavyoweza kuwa kwa vitendo.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Sikiliza rekodi iliyounganishwa hapa kusikia jinsi KPL ilivyobuni, ilivyojenga na inavyoendesha kituo hicho: maamuzi, changamoto, na kile kilichobadilika kwa wanachama. Itumie kama kielelezo ikiwa ushirika wako unafikiria kufuata njia hiyo hiyo.</p>
+      zh_CN: |-
+        <p>Kenyan Peasant League 建立了自己的合作社食品市场平台：这是一个本土自建的商业交易平台替代方案，展示了社区所有的市场中心在实践中可以是什么样子。</p>
+        <h2>如何使用</h2>
+        <p>收听链接的录音，了解 KPL 如何设计、建立并运营这个中心：其中的决策、遇到的困难，以及它为成员带来的改变。如果您的合作社正在考虑走同样的道路，可以将其作为蓝图参考。</p>

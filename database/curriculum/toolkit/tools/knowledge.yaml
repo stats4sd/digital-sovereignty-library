@@ -1,0 +1,318 @@
+# Seeded tool Troves for the 'knowledge' pillar, in display order. Each is tagged with the pillar tag and attached to the pillar module. 'published: false' marks tools seeded as drafts.
+pillar: knowledge
+tools:
+  -
+    title:
+      en: 'ODK (Open Data Kit)'
+      ar: 'ODK (Open Data Kit)'
+      es: 'ODK (Open Data Kit)'
+      fil: 'ODK (Open Data Kit)'
+      fr: 'ODK (Open Data Kit)'
+      hi: 'ODK (Open Data Kit)'
+      id: 'ODK (Open Data Kit)'
+      it: 'ODK (Open Data Kit)'
+      pt: 'ODK (Open Data Kit)'
+      ru: 'ODK (Open Data Kit)'
+      sw: 'ODK (Open Data Kit)'
+      zh_CN: 'ODK (Open Data Kit)'
+    description:
+      en: |-
+        <p>ODK is open-source software for collecting data with mobile devices (surveys, farm records, monitoring forms) that keeps working fully offline and syncs when a connection is available. Because you can run the server yourself, the data your community collects stays under your control.</p>
+        <h2>How to use it</h2>
+        <p>Design a form (ODK Build or an XLSForm spreadsheet), load it onto phones with the ODK Collect app, gather responses offline, and send them to your own ODK Central server when online. Tutorial videos are linked here.</p>
+      ar: |-
+        <p>ODK برنامج مفتوح المصدر لجمع البيانات باستخدام الأجهزة المحمولة (الاستبيانات، وسجلات المزرعة، ونماذج المتابعة)، يواصل العمل بالكامل دون اتصال بالإنترنت ويتزامن عند توفر الاتصال. ولأنك تستطيع تشغيل الخادم بنفسك، تبقى البيانات التي يجمعها مجتمعك تحت سيطرتك.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>صمّم نموذجًا (باستخدام ODK Build أو جدول بيانات XLSForm)، وحمّله على الهواتف عبر تطبيق ODK Collect، واجمع الإجابات دون اتصال بالإنترنت، ثم أرسلها إلى خادم ODK Central الخاص بك عند توفر الاتصال. تجد هنا روابط لمقاطع فيديو تعليمية.</p>
+      es: |-
+        <p>ODK es un software de código abierto para recopilar datos con dispositivos móviles (encuestas, registros de la finca, formularios de seguimiento) que sigue funcionando completamente sin conexión y se sincroniza cuando hay una conexión disponible. Como puedes gestionar el servidor tú mismo, los datos que recopila tu comunidad permanecen bajo tu control.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Diseña un formulario (con ODK Build o una hoja de cálculo XLSForm), cárgalo en los teléfonos con la aplicación ODK Collect, recoge las respuestas sin conexión y envíalas a tu propio servidor ODK Central cuando tengas conexión. Aquí encontrarás enlaces a videos tutoriales.</p>
+      fil: |-
+        <p>Ang ODK ay open-source software para sa pangongolekta ng datos gamit ang mga mobile device (mga survey, rekord ng sakahan, form para sa pagsubaybay) na patuloy na gumagana nang ganap na offline at nagsi-sync kapag may koneksyon. Dahil maaari mong patakbuhin ang server nang ikaw mismo, nananatili sa iyong kontrol ang datos na nakolekta ng iyong komunidad.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Gumawa ng form (sa ODK Build o sa isang XLSForm spreadsheet), i-load ito sa mga telepono gamit ang ODK Collect app, kolektahin ang mga sagot nang offline, at ipadala ang mga ito sa iyong sariling ODK Central server kapag online. Naka-link dito ang mga tutorial video.</p>
+      fr: |-
+        <p>ODK est un logiciel libre pour collecter des données avec des appareils mobiles (enquêtes, registres agricoles, formulaires de suivi) qui fonctionne entièrement hors ligne et se synchronise dès qu'une connexion est disponible. Comme vous pouvez héberger le serveur vous-même, les données collectées par votre communauté restent sous votre contrôle.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Concevez un formulaire (ODK Build ou une feuille de calcul XLSForm), chargez-le sur les téléphones avec l'application ODK Collect, recueillez les réponses hors ligne, puis envoyez-les à votre propre serveur ODK Central une fois en ligne. Des tutoriels vidéo sont disponibles en lien ici.</p>
+      hi: |-
+        <p>ODK मोबाइल डिवाइस से डेटा एकत्र करने (सर्वेक्षण, खेत के रिकॉर्ड, निगरानी फ़ॉर्म) के लिए ओपन-सोर्स सॉफ़्टवेयर है, जो पूरी तरह ऑफ़लाइन काम करता रहता है और कनेक्शन उपलब्ध होने पर सिंक हो जाता है। क्योंकि आप सर्वर स्वयं चला सकते हैं, आपके समुदाय द्वारा एकत्र किया गया डेटा आपके नियंत्रण में रहता है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>एक फ़ॉर्म डिज़ाइन करें (ODK Build या XLSForm स्प्रेडशीट से), उसे ODK Collect ऐप के ज़रिए फ़ोन पर लोड करें, ऑफ़लाइन जवाब इकट्ठा करें, और ऑनलाइन होने पर उन्हें अपने ODK Central सर्वर पर भेजें। ट्यूटोरियल वीडियो यहाँ लिंक किए गए हैं।</p>
+      id: |-
+        <p>ODK adalah perangkat lunak sumber terbuka untuk mengumpulkan data dengan perangkat seluler (survei, catatan usaha tani, formulir pemantauan) yang tetap berfungsi penuh secara luring dan menyinkronkan data ketika koneksi tersedia. Karena Anda dapat menjalankan servernya sendiri, data yang dikumpulkan komunitas Anda tetap berada di bawah kendali Anda.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Rancang formulir (dengan ODK Build atau lembar kerja XLSForm), muat ke ponsel melalui aplikasi ODK Collect, kumpulkan jawaban secara luring, lalu kirimkan ke server ODK Central Anda sendiri saat daring. Video tutorial ditautkan di sini.</p>
+      it: |-
+        <p>ODK è un software open source per raccogliere dati con dispositivi mobili (questionari, registri dell'azienda agricola, moduli di monitoraggio) che continua a funzionare completamente offline e si sincronizza quando è disponibile una connessione. Poiché puoi gestire il server in autonomia, i dati raccolti dalla tua comunità restano sotto il tuo controllo.</p>
+        <h2>Come usarlo</h2>
+        <p>Progetta un modulo (con ODK Build o con un foglio di calcolo XLSForm), caricalo sui telefoni con l'app ODK Collect, raccogli le risposte offline e inviale al tuo server ODK Central quando sei online. Qui trovi i link ai video tutorial.</p>
+      pt: |-
+        <p>O ODK é software de código aberto para recolher dados com dispositivos móveis (inquéritos, registos agrícolas, formulários de monitorização) que continua a funcionar totalmente offline e sincroniza quando há ligação disponível. Como pode operar o servidor por conta própria, os dados que a sua comunidade recolhe ficam sob o seu controlo.</p>
+        <h2>Como usar</h2>
+        <p>Desenhe um formulário (ODK Build ou uma folha de cálculo XLSForm), carregue-o nos telemóveis com a aplicação ODK Collect, recolha respostas offline e envie-as para o seu próprio servidor ODK Central quando estiver online. Os vídeos tutoriais estão ligados aqui.</p>
+      ru: |-
+        <p>ODK — это программное обеспечение с открытым исходным кодом для сбора данных с помощью мобильных устройств (опросы, записи хозяйства, формы мониторинга), которое полностью работает офлайн и синхронизируется при появлении соединения. Поскольку сервер можно разместить самостоятельно, данные, собранные вашим сообществом, остаются под вашим контролем.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Создайте форму (в ODK Build или в таблице XLSForm), загрузите её на телефоны через приложение ODK Collect, собирайте ответы офлайн и отправляйте их на собственный сервер ODK Central, когда появится связь. Обучающие видео приведены по ссылкам здесь.</p>
+      sw: |-
+        <p>ODK ni programu huria ya kukusanya data kwa kutumia vifaa vya mkononi (tafiti, kumbukumbu za shamba, fomu za ufuatiliaji), inayoendelea kufanya kazi kikamilifu bila mtandao na kusawazisha data pindi muunganisho unapopatikana. Kwa kuwa unaweza kuendesha seva mwenyewe, data inayokusanywa na jamii yako inabaki chini ya udhibiti wenu.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Buni fomu (kwa ODK Build au lahajedwali ya XLSForm), ipakie kwenye simu kupitia programu ya ODK Collect, kusanya majibu bila mtandao, kisha yatume kwenye seva yako mwenyewe ya ODK Central ukiwa mtandaoni. Viungo vya video za mafunzo vimewekwa hapa.</p>
+      zh_CN: |-
+        <p>ODK 是一款开源软件，用于通过移动设备收集数据（问卷调查、农场记录、监测表单），可在完全离线的情况下持续使用，并在有网络连接时进行同步。由于您可以自行运行服务器，社区收集的数据始终掌握在自己手中。</p>
+        <h2>如何使用</h2>
+        <p>设计一份表单（使用 ODK Build 或 XLSForm 电子表格），通过 ODK Collect 应用将其加载到手机上，离线收集回复，并在联网时将数据发送到您自己的 ODK Central 服务器。此处链接了教学视频。</p>
+  -
+    title:
+      en: CoMapeo
+      ar: CoMapeo
+      es: CoMapeo
+      fil: CoMapeo
+      fr: CoMapeo
+      hi: CoMapeo
+      id: CoMapeo
+      it: CoMapeo
+      pt: CoMapeo
+      ru: CoMapeo
+      sw: CoMapeo
+      zh_CN: CoMapeo
+    description:
+      en: |-
+        <p>CoMapeo is an offline-first mapping tool built for communities documenting their own land, territory and observations. Maps and data live on the devices of the people who made them, with no company server required.</p>
+        <h2>How to use it</h2>
+        <p>Install the app, create or join a project with your community, and start dropping observations onto the map: photos, notes, GPS points. Devices sync with each other directly when nearby. The introduction video linked here shows a project from setup to shared map.</p>
+      ar: |-
+        <p>CoMapeo أداة لرسم الخرائط تعمل دون اتصال بالإنترنت في المقام الأول، صُممت للمجتمعات التي توثّق أراضيها وأقاليمها وملاحظاتها بنفسها. تبقى الخرائط والبيانات على أجهزة الأشخاص الذين أنشأوها، دون الحاجة إلى خادم تابع لأي شركة.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>ثبّت التطبيق، وأنشئ مشروعًا مع مجتمعك أو انضم إلى مشروع قائم، وابدأ بإضافة الملاحظات على الخريطة: صور، وملاحظات مكتوبة، ونقاط GPS. تتزامن الأجهزة مع بعضها مباشرةً عندما تكون متقاربة. يعرض فيديو التعريف المرتبط هنا مشروعًا من مرحلة الإعداد حتى الخريطة المشتركة.</p>
+      es: |-
+        <p>CoMapeo es una herramienta de mapeo diseñada para funcionar sin conexión, creada para comunidades que documentan su propia tierra, su territorio y sus observaciones. Los mapas y los datos permanecen en los dispositivos de las personas que los crearon, sin necesidad de ningún servidor de una empresa.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Instala la aplicación, crea o únete a un proyecto con tu comunidad y empieza a colocar observaciones en el mapa: fotos, notas, puntos GPS. Los dispositivos se sincronizan directamente entre sí cuando están cerca. El video de introducción enlazado aquí muestra un proyecto desde la configuración inicial hasta el mapa compartido.</p>
+      fil: |-
+        <p>Ang CoMapeo ay isang offline-first na kasangkapan sa pagmamapa na ginawa para sa mga komunidad na nagdodokumento ng kanilang sariling lupa, teritoryo at mga obserbasyon. Nananatili ang mga mapa at datos sa mga device ng mga taong gumawa ng mga ito, nang hindi nangangailangan ng server ng anumang kumpanya.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>I-install ang app, gumawa o sumali sa isang proyekto kasama ang iyong komunidad, at simulang maglagay ng mga obserbasyon sa mapa: mga larawan, tala, GPS point. Direktang nagsi-sync ang mga device sa isa't isa kapag magkalapit. Ipinapakita ng panimulang video na naka-link dito ang isang proyekto mula sa pag-setup hanggang sa pinagsasaluhang mapa.</p>
+      fr: |-
+        <p>CoMapeo est un outil de cartographie conçu pour fonctionner d'abord hors ligne, destiné aux communautés qui documentent leurs propres terres, leur territoire et leurs observations. Les cartes et les données restent sur les appareils des personnes qui les ont créées, sans qu'aucun serveur d'entreprise ne soit nécessaire.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Installez l'application, créez ou rejoignez un projet avec votre communauté, puis commencez à placer des observations sur la carte : photos, notes, points GPS. Les appareils se synchronisent directement entre eux lorsqu'ils sont à proximité. La vidéo d'introduction en lien ici présente un projet, de la configuration jusqu'à la carte partagée.</p>
+      hi: |-
+        <p>CoMapeo एक ऑफ़लाइन-फ़र्स्ट मानचित्रण उपकरण है, जो अपनी ज़मीन, क्षेत्र और अवलोकनों का दस्तावेज़ीकरण करने वाले समुदायों के लिए बनाया गया है। नक्शे और डेटा उन्हीं लोगों के डिवाइस पर रहते हैं जिन्होंने उन्हें बनाया है, और किसी कंपनी के सर्वर की ज़रूरत नहीं होती।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>ऐप इंस्टॉल करें, अपने समुदाय के साथ एक प्रोजेक्ट बनाएँ या उसमें शामिल हों, और नक्शे पर अवलोकन दर्ज करना शुरू करें: फ़ोटो, नोट्स, GPS बिंदु। पास-पास होने पर डिवाइस आपस में सीधे सिंक हो जाते हैं। यहाँ लिंक किया गया परिचय वीडियो एक प्रोजेक्ट को सेटअप से साझा नक्शे तक दिखाता है।</p>
+      id: |-
+        <p>CoMapeo adalah alat pemetaan yang mengutamakan mode luring, dibangun untuk komunitas yang mendokumentasikan tanah, wilayah, dan pengamatan mereka sendiri. Peta dan data tersimpan di perangkat orang-orang yang membuatnya, tanpa memerlukan server perusahaan.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Pasang aplikasinya, buat atau bergabunglah dengan proyek bersama komunitas Anda, lalu mulai tambahkan pengamatan ke peta: foto, catatan, titik GPS. Perangkat saling menyinkronkan secara langsung ketika berada berdekatan. Video pengantar yang ditautkan di sini menunjukkan sebuah proyek dari penyiapan hingga peta yang dibagikan.</p>
+      it: |-
+        <p>CoMapeo è uno strumento di mappatura pensato per funzionare prima di tutto offline, creato per le comunità che documentano la propria terra, il proprio territorio e le proprie osservazioni. Mappe e dati risiedono sui dispositivi delle persone che li hanno creati, senza bisogno di alcun server aziendale.</p>
+        <h2>Come usarlo</h2>
+        <p>Installa l'app, crea un progetto o unisciti a uno insieme alla tua comunità e inizia a inserire osservazioni sulla mappa: foto, note, punti GPS. I dispositivi si sincronizzano direttamente tra loro quando sono vicini. Il video introduttivo linkato qui mostra un progetto dalla configurazione iniziale fino alla mappa condivisa.</p>
+      pt: |-
+        <p>O CoMapeo é uma ferramenta de mapeamento offline-first criada para comunidades que documentam a sua própria terra, território e observações. Os mapas e os dados ficam nos dispositivos das pessoas que os criaram, sem necessidade de nenhum servidor de empresa.</p>
+        <h2>Como usar</h2>
+        <p>Instale a aplicação, crie ou junte-se a um projeto com a sua comunidade e comece a registar observações no mapa: fotos, notas, pontos GPS. Os dispositivos sincronizam diretamente entre si quando estão próximos. O vídeo de introdução ligado aqui mostra um projeto desde a configuração até ao mapa partilhado.</p>
+      ru: |-
+        <p>CoMapeo — это картографический инструмент, работающий в первую очередь офлайн и созданный для сообществ, которые документируют свою землю, территорию и наблюдения. Карты и данные хранятся на устройствах тех, кто их создал, и сервер какой-либо компании для этого не нужен.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Установите приложение, создайте проект вместе с сообществом или присоединитесь к существующему и начните наносить наблюдения на карту: фотографии, заметки, GPS-точки. Устройства синхронизируются друг с другом напрямую, когда находятся рядом. Вводное видео по ссылке показывает проект от настройки до общей карты.</p>
+      sw: |-
+        <p>CoMapeo ni zana ya kuchora ramani inayofanya kazi kwanza bila mtandao, iliyoundwa kwa ajili ya jamii zinazoandika kumbukumbu za ardhi, eneo na uchunguzi wao wenyewe. Ramani na data hukaa kwenye vifaa vya watu waliozitengeneza, bila kuhitaji seva ya kampuni yoyote.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Sakinisha programu, unda au jiunge na mradi pamoja na jamii yako, kisha anza kuweka uchunguzi kwenye ramani: picha, maelezo, alama za GPS. Vifaa husawazisha data moja kwa moja vinapokuwa karibu. Video ya utangulizi iliyounganishwa hapa inaonyesha mradi kuanzia usanidi hadi ramani inayoshirikishwa.</p>
+      zh_CN: |-
+        <p>CoMapeo 是一款离线优先的地图绘制工具，专为记录自身土地、领地和观察结果的社区而打造。地图和数据保存在制作者自己的设备上，无需任何公司服务器。</p>
+        <h2>如何使用</h2>
+        <p>安装应用，与您的社区一起创建或加入一个项目，然后开始在地图上添加观察记录：照片、笔记、GPS 定位点。设备之间在相互靠近时可直接同步。此处链接的介绍视频展示了一个项目从初始设置到共享地图的全过程。</p>
+  -
+    title:
+      en: 'Participatory Mapping with Mapeo'
+      ar: 'رسم الخرائط التشاركي باستخدام Mapeo'
+      es: 'Mapeo participativo con Mapeo'
+      fil: 'Partisipatoryong Pagmamapa gamit ang Mapeo'
+      fr: 'Cartographie participative avec Mapeo'
+      hi: 'Mapeo के साथ सहभागी मानचित्रण'
+      id: 'Pemetaan Partisipatif dengan Mapeo'
+      it: 'Mappatura partecipativa con Mapeo'
+      pt: 'Mapeamento participativo com Mapeo'
+      ru: 'Совместное картирование с Mapeo'
+      sw: 'Uchoraji Ramani Shirikishi kwa Mapeo'
+      zh_CN: '使用 Mapeo 进行参与式地图绘制'
+    description:
+      en: |-
+        <p>Mapeo (CoMapeo's predecessor) pioneered participatory territory mapping: communities collectively record places, boundaries and evidence on their own devices, on their own terms.</p>
+        <h2>How to use it</h2>
+        <p>Agree as a group what you want to map and why, then use Mapeo on shared devices to collect points and stories in the field. The linked video shows a real participatory mapping process, useful for planning your own even if you adopt CoMapeo.</p>
+      ar: |-
+        <p>كان Mapeo (سَلَف CoMapeo) رائدًا في رسم خرائط الأقاليم بشكل تشاركي: إذ تسجّل المجتمعات بشكل جماعي الأماكن والحدود والأدلة على أجهزتها الخاصة ووفق شروطها الخاصة.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>اتفقوا كمجموعة على ما تريدون رسمه على الخريطة ولماذا، ثم استخدموا Mapeo على أجهزة مشتركة لجمع النقاط والقصص في الميدان. يعرض الفيديو المرتبط عملية حقيقية لرسم الخرائط التشاركي، وهو مفيد للتخطيط لعمليتكم الخاصة حتى إن اعتمدتم CoMapeo.</p>
+      es: |-
+        <p>Mapeo (el predecesor de CoMapeo) fue pionero en el mapeo participativo de territorios: las comunidades registran colectivamente lugares, límites y evidencias en sus propios dispositivos y en sus propios términos.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Acuerda con tu grupo qué quieren mapear y por qué, y luego usa Mapeo en dispositivos compartidos para recoger puntos e historias en el campo. El video enlazado muestra un proceso real de mapeo participativo, útil para planificar el tuyo incluso si adoptas CoMapeo.</p>
+      fil: |-
+        <p>Ang Mapeo (ang nauna sa CoMapeo) ay nanguna sa partisipatoryong pagmamapa ng teritoryo: sama-samang itinatala ng mga komunidad ang mga lugar, hangganan at ebidensya sa kanilang sariling mga device, ayon sa kanilang sariling kondisyon.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Magkasundo bilang isang grupo kung ano ang nais ninyong imapa at bakit, pagkatapos ay gamitin ang Mapeo sa mga pinagsasaluhang device upang mangolekta ng mga punto at kuwento sa larangan. Ipinapakita ng naka-link na video ang isang tunay na proseso ng partisipatoryong pagmamapa, na kapaki-pakinabang sa pagpaplano ng inyong sarili kahit na CoMapeo ang inyong gagamitin.</p>
+      fr: |-
+        <p>Mapeo (le prédécesseur de CoMapeo) a été pionnier de la cartographie participative des territoires : les communautés consignent collectivement des lieux, des limites et des preuves sur leurs propres appareils, selon leurs propres conditions.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Décidez ensemble ce que vous voulez cartographier et pourquoi, puis utilisez Mapeo sur des appareils partagés pour recueillir des points et des récits sur le terrain. La vidéo en lien montre un véritable processus de cartographie participative, utile pour planifier le vôtre même si vous adoptez CoMapeo.</p>
+      hi: |-
+        <p>Mapeo (CoMapeo का पूर्ववर्ती) ने सहभागी क्षेत्र मानचित्रण की शुरुआत की: समुदाय सामूहिक रूप से स्थानों, सीमाओं और साक्ष्यों को अपने ही डिवाइस पर, अपनी ही शर्तों पर दर्ज करते हैं।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>समूह के रूप में तय करें कि आप क्या और क्यों मानचित्रित करना चाहते हैं, फिर मैदान में बिंदु और कहानियाँ एकत्र करने के लिए साझा डिवाइस पर Mapeo का उपयोग करें। लिंक किया गया वीडियो एक वास्तविक सहभागी मानचित्रण प्रक्रिया दिखाता है, जो आपकी अपनी प्रक्रिया की योजना बनाने में उपयोगी है, भले ही आप CoMapeo अपनाएँ।</p>
+      id: |-
+        <p>Mapeo (pendahulu CoMapeo) memelopori pemetaan wilayah partisipatif: komunitas secara kolektif mencatat tempat, batas, dan bukti di perangkat mereka sendiri, dengan ketentuan mereka sendiri.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Sepakati bersama sebagai kelompok apa yang ingin Anda petakan dan mengapa, lalu gunakan Mapeo di perangkat bersama untuk mengumpulkan titik dan cerita di lapangan. Video yang ditautkan menunjukkan proses pemetaan partisipatif yang nyata, berguna untuk merencanakan proses Anda sendiri meskipun Anda memilih CoMapeo.</p>
+      it: |-
+        <p>Mapeo (il predecessore di CoMapeo) è stato pioniere della mappatura partecipativa del territorio: le comunità registrano collettivamente luoghi, confini e prove sui propri dispositivi, secondo le proprie regole.</p>
+        <h2>Come usarlo</h2>
+        <p>Decidete insieme, come gruppo, cosa volete mappare e perché, poi usate Mapeo su dispositivi condivisi per raccogliere punti e storie sul campo. Il video linkato mostra un vero processo di mappatura partecipativa, utile per pianificare il vostro anche se adottate CoMapeo.</p>
+      pt: |-
+        <p>O Mapeo (antecessor do CoMapeo) foi pioneiro no mapeamento participativo de territórios: as comunidades registam coletivamente lugares, limites e evidências nos seus próprios dispositivos, nos seus próprios termos.</p>
+        <h2>Como usar</h2>
+        <p>Decidam em grupo o que querem mapear e porquê, depois usem o Mapeo em dispositivos partilhados para recolher pontos e histórias no terreno. O vídeo ligado mostra um processo real de mapeamento participativo, útil para planear o vosso mesmo que adotem o CoMapeo.</p>
+      ru: |-
+        <p>Mapeo (предшественник CoMapeo) стал первопроходцем совместного картирования территорий: сообщества коллективно фиксируют места, границы и свидетельства на собственных устройствах и на собственных условиях.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Договоритесь всей группой, что и зачем вы хотите нанести на карту, а затем используйте Mapeo на общих устройствах, чтобы собирать точки и истории в поле. Видео по ссылке показывает реальный процесс совместного картирования — он пригодится при планировании вашего собственного, даже если вы выберете CoMapeo.</p>
+      sw: |-
+        <p>Mapeo (mtangulizi wa CoMapeo) ilianzisha uchoraji ramani shirikishi wa maeneo: jamii kwa pamoja huandika kumbukumbu za sehemu, mipaka na ushahidi kwenye vifaa vyao wenyewe, kwa masharti yao wenyewe.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Kubalianeni kama kikundi kile mnachotaka kukichora kwenye ramani na kwa nini, kisha tumieni Mapeo kwenye vifaa vya pamoja kukusanya alama na hadithi uwandani. Video iliyounganishwa hapa inaonyesha mchakato halisi wa uchoraji ramani shirikishi, unaofaa kwa kupanga wenu wenyewe hata mkiamua kutumia CoMapeo.</p>
+      zh_CN: |-
+        <p>Mapeo（CoMapeo 的前身）开创了参与式领地地图绘制：社区成员在自己的设备上、按照自己的方式，共同记录地点、边界和证据。</p>
+        <h2>如何使用</h2>
+        <p>先以小组形式共同商定要绘制什么内容以及为什么绘制，然后在共用设备上使用 Mapeo 到实地收集定位点和故事。链接的视频展示了一个真实的参与式地图绘制过程，即使您采用的是 CoMapeo，它对规划您自己的绘图工作也很有帮助。</p>
+  -
+    title:
+      en: EcoAgTube
+      ar: EcoAgTube
+      es: EcoAgTube
+      fil: EcoAgTube
+      fr: EcoAgTube
+      hi: EcoAgTube
+      id: EcoAgTube
+      it: EcoAgTube
+      pt: EcoAgTube
+      ru: EcoAgTube
+      sw: EcoAgTube
+      zh_CN: EcoAgTube
+    description:
+      en: |-
+        <p>EcoAgTube is a video-sharing platform for agroecology and rural communities: an alternative to commercial platforms, run for and by the movement, where practical farming knowledge is shared without ads or algorithmic control.</p>
+        <h2>How to use it</h2>
+        <p>Browse or search for videos in your language, and create a free account to upload your own: field techniques, trainings, community stories. The introduction video linked here gives a tour.</p>
+      ar: |-
+        <p>EcoAgTube منصة لتبادل مقاطع الفيديو مخصصة للإيكولوجيا الزراعية والمجتمعات الريفية: بديل عن المنصات التجارية، تديرها الحركة ومن أجلها، وتُتبادل فيها المعارف الزراعية العملية دون إعلانات أو تحكّم خوارزمي.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>تصفّح مقاطع الفيديو أو ابحث عنها بلغتك، وأنشئ حسابًا مجانيًا لرفع مقاطعك الخاصة: تقنيات ميدانية، ودورات تدريبية، وقصص مجتمعية. يقدّم فيديو التعريف المرتبط هنا جولة في المنصة.</p>
+      es: |-
+        <p>EcoAgTube es una plataforma para compartir videos sobre agroecología y comunidades rurales: una alternativa a las plataformas comerciales, gestionada por y para el movimiento, donde se comparte conocimiento agrícola práctico sin anuncios ni control algorítmico.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Explora o busca videos en tu idioma y crea una cuenta gratuita para subir los tuyos: técnicas de campo, capacitaciones, historias comunitarias. El video de introducción enlazado aquí ofrece un recorrido por la plataforma.</p>
+      fil: |-
+        <p>Ang EcoAgTube ay isang plataporma sa pagbabahagi ng video para sa agroekolohiya at mga komunidad sa kanayunan: isang alternatibo sa mga komersyal na plataporma, na pinatatakbo para sa at ng kilusan, kung saan ibinabahagi ang praktikal na kaalaman sa pagsasaka nang walang mga ad o kontrol ng algorithm.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Mag-browse o maghanap ng mga video sa iyong wika, at gumawa ng libreng account upang mag-upload ng sarili mong mga video: mga teknik sa bukid, pagsasanay, kuwento ng komunidad. Nagbibigay ng paglilibot ang panimulang video na naka-link dito.</p>
+      fr: |-
+        <p>EcoAgTube est une plateforme de partage de vidéos pour l'agroécologie et les communautés rurales : une alternative aux plateformes commerciales, gérée pour et par le mouvement, où les savoirs agricoles pratiques se partagent sans publicité ni contrôle algorithmique.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Parcourez ou recherchez des vidéos dans votre langue, et créez un compte gratuit pour publier les vôtres : techniques de terrain, formations, récits communautaires. La vidéo d'introduction en lien ici en propose une visite guidée.</p>
+      hi: |-
+        <p>EcoAgTube कृषि-पारिस्थितिकी और ग्रामीण समुदायों के लिए एक वीडियो-साझाकरण प्लेटफ़ॉर्म है: व्यावसायिक प्लेटफ़ॉर्मों का एक विकल्प, जो आंदोलन के लिए और आंदोलन द्वारा चलाया जाता है, जहाँ खेती का व्यावहारिक ज्ञान बिना विज्ञापनों या एल्गोरिदम के नियंत्रण के साझा किया जाता है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>अपनी भाषा में वीडियो ब्राउज़ करें या खोजें, और अपने वीडियो अपलोड करने के लिए एक मुफ़्त खाता बनाएँ: खेत की तकनीकें, प्रशिक्षण, समुदाय की कहानियाँ। यहाँ लिंक किया गया परिचय वीडियो इसकी सैर कराता है।</p>
+      id: |-
+        <p>EcoAgTube adalah platform berbagi video untuk agroekologi dan komunitas pedesaan: alternatif dari platform komersial, dijalankan untuk dan oleh gerakan itu sendiri, tempat pengetahuan bertani yang praktis dibagikan tanpa iklan atau kendali algoritma.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Jelajahi atau cari video dalam bahasa Anda, dan buat akun gratis untuk mengunggah video Anda sendiri: teknik lapangan, pelatihan, cerita komunitas. Video pengantar yang ditautkan di sini mengajak Anda berkeliling.</p>
+      it: |-
+        <p>EcoAgTube è una piattaforma di condivisione video per l'agroecologia e le comunità rurali: un'alternativa alle piattaforme commerciali, gestita dal movimento e per il movimento, dove le conoscenze agricole pratiche si condividono senza pubblicità né controllo algoritmico.</p>
+        <h2>Come usarlo</h2>
+        <p>Sfoglia o cerca i video nella tua lingua e crea un account gratuito per caricare i tuoi: tecniche di campo, formazioni, storie di comunità. Il video introduttivo linkato qui offre una panoramica.</p>
+      pt: |-
+        <p>O EcoAgTube é uma plataforma de partilha de vídeos para a agroecologia e as comunidades rurais: uma alternativa às plataformas comerciais, gerida para e pelo movimento, onde o conhecimento agrícola prático é partilhado sem anúncios nem controlo algorítmico.</p>
+        <h2>Como usar</h2>
+        <p>Navegue ou pesquise vídeos na sua língua e crie uma conta gratuita para carregar os seus: técnicas de campo, formações, histórias da comunidade. O vídeo de introdução ligado aqui faz uma visita guiada.</p>
+      ru: |-
+        <p>EcoAgTube — это платформа для обмена видео, посвящённая агроэкологии и сельским сообществам: альтернатива коммерческим платформам, которой управляет само движение и для движения, где практические знания о ведении хозяйства распространяются без рекламы и алгоритмического контроля.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Просматривайте видео или ищите их на своём языке, а также создайте бесплатный аккаунт, чтобы загружать собственные: полевые приёмы, обучающие материалы, истории сообществ. Вводное видео по ссылке проведёт вас по платформе.</p>
+      sw: |-
+        <p>EcoAgTube ni jukwaa la kushirikisha video kwa ajili ya kilimo-ikolojia na jamii za vijijini: mbadala wa majukwaa ya kibiashara, linaloendeshwa na harakati kwa ajili ya harakati yenyewe, ambapo maarifa ya vitendo ya kilimo hushirikishwa bila matangazo au udhibiti wa algoriti.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Vinjari au tafuta video katika lugha yako, na ufungue akaunti ya bure ili kupakia video zako mwenyewe: mbinu za shambani, mafunzo, hadithi za jamii. Video ya utangulizi iliyounganishwa hapa inakutembeza katika jukwaa hilo.</p>
+      zh_CN: |-
+        <p>EcoAgTube 是一个面向农业生态学和乡村社区的视频分享平台：它是商业平台之外的另一种选择，由运动自身运营、为运动服务，在这里分享实用的农耕知识，没有广告，也不受算法控制。</p>
+        <h2>如何使用</h2>
+        <p>浏览或搜索您所用语言的视频，并注册一个免费账户来上传自己的视频：田间技术、培训、社区故事。此处链接的介绍视频带您快速了解该平台。</p>
+  -
+    title:
+      en: 'Guardian Connector'
+      ar: 'Guardian Connector'
+      es: 'Guardian Connector'
+      fil: 'Guardian Connector'
+      fr: 'Guardian Connector'
+      hi: 'Guardian Connector'
+      id: 'Guardian Connector'
+      it: 'Guardian Connector'
+      pt: 'Guardian Connector'
+      ru: 'Guardian Connector'
+      sw: 'Guardian Connector'
+      zh_CN: 'Guardian Connector'
+    description:
+      en: |-
+        <p>Guardian Connector is data infrastructure for communities defending their territories: it brings together the data collected with tools like Mapeo and ODK into storage and dashboards the community governs.</p>
+        <h2>How to use it</h2>
+        <p>Connect your field-data tools so observations flow into one place, then use the dashboards to review, analyse and share what your community decides to share. The linked video introduces the setup and a real deployment.</p>
+      ar: |-
+        <p>Guardian Connector بنية تحتية للبيانات مخصصة للمجتمعات التي تدافع عن أقاليمها: يجمع البيانات التي جُمعت بأدوات مثل Mapeo وODK في مخازن ولوحات معلومات يحكمها المجتمع.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>اربط أدوات البيانات الميدانية لديك لتتدفق الملاحظات إلى مكان واحد، ثم استخدم لوحات المعلومات لمراجعة البيانات وتحليلها ومشاركة ما يقرر مجتمعك مشاركته. يعرّف الفيديو المرتبط بعملية الإعداد وبتجربة نشر حقيقية.</p>
+      es: |-
+        <p>Guardian Connector es una infraestructura de datos para comunidades que defienden sus territorios: reúne los datos recopilados con herramientas como Mapeo y ODK en sistemas de almacenamiento y paneles de control que gobierna la propia comunidad.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Conecta tus herramientas de datos de campo para que las observaciones fluyan hacia un solo lugar, y luego usa los paneles de control para revisar, analizar y compartir lo que tu comunidad decida compartir. El video enlazado presenta la configuración y un despliegue real.</p>
+      fil: |-
+        <p>Ang Guardian Connector ay imprastraktura ng datos para sa mga komunidad na nagtatanggol sa kanilang mga teritoryo: pinagsasama-sama nito ang datos na nakolekta gamit ang mga kasangkapan tulad ng Mapeo at ODK sa storage at mga dashboard na pinamamahalaan ng komunidad.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Ikonekta ang iyong mga kasangkapan sa datos mula sa larangan upang dumaloy ang mga obserbasyon sa isang lugar, pagkatapos ay gamitin ang mga dashboard upang suriin, analisahin at ibahagi ang anumang napagdesisyunan ng iyong komunidad na ibahagi. Ipinakikilala ng naka-link na video ang pag-setup at isang tunay na deployment.</p>
+      fr: |-
+        <p>Guardian Connector est une infrastructure de données pour les communautés qui défendent leurs territoires : elle rassemble les données collectées avec des outils comme Mapeo et ODK dans des espaces de stockage et des tableaux de bord gouvernés par la communauté.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Connectez vos outils de collecte de données de terrain afin que les observations convergent en un seul endroit, puis utilisez les tableaux de bord pour examiner, analyser et partager ce que votre communauté décide de partager. La vidéo en lien présente la configuration et un déploiement réel.</p>
+      hi: |-
+        <p>Guardian Connector अपने क्षेत्रों की रक्षा करने वाले समुदायों के लिए डेटा अवसंरचना है: यह Mapeo और ODK जैसे उपकरणों से एकत्र किए गए डेटा को ऐसे भंडारण और डैशबोर्ड में एक साथ लाता है जिनका संचालन समुदाय स्वयं करता है।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>अपने फ़ील्ड-डेटा उपकरणों को जोड़ें ताकि अवलोकन एक ही जगह पहुँचें, फिर डैशबोर्ड का उपयोग करके समीक्षा करें, विश्लेषण करें और वह साझा करें जो आपका समुदाय साझा करने का निर्णय लेता है। लिंक किया गया वीडियो सेटअप और एक वास्तविक कार्यान्वयन का परिचय देता है।</p>
+      id: |-
+        <p>Guardian Connector adalah infrastruktur data untuk komunitas yang mempertahankan wilayah mereka: ia menghimpun data yang dikumpulkan dengan alat seperti Mapeo dan ODK ke dalam penyimpanan dan dasbor yang dikelola sendiri oleh komunitas.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Hubungkan alat data lapangan Anda agar pengamatan mengalir ke satu tempat, lalu gunakan dasbor untuk meninjau, menganalisis, dan membagikan apa yang diputuskan komunitas Anda untuk dibagikan. Video yang ditautkan memperkenalkan proses penyiapan dan sebuah penerapan nyata.</p>
+      it: |-
+        <p>Guardian Connector è un'infrastruttura dati per le comunità che difendono i propri territori: riunisce i dati raccolti con strumenti come Mapeo e ODK in archivi e dashboard governati dalla comunità.</p>
+        <h2>Come usarlo</h2>
+        <p>Collega i tuoi strumenti di raccolta dati sul campo in modo che le osservazioni confluiscano in un unico luogo, poi usa le dashboard per esaminare, analizzare e condividere ciò che la tua comunità decide di condividere. Il video linkato presenta la configurazione e un'implementazione reale.</p>
+      pt: |-
+        <p>O Guardian Connector é infraestrutura de dados para comunidades que defendem os seus territórios: reúne os dados recolhidos com ferramentas como o Mapeo e o ODK em armazenamento e painéis governados pela comunidade.</p>
+        <h2>Como usar</h2>
+        <p>Ligue as suas ferramentas de dados de campo para que as observações fluam para um só lugar, depois use os painéis para rever, analisar e partilhar o que a sua comunidade decidir partilhar. O vídeo ligado apresenta a configuração e uma implementação real.</p>
+      ru: |-
+        <p>Guardian Connector — это инфраструктура данных для сообществ, защищающих свои территории: она объединяет данные, собранные с помощью таких инструментов, как Mapeo и ODK, в хранилище и панели мониторинга, которыми управляет само сообщество.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Подключите свои инструменты сбора полевых данных, чтобы наблюдения стекались в одно место, а затем используйте панели мониторинга, чтобы просматривать, анализировать и делиться тем, чем ваше сообщество решит поделиться. Видео по ссылке знакомит с настройкой и реальным внедрением.</p>
+      sw: |-
+        <p>Guardian Connector ni miundombinu ya data kwa ajili ya jamii zinazolinda maeneo yao: huikusanya data iliyokusanywa kwa zana kama Mapeo na ODK katika hifadhi na dashibodi zinazosimamiwa na jamii yenyewe.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Unganisha zana zako za data ya uwandani ili uchunguzi wote uingie sehemu moja, kisha tumia dashibodi kupitia, kuchambua na kushirikisha kile ambacho jamii yako imeamua kukishirikisha. Video iliyounganishwa hapa inatambulisha usanidi na utekelezaji halisi.</p>
+      zh_CN: |-
+        <p>Guardian Connector 是为捍卫自身领地的社区提供的数据基础设施：它将使用 Mapeo、ODK 等工具收集的数据汇集到由社区自行管理的存储系统和仪表板中。</p>
+        <h2>如何使用</h2>
+        <p>连接您的实地数据工具，让观察记录汇入同一个地方，然后使用仪表板进行审阅、分析，并分享社区决定分享的内容。链接的视频介绍了设置过程和一个真实的部署案例。</p>

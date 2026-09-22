@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Sovereignty Library\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: resources/views/collection.blade.php:14
+msgid "Collection"
+msgstr "Koleksi"
+
+#: resources/views/collection.blade.php:16
+msgid "resources"
+msgstr "sumber daya"
+
+#: resources/views/collection.blade.php:20
+#: resources/views/trove.blade.php:53
+msgid "Available in:"
+msgstr "Tersedia dalam:"
+
+#: resources/views/collection.blade.php:43
+#: resources/views/header.blade.php:40
+#: resources/views/header.blade.php:76
+#: resources/views/home.blade.php:32
+#: resources/views/trove.blade.php:84
+msgid "Browse Library"
+msgstr "Jelajahi Perpustakaan"
+
+#: resources/views/collection.blade.php:48
+#: resources/views/trove.blade.php:89
+msgid "Share"
+msgstr "Bagikan"
+
+#: resources/views/collection.blade.php:51
+#: resources/views/trove.blade.php:92
+msgid "Share by email"
+msgstr "Bagikan melalui email"
+
+#: resources/views/collection.blade.php:57
+#: resources/views/trove.blade.php:98
+msgid "Share on WhatsApp"
+msgstr "Bagikan di WhatsApp"
+
+#: resources/views/collection.blade.php:63
+#: resources/views/trove.blade.php:104
+msgid "Share on LinkedIn"
+msgstr "Bagikan di LinkedIn"
+
+#: resources/views/collection.blade.php:68
+#: resources/views/trove.blade.php:109
+msgid "Copy link"
+msgstr "Salin tautan"
+
+#: resources/views/collection.blade.php:77
+#: resources/views/trove.blade.php:131
+msgid "Description"
+msgstr "Deskripsi"
+
+#: resources/views/collection.blade.php:86
+msgid "Resources in this collection"
+msgstr "Sumber daya dalam koleksi ini"
+
+#: resources/views/components/collection-result-card.blade.php:51
+#: resources/views/components/resource-result-card.blade.php:92
+msgid "VIEW"
+msgstr "LIHAT"
+
+#: resources/views/components/curriculum-resource-row.blade.php:43
+msgid "View"
+msgstr "Lihat"
+
+#: resources/views/components/glossary-drawer.blade.php:60
+#: resources/views/components/glossary-drawer.blade.php:72
+#: resources/views/header.blade.php:35
+#: resources/views/header.blade.php:73
+msgid "Glossary"
+msgstr "Glosarium"
+
+#: resources/views/components/glossary-drawer.blade.php:73
+msgid "Close glossary"
+msgstr "Tutup glosarium"
+
+#: resources/views/components/glossary-drawer.blade.php:78
+msgid "Search terms…"
+msgstr "Cari istilah…"
+
+#: resources/views/components/glossary-drawer.blade.php:86
+msgid "All sources"
+msgstr "Semua sumber"
+
+#: resources/views/components/glossary-drawer.blade.php:105
+msgid "Source:"
+msgstr "Sumber:"
+
+#: resources/views/components/glossary-drawer.blade.php:116
+msgid "No matching terms."
+msgstr "Tidak ada istilah yang cocok."
+
+#: resources/views/components/glossary-drawer.blade.php:119
+msgid "This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time."
+msgstr "Glosarium ini didasarkan pada karya Marion Girard Cisneros, digunakan dengan izin, serta disesuaikan dan diperluas dari waktu ke waktu."
+
+#: resources/views/components/glossary-drawer.blade.php:120
+msgid "Other glossaries worth consulting:"
+msgstr "Glosarium lain yang layak dirujuk:"
+
+#: resources/views/components/glossary-drawer.blade.php:124
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Glosarium - Tata Kelola Data di Bidang Pertanian (perangkat UBC, PDF)"
+
+#: resources/views/components/glossary-drawer.blade.php:130
+msgid "Open Data Handbook Glossary"
+msgstr "Glosarium Open Data Handbook"
+
+#: resources/views/components/glossary-drawer.blade.php:197
+msgid "Open full glossary →"
+msgstr "Buka glosarium lengkap →"
+
+#: resources/views/components/video-link.blade.php:59
+msgid "Watch on :host"
+msgstr "Tonton di :host"
+
+#: resources/views/curriculum/index.blade.php:1
+#: resources/views/curriculum/index.blade.php:18
+#: resources/views/header.blade.php:30
+#: resources/views/header.blade.php:70
+msgid "Curriculum"
+msgstr "Kurikulum"
+
+#: resources/views/curriculum/index.blade.php:7
+msgid "Curriculum steps"
+msgstr "Langkah-langkah kurikulum"
+
+#: resources/views/curriculum/index.blade.php:11
+msgid "Intro"
+msgstr "Pengantar"
+
+#: resources/views/curriculum/module.blade.php:5
+msgid "Back to the learning map"
+msgstr "Kembali ke peta pembelajaran"
+
+#: resources/views/curriculum/module.blade.php:22
+#: resources/views/curriculum/pillar.blade.php:24
+msgid "Learning outcomes"
+msgstr "Hasil pembelajaran"
+
+#: resources/views/curriculum/module.blade.php:33
+msgid "Resources"
+msgstr "Sumber Daya"
+
+#: resources/views/curriculum/module.blade.php:42
+msgid "Resources for this stop are coming soon."
+msgstr "Sumber daya untuk tahap ini akan segera tersedia."
+
+#: resources/views/curriculum/partials/map.blade.php:12
+msgid "Explore in any order"
+msgstr "Jelajahi dalam urutan apa pun"
+
+#: resources/views/curriculum/partials/map.blade.php:14
+msgid "The trail suggests a route, but there's no wrong way through. Start wherever makes sense for you."
+msgstr "Jalur ini menyarankan sebuah rute, tetapi tidak ada cara yang salah untuk menempuhnya. Mulailah dari mana pun yang paling masuk akal bagi Anda."
+
+#: resources/views/curriculum/partials/map.blade.php:34
+#: resources/views/curriculum/partials/map.blade.php:50
+msgid "Optional"
+msgstr "Opsional"
+
+#: resources/views/curriculum/partials/map.blade.php:61
+msgid "Build your toolkit"
+msgstr "Bangun kit peralatan Anda"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:12
+msgid "Build Your Sovereign Toolkit"
+msgstr "Bangun Kit Peralatan Berdaulat Anda"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:13
+msgid "Tools your community can own and run."
+msgstr "Alat yang dapat dimiliki dan dijalankan sendiri oleh komunitas Anda."
+
+#: resources/views/curriculum/partials/toolkit.blade.php:28
+msgid "Learn more"
+msgstr "Pelajari lebih lanjut"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tool"
+msgstr "alat"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tools"
+msgstr "alat"
+
+#: resources/views/curriculum/pillar.blade.php:5
+msgid "Back to toolkit"
+msgstr "Kembali ke kit peralatan"
+
+#: resources/views/curriculum/pillar.blade.php:41
+msgid "Resources for this section are coming soon."
+msgstr "Sumber daya untuk bagian ini akan segera tersedia."
+
+#: resources/views/footer.blade.php:16
+msgid "Template"
+msgstr "Templat"
+
+#: resources/views/footer.blade.php:14
+msgid "Built using the :stats4sd Resources Repository :template"
+msgstr "Dibangun menggunakan :template Repositori Sumber Daya :stats4sd"
+
+#: resources/views/header.blade.php:7
+msgid ":org logo"
+msgstr "Logo :org"
+
+#: resources/views/header.blade.php:25
+#: resources/views/header.blade.php:69
+msgid "Home"
+msgstr "Beranda"
+
+#: resources/views/header.blade.php:49
+#: resources/views/header.blade.php:80
+msgid "Change Language"
+msgstr "Ganti Bahasa"
+
+#: resources/views/home.blade.php:33
+msgid "Browse the full library of resources and collections."
+msgstr "Jelajahi seluruh perpustakaan sumber daya dan koleksi."
+
+#: resources/views/home_digital_sovereignty.blade.php:19
+msgid "Digital Sovereignty Curriculum"
+msgstr "Kurikulum Kedaulatan Digital"
+
+#: resources/views/home_digital_sovereignty.blade.php:21
+msgid "Your tools. Your data."
+msgstr "Alat Anda. Data Anda."
+
+#: resources/views/home_digital_sovereignty.blade.php:22
+msgid "Your terms."
+msgstr "Aturan Anda."
+
+#: resources/views/home_digital_sovereignty.blade.php:25
+msgid "Whether you're leading, training, farming, or supporting, digital sovereignty starts with your community. Learn what fits, then build your toolkit."
+msgstr "Baik Anda memimpin, melatih, bertani, maupun mendampingi, kedaulatan digital dimulai dari komunitas Anda. Pelajari apa yang cocok, lalu bangun kit peralatan Anda."
+
+#: resources/views/home_digital_sovereignty.blade.php:30
+msgid "Start Learning"
+msgstr "Mulai Belajar"
+
+#: resources/views/home_digital_sovereignty.blade.php:34
+msgid "or browse the full library"
+msgstr "atau jelajahi seluruh perpustakaan"
+
+#: resources/views/home_digital_sovereignty.blade.php:42
+msgid "How familiar are you with digital sovereignty?"
+msgstr "Seberapa akrab Anda dengan kedaulatan digital?"
+
+#: resources/views/home_digital_sovereignty.blade.php:48
+#: resources/views/home_digital_sovereignty.blade.php:54
+msgid "New here"
+msgstr "Saya baru di sini"
+
+#: resources/views/home_digital_sovereignty.blade.php:49
+#: resources/views/home_digital_sovereignty.blade.php:55
+msgid "Start with a short primer before the learning map."
+msgstr "Mulailah dengan pengantar singkat sebelum peta pembelajaran."
+
+#: resources/views/home_digital_sovereignty.blade.php:59
+msgid "I know the basics"
+msgstr "Saya sudah tahu dasarnya"
+
+#: resources/views/home_digital_sovereignty.blade.php:60
+msgid "Skip ahead, straight to the learning map."
+msgstr "Lompat langsung ke peta pembelajaran."
+
+#: resources/views/home_digital_sovereignty.blade.php:67
+msgid "A quick grounding"
+msgstr "Pemahaman dasar singkat"
+
+#: resources/views/home_digital_sovereignty.blade.php:81
+msgid "Continue to the learning map"
+msgstr "Lanjut ke peta pembelajaran"
+
+#: resources/views/livewire/browse-all.blade.php:34
+msgid "Search and filter"
+msgstr "Cari dan saring"
+
+#: resources/views/livewire/browse-all.blade.php:43
+msgid "Search here"
+msgstr "Cari di sini"
+
+#: resources/views/livewire/browse-all.blade.php:44
+msgid "Search resources and collections"
+msgstr "Cari sumber daya dan koleksi"
+
+#: resources/views/livewire/browse-all.blade.php:59
+msgid "Clear search"
+msgstr "Hapus pencarian"
+
+#: resources/views/livewire/browse-all.blade.php:70
+msgid "Filters:"
+msgstr "Filter:"
+
+#: resources/views/livewire/browse-all.blade.php:78
+msgid "Language:"
+msgstr "Bahasa:"
+
+#: resources/views/livewire/browse-all.blade.php:107
+msgid "Type:"
+msgstr "Jenis:"
+
+#: resources/views/livewire/browse-all.blade.php:175
+msgid "Text-based search is temporarily unavailable. You can still browse resources below, and use the filters to narrow your search."
+msgstr "Pencarian berbasis teks untuk sementara tidak tersedia. Anda masih dapat menjelajahi sumber daya di bawah ini dan menggunakan filter untuk mempersempit pencarian."
+
+#: resources/views/livewire/browse-all.blade.php:180
+msgid "No resources or collections match your search or filters."
+msgstr "Tidak ada sumber daya atau koleksi yang cocok dengan pencarian atau filter Anda."
+
+#: resources/views/livewire/browse-all.blade.php:183
+msgid "No resources or collections have been added yet."
+msgstr "Belum ada sumber daya atau koleksi yang ditambahkan."
+
+#: resources/views/livewire/browse-all.blade.php:187
+msgid "Showing :start - :end out of :total resources and collections"
+msgstr "Menampilkan :start - :end dari :total sumber daya dan koleksi"
+
+#: resources/views/livewire/browse-all.blade.php:192
+msgid "Clear Filters"
+msgstr "Hapus Filter"
+
+#: resources/views/livewire/browse-all.blade.php:215
+msgid "Pagination"
+msgstr "Navigasi halaman"
+
+#: resources/views/livewire/browse-all.blade.php:221
+msgid "First page"
+msgstr "Halaman pertama"
+
+#: resources/views/livewire/browse-all.blade.php:224
+msgid "First"
+msgstr "Pertama"
+
+#: resources/views/livewire/browse-all.blade.php:233
+msgid "Previous page"
+msgstr "Halaman sebelumnya"
+
+#: resources/views/livewire/browse-all.blade.php:236
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: resources/views/livewire/browse-all.blade.php:250
+msgid "Page"
+msgstr "Halaman"
+
+#: resources/views/livewire/browse-all.blade.php:264
+msgid "Next page"
+msgstr "Halaman berikutnya"
+
+#: resources/views/livewire/browse-all.blade.php:267
+msgid "Next"
+msgstr "Berikutnya"
+
+#: resources/views/livewire/browse-all.blade.php:276
+msgid "Last page"
+msgstr "Halaman terakhir"
+
+#: resources/views/livewire/browse-all.blade.php:279
+msgid "Last"
+msgstr "Terakhir"
+
+#: resources/views/livewire/collection-troves.blade.php:11
+msgid "No resources available for this collection."
+msgstr "Tidak ada sumber daya yang tersedia untuk koleksi ini."
+
+#: resources/views/livewire/trove-collections.blade.php:11
+msgid "No collections available for this resource."
+msgstr "Tidak ada koleksi yang tersedia untuk sumber daya ini."
+
+#: resources/views/livewire/trove-related-troves.blade.php:15
+msgid "No related resources found."
+msgstr "Tidak ditemukan sumber daya terkait."
+
+#: resources/views/trove.blade.php:16
+msgid "PREVIEW MODE: This resource has not been published and is only visible to authorised users"
+msgstr "MODE PRATINJAU: Sumber daya ini belum diterbitkan dan hanya dapat dilihat oleh pengguna yang berwenang"
+
+#: resources/views/trove.blade.php:138
+msgid "View / Download"
+msgstr "Lihat / Unduh"
+
+#: resources/views/trove.blade.php:212
+msgid "Download all (ZIP)"
+msgstr "Unduh semua (ZIP)"
+
+#: resources/views/trove.blade.php:224
+msgid "Collections including this resource"
+msgstr "Koleksi yang memuat sumber daya ini"
+
+#: resources/views/trove.blade.php:231
+msgid "Related resources"
+msgstr "Sumber daya terkait"

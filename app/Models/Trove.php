@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CurriculumItemType;
 use App\Enums\PublicationState;
 use App\Enums\ReviewState;
 use App\Models\Scopes\PublishedScope;
@@ -344,6 +345,22 @@ class Trove extends Model implements HasMedia
     {
         return $this->belongsToMany(Collection::class)
             ->withPivot('id');
+    }
+
+    public function curriculumModules(): BelongsToMany
+    {
+        return $this->belongsToMany(CurriculumModule::class)
+            ->withPivot('id', 'order_column');
+    }
+
+    /**
+     * Sessions that reference this trove through a `trove` CurriculumSessionItem.
+     */
+    public function curriculumSessions(): BelongsToMany
+    {
+        return $this->belongsToMany(CurriculumSession::class, 'curriculum_session_items')
+            ->withPivotValue('type', CurriculumItemType::Trove->value)
+            ->withPivot('id', 'position', 'intro');
     }
 
     public function relatedTroves()

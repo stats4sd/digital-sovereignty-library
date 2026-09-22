@@ -3,25 +3,205 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\TroveType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TroveTypeSeeder extends Seeder
 {
     public function run(): void
     {
-        TroveType::create(["label" => ["en" => "Activity",                   "es" => "Actividad",                   "fr" => "Activité"]]);
-        TroveType::create(["label" => ["en" => "Book",                       "es" => "Libro",                       "fr" => "Livre"]]);
-        TroveType::create(["label" => ["en" => "Case Study",                 "es" => "Estudio de caso",             "fr" => "Étude de cas"]]);
-        TroveType::create(["label" => ["en" => "Curricula / Training Course","es" => "Plan de estudios",            "fr" => "Programme d'études"]]);
-        TroveType::create(["label" => ["en" => "Example",                    "es" => "Ejemplo",                     "fr" => "Exemple"]]);
-        TroveType::create(["label" => ["en" => "Guide",                      "es" => "Guía",                        "fr" => "Guide"]]);
-        TroveType::create(["label" => ["en" => "Journal Article",            "es" => "Artículo científico",         "fr" => "Article scientifique"]]);
-        TroveType::create(["label" => ["en" => "Presentation",               "es" => "Presentación",                "fr" => "Présentation"]]);
-        TroveType::create(["label" => ["en" => "Tool",                       "es" => "Herramienta",                 "fr" => "Outil"]]);
-        TroveType::create(["label" => ["en" => "Video",                      "es" => "Vídeo",                       "fr" => "Vidéo"]]);
-        TroveType::create(["label" => ["en" => "Webinar",                    "es" => "Webinario",                   "fr" => "Webinaire"]]);
-        TroveType::create(["label" => ["en" => "Website",                    "es" => "Sitio web",                   "fr" => "Site web"]]);
-        TroveType::create(["label" => ["en" => "Syllabus",                   "es" => "Programa de estudios",        "fr" => "Syllabus"]]);
+        foreach ($this->labels() as $label) {
+            TroveType::create(['label' => $label]);
+        }
+    }
+
+    /**
+     * One entry per trove type, keyed by locale code (matching the site's configured locales).
+     */
+    private function labels(): array
+    {
+        return [
+            [
+                'en' => 'Activity',
+                'id' => 'Kegiatan',
+                'es' => 'Actividad',
+                'fil' => 'Aktibidad',
+                'fr' => 'Activité',
+                'it' => 'Attività',
+                'sw' => 'Shughuli',
+                'pt' => 'Atividade',
+                'ru' => 'Занятие',
+                'hi' => 'गतिविधि',
+                'ar' => 'نشاط',
+                'zh_CN' => '活动',
+            ],
+            [
+                'en' => 'Book',
+                'id' => 'Buku',
+                'es' => 'Libro',
+                'fil' => 'Aklat',
+                'fr' => 'Livre',
+                'it' => 'Libro',
+                'sw' => 'Kitabu',
+                'pt' => 'Livro',
+                'ru' => 'Книга',
+                'hi' => 'पुस्तक',
+                'ar' => 'كتاب',
+                'zh_CN' => '书籍',
+            ],
+            [
+                'en' => 'Case Study',
+                'id' => 'Studi kasus',
+                'es' => 'Estudio de caso',
+                'fil' => 'Pag-aaral ng kaso',
+                'fr' => 'Étude de cas',
+                'it' => 'Caso di studio',
+                'sw' => 'Uchunguzi kifani',
+                'pt' => 'Estudo de caso',
+                'ru' => 'Кейс',
+                'hi' => 'केस स्टडी',
+                'ar' => 'دراسة حالة',
+                'zh_CN' => '案例研究',
+            ],
+            [
+                'en' => 'Curricula / Training Course',
+                'id' => 'Kurikulum / Kursus pelatihan',
+                'es' => 'Plan de estudios / Curso de formación',
+                'fil' => 'Kurikulum / Kurso sa pagsasanay',
+                'fr' => 'Programme d\'études / Formation',
+                'it' => 'Curricula / Corso di formazione',
+                'sw' => 'Mtaala / Kozi ya mafunzo',
+                'pt' => 'Currículo / Curso de formação',
+                'ru' => 'Учебная программа / Курс обучения',
+                'hi' => 'पाठ्यक्रम / प्रशिक्षण कोर्स',
+                'ar' => 'منهج / دورة تدريبية',
+                'zh_CN' => '课程 / 培训课程',
+            ],
+            [
+                'en' => 'Example',
+                'id' => 'Contoh',
+                'es' => 'Ejemplo',
+                'fil' => 'Halimbawa',
+                'fr' => 'Exemple',
+                'it' => 'Esempio',
+                'sw' => 'Mfano',
+                'pt' => 'Exemplo',
+                'ru' => 'Пример',
+                'hi' => 'उदाहरण',
+                'ar' => 'مثال',
+                'zh_CN' => '示例',
+            ],
+            [
+                'en' => 'Guide',
+                'id' => 'Panduan',
+                'es' => 'Guía',
+                'fil' => 'Gabay',
+                'fr' => 'Guide',
+                'it' => 'Guida',
+                'sw' => 'Mwongozo',
+                'pt' => 'Guia',
+                'ru' => 'Руководство',
+                'hi' => 'मार्गदर्शिका',
+                'ar' => 'دليل',
+                'zh_CN' => '指南',
+            ],
+            [
+                'en' => 'Journal Article',
+                'id' => 'Artikel jurnal',
+                'es' => 'Artículo científico',
+                'fil' => 'Artikulo sa journal',
+                'fr' => 'Article scientifique',
+                'it' => 'Articolo scientifico',
+                'sw' => 'Makala ya jarida',
+                'pt' => 'Artigo científico',
+                'ru' => 'Научная статья',
+                'hi' => 'जर्नल लेख',
+                'ar' => 'مقالة علمية',
+                'zh_CN' => '期刊文章',
+            ],
+            [
+                'en' => 'Presentation',
+                'id' => 'Presentasi',
+                'es' => 'Presentación',
+                'fil' => 'Presentasyon',
+                'fr' => 'Présentation',
+                'it' => 'Presentazione',
+                'sw' => 'Wasilisho',
+                'pt' => 'Apresentação',
+                'ru' => 'Презентация',
+                'hi' => 'प्रस्तुति',
+                'ar' => 'عرض تقديمي',
+                'zh_CN' => '演示文稿',
+            ],
+            [
+                'en' => 'Tool',
+                'id' => 'Alat',
+                'es' => 'Herramienta',
+                'fil' => 'Kasangkapan',
+                'fr' => 'Outil',
+                'it' => 'Strumento',
+                'sw' => 'Zana',
+                'pt' => 'Ferramenta',
+                'ru' => 'Инструмент',
+                'hi' => 'उपकरण',
+                'ar' => 'أداة',
+                'zh_CN' => '工具',
+            ],
+            [
+                'en' => 'Video',
+                'id' => 'Video',
+                'es' => 'Vídeo',
+                'fil' => 'Bidyo',
+                'fr' => 'Vidéo',
+                'it' => 'Video',
+                'sw' => 'Video',
+                'pt' => 'Vídeo',
+                'ru' => 'Видео',
+                'hi' => 'वीडियो',
+                'ar' => 'فيديو',
+                'zh_CN' => '视频',
+            ],
+            [
+                'en' => 'Webinar',
+                'id' => 'Webinar',
+                'es' => 'Webinario',
+                'fil' => 'Webinar',
+                'fr' => 'Webinaire',
+                'it' => 'Webinar',
+                'sw' => 'Webina',
+                'pt' => 'Webinário',
+                'ru' => 'Вебинар',
+                'hi' => 'वेबिनार',
+                'ar' => 'ندوة عبر الإنترنت',
+                'zh_CN' => '网络研讨会',
+            ],
+            [
+                'en' => 'Website',
+                'id' => 'Situs web',
+                'es' => 'Sitio web',
+                'fil' => 'Website',
+                'fr' => 'Site web',
+                'it' => 'Sito web',
+                'sw' => 'Tovuti',
+                'pt' => 'Site web',
+                'ru' => 'Веб-сайт',
+                'hi' => 'वेबसाइट',
+                'ar' => 'موقع إلكتروني',
+                'zh_CN' => '网站',
+            ],
+            [
+                'en' => 'Syllabus',
+                'id' => 'Silabus',
+                'es' => 'Programa de estudios',
+                'fil' => 'Silabus',
+                'fr' => 'Syllabus',
+                'it' => 'Programma del corso',
+                'sw' => 'Muhtasari wa kozi',
+                'pt' => 'Programa da disciplina',
+                'ru' => 'Учебный план',
+                'hi' => 'पाठ्यक्रम विवरण',
+                'ar' => 'المنهج الدراسي',
+                'zh_CN' => '教学大纲',
+            ],
+        ];
     }
 }

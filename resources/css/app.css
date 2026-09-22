@@ -21,6 +21,15 @@
     --color-brand-bg: var(--brand-bg);
     --color-brand-footer-bg: var(--brand-footer-bg);
     --color-brand-footer-text: var(--brand-footer-text);
+    --color-brand-surface: var(--brand-surface);
+    --color-brand-surface-muted: var(--brand-surface-muted);
+    --color-brand-ink: var(--brand-ink);
+    --color-brand-ink-muted: var(--brand-ink-muted);
+    --color-brand-line: var(--brand-line);
+    --color-brand-success: var(--brand-success);
+    --color-brand-info: var(--brand-info);
+    --color-brand-warning: var(--brand-warning);
+    --font-display: var(--brand-font-display);
 }
 
 :root {
@@ -34,6 +43,14 @@
     --brand-footer-bg: #ece6d2;         /* footer background colour */
     --brand-footer-text: #634234;       /* footer text colour */
     --brand-font: 'Open Sans', sans-serif; /* change @import URL above to use a different Google Font */
+
+    /* Derived tones used for surfaces/borders in the curriculum module & session pages */
+    --brand-surface: #FFFFFF;
+    --brand-surface-muted: #F6F1DD;
+    --brand-ink: #2F2A20;
+    --brand-ink-muted: #6B6355;
+    --brand-line: #DED6BD;
+    --brand-font-display: 'Lora', Georgia, serif; /* Lora is already loaded in layouts/app.blade.php */
 
     /** Additional colours for the Admin panel **/
     --brand-success: #16A34A;
@@ -66,6 +83,11 @@
 
     footer a {
         color: var(--brand-footer-text);
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--brand-secondary);
+        outline-offset: 3px;
     }
 }
 
@@ -113,11 +135,11 @@
     }
 
     .language-dropdown-menu {
-        @apply absolute left-0 mt-2 p-0 rounded-md bg-white shadow-md flex-col text-black w-full z-50;
+        @apply absolute start-0 mt-2 p-0 rounded-md bg-white shadow-md flex-col text-black min-w-full w-max whitespace-nowrap z-50;
     }
 
     .dropdown-item {
-        @apply text-black flex items-center w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-0 pl-10 py-2.5 text-sm hover:bg-gray-50 disabled:text-gray-500;
+        @apply text-black flex items-center w-full first-of-type:rounded-t-md last-of-type:rounded-b-md ps-10 pe-6 py-2.5 text-sm hover:bg-gray-50 disabled:text-gray-500;
     }
 
     .font-opensans {
@@ -128,19 +150,229 @@
         @apply mt-4;
     }
 
-    .description h2, .description h3 {
+    /* Editor-authored h2s (e.g. a tool's "How to use it") match the page section
+       headings: divider bar + text-2xl bold, like the "Description" heading. */
+    .description h2 {
+        @apply mt-10 mb-4 text-2xl font-bold;
+        color: black; /* match the page section headings, not the grey body copy */
+    }
+
+    .description h2::before {
+        content: "";
+        display: block;
+        height: 0.8rem;
+        width: 90px;
+        background-color: var(--brand-secondary);
+        margin-bottom: 1.5rem;
+    }
+
+    .description h3 {
         @apply mt-6;
     }
 
     .description ul li {
-        @apply mt-1 list-disc ml-8 list-outside;
+        @apply mt-1 list-disc ms-8 list-outside;
     }
 
     .description ol li {
-        @apply mt-1 ml-8 list-decimal list-outside;
+        @apply mt-1 ms-8 list-decimal list-outside;
     }
 
     .description ol, .description ul {
         @apply my-4;
     }
+
+    /* ---------- Curriculum ---------- */
+
+    /* Onboarding progress trail */
+    .trail-dot {
+        @apply w-2.5 h-2.5 rounded-full cursor-pointer transition-transform;
+        background-color: rgb(from var(--brand-primary) r g b / 0.3);
+    }
+
+    .trail-dot:hover {
+        transform: scale(1.4);
+    }
+
+    .trail-dot-done {
+        background-color: var(--brand-secondary);
+    }
+
+    .trail-dot-current {
+        background-color: var(--brand-primary);
+        box-shadow: 0 0 0 3px rgb(from var(--brand-secondary) r g b / 0.3);
+    }
+
+    /* Onboarding role/choice cards */
+    .role-card {
+        @apply bg-white/60 rounded-2xl px-6 py-6 cursor-pointer transition-all;
+        border: 1px solid rgb(from var(--brand-primary) r g b / 0.12);
+    }
+
+    .role-card:hover {
+        border-color: var(--brand-secondary);
+        transform: translateY(-3px);
+        @apply shadow-lg;
+    }
+
+    .role-card-selected,
+    .role-card-selected:hover {
+        border-color: var(--brand-secondary);
+        background-color: rgb(from var(--brand-secondary) r g b / 0.08);
+        box-shadow: inset 0 0 0 1px var(--brand-secondary);
+    }
+
+    /* Learning map nodes (absolutely positioned over the trail SVG) */
+    .curriculum-node {
+        @apply absolute w-36 text-center cursor-pointer;
+        transform: translate(-50%, -13px);
+    }
+
+    .curriculum-node-dot {
+        @apply block w-6 h-6 rounded-full mx-auto mb-2 transition-transform bg-brand-bg;
+        border: 3px solid rgb(from var(--brand-primary) r g b / 0.4);
+    }
+
+    .curriculum-node:hover .curriculum-node-dot {
+        border-color: var(--brand-primary);
+        transform: scale(1.1);
+    }
+
+    /* In the mobile stacked list the dot sits inline, not centred */
+    .curriculum-node-dot-inline {
+        @apply mx-0 mb-0 w-4 h-4;
+        border-width: 2px;
+    }
+
+    .optional-pill {
+        @apply inline-block text-[11px] uppercase tracking-wide font-semibold rounded-full px-2 py-0.5;
+        color: var(--brand-primary);
+        background-color: rgb(from var(--brand-secondary) r g b / 0.2);
+    }
+
+    .note-callout {
+        @apply text-sm text-gray-600 leading-relaxed bg-white/60 rounded-lg px-4 py-3 max-w-2xl;
+        border: 1px solid rgb(from var(--brand-primary) r g b / 0.12);
+        border-left: 3px solid var(--brand-secondary);
+    }
+
+    /* Inline glossary terms */
+    .glossary-term {
+        cursor: help;
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        text-decoration-skip-ink: none;
+    }
+
+    .glossary-term:hover,
+    .glossary-term:focus {
+        color: var(--brand-secondary);
+        outline: none;
+    }
+
+    .glossary-tip {
+        @apply fixed z-50 w-72 max-w-[86vw] rounded-xl px-4 py-3 shadow-xl bg-brand-bg;
+        border: 1px solid rgb(from var(--brand-primary) r g b / 0.25);
+    }
+
+    .glossary-tip-term {
+        @apply font-semibold text-sm mb-1;
+        color: var(--brand-primary);
+    }
+
+    .glossary-tip-def {
+        @apply text-sm text-gray-600 leading-relaxed whitespace-pre-line;
+    }
+
+    .glossary-tip-link {
+        @apply mt-2 text-xs font-semibold cursor-pointer;
+        color: var(--brand-secondary);
+    }
+
+    .glossary-tip-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Inline glossary terms need a lighter hover colour on the olive outcomes band. */
+    .bg-brand-primary .glossary-term:hover {
+        color: var(--brand-bg);
+    }
+
+    /* Thick vertical rule that sits beside a section heading (module/session pages). */
+    .brand-rule {
+        @apply w-6 shrink-0;
+        background-color: var(--brand-primary);
+    }
+
+    /* Pill CTA, e.g. "Start Session 1" — must live in @layer components to beat the
+       base layer's `a { color }` rule, so the pill text stays white on olive. */
+    .brand-pill {
+        @apply inline-flex items-center gap-4 rounded-full px-8 py-4 font-bold shadow-lg;
+        background-color: var(--brand-primary);
+        color: #fff;
+        transition: opacity 200ms ease;
+    }
+
+    .brand-pill:hover {
+        opacity: 0.9;
+    }
+
+    .brand-pill-outline {
+        background-color: transparent;
+        color: var(--brand-primary);
+        box-shadow: none;
+        border: 2px solid var(--brand-primary);
+    }
+
+    /* Session item bodies are RichEditor HTML; give lists and links the callout treatment. */
+    .item-body ul {
+        @apply mt-2 list-disc ps-6;
+    }
+
+    .item-body ol {
+        @apply mt-2 list-decimal ps-6;
+    }
+
+    .item-body li + li {
+        @apply mt-2;
+    }
+
+    .item-body a {
+        @apply font-semibold underline underline-offset-2;
+        text-decoration-color: var(--brand-secondary);
+    }
+
+    .item-body table {
+        @apply mt-4 w-full border-collapse text-base;
+    }
+
+    .item-body th,
+    .item-body td {
+        @apply border border-brand-line p-3 text-start align-top;
+    }
+
+    .item-body th {
+        @apply bg-brand-surface-muted font-bold;
+    }
+}
+
+[x-cloak] {
+    display: none !important;
+}
+/*
+ * Indic scripts (Devanagari and relatives) carry a headstroke plus vowel marks above and
+ * below the baseline, so they sit taller than Latin text. Tailwind's large text sizes
+ * default to a line-height of roughly 1.0-1.1, and leading-none/tight/snug are tighter
+ * still, which clips those marks on headings. Give them a floor for those languages.
+ * Deliberately outside any @layer so it beats the utilities regardless of specificity.
+ * Extend the :lang() list as other tall scripts are added as site locales.
+ */
+:where(:lang(hi), :lang(mr), :lang(ne), :lang(bn), :lang(pa), :lang(gu)) :where(
+    h1, h2, h3, h4, h5, h6,
+    [class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"],
+    [class*="leading-none"], [class*="leading-tight"], [class*="leading-snug"]
+):not([class*="leading-normal"], [class*="leading-relaxed"], [class*="leading-loose"]) {
+    line-height: 1.4;
 }

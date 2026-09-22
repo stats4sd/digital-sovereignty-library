@@ -1,0 +1,42 @@
+# Curriculum module 'farm'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: farm
+section: toolkit
+title:
+  en: Farm
+  ar: المزرعة
+  es: Finca
+  fil: Bukid
+  fr: Ferme
+  hi: खेत
+  id: Pertanian
+  it: 'Azienda agricola'
+  pt: Agricultura
+  ru: Хозяйство
+  sw: Shamba
+  zh_CN: 农场
+subtitle:
+  en: 'Farm Management'
+  ar: 'إدارة المزرعة'
+  es: 'Gestión de la finca'
+  fil: 'Pamamahala ng Bukid'
+  fr: 'Gestion de la ferme'
+  hi: 'खेत प्रबंधन'
+  id: 'Pengelolaan Pertanian'
+  it: "Gestione dell'azienda agricola"
+  pt: 'Gestão Agrícola'
+  ru: 'Управление хозяйством'
+  sw: 'Usimamizi wa Shamba'
+  zh_CN: 农场管理
+description:
+  en: '<p>Run day-to-day farm records and hardware on your own terms.</p>'
+  ar: '<p>أديروا سجلات المزرعة اليومية وعتادها وفق شروطكم أنتم.</p>'
+  es: '<p>Lleva los registros diarios de la finca y gestiona el hardware en tus propios términos.</p>'
+  fil: '<p>Pamahalaan ang pang-araw-araw na mga talaan at hardware ng bukid sa inyong sariling mga kondisyon.</p>'
+  fr: '<p>Gérez les registres quotidiens de la ferme et le matériel selon vos propres conditions.</p>'
+  hi: '<p>खेत के रोज़मर्रा के रिकॉर्ड और हार्डवेयर अपनी शर्तों पर चलाएँ।</p>'
+  id: '<p>Jalankan catatan pertanian harian dan perangkat keras dengan ketentuan Anda sendiri.</p>'
+  it: "<p>Gestite i registri quotidiani dell'azienda agricola e l'hardware secondo le vostre condizioni.</p>"
+  pt: '<p>Faça a gestão dos registos agrícolas do dia a dia e do hardware nos seus próprios termos.</p>'
+  ru: '<p>Ведите повседневный учёт хозяйства и управляйте оборудованием на своих условиях.</p>'
+  sw: '<p>Endesha kumbukumbu za shamba za kila siku na vifaa kwa masharti yako mwenyewe.</p>'
+  zh_CN: '<p>按照您自己的方式管理日常农场记录和硬件。</p>'

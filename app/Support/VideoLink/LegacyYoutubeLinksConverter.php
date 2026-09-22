@@ -49,22 +49,4 @@ class LegacyYoutubeLinksConverter
 
         return $converted;
     }
-
-    public static function convertTranslations(mixed $translations): ?array
-    {
-        if (! is_array($translations)) {
-            return null;
-        }
-
-        $converted = [];
-        foreach ($translations as $locale => $entries) {
-            $localeEntries = self::convertLocaleEntries($entries);
-
-            if ($localeEntries) {
-                $converted[$locale] = $localeEntries;
-            }
-        }
-
-        return $converted ?: null;
-    }
 }

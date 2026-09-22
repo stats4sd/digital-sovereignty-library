@@ -1,0 +1,86 @@
+# Curriculum module 'tech-assessment'. Translatable fields are locale => value maps; missing locales fall back to English.
+key: tech-assessment
+section: map
+number: 4
+title:
+  en: 'Tech Assessment'
+  ar: 'تقييم التقنيات'
+  es: 'Evaluación tecnológica'
+  fil: 'Pagtatasa ng Teknolohiya'
+  fr: 'Évaluation technologique'
+  hi: 'तकनीक का मूल्यांकन'
+  id: 'Penilaian Teknologi'
+  it: 'Valutazione delle tecnologie'
+  pt: 'Avaliação de Tecnologias'
+  ru: 'Оценка технологий'
+  sw: 'Tathmini ya Teknolojia'
+  zh_CN: 技术评估
+description:
+  en: '<p>Weigh options against ownership, openness, offline function, cost, and lock-in risk before you commit to any single platform.</p>'
+  ar: '<p>قارنوا الخيارات من حيث الملكية والانفتاح والعمل دون اتصال بالإنترنت والتكلفة ومخاطر الارتهان لمزوّد واحد قبل الالتزام بأي منصة واحدة.</p>'
+  es: '<p>Sopesa las opciones según la propiedad, la apertura, el funcionamiento sin conexión, el costo y el riesgo de dependencia antes de comprometerte con una sola plataforma.</p>'
+  fil: '<p>Timbangin ang mga opsyon batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, gastos, at panganib ng lock-in bago tumalaga sa iisang platform.</p>'
+  fr: "<p>Pesez les options selon la propriété, l'ouverture, le fonctionnement hors ligne, le coût et le risque de dépendance avant de vous engager sur une plateforme unique.</p>"
+  hi: '<p>किसी एक प्लेटफ़ॉर्म से बंधने से पहले विकल्पों को स्वामित्व, खुलेपन, ऑफ़लाइन कार्यक्षमता, लागत और लॉक-इन जोखिम की कसौटी पर तौलें।</p>'
+  id: '<p>Timbang pilihan-pilihan berdasarkan kepemilikan, keterbukaan, fungsi luring (offline), biaya, dan risiko keterikatan (lock-in) sebelum Anda berkomitmen pada satu platform.</p>'
+  it: '<p>Valutate le opzioni in base a proprietà, apertura, funzionamento offline, costi e rischio di dipendenza (lock-in) prima di impegnarvi con una singola piattaforma.</p>'
+  pt: '<p>Pese as opções em termos de propriedade, abertura, funcionamento offline, custo e risco de dependência (lock-in) antes de se comprometer com uma única plataforma.</p>'
+  ru: '<p>Взвесьте варианты с точки зрения владения, открытости, работы офлайн, стоимости и риска привязки к поставщику, прежде чем остановиться на какой-либо одной платформе.</p>'
+  sw: '<p>Pima chaguo mbalimbali dhidi ya umiliki, uwazi, uwezo wa kufanya kazi bila intaneti, gharama na hatari ya kufungiwa kwenye mfumo mmoja kabla ya kujifunga na jukwaa moja lolote.</p>'
+  zh_CN: '<p>在决定采用任何单一平台之前，从所有权、开放性、离线功能、成本和锁定风险等方面权衡各种选项。</p>'
+goal:
+  en: 'To help learners assess digital tools against ownership, openness, offline function, cost, and lock-in risk before committing to any platform.'
+  ar: 'مساعدة المتعلمين على تقييم الأدوات الرقمية من حيث الملكية والانفتاح والعمل دون اتصال والتكلفة ومخاطر الارتهان قبل الالتزام بأي منصة.'
+  es: 'Ayudar a los participantes a evaluar herramientas digitales según propiedad, apertura, funcionamiento sin conexión, costo y riesgo de dependencia antes de comprometerse con una plataforma.'
+  fil: 'Tulungan ang mga mag-aaral na suriin ang mga digital na kasangkapan batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, gastos, at panganib ng lock-in bago tumalima sa anumang platform.'
+  fr: "Aider les apprenants à évaluer les outils numériques selon la propriété, l'ouverture, le fonctionnement hors ligne, le coût et le risque de dépendance avant de s'engager sur une plateforme."
+  hi: 'प्रतिभागियों को किसी भी प्लेटफ़ॉर्म को अपनाने से पहले स्वामित्व, खुलापन, ऑफ़लाइन कार्यक्षमता, लागत और लॉक-इन जोखिम के आधार पर डिजिटल उपकरणों का आकलन करने में मदद करना।'
+  id: 'Membantu peserta menilai alat digital berdasarkan kepemilikan, keterbukaan, fungsi luring, biaya, dan risiko ketergantungan sebelum berkomitmen pada platform apa pun.'
+  it: 'Aiutare i partecipanti a valutare gli strumenti digitali in base a proprietà, apertura, funzionamento offline, costo e rischio di dipendenza prima di impegnarsi con una piattaforma.'
+  pt: 'Ajudar os participantes a avaliar ferramentas digitais quanto a propriedade, abertura, funcionamento offline, custo e risco de dependência antes de se comprometerem com uma plataforma.'
+  ru: 'Помочь участникам оценивать цифровые инструменты по критериям владения, открытости, работы офлайн, стоимости и риска привязки к поставщику, прежде чем выбирать платформу.'
+  sw: 'Kuwasaidia wanafunzi kutathmini zana za kidijitali kwa kuzingatia umiliki, uwazi, kufanya kazi bila mtandao, gharama na hatari ya kufungwa kwenye mfumo mmoja kabla ya kujitolea kwa jukwaa lolote.'
+  zh_CN: 帮助学习者在选定任何平台之前，从所有权、开放性、离线可用性、成本和锁定风险等方面评估数字工具。
+learning_outcomes:
+  -
+    statement:
+      en: "Decide what should be digitized, what shouldn't, and who decides"
+      ar: 'تحديد ما ينبغي رقمنته وما لا ينبغي، ومن يتخذ هذا القرار'
+      es: 'Decidir qué debe digitalizarse, qué no, y quién lo decide'
+      fil: 'Magpasya kung ano ang dapat gawing digital, kung ano ang hindi, at sino ang magpapasya'
+      fr: "Décider ce qui doit être numérisé, ce qui ne doit pas l'être, et qui en décide"
+      hi: 'तय करें कि क्या डिजिटल किया जाना चाहिए, क्या नहीं, और यह कौन तय करता है'
+      id: 'Memutuskan apa yang perlu didigitalkan, apa yang tidak, dan siapa yang memutuskan'
+      it: 'Decidere cosa va digitalizzato, cosa no e chi lo decide'
+      pt: 'Decidir o que deve ser digitalizado, o que não deve e quem decide'
+      ru: 'Решить, что следует переводить в цифровой формат, что нет, и кто это решает'
+      sw: 'Amua ni kipi kinapaswa kudijitishwa, kipi hakipaswi, na ni nani anayeamua'
+      zh_CN: 决定哪些应当数字化、哪些不应当，以及由谁来决定
+  -
+    statement:
+      en: 'Assess tools against ownership, openness, offline function, and cost'
+      ar: 'تقييم الأدوات من حيث الملكية والانفتاح والعمل دون اتصال بالإنترنت والتكلفة'
+      es: 'Evaluar las herramientas según la propiedad, la apertura, el funcionamiento sin conexión y el costo'
+      fil: 'Tasahin ang mga kasangkapan batay sa pagmamay-ari, pagiging bukas, paggana kahit offline, at gastos'
+      fr: "Évaluer les outils selon la propriété, l'ouverture, le fonctionnement hors ligne et le coût"
+      hi: 'उपकरणों का स्वामित्व, खुलेपन, ऑफ़लाइन कार्यक्षमता और लागत के आधार पर मूल्यांकन करें'
+      id: 'Menilai alat berdasarkan kepemilikan, keterbukaan, fungsi luring, dan biaya'
+      it: 'Valutare gli strumenti in base a proprietà, apertura, funzionamento offline e costi'
+      pt: 'Avaliar ferramentas em termos de propriedade, abertura, funcionamento offline e custo'
+      ru: 'Оценить инструменты с точки зрения владения, открытости, работы офлайн и стоимости'
+      sw: 'Tathmini zana dhidi ya umiliki, uwazi, uwezo wa kufanya kazi bila intaneti na gharama'
+      zh_CN: 从所有权、开放性、离线功能和成本等方面评估工具
+  -
+    statement:
+      en: 'Spot lock-in risks before committing to a platform'
+      ar: 'رصد مخاطر الارتهان لمزوّد واحد قبل الالتزام بمنصة ما'
+      es: 'Detectar los riesgos de dependencia antes de comprometerse con una plataforma'
+      fil: 'Matukoy ang mga panganib ng lock-in bago tumalaga sa isang platform'
+      fr: "Repérer les risques de dépendance (lock-in) avant de s'engager sur une plateforme"
+      hi: 'किसी प्लेटफ़ॉर्म से बंधने से पहले लॉक-इन जोखिमों को पहचानें'
+      id: 'Mengenali risiko keterikatan (lock-in) sebelum berkomitmen pada sebuah platform'
+      it: 'Individuare i rischi di dipendenza (lock-in) prima di impegnarsi con una piattaforma'
+      pt: 'Identificar riscos de dependência (lock-in) antes de se comprometer com uma plataforma'
+      ru: 'Выявить риски привязки к поставщику до перехода на платформу'
+      sw: 'Baini hatari za kufungiwa kwenye mfumo mmoja kabla ya kujifunga na jukwaa'
+      zh_CN: 在决定采用某个平台之前识别锁定风险

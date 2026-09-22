@@ -49,40 +49,43 @@ class SiteContentPage extends Page implements HasForms
     {
         return $schema
             ->schema([
-                Section::make('Home Page')
-                    ->collapsible()
-                    ->collapsed()
-                    ->headerActions([
-                        FormAction::make('view_home')
-                            ->label('Open page')
-                            ->icon('heroicon-o-arrow-top-right-on-square')
-                            ->url('/home')
-                            ->openUrlInNewTab()
-                            ->color('gray'),
-                    ])
-                    ->schema([
-                        TranslatableComboField::make('home_heading_line1')
-                            ->label('Main heading - first line')
-                            ->description('Displayed in the brand colour.')
-                            ->icon('heroicon-s-home')
-                            ->iconColor('primary')
-                            ->extraAttributes(['class' => 'grey-box'])
-                            ->childField(Forms\Components\TextInput::class),
-                        TranslatableComboField::make('home_heading_line2')
-                            ->label('Main heading - second line')
-                            ->description('Displayed in the main text colour.')
-                            ->icon('heroicon-s-home')
-                            ->iconColor('primary')
-                            ->extraAttributes(['class' => 'grey-box'])
-                            ->childField(Forms\Components\TextInput::class),
-                        TranslatableComboField::make('home_intro')
-                            ->label('Introduction paragraph')
-                            ->description('Appears below the heading on the home page.')
-                            ->icon('heroicon-s-home')
-                            ->iconColor('primary')
-                            ->extraAttributes(['class' => 'grey-box'])
-                            ->childField(Forms\Components\Textarea::class),
-                    ]),
+                // The template's Home Page section (home_heading_line1/2, home_intro) was
+                // removed: this deployment's home is the curriculum landing (a Blade view,
+                // home_digital_sovereignty), which does not use SiteContent.
+                // Section::make('Home Page')
+                //     ->collapsible()
+                //     ->collapsed()
+                //     ->headerActions([
+                //         FormAction::make('view_home')
+                //             ->label('Open page')
+                //             ->icon('heroicon-o-arrow-top-right-on-square')
+                //             ->url('/home')
+                //             ->openUrlInNewTab()
+                //             ->color('gray'),
+                //     ])
+                //     ->schema([
+                //         TranslatableComboField::make('home_heading_line1')
+                //             ->label('Main heading - first line')
+                //             ->description('Displayed in the brand colour.')
+                //             ->icon('heroicon-s-home')
+                //             ->iconColor('primary')
+                //             ->extraAttributes(['class' => 'grey-box'])
+                //             ->childField(Forms\Components\TextInput::class),
+                //         TranslatableComboField::make('home_heading_line2')
+                //             ->label('Main heading - second line')
+                //             ->description('Displayed in the main text colour.')
+                //             ->icon('heroicon-s-home')
+                //             ->iconColor('primary')
+                //             ->extraAttributes(['class' => 'grey-box'])
+                //             ->childField(Forms\Components\TextInput::class),
+                //         TranslatableComboField::make('home_intro')
+                //             ->label('Introduction paragraph')
+                //             ->description('Appears below the heading on the home page.')
+                //             ->icon('heroicon-s-home')
+                //             ->iconColor('primary')
+                //             ->extraAttributes(['class' => 'grey-box'])
+                //             ->childField(Forms\Components\Textarea::class),
+                //     ]),
                 Section::make('Library Page')
                     ->collapsible()
                     ->collapsed()
@@ -168,6 +171,6 @@ class SiteContentPage extends Page implements HasForms
 
     private static function contentKeys(): array
     {
-        return ['home_heading_line1', 'home_heading_line2', 'home_intro', 'library_heading_line1', 'library_heading_line2', 'library_hero_description', 'footer_admin_login_label'];
+        return ['library_heading_line1', 'library_heading_line2', 'library_hero_description', 'footer_admin_login_label'];
     }
 }

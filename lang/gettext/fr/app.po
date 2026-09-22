@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Sovereignty Library\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+
+#: resources/views/collection.blade.php:14
+msgid "Collection"
+msgstr "Collection"
+
+#: resources/views/collection.blade.php:16
+msgid "resources"
+msgstr "ressources"
+
+#: resources/views/collection.blade.php:20
+#: resources/views/trove.blade.php:53
+msgid "Available in:"
+msgstr "Disponible en :"
+
+#: resources/views/collection.blade.php:43
+#: resources/views/header.blade.php:40
+#: resources/views/header.blade.php:76
+#: resources/views/home.blade.php:32
+#: resources/views/trove.blade.php:84
+msgid "Browse Library"
+msgstr "Parcourir la bibliothèque"
+
+#: resources/views/collection.blade.php:48
+#: resources/views/trove.blade.php:89
+msgid "Share"
+msgstr "Partager"
+
+#: resources/views/collection.blade.php:51
+#: resources/views/trove.blade.php:92
+msgid "Share by email"
+msgstr "Partager par e-mail"
+
+#: resources/views/collection.blade.php:57
+#: resources/views/trove.blade.php:98
+msgid "Share on WhatsApp"
+msgstr "Partager sur WhatsApp"
+
+#: resources/views/collection.blade.php:63
+#: resources/views/trove.blade.php:104
+msgid "Share on LinkedIn"
+msgstr "Partager sur LinkedIn"
+
+#: resources/views/collection.blade.php:68
+#: resources/views/trove.blade.php:109
+msgid "Copy link"
+msgstr "Copier le lien"
+
+#: resources/views/collection.blade.php:77
+#: resources/views/trove.blade.php:131
+msgid "Description"
+msgstr "Description"
+
+#: resources/views/collection.blade.php:86
+msgid "Resources in this collection"
+msgstr "Ressources de cette collection"
+
+#: resources/views/components/collection-result-card.blade.php:51
+#: resources/views/components/resource-result-card.blade.php:92
+msgid "VIEW"
+msgstr "VOIR"
+
+#: resources/views/components/curriculum-resource-row.blade.php:43
+msgid "View"
+msgstr "Voir"
+
+#: resources/views/components/glossary-drawer.blade.php:60
+#: resources/views/components/glossary-drawer.blade.php:72
+#: resources/views/header.blade.php:35
+#: resources/views/header.blade.php:73
+msgid "Glossary"
+msgstr "Glossaire"
+
+#: resources/views/components/glossary-drawer.blade.php:73
+msgid "Close glossary"
+msgstr "Fermer le glossaire"
+
+#: resources/views/components/glossary-drawer.blade.php:78
+msgid "Search terms…"
+msgstr "Rechercher un terme…"
+
+#: resources/views/components/glossary-drawer.blade.php:86
+msgid "All sources"
+msgstr "Toutes les sources"
+
+#: resources/views/components/glossary-drawer.blade.php:105
+msgid "Source:"
+msgstr "Source :"
+
+#: resources/views/components/glossary-drawer.blade.php:116
+msgid "No matching terms."
+msgstr "Aucun terme correspondant."
+
+#: resources/views/components/glossary-drawer.blade.php:119
+msgid "This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time."
+msgstr "Ce glossaire s'appuie sur le travail de Marion Girard Cisneros, utilisé avec son autorisation, et il est adapté et enrichi au fil du temps."
+
+#: resources/views/components/glossary-drawer.blade.php:120
+msgid "Other glossaries worth consulting:"
+msgstr "Autres glossaires à consulter :"
+
+#: resources/views/components/glossary-drawer.blade.php:124
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "Glossaire - Gouvernance des données en agriculture (boîte à outils UBC, PDF)"
+
+#: resources/views/components/glossary-drawer.blade.php:130
+msgid "Open Data Handbook Glossary"
+msgstr "Glossaire de l'Open Data Handbook"
+
+#: resources/views/components/glossary-drawer.blade.php:197
+msgid "Open full glossary →"
+msgstr "Ouvrir le glossaire complet →"
+
+#: resources/views/components/video-link.blade.php:59
+msgid "Watch on :host"
+msgstr "Regarder sur :host"
+
+#: resources/views/curriculum/index.blade.php:1
+#: resources/views/curriculum/index.blade.php:18
+#: resources/views/header.blade.php:30
+#: resources/views/header.blade.php:70
+msgid "Curriculum"
+msgstr "Parcours"
+
+#: resources/views/curriculum/index.blade.php:7
+msgid "Curriculum steps"
+msgstr "Étapes du parcours"
+
+#: resources/views/curriculum/index.blade.php:11
+msgid "Intro"
+msgstr "Introduction"
+
+#: resources/views/curriculum/module.blade.php:5
+msgid "Back to the learning map"
+msgstr "Retour à la carte d'apprentissage"
+
+#: resources/views/curriculum/module.blade.php:22
+#: resources/views/curriculum/pillar.blade.php:24
+msgid "Learning outcomes"
+msgstr "Objectifs d'apprentissage"
+
+#: resources/views/curriculum/module.blade.php:33
+msgid "Resources"
+msgstr "Ressources"
+
+#: resources/views/curriculum/module.blade.php:42
+msgid "Resources for this stop are coming soon."
+msgstr "Les ressources de cette étape arrivent bientôt."
+
+#: resources/views/curriculum/partials/map.blade.php:12
+msgid "Explore in any order"
+msgstr "Explorez dans l'ordre que vous voulez"
+
+#: resources/views/curriculum/partials/map.blade.php:14
+msgid "The trail suggests a route, but there's no wrong way through. Start wherever makes sense for you."
+msgstr "Le sentier propose un itinéraire, mais il n'y a pas de mauvais chemin. Commencez là où cela a du sens pour vous."
+
+#: resources/views/curriculum/partials/map.blade.php:34
+#: resources/views/curriculum/partials/map.blade.php:50
+msgid "Optional"
+msgstr "Facultatif"
+
+#: resources/views/curriculum/partials/map.blade.php:61
+msgid "Build your toolkit"
+msgstr "Construisez votre boîte à outils"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:12
+msgid "Build Your Sovereign Toolkit"
+msgstr "Construisez votre boîte à outils souveraine"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:13
+msgid "Tools your community can own and run."
+msgstr "Des outils que votre communauté peut posséder et faire fonctionner elle-même."
+
+#: resources/views/curriculum/partials/toolkit.blade.php:28
+msgid "Learn more"
+msgstr "En savoir plus"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tool"
+msgstr "outil"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tools"
+msgstr "outils"
+
+#: resources/views/curriculum/pillar.blade.php:5
+msgid "Back to toolkit"
+msgstr "Retour à la boîte à outils"
+
+#: resources/views/curriculum/pillar.blade.php:41
+msgid "Resources for this section are coming soon."
+msgstr "Les ressources de cette section arrivent bientôt."
+
+#: resources/views/footer.blade.php:16
+msgid "Template"
+msgstr "Modèle"
+
+#: resources/views/footer.blade.php:14
+msgid "Built using the :stats4sd Resources Repository :template"
+msgstr "Réalisé avec le :template de dépôt de ressources de :stats4sd"
+
+#: resources/views/header.blade.php:7
+msgid ":org logo"
+msgstr "Logo de :org"
+
+#: resources/views/header.blade.php:25
+#: resources/views/header.blade.php:69
+msgid "Home"
+msgstr "Accueil"
+
+#: resources/views/header.blade.php:49
+#: resources/views/header.blade.php:80
+msgid "Change Language"
+msgstr "Changer de langue"
+
+#: resources/views/home.blade.php:33
+msgid "Browse the full library of resources and collections."
+msgstr "Parcourez toute la bibliothèque de ressources et de collections."
+
+#: resources/views/home_digital_sovereignty.blade.php:19
+msgid "Digital Sovereignty Curriculum"
+msgstr "Parcours de souveraineté numérique"
+
+#: resources/views/home_digital_sovereignty.blade.php:21
+msgid "Your tools. Your data."
+msgstr "Vos outils. Vos données."
+
+#: resources/views/home_digital_sovereignty.blade.php:22
+msgid "Your terms."
+msgstr "Vos règles."
+
+#: resources/views/home_digital_sovereignty.blade.php:25
+msgid "Whether you're leading, training, farming, or supporting, digital sovereignty starts with your community. Learn what fits, then build your toolkit."
+msgstr "Que vous dirigiez, formiez, cultiviez ou accompagniez, la souveraineté numérique commence par votre communauté. Découvrez ce qui vous convient, puis construisez votre boîte à outils."
+
+#: resources/views/home_digital_sovereignty.blade.php:30
+msgid "Start Learning"
+msgstr "Commencer à apprendre"
+
+#: resources/views/home_digital_sovereignty.blade.php:34
+msgid "or browse the full library"
+msgstr "ou parcourez toute la bibliothèque"
+
+#: resources/views/home_digital_sovereignty.blade.php:42
+msgid "How familiar are you with digital sovereignty?"
+msgstr "Connaissez-vous bien la souveraineté numérique ?"
+
+#: resources/views/home_digital_sovereignty.blade.php:48
+#: resources/views/home_digital_sovereignty.blade.php:54
+msgid "New here"
+msgstr "Je débute"
+
+#: resources/views/home_digital_sovereignty.blade.php:49
+#: resources/views/home_digital_sovereignty.blade.php:55
+msgid "Start with a short primer before the learning map."
+msgstr "Commencez par une courte introduction avant la carte d'apprentissage."
+
+#: resources/views/home_digital_sovereignty.blade.php:59
+msgid "I know the basics"
+msgstr "Je connais les bases"
+
+#: resources/views/home_digital_sovereignty.blade.php:60
+msgid "Skip ahead, straight to the learning map."
+msgstr "Passez directement à la carte d'apprentissage."
+
+#: resources/views/home_digital_sovereignty.blade.php:67
+msgid "A quick grounding"
+msgstr "Les bases en bref"
+
+#: resources/views/home_digital_sovereignty.blade.php:81
+msgid "Continue to the learning map"
+msgstr "Continuer vers la carte d'apprentissage"
+
+#: resources/views/livewire/browse-all.blade.php:34
+msgid "Search and filter"
+msgstr "Rechercher et filtrer"
+
+#: resources/views/livewire/browse-all.blade.php:43
+msgid "Search here"
+msgstr "Rechercher ici"
+
+#: resources/views/livewire/browse-all.blade.php:44
+msgid "Search resources and collections"
+msgstr "Rechercher des ressources et des collections"
+
+#: resources/views/livewire/browse-all.blade.php:59
+msgid "Clear search"
+msgstr "Effacer la recherche"
+
+#: resources/views/livewire/browse-all.blade.php:70
+msgid "Filters:"
+msgstr "Filtres :"
+
+#: resources/views/livewire/browse-all.blade.php:78
+msgid "Language:"
+msgstr "Langue :"
+
+#: resources/views/livewire/browse-all.blade.php:107
+msgid "Type:"
+msgstr "Type :"
+
+#: resources/views/livewire/browse-all.blade.php:175
+msgid "Text-based search is temporarily unavailable. You can still browse resources below, and use the filters to narrow your search."
+msgstr "La recherche textuelle est temporairement indisponible. Vous pouvez toujours parcourir les ressources ci-dessous et utiliser les filtres pour affiner votre recherche."
+
+#: resources/views/livewire/browse-all.blade.php:180
+msgid "No resources or collections match your search or filters."
+msgstr "Aucune ressource ni collection ne correspond à votre recherche ou à vos filtres."
+
+#: resources/views/livewire/browse-all.blade.php:183
+msgid "No resources or collections have been added yet."
+msgstr "Aucune ressource ni collection n'a encore été ajoutée."
+
+#: resources/views/livewire/browse-all.blade.php:187
+msgid "Showing :start - :end out of :total resources and collections"
+msgstr "Affichage de :start - :end sur :total ressources et collections"
+
+#: resources/views/livewire/browse-all.blade.php:192
+msgid "Clear Filters"
+msgstr "Effacer les filtres"
+
+#: resources/views/livewire/browse-all.blade.php:215
+msgid "Pagination"
+msgstr "Pagination"
+
+#: resources/views/livewire/browse-all.blade.php:221
+msgid "First page"
+msgstr "Première page"
+
+#: resources/views/livewire/browse-all.blade.php:224
+msgid "First"
+msgstr "Première"
+
+#: resources/views/livewire/browse-all.blade.php:233
+msgid "Previous page"
+msgstr "Page précédente"
+
+#: resources/views/livewire/browse-all.blade.php:236
+msgid "Previous"
+msgstr "Précédente"
+
+#: resources/views/livewire/browse-all.blade.php:250
+msgid "Page"
+msgstr "Page"
+
+#: resources/views/livewire/browse-all.blade.php:264
+msgid "Next page"
+msgstr "Page suivante"
+
+#: resources/views/livewire/browse-all.blade.php:267
+msgid "Next"
+msgstr "Suivante"
+
+#: resources/views/livewire/browse-all.blade.php:276
+msgid "Last page"
+msgstr "Dernière page"
+
+#: resources/views/livewire/browse-all.blade.php:279
+msgid "Last"
+msgstr "Dernière"
+
+#: resources/views/livewire/collection-troves.blade.php:11
+msgid "No resources available for this collection."
+msgstr "Aucune ressource disponible pour cette collection."
+
+#: resources/views/livewire/trove-collections.blade.php:11
+msgid "No collections available for this resource."
+msgstr "Aucune collection disponible pour cette ressource."
+
+#: resources/views/livewire/trove-related-troves.blade.php:15
+msgid "No related resources found."
+msgstr "Aucune ressource associée trouvée."
+
+#: resources/views/trove.blade.php:16
+msgid "PREVIEW MODE: This resource has not been published and is only visible to authorised users"
+msgstr "MODE APERÇU : cette ressource n'a pas été publiée et n'est visible que par les utilisateurs autorisés"
+
+#: resources/views/trove.blade.php:138
+msgid "View / Download"
+msgstr "Voir / Télécharger"
+
+#: resources/views/trove.blade.php:212
+msgid "Download all (ZIP)"
+msgstr "Tout télécharger (ZIP)"
+
+#: resources/views/trove.blade.php:224
+msgid "Collections including this resource"
+msgstr "Collections contenant cette ressource"
+
+#: resources/views/trove.blade.php:231
+msgid "Related resources"
+msgstr "Ressources associées"

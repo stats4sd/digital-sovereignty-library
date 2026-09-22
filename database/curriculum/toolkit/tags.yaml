@@ -1,0 +1,84 @@
+# The 'tools' TagType and its four pillar tags (one per toolkit pillar module key). Pillar tag names are locale => value maps.
+tag_type:
+  slug: tools
+  freetext: false
+  show_in_filter: true
+  label:
+    en: Tools
+    ar: الأدوات
+    es: Herramientas
+    fil: 'Mga Kasangkapan'
+    fr: Outils
+    hi: उपकरण
+    id: Alat
+    it: Strumenti
+    pt: Ferramentas
+    ru: Инструменты
+    sw: Zana
+    zh_CN: 工具
+  description:
+    en: 'Tool areas of the sovereign toolkit'
+    ar: 'مجالات الأدوات في مجموعة أدوات السيادة'
+    es: 'Áreas de herramientas del kit de herramientas soberano'
+    fil: 'Mga larangan ng kasangkapan sa toolkit ng soberanya'
+    fr: "Domaines d'outils de la boîte à outils souveraine"
+    hi: 'संप्रभु टूलकिट के उपकरण क्षेत्र'
+    id: 'Bidang-bidang alat dalam perangkat alat berdaulat'
+    it: 'Aree di strumenti del toolkit sovrano'
+    pt: 'Áreas de ferramentas do kit de ferramentas soberano'
+    ru: 'Тематические области суверенного набора инструментов'
+    sw: 'Maeneo ya zana ya kisanduku cha zana huru'
+    zh_CN: 主权工具包的各个工具领域
+pillar_tags:
+  knowledge:
+    en: Knowledge
+    ar: المعرفة
+    es: Conocimiento
+    fil: Kaalaman
+    fr: Connaissances
+    hi: ज्ञान
+    id: Pengetahuan
+    it: Conoscenza
+    pt: Conhecimento
+    ru: Знания
+    sw: Maarifa
+    zh_CN: 知识
+  collaboration:
+    en: Collaboration
+    ar: التعاون
+    es: Colaboración
+    fil: Pakikipagtulungan
+    fr: Collaboration
+    hi: सहयोग
+    id: Kolaborasi
+    it: Collaborazione
+    pt: Colaboração
+    ru: Сотрудничество
+    sw: Ushirikiano
+    zh_CN: 协作
+  farm:
+    en: Farm
+    ar: المزرعة
+    es: Finca
+    fil: Sakahan
+    fr: Ferme
+    hi: खेत
+    id: Pertanian
+    it: 'Azienda agricola'
+    pt: Agricultura
+    ru: Хозяйство
+    sw: Shamba
+    zh_CN: 农场
+  market:
+    en: Market
+    ar: السوق
+    es: Mercado
+    fil: Pamilihan
+    fr: Marché
+    hi: बाज़ार
+    id: Pasar
+    it: Mercato
+    pt: Mercado
+    ru: Рынок
+    sw: Soko
+    zh_CN: 市场

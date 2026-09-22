@@ -1,0 +1,66 @@
+# Seeded tool Troves for the 'collaboration' pillar, in display order. Each is tagged with the pillar tag and attached to the pillar module. 'published: false' marks tools seeded as drafts.
+pillar: collaboration
+tools:
+  -
+    title:
+      en: 'Tech Support by Our Sci'
+      ar: 'الدعم التقني من Our Sci'
+      es: 'Soporte técnico de Our Sci'
+      fil: 'Teknikal na Suporta mula sa Our Sci'
+      fr: 'Assistance technique par Our Sci'
+      hi: 'Our Sci द्वारा तकनीकी सहायता'
+      id: 'Dukungan Teknis oleh Our Sci'
+      it: 'Supporto tecnico di Our Sci'
+      pt: 'Suporte técnico da Our Sci'
+      ru: 'Техническая поддержка от Our Sci'
+      sw: 'Msaada wa Kiufundi kutoka Our Sci'
+      zh_CN: 'Our Sci 提供的技术支持'
+    description:
+      en: |-
+        <p>Our Sci supports communities and researchers running their own open-source tools: help with setup, hosting and keeping systems running, so choosing sovereign technology doesn't mean being on your own.</p>
+        <h2>How to use it</h2>
+        <p>Watch the linked video to understand what support is available and when to reach out. If your community is adopting tools from this toolkit and needs a technical partner, this is a place to find one.</p>
+      ar: |-
+        <p>تدعم Our Sci المجتمعات والباحثين الذين يشغّلون أدواتهم مفتوحة المصدر بأنفسهم: مساعدة في الإعداد والاستضافة وإبقاء الأنظمة قيد التشغيل، حتى لا يعني اختيار التكنولوجيا السيادية أن تبقى وحدك.</p>
+        <h2>كيفية الاستخدام</h2>
+        <p>شاهد الفيديو المرتبط لتعرف ما هو الدعم المتاح ومتى تطلبه. إذا كان مجتمعك يعتمد أدوات من هذه المجموعة ويحتاج إلى شريك تقني، فهذا مكان مناسب للعثور عليه.</p>
+      es: |-
+        <p>Our Sci apoya a comunidades e investigadores que gestionan sus propias herramientas de código abierto: ayuda con la instalación, el alojamiento y el mantenimiento de los sistemas en funcionamiento, para que elegir tecnología soberana no signifique quedarse sin apoyo.</p>
+        <h2>Cómo usarlo</h2>
+        <p>Mira el video enlazado para entender qué apoyo está disponible y cuándo pedirlo. Si tu comunidad está adoptando herramientas de este kit y necesita un socio técnico, este es un lugar donde encontrarlo.</p>
+      fil: |-
+        <p>Sinusuportahan ng Our Sci ang mga komunidad at mananaliksik na nagpapatakbo ng kanilang sariling mga open-source na kasangkapan: tulong sa pag-setup, hosting at pagpapanatiling gumagana ng mga sistema, upang ang pagpili ng soberanong teknolohiya ay hindi mangahulugang mag-isa ka.</p>
+        <h2>Paano ito gamitin</h2>
+        <p>Panoorin ang naka-link na video upang maunawaan kung anong suporta ang available at kung kailan dapat humingi ng tulong. Kung ang iyong komunidad ay gumagamit ng mga kasangkapan mula sa toolkit na ito at nangangailangan ng teknikal na kasosyo, ito ay isang lugar kung saan makakahanap ng isa.</p>
+      fr: |-
+        <p>Our Sci accompagne les communautés et les chercheurs qui gèrent leurs propres outils libres : aide à l'installation, à l'hébergement et au maintien des systèmes en fonctionnement, pour que choisir une technologie souveraine ne signifie pas se retrouver seul.</p>
+        <h2>Comment l'utiliser</h2>
+        <p>Regardez la vidéo en lien pour comprendre quel accompagnement est disponible et quand le solliciter. Si votre communauté adopte des outils de cette boîte à outils et a besoin d'un partenaire technique, c'est ici que vous pouvez en trouver un.</p>
+      hi: |-
+        <p>Our Sci अपने स्वयं के ओपन-सोर्स उपकरण चलाने वाले समुदायों और शोधकर्ताओं का समर्थन करता है: सेटअप, होस्टिंग और सिस्टम को चालू रखने में मदद, ताकि संप्रभु तकनीक चुनने का मतलब अकेले पड़ जाना न हो।</p>
+        <h2>इसका उपयोग कैसे करें</h2>
+        <p>यह समझने के लिए कि कौन-सी सहायता उपलब्ध है और कब संपर्क करना चाहिए, लिंक किया गया वीडियो देखें। यदि आपका समुदाय इस टूलकिट के उपकरण अपना रहा है और उसे एक तकनीकी साथी की ज़रूरत है, तो यह उसे ढूँढने की एक जगह है।</p>
+      id: |-
+        <p>Our Sci mendukung komunitas dan peneliti yang menjalankan alat sumber terbuka mereka sendiri: bantuan untuk penyiapan, hosting, dan menjaga sistem tetap berjalan, sehingga memilih teknologi berdaulat tidak berarti harus berjalan sendirian.</p>
+        <h2>Cara menggunakannya</h2>
+        <p>Tonton video yang ditautkan untuk memahami dukungan apa yang tersedia dan kapan sebaiknya menghubungi mereka. Jika komunitas Anda mengadopsi alat dari perangkat alat ini dan membutuhkan mitra teknis, di sinilah tempat untuk menemukannya.</p>
+      it: |-
+        <p>Our Sci supporta comunità e ricercatori che gestiscono i propri strumenti open source: aiuto con la configurazione, l'hosting e il mantenimento in funzione dei sistemi, così che scegliere una tecnologia sovrana non significhi restare da soli.</p>
+        <h2>Come usarlo</h2>
+        <p>Guarda il video linkato per capire quale supporto è disponibile e quando chiedere aiuto. Se la tua comunità sta adottando strumenti di questo toolkit e ha bisogno di un partner tecnico, qui puoi trovarne uno.</p>
+      pt: |-
+        <p>A Our Sci apoia comunidades e investigadores que operam as suas próprias ferramentas de código aberto: ajuda com a configuração, o alojamento e a manutenção dos sistemas em funcionamento, para que escolher tecnologia soberana não signifique ficar sozinho.</p>
+        <h2>Como usar</h2>
+        <p>Veja o vídeo ligado para perceber que apoio está disponível e quando pedir ajuda. Se a sua comunidade está a adotar ferramentas deste kit e precisa de um parceiro técnico, este é um lugar para o encontrar.</p>
+      ru: |-
+        <p>Our Sci поддерживает сообщества и исследователей, которые используют собственные инструменты с открытым исходным кодом: помощь с настройкой, хостингом и поддержанием систем в рабочем состоянии, чтобы, выбирая суверенные технологии, вы не оставались с ними один на один.</p>
+        <h2>Как этим пользоваться</h2>
+        <p>Посмотрите видео по ссылке, чтобы понять, какая поддержка доступна и когда к ней обращаться. Если ваше сообщество внедряет инструменты из этого набора и нуждается в техническом партнёре, здесь его можно найти.</p>
+      sw: |-
+        <p>Our Sci husaidia jamii na watafiti wanaoendesha zana zao wenyewe za programu huria: msaada wa kusanidi, kuhifadhi mifumo kwenye seva na kuhakikisha inaendelea kufanya kazi, ili kuchagua teknolojia huru kusimaanishe kubaki peke yenu.</p>
+        <h2>Jinsi ya kuitumia</h2>
+        <p>Tazama video iliyounganishwa hapa ili kuelewa msaada unaopatikana na wakati wa kuomba msaada. Ikiwa jamii yako inaanza kutumia zana kutoka kwenye kisanduku hiki cha zana na inahitaji mshirika wa kiufundi, hapa ni mahali pa kumpata.</p>
+      zh_CN: |-
+        <p>Our Sci 为自行运行开源工具的社区和研究人员提供支持：协助安装设置、托管以及维持系统运行，让选择主权技术不再意味着孤军奋战。</p>
+        <h2>如何使用</h2>
+        <p>观看链接的视频，了解有哪些支持可用以及何时应当寻求帮助。如果您的社区正在采用本工具包中的工具并需要一位技术合作伙伴，可以在这里找到。</p>

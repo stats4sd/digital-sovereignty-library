@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Sovereignty Library\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n == 0) ? 0 : ((n == 1) ? 1 : ((n == 2) ? 2 : ((n % 100 >= 3 && n % 100 <= 10) ? 3 : ((n % 100 >= 11 && n % 100 <= 99) ? 4 : 5))));\n"
+
+#: resources/views/collection.blade.php:14
+msgid "Collection"
+msgstr "مجموعة"
+
+#: resources/views/collection.blade.php:16
+msgid "resources"
+msgstr "من الموارد"
+
+#: resources/views/collection.blade.php:20
+#: resources/views/trove.blade.php:53
+msgid "Available in:"
+msgstr "متاح باللغات:"
+
+#: resources/views/collection.blade.php:43
+#: resources/views/header.blade.php:40
+#: resources/views/header.blade.php:76
+#: resources/views/home.blade.php:32
+#: resources/views/trove.blade.php:84
+msgid "Browse Library"
+msgstr "استعرض المكتبة"
+
+#: resources/views/collection.blade.php:48
+#: resources/views/trove.blade.php:89
+msgid "Share"
+msgstr "مشاركة"
+
+#: resources/views/collection.blade.php:51
+#: resources/views/trove.blade.php:92
+msgid "Share by email"
+msgstr "المشاركة عبر البريد الإلكتروني"
+
+#: resources/views/collection.blade.php:57
+#: resources/views/trove.blade.php:98
+msgid "Share on WhatsApp"
+msgstr "المشاركة على WhatsApp"
+
+#: resources/views/collection.blade.php:63
+#: resources/views/trove.blade.php:104
+msgid "Share on LinkedIn"
+msgstr "المشاركة على LinkedIn"
+
+#: resources/views/collection.blade.php:68
+#: resources/views/trove.blade.php:109
+msgid "Copy link"
+msgstr "نسخ الرابط"
+
+#: resources/views/collection.blade.php:77
+#: resources/views/trove.blade.php:131
+msgid "Description"
+msgstr "الوصف"
+
+#: resources/views/collection.blade.php:86
+msgid "Resources in this collection"
+msgstr "الموارد في هذه المجموعة"
+
+#: resources/views/components/collection-result-card.blade.php:51
+#: resources/views/components/resource-result-card.blade.php:92
+msgid "VIEW"
+msgstr "عرض"
+
+#: resources/views/components/curriculum-resource-row.blade.php:43
+msgid "View"
+msgstr "عرض"
+
+#: resources/views/components/glossary-drawer.blade.php:60
+#: resources/views/components/glossary-drawer.blade.php:72
+#: resources/views/header.blade.php:35
+#: resources/views/header.blade.php:73
+msgid "Glossary"
+msgstr "المسرد"
+
+#: resources/views/components/glossary-drawer.blade.php:73
+msgid "Close glossary"
+msgstr "إغلاق المسرد"
+
+#: resources/views/components/glossary-drawer.blade.php:78
+msgid "Search terms…"
+msgstr "ابحث في المصطلحات…"
+
+#: resources/views/components/glossary-drawer.blade.php:86
+msgid "All sources"
+msgstr "جميع المصادر"
+
+#: resources/views/components/glossary-drawer.blade.php:105
+msgid "Source:"
+msgstr "المصدر:"
+
+#: resources/views/components/glossary-drawer.blade.php:116
+msgid "No matching terms."
+msgstr "لا توجد مصطلحات مطابقة."
+
+#: resources/views/components/glossary-drawer.blade.php:119
+msgid "This glossary is based on work by Marion Girard Cisneros, used with permission, and is adapted and extended over time."
+msgstr "يستند هذا المسرد إلى عمل Marion Girard Cisneros، المستخدم بإذن منها، ويتم تكييفه وتوسيعه بمرور الوقت."
+
+#: resources/views/components/glossary-drawer.blade.php:120
+msgid "Other glossaries worth consulting:"
+msgstr "مسارد أخرى تستحق الاطلاع:"
+
+#: resources/views/components/glossary-drawer.blade.php:124
+msgid "Glossary - Data Governance in Agriculture (UBC toolkit, PDF)"
+msgstr "مسرد — حوكمة البيانات في الزراعة (مجموعة أدوات UBC، PDF)"
+
+#: resources/views/components/glossary-drawer.blade.php:130
+msgid "Open Data Handbook Glossary"
+msgstr "مسرد Open Data Handbook"
+
+#: resources/views/components/glossary-drawer.blade.php:197
+msgid "Open full glossary →"
+msgstr "افتح المسرد الكامل ←"
+
+#: resources/views/components/video-link.blade.php:59
+msgid "Watch on :host"
+msgstr "شاهد على :host"
+
+#: resources/views/curriculum/index.blade.php:1
+#: resources/views/curriculum/index.blade.php:18
+#: resources/views/header.blade.php:30
+#: resources/views/header.blade.php:70
+msgid "Curriculum"
+msgstr "المنهج"
+
+#: resources/views/curriculum/index.blade.php:7
+msgid "Curriculum steps"
+msgstr "خطوات المنهج"
+
+#: resources/views/curriculum/index.blade.php:11
+msgid "Intro"
+msgstr "مقدمة"
+
+#: resources/views/curriculum/module.blade.php:5
+msgid "Back to the learning map"
+msgstr "العودة إلى خريطة التعلم"
+
+#: resources/views/curriculum/module.blade.php:22
+#: resources/views/curriculum/pillar.blade.php:24
+msgid "Learning outcomes"
+msgstr "مخرجات التعلم"
+
+#: resources/views/curriculum/module.blade.php:33
+msgid "Resources"
+msgstr "الموارد"
+
+#: resources/views/curriculum/module.blade.php:42
+msgid "Resources for this stop are coming soon."
+msgstr "موارد هذه المحطة قادمة قريبًا."
+
+#: resources/views/curriculum/partials/map.blade.php:12
+msgid "Explore in any order"
+msgstr "استكشف بأي ترتيب"
+
+#: resources/views/curriculum/partials/map.blade.php:14
+msgid "The trail suggests a route, but there's no wrong way through. Start wherever makes sense for you."
+msgstr "يقترح المسار طريقًا، لكن لا يوجد طريق خاطئ. ابدأ من حيث يكون ذلك منطقيًا لك."
+
+#: resources/views/curriculum/partials/map.blade.php:34
+#: resources/views/curriculum/partials/map.blade.php:50
+msgid "Optional"
+msgstr "اختياري"
+
+#: resources/views/curriculum/partials/map.blade.php:61
+msgid "Build your toolkit"
+msgstr "ابنِ مجموعة أدواتك"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:12
+msgid "Build Your Sovereign Toolkit"
+msgstr "ابنِ مجموعة أدواتك السيادية"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:13
+msgid "Tools your community can own and run."
+msgstr "أدوات يمكن لمجتمعك امتلاكها وتشغيلها بنفسه."
+
+#: resources/views/curriculum/partials/toolkit.blade.php:28
+msgid "Learn more"
+msgstr "اعرف المزيد"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tool"
+msgstr "أداة"
+
+#: resources/views/curriculum/partials/toolkit.blade.php:39
+msgid "tools"
+msgstr "أدوات"
+
+#: resources/views/curriculum/pillar.blade.php:5
+msgid "Back to toolkit"
+msgstr "العودة إلى مجموعة الأدوات"
+
+#: resources/views/curriculum/pillar.blade.php:41
+msgid "Resources for this section are coming soon."
+msgstr "موارد هذا القسم قادمة قريبًا."
+
+#: resources/views/footer.blade.php:16
+msgid "Template"
+msgstr "قالب"
+
+#: resources/views/footer.blade.php:14
+msgid "Built using the :stats4sd Resources Repository :template"
+msgstr "بُني باستخدام :template مستودع الموارد من :stats4sd"
+
+#: resources/views/header.blade.php:7
+msgid ":org logo"
+msgstr "شعار :org"
+
+#: resources/views/header.blade.php:25
+#: resources/views/header.blade.php:69
+msgid "Home"
+msgstr "الرئيسية"
+
+#: resources/views/header.blade.php:49
+#: resources/views/header.blade.php:80
+msgid "Change Language"
+msgstr "تغيير اللغة"
+
+#: resources/views/home.blade.php:33
+msgid "Browse the full library of resources and collections."
+msgstr "استعرض المكتبة الكاملة من الموارد والمجموعات."
+
+#: resources/views/home_digital_sovereignty.blade.php:19
+msgid "Digital Sovereignty Curriculum"
+msgstr "منهج السيادة الرقمية"
+
+#: resources/views/home_digital_sovereignty.blade.php:21
+msgid "Your tools. Your data."
+msgstr "أدواتك. بياناتك."
+
+#: resources/views/home_digital_sovereignty.blade.php:22
+msgid "Your terms."
+msgstr "شروطك."
+
+#: resources/views/home_digital_sovereignty.blade.php:25
+msgid "Whether you're leading, training, farming, or supporting, digital sovereignty starts with your community. Learn what fits, then build your toolkit."
+msgstr "سواء كنت تقود أو تدرّب أو تزرع أو تدعم، فالسيادة الرقمية تبدأ من مجتمعك. تعرّف على ما يناسبك، ثم ابنِ مجموعة أدواتك."
+
+#: resources/views/home_digital_sovereignty.blade.php:30
+msgid "Start Learning"
+msgstr "ابدأ التعلم"
+
+#: resources/views/home_digital_sovereignty.blade.php:34
+msgid "or browse the full library"
+msgstr "أو استعرض المكتبة الكاملة"
+
+#: resources/views/home_digital_sovereignty.blade.php:42
+msgid "How familiar are you with digital sovereignty?"
+msgstr "ما مدى معرفتك بالسيادة الرقمية؟"
+
+#: resources/views/home_digital_sovereignty.blade.php:48
+#: resources/views/home_digital_sovereignty.blade.php:54
+msgid "New here"
+msgstr "هذا جديد عليّ"
+
+#: resources/views/home_digital_sovereignty.blade.php:49
+#: resources/views/home_digital_sovereignty.blade.php:55
+msgid "Start with a short primer before the learning map."
+msgstr "ابدأ بمقدمة قصيرة قبل خريطة التعلم."
+
+#: resources/views/home_digital_sovereignty.blade.php:59
+msgid "I know the basics"
+msgstr "أعرف الأساسيات"
+
+#: resources/views/home_digital_sovereignty.blade.php:60
+msgid "Skip ahead, straight to the learning map."
+msgstr "انتقل مباشرة إلى خريطة التعلم."
+
+#: resources/views/home_digital_sovereignty.blade.php:67
+msgid "A quick grounding"
+msgstr "الأساسيات باختصار"
+
+#: resources/views/home_digital_sovereignty.blade.php:81
+msgid "Continue to the learning map"
+msgstr "المتابعة إلى خريطة التعلم"
+
+#: resources/views/livewire/browse-all.blade.php:34
+msgid "Search and filter"
+msgstr "البحث والتصفية"
+
+#: resources/views/livewire/browse-all.blade.php:43
+msgid "Search here"
+msgstr "ابحث هنا"
+
+#: resources/views/livewire/browse-all.blade.php:44
+msgid "Search resources and collections"
+msgstr "ابحث في الموارد والمجموعات"
+
+#: resources/views/livewire/browse-all.blade.php:59
+msgid "Clear search"
+msgstr "مسح البحث"
+
+#: resources/views/livewire/browse-all.blade.php:70
+msgid "Filters:"
+msgstr "عوامل التصفية:"
+
+#: resources/views/livewire/browse-all.blade.php:78
+msgid "Language:"
+msgstr "اللغة:"
+
+#: resources/views/livewire/browse-all.blade.php:107
+msgid "Type:"
+msgstr "النوع:"
+
+#: resources/views/livewire/browse-all.blade.php:175
+msgid "Text-based search is temporarily unavailable. You can still browse resources below, and use the filters to narrow your search."
+msgstr "البحث النصي غير متاح مؤقتًا. لا يزال بإمكانك استعراض الموارد أدناه واستخدام عوامل التصفية لتضييق نطاق البحث."
+
+#: resources/views/livewire/browse-all.blade.php:180
+msgid "No resources or collections match your search or filters."
+msgstr "لا توجد موارد أو مجموعات تطابق بحثك أو عوامل التصفية."
+
+#: resources/views/livewire/browse-all.blade.php:183
+msgid "No resources or collections have been added yet."
+msgstr "لم تتم إضافة أي موارد أو مجموعات حتى الآن."
+
+#: resources/views/livewire/browse-all.blade.php:187
+msgid "Showing :start - :end out of :total resources and collections"
+msgstr "عرض :start - :end من أصل :total من الموارد والمجموعات"
+
+#: resources/views/livewire/browse-all.blade.php:192
+msgid "Clear Filters"
+msgstr "مسح عوامل التصفية"
+
+#: resources/views/livewire/browse-all.blade.php:215
+msgid "Pagination"
+msgstr "التنقل بين الصفحات"
+
+#: resources/views/livewire/browse-all.blade.php:221
+msgid "First page"
+msgstr "الصفحة الأولى"
+
+#: resources/views/livewire/browse-all.blade.php:224
+msgid "First"
+msgstr "الأولى"
+
+#: resources/views/livewire/browse-all.blade.php:233
+msgid "Previous page"
+msgstr "الصفحة السابقة"
+
+#: resources/views/livewire/browse-all.blade.php:236
+msgid "Previous"
+msgstr "السابقة"
+
+#: resources/views/livewire/browse-all.blade.php:250
+msgid "Page"
+msgstr "صفحة"
+
+#: resources/views/livewire/browse-all.blade.php:264
+msgid "Next page"
+msgstr "الصفحة التالية"
+
+#: resources/views/livewire/browse-all.blade.php:267
+msgid "Next"
+msgstr "التالية"
+
+#: resources/views/livewire/browse-all.blade.php:276
+msgid "Last page"
+msgstr "الصفحة الأخيرة"
+
+#: resources/views/livewire/browse-all.blade.php:279
+msgid "Last"
+msgstr "الأخيرة"
+
+#: resources/views/livewire/collection-troves.blade.php:11
+msgid "No resources available for this collection."
+msgstr "لا توجد موارد متاحة لهذه المجموعة."
+
+#: resources/views/livewire/trove-collections.blade.php:11
+msgid "No collections available for this resource."
+msgstr "لا توجد مجموعات متاحة لهذا المورد."
+
+#: resources/views/livewire/trove-related-troves.blade.php:15
+msgid "No related resources found."
+msgstr "لم يتم العثور على موارد ذات صلة."
+
+#: resources/views/trove.blade.php:16
+msgid "PREVIEW MODE: This resource has not been published and is only visible to authorised users"
+msgstr "وضع المعاينة: لم يتم نشر هذا المورد وهو مرئي للمستخدمين المصرح لهم فقط"
+
+#: resources/views/trove.blade.php:138
+msgid "View / Download"
+msgstr "عرض / تنزيل"
+
+#: resources/views/trove.blade.php:212
+msgid "Download all (ZIP)"
+msgstr "تنزيل الكل (ZIP)"
+
+#: resources/views/trove.blade.php:224
+msgid "Collections including this resource"
+msgstr "المجموعات التي تتضمن هذا المورد"
+
+#: resources/views/trove.blade.php:231
+msgid "Related resources"
+msgstr "موارد ذات صلة"
