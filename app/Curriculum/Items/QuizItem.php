@@ -136,9 +136,12 @@ class QuizItem extends ItemDefinition
 
             $this->listRepeater('items', 'Questions', 'Add question', level: 1)
                 ->collapsible()
+                // Collapsed by default: a quiz block reads as a list of question headers and
+                // one question is opened at a time, which caps the visible nesting depth.
+                ->collapsed()
                 ->defaultItems(1)
                 ->minItems(1)
-                ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['stem'] ?? null) ? $state['stem'] : null))
+                ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Q', $index, $state['stem'] ?? null))
                 ->schema([
                     $this->idField('attempts'),
                     Select::make('kind')
@@ -151,12 +154,17 @@ class QuizItem extends ItemDefinition
                     $this->listRepeater('options', 'Options', 'Add option', level: 2)
                         ->defaultItems(2)
                         ->minItems(2)
-                        ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null))
+                        ->itemLabel(function (array $state): ?string {
+                            $text = TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null);
+
+                            return filter_var($state['correct'] ?? false, FILTER_VALIDATE_BOOLEAN) ? '✓ '.($text ?? '') : $text;
+                        })
                         ->schema([
                             $this->idField('answers'),
                             $this->translatable('text', 'Text', TextInput::class, required: true),
                             Toggle::make('correct')
                                 ->label('Correct answer')
+                                ->live(onBlur: true)
                                 ->default(false),
                         ]),
                     Fieldset::make('Feedback')

@@ -3,7 +3,6 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
-use App\Support\TranslatableText;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Fieldset;
@@ -77,7 +76,7 @@ class NoteCanvasItem extends ItemDefinition
                 ->collapsible()
                 ->defaultItems(1)
                 ->minItems(1)
-                ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['label'] ?? null) ? $state['label'] : null))
+                ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Row', $index, $state['label'] ?? null))
                 ->schema([
                     $this->idField('notes for this row'),
                     $this->translatable('label', 'Label', TextInput::class, required: true),

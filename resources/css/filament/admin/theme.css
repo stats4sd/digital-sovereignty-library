@@ -39,3 +39,17 @@
 .dark .fi-fo-builder-item .fi-fo-repeater-item .fi-section {
     background-color: #111827;
 }
+
+/* Depth accent stripe (spec option D): primary on Builder blocks, grey on level-1 repeater
+   items (questions, columns, rows); level-2 items (options, choices) carry none. */
+.fi-fo-builder-item {
+    border-inline-start: 3px solid var(--color-primary-600);
+}
+
+.fi-fo-builder-item .fi-fo-repeater-item {
+    border-inline-start: 3px solid var(--color-gray-400);
+}
+
+.fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item {
+    border-inline-start: none;
+}

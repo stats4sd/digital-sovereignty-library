@@ -309,6 +309,18 @@ abstract class ItemDefinition
             ->reorderable();
     }
 
+    /**
+     * A repeater item header that says what it is even when collapsed: "Q2 · Which of these…",
+     * "Column 1 · Challenge". $index is the Repeater's zero-based item index.
+     */
+    protected function numberedLabel(string $prefix, int $index, mixed $text): string
+    {
+        $number = strlen($prefix) === 1 ? $prefix.($index + 1) : $prefix.' '.($index + 1);
+        $text = is_array($text) ? TranslatableText::pick($text) : null;
+
+        return filled($text) ? "{$number} · {$text}" : $number;
+    }
+
     protected function headingField(bool $required): TranslatableComboField
     {
         return $this->translatable('heading', 'Heading', TextInput::class, $required);

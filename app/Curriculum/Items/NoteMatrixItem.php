@@ -112,7 +112,7 @@ class NoteMatrixItem extends ItemDefinition
                 ->collapsible()
                 ->defaultItems(1)
                 ->minItems(1)
-                ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['label'] ?? null) ? $state['label'] : null))
+                ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Column', $index, $state['label'] ?? null))
                 ->schema([
                     $this->idField('answers in this column'),
                     $this->translatable('label', 'Label', TextInput::class, required: true),
