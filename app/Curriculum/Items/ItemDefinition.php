@@ -6,9 +6,11 @@ use App\Enums\CurriculumItemType;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Support\HtmlSanitizer;
 use App\Support\TranslatableText;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Illuminate\Support\Arr;
@@ -288,6 +290,23 @@ abstract class ItemDefinition
         }
 
         return $required ? $field->required() : $field;
+    }
+
+    /**
+     * A list of repeated sub-structures inside a block. The "Add" button's look encodes the
+     * list's depth so the three add actions that can share a screen (block, question, option)
+     * read differently: the Builder's is a solid primary button, a level-1 list (questions,
+     * columns, rows) gets a small grey button, a level-2 list (options, choices) a small link.
+     */
+    protected function listRepeater(string $name, string $label, string $addLabel, int $level = 1): Repeater
+    {
+        return Repeater::make($name)
+            ->label($label)
+            ->addActionLabel($addLabel)
+            ->addAction(fn (Action $action): Action => $level === 1
+                ? $action->button()->color('gray')->size('sm')
+                : $action->link()->size('sm')->icon('heroicon-m-plus'))
+            ->reorderable();
     }
 
     protected function headingField(bool $required): TranslatableComboField

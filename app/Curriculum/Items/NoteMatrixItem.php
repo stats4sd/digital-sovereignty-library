@@ -5,7 +5,6 @@ namespace App\Curriculum\Items;
 use App\Enums\CurriculumItemType;
 use App\Support\TranslatableText;
 use Closure;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
@@ -109,10 +108,7 @@ class NoteMatrixItem extends ItemDefinition
             $this->translatable('rowLabel', 'Row label', TextInput::class)
                 ->description('Shown with the row number, e.g. "Challenge" → "Challenge 1".'),
 
-            Repeater::make('fields')
-                ->label('Columns')
-                ->addActionLabel('Add column')
-                ->reorderable()
+            $this->listRepeater('fields', 'Columns', 'Add column', level: 1)
                 ->collapsible()
                 ->defaultItems(1)
                 ->minItems(1)
@@ -129,10 +125,7 @@ class NoteMatrixItem extends ItemDefinition
                         ->live(),
                     $this->translatable('placeholder', 'Placeholder', TextInput::class)
                         ->visible(fn (Get $get): bool => $get('kind') !== 'select'),
-                    Repeater::make('options')
-                        ->label('Choices')
-                        ->addActionLabel('Add choice')
-                        ->reorderable()
+                    $this->listRepeater('options', 'Choices', 'Add choice', level: 2)
                         ->defaultItems(2)
                         ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null))
                         ->visible(fn (Get $get): bool => $get('kind') === 'select')

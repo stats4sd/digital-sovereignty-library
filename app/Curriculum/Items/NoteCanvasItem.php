@@ -4,7 +4,6 @@ namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
 use App\Support\TranslatableText;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Fieldset;
@@ -74,10 +73,7 @@ class NoteCanvasItem extends ItemDefinition
                     $this->translatable('notes', 'Third column (notes)', TextInput::class),
                 ]),
 
-            Repeater::make('fields')
-                ->label('Rows')
-                ->addActionLabel('Add row')
-                ->reorderable()
+            $this->listRepeater('fields', 'Rows', 'Add row', level: 1)
                 ->collapsible()
                 ->defaultItems(1)
                 ->minItems(1)

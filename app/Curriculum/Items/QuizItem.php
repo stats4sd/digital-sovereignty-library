@@ -5,7 +5,6 @@ namespace App\Curriculum\Items;
 use App\Enums\CurriculumItemType;
 use App\Support\TranslatableText;
 use Closure;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -135,10 +134,7 @@ class QuizItem extends ItemDefinition
                 ->default(1)
                 ->required(),
 
-            Repeater::make('items')
-                ->label('Questions')
-                ->addActionLabel('Add question')
-                ->reorderable()
+            $this->listRepeater('items', 'Questions', 'Add question', level: 1)
                 ->collapsible()
                 ->defaultItems(1)
                 ->minItems(1)
@@ -152,10 +148,7 @@ class QuizItem extends ItemDefinition
                         ->required()
                         ->native(false),
                     $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true),
-                    Repeater::make('options')
-                        ->label('Options')
-                        ->addActionLabel('Add option')
-                        ->reorderable()
+                    $this->listRepeater('options', 'Options', 'Add option', level: 2)
                         ->defaultItems(2)
                         ->minItems(2)
                         ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null))
