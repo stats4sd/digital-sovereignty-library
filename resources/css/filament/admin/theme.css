@@ -53,3 +53,17 @@
 .fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item {
     border-inline-start: none;
 }
+
+/* TranslatableTableColumn: second header line naming the locales whose inputs are on screen
+   ("English · Español"), standing in for the per-input labels the table hides. */
+.fi-fo-table-repeater th .fi-translatable-table-column-locales {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 400;
+    color: var(--color-gray-500);
+}
+
+.dark .fi-fo-table-repeater th .fi-translatable-table-column-locales {
+    color: var(--color-gray-400);
+}

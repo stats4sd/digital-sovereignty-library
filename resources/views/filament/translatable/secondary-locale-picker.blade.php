@@ -3,9 +3,10 @@
      * Page-wide "also show" picker for TranslatableComboField.
      *
      * Registers the Alpine store that every combo field's non-primary locale input reads via
-     * visibleJs(). The selection is persisted in localStorage so it follows the editor across
-     * pages. Pages that don't render this picker have no store, and combo fields there fall
-     * back to showing every locale.
+     * visibleJs(), and that TranslatableTableColumn headers read to name the locales on screen.
+     * The selection is persisted in localStorage so it follows the editor across pages. Pages
+     * that don't render this picker have no store, and combo fields there fall back to showing
+     * every locale.
      */
     $store = \App\Filament\Translatable\Form\TranslatableComboField::LOCALE_STORE;
     $locales = $locales ?? config('branding.locales', ['en' => 'English']);
@@ -24,8 +25,18 @@
                 // '' = primary only, '*' = every locale, otherwise one locale code.
                 secondary: window.Alpine.$persist('').as('filament.translatableLocales.secondary'),
 
+                labels: @js($locales),
+                primary: @js($primary),
+
                 isVisible(locale) {
                     return this.secondary === '*' || this.secondary === locale
+                },
+
+                // Labels of the locales whose inputs are currently shown, in input order.
+                visibleLabels() {
+                    return Object.entries(this.labels)
+                        .filter(([locale]) => locale === this.primary || this.isVisible(locale))
+                        .map(([, label]) => label)
                 },
             })
         }

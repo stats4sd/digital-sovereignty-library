@@ -3,6 +3,7 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
+use App\Filament\Translatable\Form\TranslatableTableColumn;
 use Closure;
 use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\Select;
@@ -153,7 +154,7 @@ class QuizItem extends ItemDefinition
                     $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true, inline: true),
                     $this->tableRepeater('options', 'Options', 'Add option', [
                         TableColumn::make('ID')->markAsRequired()->width('9rem'),
-                        TableColumn::make('Text')->markAsRequired(),
+                        TranslatableTableColumn::make('Text')->markAsRequired(),
                         TableColumn::make('Correct')->width('7rem'),
                     ])
                         ->helperText(static::idHelperText('answers'))

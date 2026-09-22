@@ -3,6 +3,7 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
+use App\Filament\Translatable\Form\TranslatableTableColumn;
 use Closure;
 use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\Select;
@@ -127,7 +128,7 @@ class NoteMatrixItem extends ItemDefinition
                         ->visible(fn (Get $get): bool => $get('kind') !== 'select'),
                     $this->tableRepeater('options', 'Choices', 'Add choice', [
                         TableColumn::make('ID')->markAsRequired()->width('9rem'),
-                        TableColumn::make('Text')->markAsRequired(),
+                        TranslatableTableColumn::make('Text')->markAsRequired(),
                     ])
                         ->helperText(static::idHelperText('choice'))
                         ->defaultItems(2)

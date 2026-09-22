@@ -3,6 +3,7 @@
 use App\Filament\Resources\CurriculumSessionResource\Pages\EditCurriculumSession;
 use App\Filament\Resources\TroveResource\Pages\EditTrove;
 use App\Filament\Translatable\Form\TranslatableComboField;
+use App\Filament\Translatable\Form\TranslatableTableColumn;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
@@ -39,4 +40,25 @@ it('leaves block-level and Trove combo fields as Section cards', function () {
     Livewire::test(EditTrove::class, ['record' => $trove->getKey()])
         ->assertSeeHtml('fi-section')
         ->assertDontSeeHtml('fi-translatable-combo-inline');
+});
+
+it('names the visible locales in a translatable table column header', function () {
+    $column = TranslatableTableColumn::make('Text')->markAsRequired();
+    $html = $column->getLabel()->toHtml();
+
+    expect($column->isMarkedAsRequired())->toBeFalse() // the mark is rendered inside the label instead
+        ->and($html)->toStartWith('Text<sup class="fi-fo-table-repeater-header-required-mark">*</sup>')
+        ->and($html)->toContain('fi-translatable-table-column-locales')
+        ->and($html)->toContain('visibleLabels()')
+        ->and($html)->toContain('English · French</span>');
+});
+
+it('uses translatable table columns for quiz option text', function () {
+    $module = CurriculumModule::factory()->map()->create();
+    $session = CurriculumSession::factory()->for($module, 'module')->create();
+    CurriculumSessionItem::factory()->for($session, 'session')->quiz()->create();
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $session->getKey()])
+        ->assertSeeHtml('fi-translatable-table-column-locales')
+        ->assertSeeHtml('visibleLabels()');
 });
