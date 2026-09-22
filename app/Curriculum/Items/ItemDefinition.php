@@ -3,6 +3,7 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
+use App\Filament\Curriculum\ItemBlock;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Support\HtmlSanitizer;
 use App\Support\TranslatableText;
@@ -98,11 +99,22 @@ abstract class ItemDefinition
         return 'curriculum.items.'.$this->type()->value;
     }
 
+    /**
+     * The admin-side preview of a block, rendered from its state in the Builder list when
+     * SessionContentBuilder has blockPreviews() on. Gets a BlockPreview as $preview.
+     */
+    public function previewView(): string
+    {
+        return 'filament.curriculum.previews.'.$this->type()->value;
+    }
+
     public function block(): Block
     {
-        return Block::make($this->type()->value)
+        return ItemBlock::make($this->type()->value)
+            ->definition($this)
             ->label(fn (?array $state): string => $this->blockLabel($state ?? []))
             ->icon($this->type()->icon())
+            ->preview($this->previewView())
             ->schema([
                 // The row identity. Filament regenerates Builder item uuids on every hydration,
                 // so this hidden key (a uuid fixed when the block is first added) is what the

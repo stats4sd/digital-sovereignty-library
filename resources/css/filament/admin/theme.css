@@ -5,6 +5,7 @@
    explicit sources are scanned for the admin panel's utility classes. */
 @source '../../../../app/Filament/**/*.php';
 @source '../../../../resources/views/filament/**/*.blade.php';
+@source '../../../../resources/views/components/filament/**/*.blade.php';
 
 /* Applied via ->extraAttributes(['class' => 'grey-box']). On Section::make() this lands on
    the fi-sc-section wrapper div (Filament v5), not the rounded fi-section card inside it, so
@@ -52,4 +53,14 @@
 
 .fi-fo-builder-item .fi-fo-repeater-item .fi-fo-repeater-item {
     border-inline-start: none;
+}
+
+/* Block previews (spec option F): the whole preview is a click target for the edit modal, so
+   hint at it on hover. */
+.fi-fo-builder-item-content-has-preview:hover {
+    background-color: #f9fafb;
+}
+
+.dark .fi-fo-builder-item-content-has-preview:hover {
+    background-color: rgb(255 255 255 / 0.03);
 }

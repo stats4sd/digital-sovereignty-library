@@ -28,6 +28,14 @@ class SessionContentBuilder
             ->blockNumbers(false)
             ->blockPickerColumns(2)
             ->collapsible()
+            // Each block is shown as a read-only preview of its content and edited in a modal
+            // (docs/specs/2026-09-21-session-builder-visual-hierarchy-design.md, option F), so
+            // the list stays flat and an "Add option" can only ever belong to the open block.
+            ->blockPreviews()
+            ->editAction(fn (Action $action): Action => $action
+                ->modalHeading('Edit content block')
+                ->modalWidth('5xl')
+                ->slideOver())
             ->addActionLabel('Add content block')
             // Solid primary: the top of the add-button hierarchy (block > question > option),
             // see ItemDefinition::listRepeater() for the two levels below it.
