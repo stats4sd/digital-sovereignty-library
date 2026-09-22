@@ -3,36 +3,36 @@
 use App\Models\SiteContent;
 use Database\Seeders\Prep\SiteContentSeeder;
 
-it('warns when the org name is still the default placeholder', function () {
-    config(['branding.org_name' => 'Your Organisation']);
+it('seeds the live site content for every key and locale', function () {
+    $this->artisan('db:seed', ['--class' => SiteContentSeeder::class])->assertSuccessful();
 
-    $this->artisan('db:seed', ['--class' => SiteContentSeeder::class])
-        ->expectsOutputToContain('BRAND_ORG_NAME is not set')
-        ->assertSuccessful();
+    $expected = (new SiteContentSeeder)->defaults();
+
+    expect(SiteContent::query()->count())->toBe(count($expected));
+
+    foreach ($expected as $key => $translations) {
+        $row = SiteContent::query()->where('key', $key)->firstOrFail();
+
+        expect($row->getTranslations('value'))->toBe($translations);
+    }
 });
 
-it('warns when the org name is empty', function () {
-    config(['branding.org_name' => '']);
+it('does not overwrite admin edits on re-seed', function () {
+    (new SiteContentSeeder)->run();
 
-    $this->artisan('db:seed', ['--class' => SiteContentSeeder::class])
-        ->expectsOutputToContain('BRAND_ORG_NAME is not set')
-        ->assertSuccessful();
-});
-
-it('does not warn when the org name is configured', function () {
-    config(['branding.org_name' => 'Acme Research']);
-
-    $this->artisan('db:seed', ['--class' => SiteContentSeeder::class])
-        ->doesntExpectOutputToContain('BRAND_ORG_NAME is not set')
-        ->assertSuccessful();
-
-    expect(SiteContent::get('library_heading_line1'))->toContain('Acme Research');
-});
-
-it('runs without a command instance when seeded programmatically', function () {
-    config(['branding.org_name' => 'Your Organisation']);
+    SiteContent::query()->where('key', 'library_heading_line2')->firstOrFail()
+        ->setTranslation('value', 'en', 'Edited in admin')
+        ->save();
 
     (new SiteContentSeeder)->run();
 
-    expect(SiteContent::query()->count())->toBeGreaterThan(0);
+    expect(SiteContent::get('library_heading_line2'))->toBe('Edited in admin')
+        ->and(SiteContent::query()->count())->toBe(count((new SiteContentSeeder)->defaults()));
+});
+
+it('runs without a command instance when seeded programmatically', function () {
+    (new SiteContentSeeder)->run();
+
+    expect(SiteContent::get('library_heading_line1'))->toBe('Digital Sovereignty')
+        ->and(SiteContent::get('footer_admin_login_label'))->toBe('Login');
 });
