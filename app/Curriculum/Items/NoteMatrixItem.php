@@ -3,8 +3,8 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
-use App\Support\TranslatableText;
 use Closure;
+use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
@@ -115,7 +115,7 @@ class NoteMatrixItem extends ItemDefinition
                 ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Column', $index, $state['label'] ?? null))
                 ->schema([
                     $this->idField('answers in this column'),
-                    $this->translatable('label', 'Label', TextInput::class, required: true),
+                    $this->translatable('label', 'Label', TextInput::class, required: true, inline: true),
                     Select::make('kind')
                         ->label('Input')
                         ->options(self::FIELD_KINDS)
@@ -123,15 +123,18 @@ class NoteMatrixItem extends ItemDefinition
                         ->required()
                         ->native(false)
                         ->live(),
-                    $this->translatable('placeholder', 'Placeholder', TextInput::class)
+                    $this->translatable('placeholder', 'Placeholder', TextInput::class, inline: true)
                         ->visible(fn (Get $get): bool => $get('kind') !== 'select'),
-                    $this->listRepeater('options', 'Choices', 'Add choice', level: 2)
+                    $this->tableRepeater('options', 'Choices', 'Add choice', [
+                        TableColumn::make('ID')->markAsRequired()->width('9rem'),
+                        TableColumn::make('Text')->markAsRequired(),
+                    ])
+                        ->helperText(static::idHelperText('choice'))
                         ->defaultItems(2)
-                        ->itemLabel(fn (array $state): ?string => TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null))
                         ->visible(fn (Get $get): bool => $get('kind') === 'select')
                         ->schema([
-                            $this->idField('choice'),
-                            $this->translatable('text', 'Text', TextInput::class, required: true),
+                            $this->idField('choice', withHelperText: false),
+                            $this->translatable('text', 'Text', TextInput::class, required: true, inline: true),
                         ]),
                 ]),
         ];

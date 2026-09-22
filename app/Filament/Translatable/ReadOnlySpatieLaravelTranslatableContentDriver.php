@@ -6,22 +6,19 @@ use Filament\Support\Contracts\TranslatableContentDriver;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 use function Filament\Support\generate_search_column_expression;
 
 // Custom driver that uses the 'default' approach for createRecord() and updateRecord(), as data entry is handled by the TranslatableComboField.
 class ReadOnlySpatieLaravelTranslatableContentDriver implements TranslatableContentDriver
 {
-    public function __construct(protected string $activeLocale)
-    {
-    }
+    public function __construct(protected string $activeLocale) {}
 
     public function isAttributeTranslatable(string $model, string $attribute): bool
     {
         $model = app($model);
 
-        if (!method_exists($model, 'isTranslatableAttribute')) {
+        if (! method_exists($model, 'isTranslatableAttribute')) {
             return false;
         }
 
@@ -29,7 +26,7 @@ class ReadOnlySpatieLaravelTranslatableContentDriver implements TranslatableCont
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function makeRecord(string $model, array $data): Model
     {
@@ -42,7 +39,7 @@ class ReadOnlySpatieLaravelTranslatableContentDriver implements TranslatableCont
 
     public function setRecordLocale(Model $record): Model
     {
-        if (!method_exists($record, 'setLocale')) {
+        if (! method_exists($record, 'setLocale')) {
             return $record;
         }
 
@@ -50,13 +47,13 @@ class ReadOnlySpatieLaravelTranslatableContentDriver implements TranslatableCont
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function updateRecord(Model $record, array $data): Model
     {
-       $record->update($data);
+        $record->update($data);
 
-       return $record;
+        return $record;
     }
 
     /**
@@ -80,7 +77,7 @@ class ReadOnlySpatieLaravelTranslatableContentDriver implements TranslatableCont
         return $query->{$whereClause}(
             generate_search_column_expression($column, $isCaseInsensitivityForced, $databaseConnection),
             'like',
-            (string)str($search)->wrap('%'),
+            (string) str($search)->wrap('%'),
         );
     }
 }

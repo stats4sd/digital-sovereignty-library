@@ -3,8 +3,8 @@
 namespace App\Curriculum\Items;
 
 use App\Enums\CurriculumItemType;
-use App\Support\TranslatableText;
 use Closure;
+use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -150,29 +150,28 @@ class QuizItem extends ItemDefinition
                         ->default('pick-one')
                         ->required()
                         ->native(false),
-                    $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true),
-                    $this->listRepeater('options', 'Options', 'Add option', level: 2)
+                    $this->translatable('stem', 'Question', Textarea::make('stem')->rows(2), required: true, inline: true),
+                    $this->tableRepeater('options', 'Options', 'Add option', [
+                        TableColumn::make('ID')->markAsRequired()->width('9rem'),
+                        TableColumn::make('Text')->markAsRequired(),
+                        TableColumn::make('Correct')->width('7rem'),
+                    ])
+                        ->helperText(static::idHelperText('answers'))
                         ->defaultItems(2)
                         ->minItems(2)
-                        ->itemLabel(function (array $state): ?string {
-                            $text = TranslatableText::pick(is_array($state['text'] ?? null) ? $state['text'] : null);
-
-                            return filter_var($state['correct'] ?? false, FILTER_VALIDATE_BOOLEAN) ? '✓ '.($text ?? '') : $text;
-                        })
                         ->schema([
-                            $this->idField('answers'),
-                            $this->translatable('text', 'Text', TextInput::class, required: true),
+                            $this->idField('answers', withHelperText: false),
+                            $this->translatable('text', 'Text', TextInput::class, required: true, inline: true),
                             Toggle::make('correct')
                                 ->label('Correct answer')
-                                ->live(onBlur: true)
                                 ->default(false),
                         ]),
                     Fieldset::make('Feedback')
                         ->statePath('feedback')
                         ->columns(1)
                         ->schema([
-                            $this->translatable('correct', 'When answered correctly', Textarea::make('correct')->rows(2)),
-                            $this->translatable('incorrect', 'When answered incorrectly', Textarea::make('incorrect')->rows(2)),
+                            $this->translatable('correct', 'When answered correctly', Textarea::make('correct')->rows(2), inline: true),
+                            $this->translatable('incorrect', 'When answered incorrectly', Textarea::make('incorrect')->rows(2), inline: true),
                         ]),
                 ]),
         ];

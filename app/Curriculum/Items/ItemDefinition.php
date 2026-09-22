@@ -11,6 +11,7 @@ use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Illuminate\Support\Arr;
@@ -276,12 +277,15 @@ abstract class ItemDefinition
     */
 
     /**
-     * A per-locale field reading from block state only (never the session record).
+     * A per-locale field reading from block state only (never the session record). $inline
+     * drops the Section card around the locale inputs; use it for leaves nested inside a
+     * Repeater item (option text, column label, …) and keep the card for block-level fields.
      */
-    protected function translatable(string $name, string $label, string|Field $child, bool $required = false): TranslatableComboField
+    protected function translatable(string $name, string $label, string|Field $child, bool $required = false, bool $inline = false): TranslatableComboField
     {
         $field = TranslatableComboField::make($name)
             ->fromRecord(false)
+            ->inline($inline)
             ->label($label)
             ->childField($child);
 
@@ -310,6 +314,20 @@ abstract class ItemDefinition
     }
 
     /**
+     * A level-2 list rendered as a compact table (one row per item, no per-item card) for
+     * short repeated structures: quiz options, matrix choices. Columns are matched to the
+     * item schema's visible components in order, so the schema must list them in the same
+     * order as $columns.
+     *
+     * @param  list<TableColumn>  $columns
+     */
+    protected function tableRepeater(string $name, string $label, string $addLabel, array $columns): Repeater
+    {
+        return $this->listRepeater($name, $label, $addLabel, level: 2)
+            ->table($columns);
+    }
+
+    /**
      * A repeater item header that says what it is even when collapsed: "Q2 · Which of these…",
      * "Column 1 · Challenge". $index is the Repeater's zero-based item index.
      */
@@ -330,14 +348,22 @@ abstract class ItemDefinition
      * The author-entered identifier of a repeated sub-structure (a canvas field, matrix
      * column, quiz question or option). Learners' notes are stored under it in their browser.
      */
-    protected function idField(string $stores): TextInput
+    protected function idField(string $stores, bool $withHelperText = true): TextInput
     {
-        return TextInput::make('id')
+        $field = TextInput::make('id')
             ->label('ID')
             ->required()
             ->rule('alpha_dash')
             ->maxLength(40)
-            ->default(fn (): string => Str::lower(Str::random(6)))
-            ->helperText("Short identifier that learners' {$stores} are saved under in their browser. Renaming it once the session is live orphans anything they have already saved.");
+            ->default(fn (): string => Str::lower(Str::random(6)));
+
+        return $withHelperText
+            ? $field->helperText(static::idHelperText($stores))
+            : $field;
+    }
+
+    protected static function idHelperText(string $stores): string
+    {
+        return "Short identifier that learners' {$stores} are saved under in their browser. Renaming it once the session is live orphans anything they have already saved.";
     }
 }

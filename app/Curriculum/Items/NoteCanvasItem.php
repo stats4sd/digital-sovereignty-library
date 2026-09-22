@@ -67,9 +67,9 @@ class NoteCanvasItem extends ItemDefinition
                 ->statePath('columns')
                 ->columns(1)
                 ->schema([
-                    $this->translatable('label', 'First column (area)', TextInput::class),
-                    $this->translatable('prompt', 'Second column (guiding question)', TextInput::class),
-                    $this->translatable('notes', 'Third column (notes)', TextInput::class),
+                    $this->translatable('label', 'First column (area)', TextInput::class, inline: true),
+                    $this->translatable('prompt', 'Second column (guiding question)', TextInput::class, inline: true),
+                    $this->translatable('notes', 'Third column (notes)', TextInput::class, inline: true),
                 ]),
 
             $this->listRepeater('fields', 'Rows', 'Add row', level: 1)
@@ -79,8 +79,8 @@ class NoteCanvasItem extends ItemDefinition
                 ->itemLabel(fn (array $state, int $index): string => $this->numberedLabel('Row', $index, $state['label'] ?? null))
                 ->schema([
                     $this->idField('notes for this row'),
-                    $this->translatable('label', 'Label', TextInput::class, required: true),
-                    $this->translatable('prompt', 'Guiding question', Textarea::make('prompt')->rows(2)),
+                    $this->translatable('label', 'Label', TextInput::class, required: true, inline: true),
+                    $this->translatable('prompt', 'Guiding question', Textarea::make('prompt')->rows(2), inline: true),
                 ]),
         ];
     }
