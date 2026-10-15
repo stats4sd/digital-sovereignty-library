@@ -102,6 +102,11 @@ class CurriculumSessionResource extends Resource
     public static function formSchema(?CurriculumModule $module = null): array
     {
         return [
+            Forms\Components\Toggle::make('is_draft')
+                ->label('Draft')
+                ->helperText('Hidden from learners until switched off. Use Preview in the header to see the page as it will look.')
+                ->default(true),
+
             TranslatableComboField::make('title')
                 ->icon('heroicon-o-exclamation-circle')
                 ->iconColor('primary')
@@ -172,7 +177,8 @@ class CurriculumSessionResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->wrap(),
                 Tables\Columns\TextColumn::make('number')
-                    ->label('#'),
+                    ->label('#')
+                    ->placeholder('Draft'),
                 Tables\Columns\TextColumn::make('items_count')
                     ->counts('items')
                     ->label('# Content blocks'),

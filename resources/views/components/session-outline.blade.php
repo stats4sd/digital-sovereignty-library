@@ -8,6 +8,8 @@
 --}}
 @props(['entries', 'module', 'previous', 'next'])
 
+@php $curriculum ??= new \App\Support\Curriculum\CurriculumContext(preview: false); @endphp
+
 <aside class="hidden lg:block" aria-label="{{ t('Session contents') }}">
     <div class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pe-2">
         <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-secondary">{{ t('In this session') }}</p>
@@ -21,7 +23,7 @@
                         x-bind:class="active === '{{ $entry['id'] }}' ? 'border-brand-primary text-brand-primary font-bold' : 'border-transparent text-brand-ink-muted hover:text-brand-ink'"
                         class="-ms-0.5 flex items-start gap-2 border-s-2 py-1.5 ps-4 text-sm leading-snug transition-colors">
                         <span class="min-w-0 flex-1">
-                            <span class="block">{{ $entry['label'] }}</span>
+                            <span class="block">{{ $entry['label'] }}@if($entry['draft']) <span data-draft-badge class="ms-1 rounded bg-amber-100 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-amber-800">{{ t('Draft') }}</span>@endif</span>
                             @if($entry['tag'])
                                 <span class="mt-0.5 block text-[0.65rem] font-semibold uppercase tracking-wider text-brand-ink-muted/80">{{ $entry['tag'] }}</span>
                             @endif
@@ -45,13 +47,13 @@
         @if($previous || $next)
             <div class="mt-6 flex flex-col gap-2 border-t border-brand-line pt-4 text-sm">
                 @if($previous)
-                    <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $previous->slug]) }}" class="font-bold text-brand-primary hover:underline">
-                        <x-dir-arrow back /> {{ t('Session %d', $previous->number) }}
+                    <a href="{{ $curriculum->sessionUrl($module, $previous) }}" class="font-bold text-brand-primary hover:underline">
+                        <x-dir-arrow back /> <x-session-label :session="$previous" />
                     </a>
                 @endif
                 @if($next)
-                    <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $next->slug]) }}" class="font-bold text-brand-primary hover:underline">
-                        {{ t('Session %d', $next->number) }} <x-dir-arrow />
+                    <a href="{{ $curriculum->sessionUrl($module, $next) }}" class="font-bold text-brand-primary hover:underline">
+                        <x-session-label :session="$next" /> <x-dir-arrow />
                     </a>
                 @endif
             </div>
@@ -108,7 +110,7 @@
                             class="flex items-center gap-3 rounded-xl px-3 py-3">
                             <span class="w-6 shrink-0 text-end text-xs font-bold text-brand-ink-muted">{{ $index === 0 ? '' : $index }}</span>
                             <span class="min-w-0 flex-1">
-                                <span class="block leading-snug">{{ $entry['label'] }}</span>
+                                <span class="block leading-snug">{{ $entry['label'] }}@if($entry['draft']) <span data-draft-badge class="ms-1 rounded bg-amber-100 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-amber-800">{{ t('Draft') }}</span>@endif</span>
                                 @if($entry['tag'])
                                     <span class="mt-0.5 block text-[0.65rem] font-semibold uppercase tracking-wider text-brand-ink-muted/80">{{ $entry['tag'] }}</span>
                                 @endif
@@ -124,15 +126,15 @@
             @if($previous || $next)
                 <div class="flex items-center justify-between gap-4 border-t-2 border-brand-line px-5 py-4 text-sm">
                     @if($previous)
-                        <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $previous->slug]) }}" class="font-bold text-brand-primary hover:underline">
-                            <x-dir-arrow back /> {{ t('Session %d', $previous->number) }}
+                        <a href="{{ $curriculum->sessionUrl($module, $previous) }}" class="font-bold text-brand-primary hover:underline">
+                            <x-dir-arrow back /> <x-session-label :session="$previous" />
                         </a>
                     @else
                         <span></span>
                     @endif
                     @if($next)
-                        <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $next->slug]) }}" class="font-bold text-brand-primary hover:underline">
-                            {{ t('Session %d', $next->number) }} <x-dir-arrow />
+                        <a href="{{ $curriculum->sessionUrl($module, $next) }}" class="font-bold text-brand-primary hover:underline">
+                            <x-session-label :session="$next" /> <x-dir-arrow />
                         </a>
                     @endif
                 </div>

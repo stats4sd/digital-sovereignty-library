@@ -28,6 +28,7 @@
         @if(empty($hideHeader))
             @include('header')
         @endif
+        @stack('banner')
         <main class="flex-1">
         @isset($slot)
             {{ $slot }}

@@ -316,3 +316,70 @@ it('404s the session route for an unknown slug, a slug belonging to another modu
     $this->get('/curriculum/tech-assessment/a-session-on-another-module')->assertNotFound();
     $this->get('/toolkit/knowledge/anything')->assertNotFound();
 });
+
+it('hides a draft map module from the map and 404s its page', function () {
+    $before = substr_count($this->get('/curriculum')->getContent(), 'data-index=');
+
+    $draft = MapModule::factory()->draft()->create(['key' => 'secret-module', 'title' => ['en' => 'Secret Module']]);
+
+    $this->get('/curriculum')
+        ->assertOk()
+        ->assertDontSee('Secret Module')
+        ->assertDontSee(route('curriculum.show', 'secret-module'));
+
+    expect(substr_count($this->get('/curriculum')->getContent(), 'data-index='))->toBe($before);
+
+    $this->get('/curriculum/secret-module')->assertNotFound();
+});
+
+it('hides a draft session from the module page and 404s its URL', function () {
+    $module = CurriculumModule::factory()->map()->create(['key' => 'draft-sessions']);
+    CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 1, 'slug' => 'live-one', 'title' => ['en' => 'Live one']]);
+    CurriculumSession::factory()->for($module, 'module')->draft()->create(['order_column' => 2, 'slug' => 'hidden-two', 'title' => ['en' => 'Hidden two']]);
+
+    $this->get('/curriculum/draft-sessions')
+        ->assertOk()
+        ->assertSee('Live one')
+        ->assertDontSee('Hidden two')
+        ->assertDontSee('data-draft-badge', false);
+
+    $this->get('/curriculum/draft-sessions/hidden-two')->assertNotFound();
+});
+
+it('numbers sessions gaplessly when the middle of three is a draft', function () {
+    $module = CurriculumModule::factory()->map()->create(['key' => 'gapless']);
+    $one = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 1, 'slug' => 'one', 'title' => ['en' => 'First']]);
+    CurriculumSession::factory()->for($module, 'module')->draft()->create(['order_column' => 2, 'slug' => 'two', 'title' => ['en' => 'Middle']]);
+    $three = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 3, 'slug' => 'three', 'title' => ['en' => 'Last']]);
+
+    $page = $this->get('/curriculum/gapless')->assertOk()
+        ->assertSee('Start Session 1')
+        ->assertSee('Session 2')
+        ->assertDontSee('Session 3')
+        ->assertDontSee('Middle');
+    expect(substr_count($page->getContent(), 'The 2 sessions'))->toBe(1);
+
+    $this->get('/curriculum/gapless/three')
+        ->assertOk()
+        ->assertSee('Session 2')
+        ->assertSee('Session 1')       // previous label skips the draft
+        ->assertDontSee('Session 3')
+        ->assertSee(route('curriculum.session', ['key' => 'gapless', 'session' => 'one']))
+        ->assertDontSee('/curriculum/gapless/two');
+
+    $this->get('/curriculum/gapless/one')
+        ->assertOk()
+        ->assertSee('Session 1')
+        ->assertSee(route('curriculum.session', ['key' => 'gapless', 'session' => 'three']));
+});
+
+it('points the module CTA at the first live session when session 1 is a draft', function () {
+    $module = CurriculumModule::factory()->map()->create(['key' => 'cta']);
+    CurriculumSession::factory()->for($module, 'module')->draft()->create(['order_column' => 1, 'slug' => 'drafty']);
+    CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 2, 'slug' => 'liveone']);
+
+    $page = $this->get('/curriculum/cta')->assertOk()->assertSee('Start Session 1');
+    $cta = Str::beforeLast(Str::before($page->getContent(), 'Start Session 1'), 'brand-pill group');
+
+    expect($cta)->toContain('/curriculum/cta/liveone')->not->toContain('drafty');
+});

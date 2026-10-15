@@ -74,6 +74,13 @@ class SessionsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('number')
                     ->label('#')
+                    ->placeholder('Draft')
+                    ->grow(false),
+                Tables\Columns\TextColumn::make('is_draft')
+                    ->label('Status')
+                    ->badge()
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Draft' : 'Live')
+                    ->color(fn (bool $state): string => $state ? 'warning' : 'success')
                     ->grow(false),
                 Tables\Columns\TextColumn::make('title')
                     ->wrap()
@@ -115,6 +122,12 @@ class SessionsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
+                Action::make('preview')
+                    ->label('Preview')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn (CurriculumSession $record): string => route('curriculum.preview.session', ['key' => $record->module->key, 'session' => $record->slug]))
+                    ->openUrlInNewTab()
+                    ->visible(fn (): bool => auth()->user()?->can('preview-curriculum') ?? false),
                 Action::make('content')
                     ->label('Edit Content')
                     ->icon('heroicon-o-queue-list')

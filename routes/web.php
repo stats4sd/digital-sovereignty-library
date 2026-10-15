@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CurriculumController;
 use App\Livewire\BrowseAll;
 use App\Models\Collection;
 use App\Models\IntroModule;
-use App\Models\MapModule;
 use App\Models\ToolkitModule;
 use App\Models\Trove;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +38,7 @@ Route::group([
         $resource = Trove::withDrafts()->workingVersions()->where('slug', $slug)->firstOrFail();
 
         return view('trove', ['resource' => $resource, 'hasCollections' => $resource->collections()->where('public', 1)->exists()]);
-    })->middleware('auth');
+    })->middleware('auth')->name('resources.preview');
 
     Route::get('/resources/{troveKey}', function ($troveKey) {
         $resource = Trove::findBySlugOrRedirect($troveKey);
@@ -58,46 +58,22 @@ Route::group([
     Route::livewire('/browse-all', BrowseAll::class)->name('browse-all');
 
     // Curriculum: onboarding + learning map (single page, Alpine step machine).
-    Route::get('/curriculum', function () {
-        return view('curriculum.index', [
-            'intro' => IntroModule::with('troves.troveType')->first(),
-            'mapModules' => MapModule::inMapOrder()->get(),
-            'pillars' => ToolkitModule::withCount('troves')->get()->keyBy('key'),
-        ]);
-    })->name('curriculum');
+    Route::get('/curriculum', [CurriculumController::class, 'index'])->name('curriculum');
+    Route::get('/curriculum/{key}', [CurriculumController::class, 'module'])->name('curriculum.show');
+    Route::get('/curriculum/{key}/{session}', [CurriculumController::class, 'session'])->name('curriculum.session');
 
-    Route::get('/curriculum/{key}', function ($key) {
-        $module = MapModule::where('key', $key)
-            ->with('sessions')
-            ->firstOrFail();
-
-        return view('curriculum.module', compact('module'));
-    })->name('curriculum.show');
-
-    Route::get('/curriculum/{key}/{session}', function ($key, $sessionSlug) {
-        $module = MapModule::where('key', $key)
-            ->with('sessions')
-            ->firstOrFail();
-
-        $session = $module->sessions->firstWhere('slug', $sessionSlug);
-
-        if (! $session) {
-            abort(404);
-        }
-
-        $session->load('items.trove.troveType');
-
-        $index = $module->sessions->search(fn ($candidate) => $candidate->is($session));
-        $previous = $index > 0 ? $module->sessions->get($index - 1) : null;
-        $next = $module->sessions->get($index + 1);
-
-        return view('curriculum.session', [
-            'module' => $module,
-            'session' => $session,
-            'previous' => $previous,
-            'next' => $next,
-        ]);
-    })->name('curriculum.session');
+    // Curriculum preview: the same three pages, including draft modules/sessions/items,
+    // for editors and admins only. DraftVisibility keys the DraftScope opt-out on these
+    // route names, so keep them: curriculum.preview, curriculum.preview.show,
+    // curriculum.preview.session.
+    Route::prefix('preview/curriculum')
+        ->middleware(['auth', 'can:preview-curriculum'])
+        ->name('curriculum.preview')
+        ->group(function () {
+            Route::get('/', [CurriculumController::class, 'previewIndex']);
+            Route::get('/{key}', [CurriculumController::class, 'previewModule'])->name('.show');
+            Route::get('/{key}/{session}', [CurriculumController::class, 'previewSession'])->name('.session');
+        });
 
     // Toolkit pillars render as a section of /curriculum (no standalone index page);
     // only the per-pillar detail pages have their own route.

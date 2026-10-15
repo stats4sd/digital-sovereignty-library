@@ -13,6 +13,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Repeater\TableColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
@@ -102,7 +103,7 @@ abstract class ItemDefinition
     public function block(): Block
     {
         return Block::make($this->type()->value)
-            ->label(fn (?array $state): string => $this->blockLabel($state ?? []))
+            ->label(fn (?array $state): string => $this->labelFor($state ?? []))
             ->icon($this->type()->icon())
             ->schema([
                 // The row identity. Filament regenerates Builder item uuids on every hydration,
@@ -110,8 +111,29 @@ abstract class ItemDefinition
                 // sync layer matches rows on. See plan §Spike findings 0.2.
                 Hidden::make('key')
                     ->default(fn (): string => (string) Str::uuid()),
+                // Block-state name `draft` (never `is_draft`); the sync layer maps it to the
+                // item row's `is_draft` column and it never reaches `config`.
+                Toggle::make('draft')
+                    ->label('Draft — hidden from learners')
+                    ->default(true)
+                    ->inline(false)
+                    ->live(),
                 ...$this->fields(),
             ]);
+    }
+
+    /**
+     * The label shown in the Builder: the type's blockLabel() plus a " (draft)" suffix for
+     * draft blocks. Final so the suffix applies to every type, including those overriding
+     * blockLabel().
+     *
+     * @param  array<string, mixed>  $state
+     */
+    final public function labelFor(array $state): string
+    {
+        $label = $this->blockLabel($state);
+
+        return ($state['draft'] ?? false) ? $label.' (draft)' : $label;
     }
 
     /**

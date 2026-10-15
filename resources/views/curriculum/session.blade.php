@@ -1,5 +1,13 @@
 @extends('layouts.app')
-@section('title', $session->title)
+@section('title', ($curriculum->preview ? t('Preview').': ' : '').$session->title)
+@if($curriculum->preview)
+    @push('banner')
+        <x-curriculum-preview-banner :public-url="$curriculum->publicUrlFor($module, $session)" />
+    @endpush
+    @push('head')
+        <meta name="robots" content="noindex">
+    @endpush
+@endif
 
 @php
     // Contents outline: the overview, then every renderable item that has a heading.
@@ -24,11 +32,12 @@
             'label' => $item->outlineLabel(),
             'tag' => $tagFor($item),
             'activity' => $item->type->isActivity(),
+            'draft' => (bool) $item->is_draft,
         ])
         ->values();
     $hasOutline = $outline->isNotEmpty();
     if ($hasOutline) {
-        $outline->prepend(['id' => 'session-overview', 'key' => null, 'label' => t('Overview'), 'tag' => null, 'activity' => false]);
+        $outline->prepend(['id' => 'session-overview', 'key' => null, 'label' => t('Overview'), 'tag' => null, 'activity' => false, 'draft' => false]);
     }
 @endphp
 
@@ -48,14 +57,14 @@
         @endif
 
         <div class="min-w-0 {{ $hasOutline ? 'max-w-4xl' : '' }}">
-            <a href="{{ route('curriculum.show', $module->key) }}" class="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline">
+            <a href="{{ $curriculum->moduleUrl($module) }}" class="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:underline">
                 <x-dir-arrow back /> {{ t('Back to') }} {{ $module->title }}
             </a>
 
             <div id="session-overview" class="mt-8 flex gap-6">
                 <div class="brand-rule" aria-hidden="true"></div>
                 <div>
-                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-secondary">{{ t('Session %d', $session->number) }}</p>
+                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-secondary"><x-session-label :session="$session" /></p>
                     <h1 class="mt-2 text-4xl font-bold leading-tight text-brand-ink md:text-5xl">{{ $session->title }}</h1>
 
                     @if($session->builds_toward_outcome)
@@ -82,20 +91,20 @@
                 <p class="text-gray-500">{{ t('Content for this session is coming soon.') }}</p>
             @endif
 
-            <x-learner-store :namespace="'dsl:v1:'.$module->key.':'.$session->slug" />
+            <x-learner-store :namespace="$curriculum->learnerNamespace($module, $session)" />
 
             <nav class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-brand-line pt-8" aria-label="{{ t('Session navigation') }}">
                 @if($previous)
-                    <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $previous->slug]) }}" aria-label="{{ t('Previous session') }}" class="text-sm font-bold text-brand-primary hover:underline">
-                        <x-dir-arrow back /> {{ t('Session %d', $previous->number) }}
+                    <a href="{{ $curriculum->sessionUrl($module, $previous) }}" aria-label="{{ t('Previous session') }}" class="text-sm font-bold text-brand-primary hover:underline">
+                        <x-dir-arrow back /> <x-session-label :session="$previous" />
                     </a>
                 @else
                     <span></span>
                 @endif
 
                 @if($next)
-                    <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $next->slug]) }}" aria-label="{{ t('Next session') }}" class="brand-pill">
-                        {{ t('Session %d', $next->number) }} <x-dir-arrow />
+                    <a href="{{ $curriculum->sessionUrl($module, $next) }}" aria-label="{{ t('Next session') }}" class="brand-pill">
+                        <x-session-label :session="$next" /> <x-dir-arrow />
                     </a>
                 @else
                     <span></span>
@@ -103,7 +112,7 @@
             </nav>
 
             <div class="mt-8">
-                <a href="{{ route('curriculum.show', $module->key) }}" class="text-sm font-bold text-brand-primary hover:underline">
+                <a href="{{ $curriculum->moduleUrl($module) }}" class="text-sm font-bold text-brand-primary hover:underline">
                     {{ t('Back to module home') }}
                 </a>
             </div>

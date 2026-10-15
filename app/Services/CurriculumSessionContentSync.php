@@ -16,8 +16,10 @@ use Illuminate\Validation\ValidationException;
  * Bridges a session's CurriculumSessionItem rows and the admin Builder's block array.
  *
  * Block shape (the Builder's dehydrated state: a list, RichEditor leaves already HTML):
- *   ['type' => 'prose', 'data' => ['key' => '<uuid>', ...config leaves]]
- *   ['type' => 'trove', 'data' => ['key' => '<uuid>', 'trove_id' => 12, 'intro' => ['en' => …]]]
+ *   ['type' => 'prose', 'data' => ['key' => '<uuid>', 'draft' => true, ...config leaves]]
+ *   ['type' => 'trove', 'data' => ['key' => '<uuid>', 'draft' => false, 'trove_id' => 12, 'intro' => ['en' => …]]]
+ *
+ * `draft` maps to the row's `is_draft` column and is never stored in `config`.
  *
  * Rows are matched on `data.key` (the item's immutable key), never on position, so a
  * reorder is a position update and learners' browser notes stay attached to the same row.
@@ -37,6 +39,7 @@ class CurriculumSessionContentSync
                 'type' => $item->type->value,
                 'data' => [
                     'key' => $item->key,
+                    'draft' => (bool) $item->is_draft,
                     ...($item->type === CurriculumItemType::Trove
                         ? ['trove_id' => $item->trove_id, 'intro' => $item->getTranslations('intro')]
                         : ($item->config ?? [])),
@@ -90,6 +93,11 @@ class CurriculumSessionContentSync
                 $item->session()->associate($session);
                 $item->type = $type;
                 $item->position = $position;
+                // `draft` is block state, not config. Omitted: keep an existing row's value, a
+                // new row starts as a draft.
+                $item->is_draft = array_key_exists('draft', $data)
+                    ? (bool) $data['draft']
+                    : ($item->exists ? $item->is_draft : true);
 
                 if ($type === CurriculumItemType::Trove) {
                     $item->trove_id = filled($data['trove_id'] ?? null) ? (int) $data['trove_id'] : null;

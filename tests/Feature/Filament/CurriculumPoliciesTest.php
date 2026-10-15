@@ -4,6 +4,7 @@ use App\Filament\Resources\CurriculumModuleResource;
 use App\Filament\Resources\CurriculumSessionResource;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
+use Illuminate\Support\Facades\Gate;
 
 it('forbids a viewer from editing a curriculum module but lets them list modules', function () {
     actingAsViewer();
@@ -39,4 +40,15 @@ it('forbids a viewer from creating a curriculum module but lets an editor', func
 
     actingAsEditor();
     $this->get(CurriculumModuleResource::getUrl('create'))->assertOk();
+});
+
+it('allows editors and admins to use the preview-curriculum gate but not viewers', function () {
+    actingAsViewer();
+    expect(Gate::allows('preview-curriculum'))->toBeFalse();
+
+    actingAsEditor();
+    expect(Gate::allows('preview-curriculum'))->toBeTrue();
+
+    actingAsAdmin();
+    expect(Gate::allows('preview-curriculum'))->toBeTrue();
 });

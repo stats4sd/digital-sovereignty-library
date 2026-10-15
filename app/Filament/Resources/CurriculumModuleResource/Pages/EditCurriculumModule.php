@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\CurriculumModuleResource\Pages;
 
 use App\Filament\Resources\CurriculumModuleResource;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
@@ -49,6 +50,13 @@ class EditCurriculumModule extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview')
+                ->label('Preview')
+                ->icon('heroicon-o-eye')
+                ->url(fn () => route('curriculum.preview.show', $this->record->key))
+                ->openUrlInNewTab()
+                ->tooltip('Shows the last saved version')
+                ->visible(fn () => $this->record->isMapModule() && (auth()->user()?->can('preview-curriculum') ?? false)),
             CurriculumModuleResource::deleteAction(),
         ];
     }

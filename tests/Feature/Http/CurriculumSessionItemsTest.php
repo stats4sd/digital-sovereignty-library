@@ -234,3 +234,26 @@ it('drops a hidden trove item from the contents outline', function () {
         ->assertSee('Visible heading')
         ->assertDontSee('Hidden draft resource');
 });
+
+it('does not render draft items or list them in the outline', function () {
+    $factory = CurriculumSessionItem::factory()->for(test()->session, 'session');
+    $factory->prose()->create(['position' => 0, 'config' => ['heading' => ['en' => 'Live heading'], 'body' => ['en' => '<p>Live body</p>']]]);
+    $factory->prose()->draft()->create(['position' => 1, 'config' => ['heading' => ['en' => 'Draft heading'], 'body' => ['en' => '<p>Draft body</p>']]]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('Live body')
+        ->assertDontSee('Draft heading')
+        ->assertDontSee('Draft body')
+        ->assertDontSee('data-draft-item', false);
+});
+
+it('shows the empty state when every item is a draft', function () {
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->prose()->draft()->create(['position' => 0, 'config' => ['heading' => ['en' => 'Draft heading'], 'body' => ['en' => '<p>Draft body</p>']]]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('Content for this session is coming soon.')
+        ->assertDontSee('Draft body')
+        ->assertDontSee('data-session-outline', false);
+});

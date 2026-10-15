@@ -343,3 +343,85 @@ it('shows the module fields and the relation manager as tabs on the edit page', 
         ->assertSeeInOrder(['Module', 'Resources'])
         ->assertDontSee('Sessions');
 });
+
+it('creates new map modules as drafts and round-trips the draft toggle', function () {
+    Livewire::test(CreateCurriculumModule::class)
+        ->fillForm(['title' => ['en' => 'Draft Node']])
+        ->call('create')
+        ->assertHasNoFormErrors();
+
+    $module = CurriculumModule::where('key', 'draft-node')->first();
+    expect($module->is_draft)->toBeTrue();
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $module->getKey()])
+        ->assertFormFieldExists('is_draft')
+        ->fillForm(['is_draft' => false])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($module->fresh()->is_draft)->toBeFalse();
+});
+
+it('hides the draft toggle on toolkit and intro modules', function () {
+    $toolkit = CurriculumModule::factory()->toolkit()->create();
+    $intro = CurriculumModule::factory()->intro()->create();
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $toolkit->getKey()])
+        ->assertFormFieldHidden('is_draft');
+    Livewire::test(EditCurriculumModule::class, ['record' => $intro->getKey()])
+        ->assertFormFieldHidden('is_draft');
+});
+
+it('shows a status badge only for map modules in the list', function () {
+    $draft = CurriculumModule::factory()->map()->draft()->create();
+    $live = CurriculumModule::factory()->map()->create();
+    $toolkit = CurriculumModule::factory()->toolkit()->create();
+
+    Livewire::test(ListCurriculumModules::class)
+        ->assertTableColumnFormattedStateSet('is_draft', 'Draft', $draft)
+        ->assertTableColumnFormattedStateSet('is_draft', 'Live', $live)
+        ->assertTableColumnFormattedStateSet('is_draft', null, $toolkit);
+});
+
+it('creates sessions as drafts via the relation manager and shows the Draft status', function () {
+    $module = CurriculumModule::factory()->map()->create();
+
+    $component = Livewire::test(SessionsRelationManager::class, [
+        'ownerRecord' => $module,
+        'pageClass' => EditCurriculumModule::class,
+        'activeLocale' => 'en',
+    ]);
+
+    $component->callTableAction('create', data: ['title' => ['en' => 'Brand New']])
+        ->assertHasNoTableActionErrors();
+
+    $session = $module->sessions()->first();
+
+    expect($session->is_draft)->toBeTrue();
+
+    $component->assertTableColumnFormattedStateSet('is_draft', 'Draft', $session)
+        ->assertTableColumnFormattedStateSet('number', null, $session);
+});
+
+it('shows preview actions to editors but hides them from viewers', function () {
+    $module = CurriculumModule::factory()->map()->create(['key' => 'node-one']);
+    $session = CurriculumSession::factory()->for($module, 'module')->create(['slug' => 'first-stop']);
+    $props = ['ownerRecord' => $module, 'pageClass' => EditCurriculumModule::class, 'activeLocale' => 'en'];
+
+    Livewire::test(SessionsRelationManager::class, $props)
+        ->assertTableActionVisible('preview', $session)
+        ->assertTableActionHasUrl('preview', url('/preview/curriculum/node-one/first-stop'), $session);
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $module->getKey()])
+        ->assertActionVisible('preview')
+        ->assertActionHasUrl('preview', url('/preview/curriculum/node-one'));
+
+    $toolkit = CurriculumModule::factory()->toolkit()->create();
+    Livewire::test(EditCurriculumModule::class, ['record' => $toolkit->getKey()])
+        ->assertActionHidden('preview');
+
+    actingAsViewer();
+
+    Livewire::test(SessionsRelationManager::class, $props)
+        ->assertTableActionHidden('preview', $session);
+});

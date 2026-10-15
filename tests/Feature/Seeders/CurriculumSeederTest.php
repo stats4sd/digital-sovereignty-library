@@ -5,6 +5,7 @@ use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
 use App\Models\GlossaryTerm;
 use App\Models\Trove;
+use App\Support\HtmlSanitizer;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Symfony\Component\Yaml\Yaml;
 
@@ -341,7 +342,7 @@ it('creates digital-landscape sessions but defers their items until the referenc
             expect($item->config)->toBeNull()
                 ->and(in_array($itemDefinition['trove'], [$trove->slug, $trove->getTranslation('title', 'en')], true))->toBeTrue()
                 ->and($item->getTranslation('intro', 'en', false))->toBe(
-                    \App\Support\HtmlSanitizer::clean($itemDefinition['intro']['en'] ?? ''),
+                    HtmlSanitizer::clean($itemDefinition['intro']['en'] ?? ''),
                 );
         }
     }
@@ -375,3 +376,112 @@ it('matches a trove reference on slug before English title and never on a shadow
 
     expect($item->trove_id)->toBe($canonical->id);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Draft flag
+|--------------------------------------------------------------------------
+*/
+
+/** Run the seeder's private seedModule() on an ad-hoc definition (no YAML file needed). */
+function seedModuleDefinition(array $definition): void
+{
+    (fn () => $this->seedModule($definition))->call(app(CurriculumSeeder::class));
+}
+
+it('seeds digital-landscape sessions as drafts and community-needs sessions as live', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $landscape = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
+    $community = CurriculumModule::where('key', 'community-needs')->firstOrFail();
+
+    expect($landscape->is_draft)->toBeFalse()
+        ->and($landscape->sessions()->withDrafts()->count())->toBe(5)
+        ->and($landscape->sessions()->withDrafts()->where('is_draft', false)->count())->toBe(0)
+        ->and($community->sessions()->withDrafts()->where('is_draft', true)->count())->toBe(0);
+
+    // Live content is really live: the public context must still see it.
+    usePublicContext();
+    expect(CurriculumModule::where('key', 'community-needs')->firstOrFail()->sessions()->count())->toBe(4)
+        ->and(CurriculumModule::where('key', 'digital-landscape')->firstOrFail()->sessions()->count())->toBe(0)
+        ->and(CurriculumSessionItem::whereHas('session.module', fn ($q) => $q->where('key', 'community-needs'))->where('is_draft', true)->count())->toBe(0);
+});
+
+it('applies draft: true from YAML to a map module and to individual items', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    seedModuleDefinition([
+        'key' => 'draft-module',
+        'section' => CurriculumModule::SECTION_MAP,
+        'draft' => true,
+        'number' => 9,
+        'title' => ['en' => 'Draft module'],
+        'learning_outcomes' => [['statement' => ['en' => 'Outcome one']]],
+        'sessions' => [[
+            'slug' => 'mixed',
+            'title' => ['en' => 'Mixed'],
+            'items' => [
+                ['key' => 'live-item', 'type' => 'prose', 'config' => ['body' => ['en' => '<p>Live</p>']]],
+                ['key' => 'draft-item', 'type' => 'prose', 'draft' => true, 'config' => ['body' => ['en' => '<p>Draft</p>']]],
+            ],
+        ]],
+    ]);
+
+    $module = CurriculumModule::withDrafts()->where('key', 'draft-module')->firstOrFail();
+    $session = $module->sessions()->withDrafts()->firstOrFail();
+    $items = $session->items()->withDrafts()->orderBy('position')->get();
+
+    expect($module->is_draft)->toBeTrue()
+        ->and($session->is_draft)->toBeFalse()
+        ->and($items->pluck('is_draft', 'key')->all())->toBe(['live-item' => false, 'draft-item' => true])
+        ->and($items->firstWhere('key', 'draft-item')->config)->not->toHaveKey('draft');
+});
+
+it('never changes is_draft on an existing row when re-run', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $module = CurriculumModule::where('key', 'community-needs')->firstOrFail();
+    $session = $module->sessions()->orderBy('order_column')->firstOrFail();
+    $item = $session->items()->orderBy('position')->firstOrFail();
+
+    $module->update(['is_draft' => true]);
+    $session->update(['is_draft' => true]);
+    $item->update(['is_draft' => true]);
+
+    $landscapeSession = CurriculumModule::where('key', 'digital-landscape')->firstOrFail()
+        ->sessions()->withDrafts()->where('slug', 'further-reading')->firstOrFail();
+    $landscapeSession->update(['is_draft' => false]);
+
+    $this->seed(CurriculumSeeder::class);
+
+    expect($module->fresh()->is_draft)->toBeTrue()
+        ->and($session->fresh()->is_draft)->toBeTrue()
+        ->and($item->fresh()->is_draft)->toBeTrue()
+        ->and($landscapeSession->fresh()->is_draft)->toBeFalse()
+        // Hidden draft rows are found, not duplicated, even outside the panel.
+        ->and(CurriculumModule::withDrafts()->where('key', 'community-needs')->count())->toBe(1)
+        ->and($module->sessions()->withDrafts()->where('slug', $session->slug)->count())->toBe(1)
+        ->and($session->items()->withDrafts()->where('key', $item->key)->count())->toBe(1);
+});
+
+it('finds existing draft rows from a public (scoped) context instead of duplicating them', function () {
+    $this->seed(CurriculumSeeder::class);
+    usePublicContext();
+
+    $this->seed(CurriculumSeeder::class);
+
+    $landscape = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
+
+    expect($landscape->sessions()->withDrafts()->count())->toBe(5)
+        ->and(CurriculumSession::withDrafts()->where('slug', 'further-reading')->count())->toBe(1);
+});
+
+it('rejects draft: true on an intro or toolkit module', function (string $section) {
+    seedModuleDefinition([
+        'key' => "always-live-{$section}",
+        'section' => $section,
+        'draft' => true,
+        'title' => ['en' => 'Always live'],
+    ]);
+})->with([CurriculumModule::SECTION_INTRO, CurriculumModule::SECTION_TOOLKIT])
+    ->throws(InvalidArgumentException::class, 'always live');

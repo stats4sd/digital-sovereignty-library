@@ -120,6 +120,13 @@ class EditCurriculumSession extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview')
+                ->label('Preview')
+                ->icon('heroicon-o-eye')
+                ->url(fn () => route('curriculum.preview.session', ['key' => $this->record->module->key, 'session' => $this->record->slug]))
+                ->openUrlInNewTab()
+                ->tooltip('Shows the last saved version')
+                ->visible(fn () => auth()->user()?->can('preview-curriculum') ?? false),
             Action::make('backToModule')
                 ->label('Back to module')
                 ->url(fn () => $this->moduleUrl()),

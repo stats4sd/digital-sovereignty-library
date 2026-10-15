@@ -1,15 +1,23 @@
 @extends('layouts.app')
-@section('title', $module->title)
+@section('title', ($curriculum->preview ? t('Preview').': ' : '').$module->title)
+@if($curriculum->preview)
+    @push('banner')
+        <x-curriculum-preview-banner :public-url="$curriculum->publicUrlFor($module)" />
+    @endpush
+    @push('head')
+        <meta name="robots" content="noindex">
+    @endpush
+@endif
 @section('content')
     @php
-        $firstSession = $module->sessions->first();
+        $firstSession = $module->sessions->first(fn ($s) => ! $s->is_draft) ?? $module->sessions->first();
         $outcomes = $module->outcomes_list;
     @endphp
 
     {{-- Hero --}}
     <section class="pt-12 pb-10 lg:pt-16">
         <div class="mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12">
-            <a href="{{ route('curriculum') }}" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-brand-secondary">
+            <a href="{{ $curriculum->mapUrl() }}" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-brand-secondary">
                 <x-dir-arrow back /> {{ t('Back to the learning map') }}
             </a>
 
@@ -21,7 +29,7 @@
 
             @if($firstSession)
                 <div class="mt-8 flex">
-                    <a href="{{ route('curriculum.session', ['key' => $module->key, 'session' => $firstSession->slug]) }}" class="brand-pill group">
+                    <a href="{{ $curriculum->sessionUrl($module, $firstSession) }}" class="brand-pill group">
                         <span class="flex flex-col text-left">
                             <span class="text-lg font-bold leading-snug">{{ t('Start Session 1') }}</span>
                             <span class="text-sm font-normal leading-snug opacity-80">{{ $firstSession->title }}</span>
@@ -105,7 +113,7 @@
             @if($module->sessions->isNotEmpty())
                 <div class="mt-10 flex flex-wrap gap-6">
                     @foreach($module->sessions as $session)
-                        <x-session-card :module="$module" :session="$session" :number="$loop->iteration" />
+                        <x-session-card :module="$module" :session="$session" />
                     @endforeach
                 </div>
             @else

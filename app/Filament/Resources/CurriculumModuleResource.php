@@ -94,6 +94,12 @@ class CurriculumModuleResource extends Resource
                         ->maxValue(255)
                         ->visible(fn (?CurriculumModule $record, string $operation) => static::isMapModule($record, $operation)),
 
+                    Forms\Components\Toggle::make('is_draft')
+                        ->label('Draft')
+                        ->helperText('Hidden from learners (and the learning map) until switched off. Use Preview in the header to see the page as it will look.')
+                        ->default(true)
+                        ->visible(fn (?CurriculumModule $record, string $operation) => static::isMapModule($record, $operation)),
+
                     TranslatableComboField::make('goal')
                         ->icon('heroicon-o-flag')
                         ->iconColor('primary')
@@ -194,6 +200,11 @@ class CurriculumModuleResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->wrap(),
+                Tables\Columns\TextColumn::make('is_draft')
+                    ->label('Status')
+                    ->badge()
+                    ->formatStateUsing(fn (CurriculumModule $record, bool $state): ?string => $record->isMapModule() ? ($state ? 'Draft' : 'Live') : null)
+                    ->color(fn (bool $state): string => $state ? 'warning' : 'success'),
                 Tables\Columns\TextColumn::make('key')
                     ->badge()
                     ->color('gray')

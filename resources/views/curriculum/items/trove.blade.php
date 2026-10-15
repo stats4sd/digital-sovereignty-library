@@ -1,4 +1,5 @@
 @php
+    $curriculum ??= new \App\Support\Curriculum\CurriculumContext(preview: false);
     $trove = $item->trove;
     $intro = $item->intro;
     $headingId = "item-{$item->key}";
@@ -11,7 +12,7 @@
             <span class="grey-badge whitespace-nowrap uppercase tracking-wide">{{ $trove->troveType->label }}</span>
         @endif
         <h2 id="{{ $headingId }}" class="min-w-0 flex-1 text-lg font-bold leading-snug text-brand-primary">{{ $trove->title }}</h2>
-        <a href="{{ route('resources.show', $trove->slug) }}"
+        <a href="{{ $curriculum->troveUrl($trove) }}"
             class="whitespace-nowrap text-sm font-semibold border border-brand-primary/30 rounded-lg px-4 py-1.5 hover:border-brand-secondary hover:text-brand-secondary transition-colors">
             {{ t('View in library') }}
         </a>
