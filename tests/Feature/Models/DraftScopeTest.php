@@ -45,3 +45,20 @@ it('shows drafts when an admin panel is current', function () {
         ->and(CurriculumSession::count())->toBe(2)
         ->and(CurriculumSessionItem::count())->toBe(2);
 });
+
+it('excludes draft items from the trove pivot relations on both sides', function () {
+    $session = CurriculumSession::factory()->create();
+    $live = publishedTrove(['title' => ['en' => 'Live resource']]);
+    $viaDraft = publishedTrove(['title' => ['en' => 'Only via a draft item']]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($live)->create(['position' => 0]);
+    CurriculumSessionItem::factory()->for($session, 'session')->trove($viaDraft)->draft()->create(['position' => 1]);
+
+    expect($session->troves()->pluck('troves.id')->all())->toBe([$live->id])
+        ->and($viaDraft->curriculumSessions()->count())->toBe(0)
+        ->and($live->curriculumSessions()->count())->toBe(1);
+
+    Filament::setCurrentPanel(Filament::getPanel('admin'));
+
+    expect($session->troves()->pluck('troves.id')->all())->toBe([$live->id, $viaDraft->id])
+        ->and($viaDraft->curriculumSessions()->count())->toBe(1);
+});

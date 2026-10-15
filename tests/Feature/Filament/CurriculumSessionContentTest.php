@@ -304,7 +304,7 @@ it('shows the Preview header action to editors with the preview URL', function (
     expect(route('curriculum.preview.session', ['key' => 'k', 'session' => 's'], false))->toBe('/preview/curriculum/k/s');
 });
 
-it('hides the Preview action from users who cannot preview', function () {
+it('keeps viewers off the session edit page and out of the preview gate', function () {
     actingAsViewer();
 
     $this->get(CurriculumSessionResource::getUrl('edit', ['record' => $this->session]))->assertForbidden();

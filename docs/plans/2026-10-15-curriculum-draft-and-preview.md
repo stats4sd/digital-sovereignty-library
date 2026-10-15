@@ -1,6 +1,6 @@
 # Curriculum: draft flag + gated preview
 
-**Status:** In Progress — implementation underway on branch `inline-troves`; nothing merged yet.
+**Status:** Completed — see [docs/change-logs/curriculum-draft-and-preview.md](../change-logs/curriculum-draft-and-preview.md).
 
 ## Context
 

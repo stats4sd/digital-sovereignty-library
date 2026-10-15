@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CurriculumItemType;
+use App\Support\Curriculum\DraftVisibility;
 use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -67,14 +68,24 @@ class CurriculumSession extends Model
      * The troves referenced by this session's `trove` items, in item order. A convenience
      * view over items(): the item row is the pivot, so withPivotValue pins type = trove on
      * both reads and attach(). Attaching through this relation cannot fill the item's
-     * NOT NULL key/position columns, so create trove items via items() instead.
+     * NOT NULL key/position columns, so create trove items via items() instead. The pivot
+     * is an item row, which DraftScope cannot see through, so draft items are excluded here
+     * explicitly under the same visibility rule.
      */
     public function troves(): BelongsToMany
     {
-        return $this->belongsToMany(Trove::class, 'curriculum_session_items')
+        $relation = $this->belongsToMany(Trove::class, 'curriculum_session_items')
             ->withPivotValue('type', CurriculumItemType::Trove->value)
-            ->withPivot('id', 'position', 'intro')
+            ->withPivot('id', 'position', 'intro', 'is_draft')
             ->orderByPivot('position');
+
+        // Not ->when(): its callback receives the Eloquent builder, where wherePivot() does
+        // not exist and silently degrades into where('pivot', 'is_draft', false).
+        if (! DraftVisibility::includesDrafts()) {
+            $relation->wherePivot('is_draft', false);
+        }
+
+        return $relation;
     }
 
     /**

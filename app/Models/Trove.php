@@ -6,6 +6,7 @@ use App\Enums\CurriculumItemType;
 use App\Enums\PublicationState;
 use App\Enums\ReviewState;
 use App\Models\Scopes\PublishedScope;
+use App\Support\Curriculum\DraftVisibility;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -354,13 +355,22 @@ class Trove extends Model implements HasMedia
     }
 
     /**
-     * Sessions that reference this trove through a `trove` CurriculumSessionItem.
+     * Sessions that reference this trove through a `trove` CurriculumSessionItem. Draft
+     * sessions are hidden by DraftScope; draft *items* are a pivot row the scope cannot see
+     * through, so they are excluded here under the same visibility rule.
      */
     public function curriculumSessions(): BelongsToMany
     {
-        return $this->belongsToMany(CurriculumSession::class, 'curriculum_session_items')
+        $relation = $this->belongsToMany(CurriculumSession::class, 'curriculum_session_items')
             ->withPivotValue('type', CurriculumItemType::Trove->value)
-            ->withPivot('id', 'position', 'intro');
+            ->withPivot('id', 'position', 'intro', 'is_draft');
+
+        // Not ->when(): see CurriculumSession::troves().
+        if (! DraftVisibility::includesDrafts()) {
+            $relation->wherePivot('is_draft', false);
+        }
+
+        return $relation;
     }
 
     public function relatedTroves()
