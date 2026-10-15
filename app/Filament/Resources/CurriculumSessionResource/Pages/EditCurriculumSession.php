@@ -87,12 +87,42 @@ class EditCurriculumSession extends EditRecord
         $this->fillForm();
     }
 
+    /**
+     * The parent module's edit page, opened on its Sessions tab (the relation-manager tab key
+     * from CurriculumModuleResource::getRelations(), bound to the `relation` query string).
+     */
+    protected function moduleUrl(): string
+    {
+        return CurriculumModuleResource::getUrl('edit', [
+            'record' => $this->record->curriculum_module_id,
+            'relation' => 'sessions',
+        ]);
+    }
+
+    /**
+     * Sessions are only reached from their module, so the trail runs modules list → module →
+     * session rather than through this resource's unlisted index page.
+     *
+     * @return array<string>
+     */
+    public function getBreadcrumbs(): array
+    {
+        $module = $this->record->module;
+
+        return [
+            CurriculumModuleResource::getUrl('index') => CurriculumModuleResource::getBreadcrumb(),
+            $this->moduleUrl() => (string) $module->title,
+            static::getResource()::getUrl('edit', ['record' => $this->record]) => (string) $this->record->title,
+            $this->getBreadcrumb(),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
             Action::make('backToModule')
                 ->label('Back to module')
-                ->url(fn () => CurriculumModuleResource::getUrl('edit', ['record' => $this->record->curriculum_module_id])),
+                ->url(fn () => $this->moduleUrl()),
         ];
     }
 }

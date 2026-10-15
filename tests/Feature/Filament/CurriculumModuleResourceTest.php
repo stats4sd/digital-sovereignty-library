@@ -316,3 +316,30 @@ it('links each session to its edit page and deletes from the relation manager', 
 
     expect(CurriculumSession::query()->whereKey($session->getKey())->exists())->toBeFalse();
 });
+
+it('lists modules intro first, then map modules in number order, then toolkit, showing the map order', function () {
+    $toolkit = CurriculumModule::factory()->toolkit()->create(['title' => ['en' => 'Toolkit pillar']]);
+    $second = CurriculumModule::factory()->map()->create(['number' => 2, 'title' => ['en' => 'Second node']]);
+    $first = CurriculumModule::factory()->map()->create(['number' => 1, 'title' => ['en' => 'First node']]);
+    $intro = CurriculumModule::factory()->intro()->create(['title' => ['en' => 'Intro module']]);
+
+    Livewire::test(ListCurriculumModules::class)
+        ->assertCanSeeTableRecords([$intro, $first, $second, $toolkit], inOrder: true)
+        ->assertTableColumnFormattedStateSet('section', 'Learning map', $first)
+        ->assertTableColumnFormattedStateSet('section', 'Toolkit', $toolkit)
+        ->assertTableColumnFormattedStateSet('section', 'Intro', $intro)
+        ->assertTableColumnStateSet('number', 2, $second);
+});
+
+it('shows the module fields and the relation manager as tabs on the edit page', function () {
+    $mapModule = CurriculumModule::factory()->map()->create();
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $mapModule->getKey()])
+        ->assertSeeInOrder(['Module', 'Sessions']);
+
+    $toolkitModule = CurriculumModule::factory()->toolkit()->create();
+
+    Livewire::test(EditCurriculumModule::class, ['record' => $toolkitModule->getKey()])
+        ->assertSeeInOrder(['Module', 'Resources'])
+        ->assertDontSee('Sessions');
+});

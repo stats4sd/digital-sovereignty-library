@@ -61,10 +61,12 @@ it('renders the toolkit section with all four pillars on the curriculum page', f
 });
 
 it('features the Farm Hack Box in the toolkit section before the pillars, not on the map', function () {
+    $knowledge = CurriculumModule::where('key', 'knowledge')->firstOrFail();
+
     $this->get('/curriculum')
         ->assertOk()
         // Featured card comes after the toolkit heading and before the first pillar…
-        ->assertSeeInOrder(['Build Your Sovereign Toolkit', 'The Farm Hack Box', 'Collect, store and hold onto'])
+        ->assertSeeInOrder(['Build Your Sovereign Toolkit', 'The Farm Hack Box', strip_tags($knowledge->getTranslation('description', 'en'))])
         // …and the map (which precedes the toolkit heading) does not list it.
         ->assertSeeInOrder(['Explore in any order', 'Build Your Sovereign Toolkit']);
 
@@ -77,9 +79,11 @@ it('has no standalone toolkit index page', function () {
 });
 
 it('renders a pillar detail page with its subtitle', function () {
+    $knowledge = CurriculumModule::where('key', 'knowledge')->firstOrFail();
+
     $this->get('/toolkit/knowledge')
         ->assertOk()
-        ->assertSee('Data &amp; Knowledge Repositories', false);
+        ->assertSee($knowledge->getTranslation('subtitle', 'en'));
 });
 
 it('404s on unknown module or pillar keys', function () {

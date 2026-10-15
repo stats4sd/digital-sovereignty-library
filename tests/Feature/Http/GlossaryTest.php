@@ -8,10 +8,12 @@ beforeEach(fn () => bootPublicSite());
 it('embeds the glossary data and drawer on public pages', function () {
     $this->seed(CurriculumSeeder::class);
 
+    $term = GlossaryTerm::query()->orderBy('id')->firstOrFail();
+
     $this->get('/curriculum')
         ->assertOk()
         ->assertSee('glossary-data')
-        ->assertSee('vast volumes of structured, semistructured'); // Big data definition
+        ->assertSee($term->getTranslation('term', 'en'));
 });
 
 it('omits the glossary drawer entirely when no terms exist', function () {

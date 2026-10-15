@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Resources\CurriculumModuleResource;
 use App\Filament\Resources\CurriculumSessionResource;
 use App\Filament\Resources\CurriculumSessionResource\Pages\EditCurriculumSession;
 use App\Models\CurriculumModule;
@@ -77,4 +78,19 @@ it('does not allow creating sessions directly (created via the module relation m
     expect(CurriculumSessionResource::canCreate())->toBeFalse()
         ->and(CurriculumSessionResource::getPages())->not->toHaveKey('create')
         ->and(CurriculumSessionResource::shouldRegisterNavigation())->toBeFalse();
+});
+
+it('breadcrumbs run from the modules list through the parent module to the session', function () {
+    $module = CurriculumModule::factory()->map()->create(['title' => ['en' => 'Parent module']]);
+    $session = CurriculumSession::factory()->for($module, 'module')->create(['title' => ['en' => 'Child session']]);
+
+    $page = Livewire::test(EditCurriculumSession::class, ['record' => $session->getKey()])->instance();
+    $breadcrumbs = $page->getBreadcrumbs();
+
+    $moduleUrl = CurriculumModuleResource::getUrl('edit', ['record' => $module, 'relation' => 'sessions']);
+
+    expect(array_values($breadcrumbs))->toBe(['Curriculum Modules', 'Parent module', 'Child session', 'Edit'])
+        ->and(array_keys($breadcrumbs)[0])->toBe(CurriculumModuleResource::getUrl('index'))
+        ->and(array_keys($breadcrumbs)[1])->toBe($moduleUrl)
+        ->and($moduleUrl)->toContain('relation=sessions');
 });
