@@ -5,6 +5,14 @@
 # machine translations described the old framing and were dropped; English only until the
 # translation workflow is re-run. Existing databases are updated by
 # Database\Seeders\Content\Module1DigitalLandscapeSeeder, which carries the same content.
+#
+# 2026-10-15 (later): first skeleton of the sessions, drafted from the "Module 1 Board"
+# (Claude artifact) — four sessions plus a library-only "Further reading" session. Every
+# prose/callout body here is a placeholder to be rewritten in the admin; the structure
+# (which resource goes where, which activity closes each session) is the thing being seeded.
+# Trove items reference library troves by slug or exact English title; the referenced troves
+# must exist first (the 24 new ones come from `php artisan troves:import
+# database/curriculum/troves/module-1.csv …`, the videos are already in the library).
 key: digital-landscape
 section: map
 number: 1
@@ -32,3 +40,627 @@ learning_outcomes:
       en: "Understand that 'data justice' is not just about who owns the files; it means understanding how data belongs within a community, and what it means to have ownership over that collective wisdom."
     in_practice:
       en: "you will be able to explain, in your own words, the difference between individual data ownership and data that is embedded in a community's relationships, territory and shared knowledge."
+sessions:
+  # ---------------------------------------------------------------------------------------
+  # Session 1 · What's the fuss all about?  (LO1 — power concentration)
+  # Board order: Big Farm-a video → Sadhana quote → IPES article → Head in the Cloud →
+  # ETC animation → mastery quiz → reflection prompt → TNI book as extra reading at the end.
+  # ---------------------------------------------------------------------------------------
+  -
+    slug: whats-the-fuss-all-about
+    builds_toward: 1
+    title:
+      en: "What's the fuss all about?"
+    summary:
+      en: 'Why a handful of technology and agriculture companies holding this much power is not just "how things are" — and why it matters for food.'
+    items:
+      -
+        key: 99ff2271-782e-4184-bed6-97eb1de22bf0
+        type: prose
+        config:
+          heading:
+            en: 'Why this matters'
+          body:
+            en: |-
+              <p>Most of us assume that "big tech" — a few international corporations wielding unfathomable amounts of money and power — is simply par for the course. "What's the big deal?" is a question we hear a lot when we talk about digital sovereignty. This session tries to explain why this is not only an important topic, but perhaps one of the most important topics of the moment.</p>
+              <p>The concentration of power in today's food systems is astonishingly high, and it is happening <em>through</em> digitalisation: the companies that supply seeds, chemicals and machinery (Big Ag) and the companies that own the cloud, the platforms and the data (Big Tech) are merging or partnering, so that control over what happens on a farm increasingly sits with a small number of firms.</p>
+              <p><em>[Draft placeholder — rewrite from DOC-M1, message 1. The IPES-Food power-concentration graphic is meant to sit here once licensed or redrawn.]</em></p>
+      -
+        key: 6b7ae6f5-ec49-4ffc-99f7-aaade9a30342
+        type: trove
+        trove: big-farm-a-sadhana-sanjay
+        intro:
+          en: '<p><strong>Watch this first — it is the anchor piece for the whole module.</strong> Sadhana Sanjay (IT for Change) explains how "big tech" and "big ag" monopolies work together to concentrate power away from local communities: how the cloud is physical infrastructure, why data is the lifeblood of the digital economy, and how data generated on farms is processed and sold back to farmers. About 23 minutes, captioned.</p>'
+      -
+        key: 9c3e44fd-af20-4f8a-ba18-f859d0124d34
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'In her words'
+          body:
+            en: |-
+              <blockquote><p>"The scenario today is that Microsoft, Amazon, Google, Meta and Apple — they together control all the digital infrastructure that is necessary for modern life to function."</p></blockquote>
+              <p>— Sadhana Sanjay, IT for Change, <em>Big Farm-a</em></p>
+          lesson:
+            en: 'Digital infrastructure is not neutral plumbing: whoever controls it controls what can be built on top of it — including in agriculture.'
+      -
+        key: 171d83dc-b654-4e69-85da-6750a4a16a6b
+        type: prose
+        config:
+          heading:
+            en: 'Read: how digitalisation concentrates power'
+          body:
+            en: '<p>Two pieces from IPES-Food take the argument from the video and ground it in the food system. Start with the short article; the full report is there if you want to go deeper.</p>'
+      -
+        key: 6215166f-769d-47ef-86ff-77abd78d86ed
+        type: trove
+        trove: 'Digital agriculture is concentrating corporate power over food systems'
+        intro:
+          en: '<p><strong>Main reading.</strong> A short article on how digital agriculture is driving corporate concentration in food systems — and the source of the mergers-and-partnerships graphic for this module.</p>'
+      -
+        key: b5825095-69f4-41b7-920d-93396039a7b8
+        type: trove
+        trove: 'Head in the Cloud: challenging the false promise of digital agriculture and cultivating innovation from the ground up'
+        intro:
+          en: '<p><strong>Go deeper (optional).</strong> IPES-Food''s 2026 report on the false promises of digital agriculture and the case for innovation from the ground up. Skim the summary; the rest is reference material for later modules.</p>'
+      -
+        key: 050af881-264d-4b2f-b29d-67f9f8740b6b
+        type: trove
+        trove: 'Big Brother is Coming to the Farm: the digital takeover of food'
+        intro:
+          en: '<p><strong>Watch (short).</strong> ETC Group''s animated film tells the same story in a few minutes, and is a good one to share. The English version is embedded; the playlist link has it in many other languages.</p>'
+      -
+        key: b8e846a7-e9aa-49fa-b3d4-192a2da28120
+        type: quiz
+        config:
+          heading:
+            en: 'Check your understanding: Big Farm-a'
+          passMark: 4
+          items:
+            -
+              id: q1-companies
+              kind: pick-many
+              stem:
+                en: 'Which companies does Sadhana Sanjay name as together controlling the digital infrastructure that modern life depends on? Select all that apply.'
+              options:
+                - { id: microsoft, text: { en: Microsoft }, correct: true }
+                - { id: amazon, text: { en: Amazon }, correct: true }
+                - { id: google, text: { en: Google }, correct: true }
+                - { id: meta, text: { en: Meta }, correct: true }
+                - { id: apple, text: { en: Apple }, correct: true }
+                - { id: john-deere, text: { en: 'John Deere' }, correct: false }
+                - { id: bayer, text: { en: Bayer }, correct: false }
+              feedback:
+                correct:
+                  en: 'Right — the five "Big Tech" firms. Agricultural companies like John Deere and Bayer enter the picture through partnerships with them.'
+                incorrect:
+                  en: 'The video names Microsoft, Amazon, Google, Meta and Apple. Agricultural companies come in through partnerships and mergers with these firms rather than by owning the infrastructure themselves.'
+            -
+              id: q2-cloud
+              kind: pick-one
+              stem:
+                en: 'In the video, what is "the cloud"?'
+              options:
+                - { id: physical, text: { en: 'Physical infrastructure — data centres, cables and compute facilities, often built on Indigenous land' }, correct: true }
+                - { id: virtual, text: { en: 'A purely virtual space with no physical footprint' }, correct: false }
+                - { id: weather, text: { en: 'A weather-forecasting service for farmers' }, correct: false }
+                - { id: public, text: { en: 'A public service run by governments' }, correct: false }
+              feedback:
+                correct:
+                  en: 'Yes. The cloud is very physical: cables, data centres and chips, with real land, water and energy costs.'
+                incorrect:
+                  en: 'The cloud is physical infrastructure — cables, data centres and compute facilities — owned by a few companies and often built on Indigenous land.'
+            -
+              id: q3-lifeblood
+              kind: pick-one
+              stem:
+                en: 'What does the video describe as the lifeblood of the digital economy?'
+              options:
+                - { id: data, text: { en: Data }, correct: true }
+                - { id: advertising, text: { en: Advertising } , correct: false }
+                - { id: hardware, text: { en: 'Hardware sales' }, correct: false }
+                - { id: subscriptions, text: { en: 'Software subscriptions' }, correct: false }
+              feedback:
+                correct:
+                  en: 'Data — which is why control over how it is generated, processed and sold matters so much.'
+                incorrect:
+                  en: 'The answer is data. Everything else in the digital economy is built on collecting and processing it.'
+            -
+              id: q4-expansion
+              kind: pick-many
+              stem:
+                en: 'According to the video, how do Big Tech and Big Ag come together in agriculture? Select all that apply.'
+              options:
+                - { id: capitalise, text: { en: 'Big Tech capitalises on the infrastructure it already owns (cloud, compute, platforms) to expand into agriculture' }, correct: true }
+                - { id: partnerships, text: { en: 'Big Ag pursues datafication and digital services through partnerships and mergers with tech firms' }, correct: true }
+                - { id: farmland, text: { en: 'Tech companies buy up farmland and farm it directly' }, correct: false }
+                - { id: coops, text: { en: 'Farmers'' cooperatives contract Big Tech to host their data for free' }, correct: false }
+              feedback:
+                correct:
+                  en: 'Both routes are described: infrastructure owners expanding into agriculture, and agricultural firms digitising through partnerships and mergers.'
+                incorrect:
+                  en: 'The two routes in the video are Big Tech capitalising on its infrastructure to expand into agriculture, and Big Ag digitising through partnerships and mergers with tech firms.'
+            -
+              id: q5-cycle
+              kind: pick-one
+              stem:
+                en: 'Which best describes the data cycle the video outlines?'
+              options:
+                - { id: cycle, text: { en: 'Data is generated on farms, processed by companies, and sold back to farmers as services and advice' }, correct: true }
+                - { id: stays, text: { en: 'Data stays on the farm and is only shared when the farmer chooses' }, correct: false }
+                - { id: government, text: { en: 'Data is collected by governments and published as open statistics' }, correct: false }
+                - { id: deleted, text: { en: 'Data is deleted once a season''s decisions have been made' }, correct: false }
+              feedback:
+                correct:
+                  en: 'Yes — generation, processing, resale. The value is extracted and then sold back, without redistribution to the people who produced it.'
+                incorrect:
+                  en: 'The cycle is: data generated on farms → processed by companies → sold back to farmers as services. The value is extracted without being redistributed.'
+            -
+              id: q6-resistance
+              kind: pick-one
+              stem:
+                en: 'Which of these is given in the video as an example of resistance to this model?'
+              options:
+                - { id: data-coops, text: { en: 'Data cooperatives — farmers governing their data collectively' }, correct: true }
+                - { id: stronger-passwords, text: { en: 'Stronger passwords on farm apps' }, correct: false }
+                - { id: more-sensors, text: { en: 'Installing more sensors to produce more data' }, correct: false }
+                - { id: switching, text: { en: 'Switching from one Big Tech platform to another' }, correct: false }
+              feedback:
+                correct:
+                  en: 'Data cooperatives are one of the alternatives mentioned — Module 4 of this course returns to them.'
+                incorrect:
+                  en: 'The example given is data cooperatives, where farmers govern their data collectively. Module 4 returns to this.'
+      -
+        key: d03f64c0-492f-4416-b268-fb3367b5afa4
+        type: prose
+        config:
+          body:
+            en: '<p>Before moving on, bring this home. Think about a digital tool, service or platform that farmers or organisations around you already use — a market app, a weather or advisory service, a messaging group, an input supplier''s scheme.</p>'
+      -
+        key: 0268d8d5-d4ce-4dc5-bc08-a2345a237b7c
+        type: note_prompt
+        config:
+          heading:
+            en: 'Reflect: a data cycle from your own context'
+          prompt:
+            en: 'Describe the cycle of data generation, processing and resale that links Big Tech and Big Ag, and name one example of it from your own context. Who generates the data, who processes it, and who ends up paying for the result?'
+          label:
+            en: 'Your example'
+          placeholder:
+            en: 'A few sentences…'
+          rows: 6
+      -
+        key: ccd9e0bf-c78e-4d2f-b567-ebd443c56334
+        type: trove
+        trove: 'Digital Power: State of Power 2023'
+        intro:
+          en: '<p><strong>Extra reading.</strong> A good read but a long one — a full book. The Transnational Institute''s State of Power report on digital power, for when you want the bigger picture beyond agriculture.</p>'
+      -
+        key: 48f03984-0b4d-47d0-9a9f-ec5e343d78c5
+        type: callout
+        config:
+          kind: takeaways
+          heading:
+            en: 'Key takeaways'
+          body:
+            en: |-
+              <ul>
+              <li>A handful of companies control the digital infrastructure — cloud, compute, platforms — that modern life, and increasingly farming, depends on.</li>
+              <li>Big Tech and Big Ag are merging and partnering; digitalisation is how power in food systems is being concentrated.</li>
+              <li>Data generated on farms is processed by companies and sold back to farmers; the value is extracted without being redistributed.</li>
+              </ul>
+
+  # ---------------------------------------------------------------------------------------
+  # Session 2 · Who wins? Who loses? A focus on real people  (LO2 — risks)
+  # Board order: Saloni Mishra video → risks quote → Canfield video → FIAN paper →
+  # CSIPM webinar 1 → CSIPM webinar 2 → reflection (note_matrix).
+  # ---------------------------------------------------------------------------------------
+  -
+    slug: who-wins-who-loses
+    builds_toward: 2
+    title:
+      en: 'Who wins? Who loses? A focus on real people'
+    summary:
+      en: 'What concentrated digital power means for the people living with it: lock-ins, dependency, surveillance, land and the sidelining of local knowledge.'
+    items:
+      -
+        key: 36debed1-3002-4805-b8b1-b347bdadf870
+        type: prose
+        config:
+          heading:
+            en: 'What does all this mean for people?'
+          body:
+            en: |-
+              <p>Session 1 looked at who holds power. This session asks what that power does to the people living with it. Concentrated, cross-sectoral control over data, platforms, physical infrastructure and farm inputs creates lock-ins and dependency loops — in insurance, in extension advice, in which crops and which technologies are "recommended", even in land tenure. It deepens information asymmetries, expands surveillance, and sidelines the knowledge of the people who actually farm.</p>
+              <p><em>[Draft placeholder — rewrite from DOC-M1, message 2.]</em></p>
+      -
+        key: 148535e9-6264-4d76-8aad-3691c536ab1b
+        type: trove
+        trove: indigenous-peoples-data-rights-in-a-digital-era-saloni-mishra
+        intro:
+          en: '<p><strong>Watch.</strong> Saloni Mishra (IT for Change) on epistemic justice and the right of peoples to their own knowledge — and how extracted data sidelines traditional and Indigenous knowledge. This video also opens Module 2, where the knowledge question is taken further.</p>'
+      -
+        key: 230984fe-ad33-40ec-98e7-8686177b9875
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'Opportunities — and risks'
+          body:
+            en: |-
+              <blockquote><p>"Yet while digital technologies could hold opportunities, they also generate significant risks through their disruptive potentials. For example, they can create new dependencies and lock-ins, deepen information asymmetries, and expand surveillance and control over food systems."</p></blockquote>
+              <p>— Sabrina Masinjila, Barbara and Matt Canfield, <em>What does data justice mean for African small-holder farmers?</em> (Agroecology Now)</p>
+          lesson:
+            en: 'The risks are not side effects to be patched later; they follow from who controls the technology and on whose terms.'
+      -
+        key: 0b8f0fad-da4a-414a-bfc3-c272ba6c40c2
+        type: trove
+        trove: "Data privacy alone is not enough when farmers' land, seeds and lives are at stake"
+        intro:
+          en: '<p><strong>Watch.</strong> Matt Canfield (AFSA) argues that the "data privacy" frame misses what is really at stake for farmers: land, seeds and collective life. A useful pivot from individual risks to collective ones — which is where Session 4 goes.</p>'
+      -
+        key: af123fda-4faa-42a6-b611-f8d6e3ec3153
+        type: trove
+        trove: 'Digitalization and Land Governance'
+        intro:
+          en: '<p><strong>Read.</strong> FIAN International''s research paper on what happens when land records and land administration are digitised — the land-tenure lock-in that the opening text refers to.</p>'
+      -
+        key: f4bc9363-27ed-48c4-ab0c-951456531387
+        type: prose
+        config:
+          heading:
+            en: 'Going deeper: two CSIPM webinars'
+          body:
+            en: '<p>Both recordings below are long and made up of several presentations, so treat them as reference material rather than required viewing. <em>[To do: add timestamped links to the individual presentations in each trove''s description.]</em></p>'
+      -
+        key: a7f1cee3-6cd5-4b9e-b343-e4d68edf2acf
+        type: trove
+        trove: 'Digitalization, AI and Data Governance in Food Systems and Beyond (CSIPM webinar)'
+        intro:
+          en: '<p>The first presentation in this webinar accompanies IPES-Food''s <em>Head in the Cloud</em> report from Session 1.</p>'
+      -
+        key: 1d9cd128-ccb2-4c11-8302-7947097d01ac
+        type: trove
+        trove: "Impacts on people's territories and self-determined use of technologies (CSIPM webinar)"
+        intro:
+          en: '<p>On the impacts of digitalisation on peoples'' territories and on the self-determined use of technologies. Reference piece.</p>'
+      -
+        key: f625171c-b038-4fa0-85f9-e7b4f41935f5
+        type: prose
+        config:
+          body:
+            en: '<p>Now map these risks onto your own community. For each row, name a risk — lock-in and dependency, surveillance, extraction without redistribution, the sidelining of local knowledge, or one of your own — say whether it is already here, and give one concrete example.</p>'
+      -
+        key: f69d23e6-60f0-4192-a218-5118b18af9d7
+        type: note_matrix
+        config:
+          heading:
+            en: 'Reflect: which risks does your community already experience?'
+          rows: 4
+          rowLabel:
+            en: Risk
+          fields:
+            -
+              id: risk
+              kind: text
+              label:
+                en: 'Which risk?'
+              placeholder:
+                en: 'e.g. lock-in and dependency'
+            -
+              id: status
+              kind: select
+              label:
+                en: 'Where are you with it?'
+              options:
+                - { id: already-here, text: { en: 'Already here' } }
+                - { id: coming, text: { en: 'Coming' } }
+                - { id: not-relevant, text: { en: 'Not relevant to us' } }
+            -
+              id: example
+              kind: text
+              label:
+                en: 'One example from your context'
+              placeholder:
+                en: 'What happened, to whom?'
+      -
+        key: f1f7d7f8-94a9-4c56-9dbc-60b8f7c125ed
+        type: callout
+        config:
+          kind: takeaways
+          heading:
+            en: 'Key takeaways'
+          body:
+            en: |-
+              <ul>
+              <li>Concentrated digital power translates into lock-ins and dependency loops — in inputs, advice, insurance, markets and even land tenure.</li>
+              <li>Data extraction sidelines traditional and Indigenous knowledge; the harm is epistemic as well as economic.</li>
+              <li>"Privacy" is too narrow a frame: what is at stake for farmers is land, seeds and collective life.</li>
+              </ul>
+
+  # ---------------------------------------------------------------------------------------
+  # Session 3 · AI in the Here and Now  (LO2 — AI boosting corporate control, and a counter-example)
+  # Board order: ITfC generative-biology paper → IARAA article → GroundWork video.
+  # ---------------------------------------------------------------------------------------
+  -
+    slug: ai-in-the-here-and-now
+    builds_toward: 2
+    title:
+      en: 'AI in the Here and Now'
+    summary:
+      en: 'How artificial intelligence is accelerating corporate control over food and genetic resources today — and one example of AI built for the peasantry instead.'
+    items:
+      -
+        key: bdfd796f-b047-429e-accb-c5dafc95c181
+        type: prose
+        config:
+          heading:
+            en: 'AI is not a future problem'
+          body:
+            en: |-
+              <p>Everything in Sessions 1 and 2 — datafication, extraction, lock-in — is being boosted by artificial intelligence, now. AI systems need enormous amounts of data and compute, which pushes power further towards the firms that already own both. And they are being pointed at the living world: seeds, genomes, traditional knowledge about plants and soils.</p>
+              <p>This session looks at three pieces: how generative AI applied to biology becomes a new frontier of biopiracy; what AI and data sovereignty mean for Indigenous governance; and, as a counter-example, an initiative that puts AI at the service of peasant movements.</p>
+              <p><em>[Draft placeholder — rewrite; DOC-M1 only has one line on AI ("AI is boosting corporate control"), so this session needs its own narrative.]</em></p>
+      -
+        key: 0b5c06cf-b2e4-4417-9a28-36532e1c690d
+        type: trove
+        trove: "AI's Large Looting Models: the emerging generative biology stack as the next frontier of biopiracy"
+        intro:
+          en: '<p><strong>Read.</strong> IT for Change on the "generative biology stack": how AI trained on genetic and biological data extends corporate control over genetic resources and traditional knowledge.</p>'
+      -
+        key: eeba52db-f462-4b79-9272-fe65ff5c965d
+        type: trove
+        trove: 'AI & Data Sovereignty: emerging technologies and Indigenous governance'
+        intro:
+          en: '<p><strong>Watch.</strong> GroundWork on artificial intelligence, data sovereignty and Indigenous governance of emerging technologies.</p>'
+      -
+        key: d9ba8a41-0125-4afc-8b80-a2bbb51a1a48
+        type: trove
+        trove: 'IARAA: artificial intelligence at the service of the peasantry and food sovereignty in Brazil'
+        intro:
+          en: '<p><strong>Read — a counter-example.</strong> IARAA in Brazil: what it looks like when AI is built by and for peasant movements rather than sold to them.</p>'
+      -
+        key: ebb84ac2-b474-4d49-89ab-4fd847bb4c15
+        type: note_prompt
+        config:
+          heading:
+            en: 'Reflect: where is AI already in your food system?'
+          prompt:
+            en: 'Name one place where AI (or something sold as AI) already touches farming, markets or extension in your context. Who built it, who owns the data it runs on, and who benefits? Could it have been built the IARAA way — by and for the people who use it?'
+          label:
+            en: 'Your notes'
+          placeholder:
+            en: 'A few sentences…'
+          rows: 6
+      -
+        key: e9861e56-7f9d-4b94-bd74-abe653f5bdb4
+        type: callout
+        config:
+          kind: takeaways
+          heading:
+            en: 'Key takeaways'
+          body:
+            en: |-
+              <ul>
+              <li>AI amplifies the dynamics of Sessions 1 and 2: more data, more compute, more concentration.</li>
+              <li>Applied to biology, AI becomes a new route to biopiracy — extracting value from genetic resources and traditional knowledge.</li>
+              <li>AI can be built differently: initiatives like IARAA show what "at the service of the peasantry" can mean in practice.</li>
+              </ul>
+
+  # ---------------------------------------------------------------------------------------
+  # Session 4 · Data justice is collective — resist and build  (LO3)
+  # Board order: relational-data quote → Agroecology Now article → Carren, Polycap, Mariam
+  # testimonies → DPI references (two troves) → written testimony excerpts → reflection prompt.
+  # ---------------------------------------------------------------------------------------
+  -
+    slug: data-justice-is-collective
+    builds_toward: 3
+    title:
+      en: 'Data justice is collective — resist and build'
+    summary:
+      en: 'Why data belongs within a community rather than to individuals, what farmers in Kenya, Uganda and South Africa are already doing about it, and what "public" digital infrastructure could mean.'
+    items:
+      -
+        key: 6a25cf97-01a7-4984-94fd-a2602662327e
+        type: prose
+        config:
+          heading:
+            en: 'Resist — and build'
+          body:
+            en: |-
+              <p>If the problem is concentrated power exercised through digital systems, the answer is not better terms of service. It is to resist, and to build civic digital systems rooted in our own territories and in collective knowledge: to decolonise knowledge systems, recentre farmers' knowledge and grassroots innovation, act in alliances — agroecology organisations, technologists, research institutes, local authorities, international institutions — and insist on a rights-based approach to digitalisation.</p>
+              <p>That starts with a different idea of what data <em>is</em>.</p>
+              <p><em>[Draft placeholder — rewrite from DOC-M1, message 3.]</em></p>
+      -
+        key: e918f751-55f8-448c-848f-3830ce364cdc
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'Data is relational'
+          body:
+            en: |-
+              <blockquote><p>"From a farmer's perspective, data is not an individual resource to be owned or controlled in isolation. It is embedded in their relationships — with their agroecological territories, shared resources, communities, and governments — and emerges from the questions, constraints, and challenges they confront in daily life. Data justice, therefore, cannot be universal or abstract; it must be grounded in these lived relationships."</p></blockquote>
+              <p>— Sabrina Masinjila, Barbara and Matt Canfield, <em>What does data justice mean for African small-holder farmers?</em> (Agroecology Now)</p>
+          lesson:
+            en: 'Data justice is not about who owns the files. It is about how data belongs within a community, and what ownership of that collective wisdom means.'
+      -
+        key: 00934c10-b1ab-41b3-898c-dbc6b2fc7563
+        type: trove
+        trove: 'What does data justice mean for African small-holder farmers? Towards a human rights-based approach in Africa'
+        intro:
+          en: '<p><strong>Read.</strong> The article the two quotes in this module come from: data justice for African smallholders and the case for a human rights-based approach. It is shared with Module 2, which picks up the knowledge side of the argument.</p>'
+      -
+        key: 513abbbf-5dd8-4152-8e9d-ef9beb2581fa
+        type: prose
+        config:
+          heading:
+            en: 'Voices from the praxis course'
+          body:
+            en: '<p>Three short testimonies from participants in the Digital Sovereignty Praxis Course, each a lived example of the risks in Session 2 — and of what resisting and building looks like on the ground.</p>'
+      -
+        key: 8d58c032-9216-41c3-89a5-737d006bcee5
+        type: trove
+        trove: digital-sovereignty-for-women-and-youth-farmers-in-kenya-carren-katenya
+        intro:
+          en: '<p><strong>Kenya.</strong> Carren Katenya (Lean on Women / AFSA): digital systems reinforce inequalities unless they are intentionally designed not to; community-owned tools, collective ownership and local digital literacy as the alternative.</p>'
+      -
+        key: 54185a9d-3cd3-47c7-8c0d-d09009eae484
+        type: trove
+        trove: digital-markets-and-middlemen-in-uganda-polycap-kalokwera
+        intro:
+          en: '<p><strong>Uganda.</strong> Polycap Kalokwera (AFSA): how middlemen capture most of the value from smallholders, how farmer-controlled digital markets could change that — and how fragile the foundations (connectivity, power, device access) are.</p>'
+      -
+        key: e8f20f15-be1c-43b7-acd6-2774182d6c5c
+        type: trove
+        trove: digital-sovereignty-as-a-political-process-mariam-mayet
+        intro:
+          en: '<p><strong>South Africa.</strong> Mariam Mayet (African Centre for Biodiversity): digital sovereignty as an ongoing political struggle rather than a technical goal — and why it may sometimes mean less digitisation rather than more.</p>'
+      -
+        key: e4d1226a-d4c8-45ac-8cfd-c514ee1b78c8
+        type: callout
+        config:
+          kind: example
+          heading:
+            en: 'In their own words'
+          body:
+            en: |-
+              <p>From the written contributions to the praxis course:</p>
+              <blockquote><p>"Digital systems are infrastructures of power that shape how agricultural knowledge is recorded, how markets function, and how communities are positioned…"</p></blockquote>
+              <p>— African Centre for Biodiversity</p>
+              <blockquote><p>"Across Uganda and East Africa, this digital dependence rests on fragile foundations."</p></blockquote>
+              <p>— Uganda</p>
+              <blockquote><p>"Without intentional design — reinforce inequalities."</p></blockquote>
+              <p>— Carren Katenya</p>
+              <blockquote><p>"Digital sovereignty may sometimes mean less digitisation rather than more."</p></blockquote>
+              <p>— African Centre for Biodiversity</p>
+              <p><em>[Draft — excerpts taken from the Module 1 Board summary of "Synthesis Assignments.docx"; check wording against the source and pick two or three per session.]</em></p>
+      -
+        key: 68b2cb02-9240-4cf9-b403-d8b9735799ca
+        type: prose
+        config:
+          heading:
+            en: 'Building the alternative: recovering the "public"'
+          body:
+            en: '<p>What would digital infrastructure that serves communities rather than extracting from them look like? Two references on "digital public infrastructure" (DPI) and what it takes for it to be genuinely public.</p>'
+      -
+        key: 80b2c0c8-f6b0-4efb-97a1-0abd7fc1c080
+        type: trove
+        trove: "Recovering the 'public' in India's Digital Public Infrastructure"
+        intro:
+          en: '<p><strong>Read.</strong> IT for Change on India''s DPI and what recovering a genuinely public character for it would require.</p>'
+      -
+        key: ba1f76e2-bf03-4e02-87f2-c935796931f4
+        type: trove
+        trove: 'Rethinking data governance for truly public DPI'
+        intro:
+          en: '<p><strong>Read.</strong> Research ICT Africa on rethinking data governance so that DPI serves the public interest.</p>'
+      -
+        key: 96415d0b-ba58-495e-84ae-95e6a2b15d2f
+        type: note_prompt
+        config:
+          heading:
+            en: 'Reflect: individual data, or data embedded in community?'
+          prompt:
+            en: 'In your own words, what is the difference between data you own as an individual and data that is embedded in your community''s relationships, territory and shared knowledge? Give one example of each from your context.'
+          label:
+            en: 'Your answer'
+          placeholder:
+            en: 'A few sentences…'
+          rows: 8
+      -
+        key: ab39d336-ebda-4ec0-83b9-72ec96fe7142
+        type: callout
+        config:
+          kind: takeaways
+          heading:
+            en: 'Key takeaways — and where next'
+          body:
+            en: |-
+              <ul>
+              <li>Data is relational: it emerges from, and belongs within, a community's relationships, territory and shared knowledge.</li>
+              <li>Resisting means building — civic digital systems rooted in territories and collective knowledge, in alliances, with a rights-based approach.</li>
+              <li>Sometimes digital sovereignty means less digitisation, not more.</li>
+              </ul>
+              <p><strong>Next:</strong> Module 2 picks up the knowledge question — whose knowledge counts, and how to keep it in the hands of the communities it comes from.</p>
+
+  # ---------------------------------------------------------------------------------------
+  # Further reading — library only. No builds_toward: it supports the whole module rather than
+  # one outcome. Low priority for Version 1; the troves exist in the library either way.
+  # ---------------------------------------------------------------------------------------
+  -
+    slug: further-reading
+    title:
+      en: 'Further reading'
+    summary:
+      en: 'Optional background for the whole module: market maps, research papers, rights frameworks and open-technology communities.'
+    items:
+      -
+        key: 2eb755d3-9a27-484e-a159-2a1efafa87fe
+        type: prose
+        config:
+          heading:
+            en: 'If you want more'
+          body:
+            en: '<p>None of this is required. These are the pieces behind the module''s sources — for anyone who wants to follow the argument further, check a claim, or find a community to join.</p>'
+      -
+        key: 8b9f8940-5ba0-4f57-96f0-a4c4464a890e
+        type: trove
+        trove: 'Stop Data Colonialism campaign'
+        intro:
+          en: '<p>Honor the Earth''s campaign on data colonialism and Indigenous lands.</p>'
+      -
+        key: 418e7400-aee9-48c6-8fb5-b416cc4d081a
+        type: trove
+        trove: "Farm Tech Market Map: why it's time to distinguish farm tech from the messy supply chain"
+        intro:
+          en: '<p>A map of who the farm-tech players are (The Mixing Bowl). Low priority.</p>'
+      -
+        key: 8b96478e-81d7-4fd3-ad63-4aac78776814
+        type: trove
+        trove: 'New but for whom? Discourses of innovation in precision agriculture'
+        intro:
+          en: '<p>Academic article on whose interests "innovation" in precision agriculture serves. Paywalled.</p>'
+      -
+        key: a8b17a13-2a18-48e4-a251-92227d9dee5f
+        type: trove
+        trove: "Peasants' Rights Explained: an illustrated version of UNDROP"
+        intro:
+          en: '<p>The rights framework behind a rights-based approach to digitalisation, illustrated (La Via Campesina).</p>'
+      -
+        key: 4e1b7b3d-02f3-49c4-bd9c-4e31daf67ad9
+        type: trove
+        trove: 'Gathering for Open Agricultural Technology (GOAT)'
+        intro:
+          en: '<p>A community building and sharing open-source agricultural technology.</p>'
+      -
+        key: ab8a8d65-0ba7-4384-998d-748511b39692
+        type: trove
+        trove: 'Introduction to Agricultural Informatics (open course)'
+        intro:
+          en: '<p>Open course materials from Purdue''s Agricultural Informatics Lab, for the technical background.</p>'
+      -
+        key: 58982573-7414-4056-a837-14fa82440713
+        type: trove
+        trove: 'Farmer Perspectives on Data'
+        intro:
+          en: '<p>How farmers in the United States view agricultural data — who should own it and who they trust with it.</p>'
+      -
+        key: ab628b7e-77b0-4877-9575-bd1566e6f13f
+        type: trove
+        trove: "Small Farms and the Future of AgTech: a needs assessment in California's San Joaquin Valley"
+        intro:
+          en: '<p>What small farms actually need from agricultural technology — a 2025 needs assessment (CAFF).</p>'
+      -
+        key: 9ea9b3aa-564f-4915-aaed-3d65ce8020e3
+        type: trove
+        trove: 'Principles for inclusion of smallholders in digital tools'
+        intro:
+          en: '<p>CGIAR principles for including smallholders in the design and governance of digital tools (2024).</p>'
+      -
+        key: 03bea848-4d1e-493e-8885-ba63f45b042f
+        type: trove
+        trove: opengrains
+        intro:
+          en: '<p>Referenced from the IT for Change and GRAIN material used in Module 1.</p>'

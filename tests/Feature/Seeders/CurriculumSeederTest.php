@@ -4,6 +4,7 @@ use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
 use App\Models\GlossaryTerm;
+use App\Models\Trove;
 use Database\Seeders\Prep\CurriculumSeeder;
 use Symfony\Component\Yaml\Yaml;
 
@@ -132,7 +133,8 @@ it('preserves an admin-edited session title on re-run', function () {
 
     $this->seed(CurriculumSeeder::class);
 
-    expect(CurriculumSession::count())->toBe(4)
+    // Scoped to the module: other modules (digital-landscape) seed sessions of their own.
+    expect($module->sessions()->count())->toBe(4)
         ->and($session->refresh()->getTranslation('title', 'en'))->toBe('Edited session title');
 });
 
@@ -278,4 +280,108 @@ it('preserves an admin-edited item and adds none on re-run', function () {
 
     expect(CurriculumSessionItem::count())->toBe($itemCount)
         ->and($item->refresh()->config['heading']['en'] ?? null)->toBe('Edited by admin');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Trove items and sessions without a builds_toward (Module 1 skeleton)
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * Every `trove` reference in a module's YAML, as the seeder reads it.
+ *
+ * @return list<string>
+ */
+function troveReferencesIn(string $moduleKey): array
+{
+    $definition = Yaml::parseFile(database_path("curriculum/modules/{$moduleKey}.yaml"));
+
+    return collect($definition['sessions'] ?? [])
+        ->flatMap(fn (array $session) => $session['items'] ?? [])
+        ->where('type', 'trove')
+        ->pluck('trove')
+        ->unique()
+        ->values()
+        ->all();
+}
+
+it('creates digital-landscape sessions but defers their items until the referenced troves exist', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $definition = Yaml::parseFile(database_path('curriculum/modules/digital-landscape.yaml'));
+    $module = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
+
+    expect($module->sessions()->count())->toBe(count($definition['sessions']))
+        ->and(troveReferencesIn('digital-landscape'))->not->toBeEmpty();
+
+    // No troves in the database yet: every session that references one holds no items.
+    foreach ($definition['sessions'] as $sessionDefinition) {
+        $hasTroveItems = collect($sessionDefinition['items'] ?? [])->contains('type', 'trove');
+        $session = $module->sessions()->where('slug', $sessionDefinition['slug'])->firstOrFail();
+
+        if ($hasTroveItems) {
+            expect($session->items()->count())->toBe(0);
+        }
+    }
+
+    // Import the troves (titles double as slugs for slug-style references), then re-run.
+    foreach (troveReferencesIn('digital-landscape') as $reference) {
+        publishedTrove(['title' => ['en' => $reference]]);
+    }
+
+    $this->seed(CurriculumSeeder::class);
+
+    foreach ($definition['sessions'] as $sessionDefinition) {
+        $expectedItems = $sessionDefinition['items'] ?? [];
+        $session = $module->sessions()->where('slug', $sessionDefinition['slug'])->firstOrFail();
+        $items = $session->items()->orderBy('position')->get();
+
+        expect($items->pluck('key')->all())->toBe(array_column($expectedItems, 'key'))
+            ->and($items->pluck('type')->map->value->all())->toBe(array_column($expectedItems, 'type'));
+
+        foreach ($expectedItems as $index => $itemDefinition) {
+            if ($itemDefinition['type'] !== 'trove') {
+                continue;
+            }
+
+            $item = $items[$index];
+            $trove = Trove::withDrafts()->findOrFail($item->trove_id);
+
+            expect($item->config)->toBeNull()
+                ->and(in_array($itemDefinition['trove'], [$trove->slug, $trove->getTranslation('title', 'en')], true))->toBeTrue()
+                ->and($item->getTranslation('intro', 'en', false))->toBe(
+                    \App\Support\HtmlSanitizer::clean($itemDefinition['intro']['en'] ?? ''),
+                );
+        }
+    }
+});
+
+it('seeds a session without a builds_toward as supporting the whole module', function () {
+    $this->seed(CurriculumSeeder::class);
+
+    $module = CurriculumModule::where('key', 'digital-landscape')->firstOrFail();
+    $furtherReading = $module->sessions()->where('slug', 'further-reading')->firstOrFail();
+    $first = $module->sessions()->orderBy('order_column')->firstOrFail();
+
+    expect($furtherReading->builds_toward)->toBeNull()
+        ->and($furtherReading->builds_toward_outcome)->toBeNull()
+        ->and($first->builds_toward)->toBe($module->learning_outcomes[0]['key']);
+});
+
+it('matches a trove reference on slug before English title and never on a shadow draft', function () {
+    $canonical = publishedTrove(['title' => ['en' => 'Digital Power: State of Power 2023']]);
+    Trove::factory()->draftOf($canonical)->create(['title' => ['en' => 'Digital Power: State of Power 2023']]);
+
+    foreach (troveReferencesIn('digital-landscape') as $reference) {
+        if ($reference !== 'Digital Power: State of Power 2023') {
+            publishedTrove(['title' => ['en' => $reference]]);
+        }
+    }
+
+    $this->seed(CurriculumSeeder::class);
+
+    $item = CurriculumSessionItem::where('key', 'ccd9e0bf-c78e-4d2f-b567-ebd443c56334')->firstOrFail();
+
+    expect($item->trove_id)->toBe($canonical->id);
 });

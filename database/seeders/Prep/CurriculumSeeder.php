@@ -4,9 +4,12 @@ namespace Database\Seeders\Prep;
 
 use App\Curriculum\Items\ItemRegistry;
 use App\Enums\CurriculumItemType;
+use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\GlossaryTerm;
+use App\Models\Trove;
+use App\Support\HtmlSanitizer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -86,10 +89,47 @@ class CurriculumSeeder extends Seeder
                 );
             }
 
+            // Trove items point at library troves that may not exist yet (a fresh install, or a
+            // database that has not had the module's troves imported). Seeding the rest of the
+            // session around a missing trove would freeze the wrong order into `position`, so
+            // the session's items are seeded all-or-nothing: the session row is created, its
+            // items wait for the next run. Items that already exist are still never touched.
+            $missing = $this->missingTroveReferences($items);
+
+            if ($missing !== []) {
+                $this->command?->warn(sprintf(
+                    'Module [%s] session [%s]: items skipped — %d trove(s) not found: %s. Import them (php artisan troves:import …) and re-run this seeder.',
+                    $module->key,
+                    $sessionModel->slug,
+                    count($missing),
+                    implode(', ', $missing),
+                ));
+
+                continue;
+            }
+
             foreach ($items as $item) {
                 $this->seedSessionItem($module, $sessionModel, $item);
             }
         }
+    }
+
+    /**
+     * The `trove` references in a session's items that do not resolve to a canonical trove.
+     *
+     * @param  list<array<string, mixed>>  $items
+     * @return list<string>
+     */
+    private function missingTroveReferences(array $items): array
+    {
+        return collect($items)
+            ->filter(fn (array $item): bool => ($item['type'] ?? null) === CurriculumItemType::Trove->value)
+            ->map(fn (array $item): string => is_string($item['trove'] ?? null) ? trim($item['trove']) : '')
+            ->unique()
+            ->reject(fn (string $reference): bool => $reference !== '' && $this->findTrove($reference) !== null)
+            ->map(fn (string $reference): string => $reference === '' ? '(no `trove` given)' : $reference)
+            ->values()
+            ->all();
     }
 
     /**
@@ -119,22 +159,32 @@ class CurriculumSeeder extends Seeder
         }
     }
 
+    /**
+     * `builds_toward` is the 1-based position of one of the module's stored learning outcomes.
+     * It may be omitted for a session that supports the module as a whole rather than one
+     * outcome (e.g. a "Further reading" session); the column is nullable and the public views
+     * already skip the "Builds toward LO n" line when it is blank.
+     */
     private function seedSession(CurriculumModule $module, array $session, int $index): CurriculumSession
     {
-        $outcomes = $module->learning_outcomes ?? [];
-        $buildsToward = $outcomes[($session['builds_toward'] ?? 0) - 1]['key'] ?? null;
+        $buildsToward = null;
 
-        if ($buildsToward === null) {
-            throw new InvalidArgumentException(
-                "Module [{$module->key}] session [{$session['slug']}]: builds_toward must be the 1-based position of one of the module's stored learning outcomes.",
-            );
+        if (array_key_exists('builds_toward', $session) && $session['builds_toward'] !== null) {
+            $outcomes = $module->learning_outcomes ?? [];
+            $buildsToward = $outcomes[((int) $session['builds_toward']) - 1]['key'] ?? null;
+
+            if ($buildsToward === null) {
+                throw new InvalidArgumentException(
+                    "Module [{$module->key}] session [{$session['slug']}]: builds_toward must be the 1-based position of one of the module's stored learning outcomes (or be omitted).",
+                );
+            }
         }
 
         return $module->sessions()->firstOrCreate(
             ['slug' => $session['slug']],
             [
                 'title' => $session['title'],
-                'summary' => $session['summary'],
+                'summary' => $session['summary'] ?? null,
                 'builds_toward' => $buildsToward,
                 'order_column' => $index + 1,
             ],
@@ -144,6 +194,12 @@ class CurriculumSeeder extends Seeder
     /**
      * New items go after whatever the session already holds: the admin Builder renumbers
      * rows 0..n-1 on every save, so the YAML index would collide with existing positions.
+     *
+     * A `trove` item carries no `config`; instead it names a library trove in `trove` (the
+     * trove's slug, or its exact English title) and an optional translatable HTML `intro`,
+     * mirroring the columns CurriculumSessionContentSync writes for the admin Builder's
+     * Resource block. The trove must already exist (import it first, e.g. with
+     * `troves:import`); a missing trove fails the seed rather than silently skipping the item.
      */
     private function seedSessionItem(CurriculumModule $module, CurriculumSession $session, array $item): void
     {
@@ -152,16 +208,33 @@ class CurriculumSeeder extends Seeder
         $type = CurriculumItemType::tryFrom((string) ($item['type'] ?? ''))
             ?? throw new InvalidArgumentException("{$label}: unknown item type [".($item['type'] ?? '').'].');
 
-        if ($type === CurriculumItemType::Trove) {
-            throw new InvalidArgumentException("{$label}: trove-type session items are not supported by the seeder.");
-        }
-
         if ($session->items()->where('key', $item['key'])->exists()) {
             return;
         }
 
-        $config = $this->normaliseItemConfig($label, $item, $type);
         $position = ($session->items()->max('position') ?? -1) + 1;
+
+        if ($type === CurriculumItemType::Trove) {
+            $trove = $this->resolveTrove($label, $item['trove'] ?? null);
+
+            $sessionItem = $session->items()->make([
+                'key' => $item['key'],
+                'type' => $type,
+                'position' => $position,
+                'config' => null,
+                'trove_id' => $trove->id,
+            ]);
+            $sessionItem->setTranslations('intro', $this->cleanIntro($item['intro'] ?? null));
+            $sessionItem->save();
+
+            if ($trove->published_at === null) {
+                $this->command?->warn("{$label}: trove [{$trove->slug}] is not published, so this item is hidden from learners until it is.");
+            }
+
+            return;
+        }
+
+        $config = $this->normaliseItemConfig($label, $item, $type);
 
         $session->items()->create([
             'key' => $item['key'],
@@ -170,6 +243,54 @@ class CurriculumSeeder extends Seeder
             'config' => $config,
             'trove_id' => null,
         ]);
+    }
+
+    private function resolveTrove(string $label, mixed $reference): Trove
+    {
+        if (! is_string($reference) || trim($reference) === '') {
+            throw new InvalidArgumentException("{$label}: a trove item needs a `trove` (slug or English title).");
+        }
+
+        return $this->findTrove(trim($reference)) ?? throw new InvalidArgumentException(
+            "{$label}: no trove with slug or English title [{$reference}]. Import the troves first (php artisan troves:import …).",
+        );
+    }
+
+    /**
+     * A canonical trove (never a shadow draft) matched on slug first, then on its English
+     * title, regardless of publication state so the seed does not depend on `--publish`.
+     */
+    private function findTrove(string $reference): ?Trove
+    {
+        return Trove::withDrafts()
+            ->whereNull('published_id')
+            ->where(fn ($query) => $query
+                ->where('slug', $reference)
+                ->orWhere('title->en', $reference))
+            ->orderByRaw('slug = ? desc', [$reference])
+            ->first();
+    }
+
+    /**
+     * The trove item's intro as a sanitised locale dictionary. A bare string is English, as
+     * for every other seeded translatable leaf; empty rich text is dropped.
+     *
+     * @return array<string, string>
+     */
+    private function cleanIntro(mixed $value): array
+    {
+        if (is_string($value)) {
+            $value = [config('app.fallback_locale', 'en') => $value];
+        }
+
+        if (! is_array($value)) {
+            return [];
+        }
+
+        return collect($value)
+            ->map(fn ($html) => is_string($html) ? HtmlSanitizer::clean($html) : null)
+            ->reject(fn ($html) => TranslatableComboField::isEmptyRichContent($html))
+            ->all();
     }
 
     /**
