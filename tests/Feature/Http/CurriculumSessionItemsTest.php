@@ -3,6 +3,7 @@
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use Illuminate\Support\Str;
 
 beforeEach(function () {
     bootPublicSite();
@@ -190,4 +191,46 @@ it('falls back to another locale for inline trove content the current locale lac
     $this->get(sessionItemsUrl().'?locale=fr')
         ->assertOk()
         ->assertSee('https://www.youtube.com/embed/xyz', false);
+});
+
+it('renders a contents outline listing the overview and every item with a heading, in order', function () {
+    $factory = CurriculumSessionItem::factory()->for(test()->session, 'session');
+    $factory->prose()->create(['position' => 0, 'config' => ['heading' => ['en' => 'First heading'], 'body' => ['en' => '<p>Body</p>']]]);
+    $factory->prose()->create(['position' => 1, 'config' => ['heading' => null, 'body' => ['en' => '<p>Unheaded aside</p>']]]);
+    $factory->quiz()->create(['position' => 2, 'config' => ['heading' => ['en' => 'Quiz heading'], 'passMark' => 1, 'items' => [['id' => 'q1', 'kind' => 'pick-one', 'stem' => ['en' => 'Which one?'], 'options' => [['id' => 'a', 'text' => ['en' => 'A'], 'correct' => true]], 'feedback' => null]]]]);
+    $trove = publishedTrove(['title' => ['en' => 'Outlined resource']]);
+    $factory->trove($trove)->create(['position' => 3]);
+
+    $response = $this->get(sessionItemsUrl())->assertOk();
+
+    $response->assertSee('data-session-outline="sidebar"', false)
+        ->assertSee('data-session-outline="mobile-bar"', false)
+        ->assertSee('data-session-outline="sheet"', false)
+        ->assertSee('id="session-overview"', false)
+        ->assertSeeInOrder(['data-session-outline="sidebar"', 'Overview', 'First heading', 'Quiz heading', 'Outlined resource', 'data-session-items'], false);
+
+    $sidebar = Str::before(Str::after($response->getContent(), 'data-session-outline="sidebar"'), '</ol>');
+    expect($sidebar)->not->toContain('Unheaded aside')
+        ->and(substr_count($sidebar, 'href="#item-'))->toBe(3);
+});
+
+it('omits the contents outline when no item has a heading', function () {
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->prose()->create(['position' => 0, 'config' => ['heading' => null, 'body' => ['en' => '<p>Only body</p>']]]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('Only body')
+        ->assertDontSee('data-session-outline', false)
+        ->assertDontSee('sessionOutline(', false);
+});
+
+it('drops a hidden trove item from the contents outline', function () {
+    $factory = CurriculumSessionItem::factory()->for(test()->session, 'session');
+    $factory->prose()->create(['position' => 0, 'config' => ['heading' => ['en' => 'Visible heading'], 'body' => ['en' => '<p>Body</p>']]]);
+    $factory->trove(draftTrove(['title' => ['en' => 'Hidden draft resource']]))->create(['position' => 1]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('Visible heading')
+        ->assertDontSee('Hidden draft resource');
 });

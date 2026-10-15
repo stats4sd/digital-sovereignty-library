@@ -86,6 +86,20 @@ class CurriculumSessionItem extends Model
     }
 
     /**
+     * The heading shown for this item on the session page, used by the contents outline. A trove
+     * item takes its trove's title; other types read their `heading` leaf. Null when the item
+     * has no heading (it then renders as an un-navigable aside).
+     */
+    public function outlineLabel(): ?string
+    {
+        if ($this->type === CurriculumItemType::Trove) {
+            return $this->trove?->title;
+        }
+
+        return $this->text('heading');
+    }
+
+    /**
      * Whether the item can be shown publicly: a trove item whose trove is unpublished (and
      * so hidden by PublishedScope) or deleted renders nothing.
      */
