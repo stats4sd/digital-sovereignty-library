@@ -26,4 +26,4 @@ How Claude should track plans, change logs, reviews and issues in this repo. Ref
 
 ## Issues
 
-6. If a user asks you to capture, note or save an issue, store it in `docs/issues/` as a new `.md` file. If this is a Git repository with a GitHub origin, also create a new issue on GitHub.
+1. If a user asks you to capture, note or save an issue, create a new issue on GitHub.

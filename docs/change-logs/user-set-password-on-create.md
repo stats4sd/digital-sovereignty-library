@@ -1,6 +1,6 @@
 # User "Set Your Password" Email on Creation
 
-Implements [docs/plans/user-set-password-on-create.md](../plans/user-set-password-on-create.md).
+Implements [docs/archive/user-set-password-on-create.md](../archive/user-set-password-on-create.md).
 
 Adds an option to the admin **Create User** flow to email a new user an expiring, single-use link to set their own password, instead of an admin typing one in. Modelled on the existing invite system but without a registration step — the user already exists; the link only sets a password.
 

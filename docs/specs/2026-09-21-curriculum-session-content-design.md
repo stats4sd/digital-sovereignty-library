@@ -1,8 +1,8 @@
 # Curriculum session content: design & scoping
 
 **Date**: 2026-09-21
-**Status**: Accepted (decisions made with the project team; implementation plan at [docs/plans/2026-09-21-curriculum-session-items.md](../plans/2026-09-21-curriculum-session-items.md))
-**Supersedes in part**: the "session page lists that session's troves" decision in [docs/plans/2026-09-08-curriculum-sessions-module-page.md](../plans/2026-09-08-curriculum-sessions-module-page.md)
+**Status**: Accepted (decisions made with the project team; implementation plan at [docs/archive/2026-09-21-curriculum-session-items.md](../archive/2026-09-21-curriculum-session-items.md))
+**Supersedes in part**: the "session page lists that session's troves" decision in [docs/archive/2026-09-08-curriculum-sessions-module-page.md](../archive/2026-09-08-curriculum-sessions-module-page.md)
 
 ## 1. Problem
 

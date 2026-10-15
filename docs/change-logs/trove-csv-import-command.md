@@ -1,6 +1,6 @@
 # Change log: Trove CSV import command
 
-Implements [docs/plans/trove-csv-import-command.md](../plans/trove-csv-import-command.md): a deterministic artisan command for bulk-populating the library from a CSV file, with tags, tag types and collections created or linked from the file's contents.
+Implements [docs/archive/trove-csv-import-command.md](../archive/trove-csv-import-command.md): a deterministic artisan command for bulk-populating the library from a CSV file, with tags, tag types and collections created or linked from the file's contents.
 
 ## New files
 

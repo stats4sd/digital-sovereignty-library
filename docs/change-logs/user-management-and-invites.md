@@ -1,6 +1,6 @@
 # User Management and Invites — Change Log
 
-Implements [docs/plans/user-management-and-invites.md](../plans/user-management-and-invites.md).
+Implements [docs/archive/user-management-and-invites.md](../archive/user-management-and-invites.md).
 
 **Date**: 2026-07-06
 **Branch**: `user-invites`

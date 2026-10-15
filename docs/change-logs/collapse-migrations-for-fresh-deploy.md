@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-21
 **Branch:** `content-updates`
-**Plan:** [docs/plans/2026-09-21-collapse-migrations-for-fresh-deploy.md](../plans/2026-09-21-collapse-migrations-for-fresh-deploy.md)
+**Plan:** [docs/archive/2026-09-21-collapse-migrations-for-fresh-deploy.md](../archive/2026-09-21-collapse-migrations-for-fresh-deploy.md)
 
 There is no live database yet, so staging and production will both be brought up with `php artisan migrate:fresh --seed`. `database/migrations/` is now 25 pure `create` migrations; every column add/rename/drop has been folded into the migration that creates the table, and the data migrations that only upgraded a database shape that will never have existed are gone.
 
@@ -38,7 +38,7 @@ Also deleted, not in the plan: **`database/schema/mysql-schema.sql`**. This was 
 ## Docs
 
 - `CLAUDE.md` no longer describes `video_links` as renamed from `youtube_links` with an in-place converter.
-- [2026-09-08-curriculum-sessions-module-page.md](../plans/2026-09-08-curriculum-sessions-module-page.md) and [curriculum-sessions-module-page.md](curriculum-sessions-module-page.md) carry a one-line note pointing here.
+- [2026-09-08-curriculum-sessions-module-page.md](../archive/2026-09-08-curriculum-sessions-module-page.md) and [curriculum-sessions-module-page.md](curriculum-sessions-module-page.md) carry a one-line note pointing here.
 
 ## Not done
 

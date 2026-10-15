@@ -1,6 +1,6 @@
 # Multi-Host Video Links — Change Log
 
-Implements [docs/plans/2026-07-08-video-links-multi-host.md](../plans/2026-07-08-video-links-multi-host.md), per the spec at [docs/superpowers/specs/2026-07-08-video-embedding-design.md](../superpowers/specs/2026-07-08-video-embedding-design.md).
+Implements [docs/archive/2026-07-08-video-links-multi-host.md](../archive/2026-07-08-video-links-multi-host.md), per the spec at [docs/superpowers/specs/2026-07-08-video-embedding-design.md](../superpowers/specs/2026-07-08-video-embedding-design.md).
 
 **Date**: 2026-07-08
 **Branch**: `feat/video-links`

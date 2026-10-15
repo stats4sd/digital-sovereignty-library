@@ -2,7 +2,7 @@
 
 **Date**: 2026-09-21
 **Branch**: `content-updates`
-**Plan**: [docs/plans/2026-09-21-curriculum-session-items.md](../plans/2026-09-21-curriculum-session-items.md)
+**Plan**: [docs/archive/2026-09-21-curriculum-session-items.md](../archive/2026-09-21-curriculum-session-items.md)
 **Spec**: [docs/specs/2026-09-21-curriculum-session-content-design.md](../specs/2026-09-21-curriculum-session-content-design.md)
 
 Implements the plan above. A session's content is now an ordered list of typed **items** (prose, callout, note prompt, note canvas, note matrix, quiz, trove) instead of a trove pivot; admins edit them with a Filament `Builder` synced to rows; the public session page renders them as one long page with browser-side learner state; `CurriculumModule` is split into `IntroModule` / `MapModule` / `ToolkitModule`; admins can create and delete map modules and the learning map lays itself out; all seed content moved out of PHP into YAML under `database/curriculum/`, and Module 3's three sessions are seeded with the spike's content.

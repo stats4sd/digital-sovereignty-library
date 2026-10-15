@@ -1,6 +1,6 @@
 # Session content Builder: visual hierarchy options
 
-**Status:** Proposal (design review only, no code). Side-quest to [2026-09-21-curriculum-session-items.md](../plans/2026-09-21-curriculum-session-items.md); pick up after that plan's Phase 4, since option F reuses the Phase 4 item views.
+**Status:** Proposal (design review only, no code). Side-quest to [2026-09-21-curriculum-session-items.md](../archive/2026-09-21-curriculum-session-items.md); pick up after that plan's Phase 4, since option F reuses the Phase 4 item views.
 **Scope:** the "Content" tab on `EditCurriculumSession` (`SessionContentBuilder` + the blocks in `app/Curriculum/Items/`). Data structures are fixed; everything here is layout, CSS and Filament configuration.
 
 ## The problem

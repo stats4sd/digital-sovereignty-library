@@ -2,7 +2,7 @@
 
 **Date**: 2026-09-08
 **Branch**: `module-pages`
-**Plan**: [docs/plans/2026-09-08-curriculum-sessions-module-page.md](../plans/2026-09-08-curriculum-sessions-module-page.md)
+**Plan**: [docs/archive/2026-09-08-curriculum-sessions-module-page.md](../archive/2026-09-08-curriculum-sessions-module-page.md)
 
 Implements the plan above: the public curriculum module page now follows the course design prototype, learning-map modules contain ordered **sessions** that own the attached resources, and learning outcomes are structured (statement + optional "in practice" note). Toolkit pillars, farm-hack-box and the intro module keep attaching resources directly.
 

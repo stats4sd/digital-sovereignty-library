@@ -1,8 +1,6 @@
 # Translatable combo field: page-wide secondary-locale picker
 
-**Status:** In Progress
-
-Scaffolded on `content-updates` and awaiting review. Done: field-level gating, picker view, opt-in on the Curriculum Module edit page, tests. Left: review of the UX decisions below, then rolling the opt-in out to the other edit/create pages that use `TranslatableComboField` (Trove, Collection, Tag, TagType, TroveType, GlossaryTerm, CurriculumSession, SiteContent) and a change log.
+**Status:** Completed — see [docs/change-logs/translatable-combo-secondary-locale-picker.md](../change-logs/translatable-combo-secondary-locale-picker.md). The recommended option was accepted for every item under "Decisions to review", and the picker is enabled on every page that uses `TranslatableComboField`.
 
 ## Problem
 
@@ -17,6 +15,8 @@ Client-side only. Every locale's input stays in the Livewire form state and is d
 3. **Opt-in per page** ([AdminPanelProvider.php](../../app/Providers/Filament/AdminPanelProvider.php)). A `PAGE_HEADER_ACTIONS_BEFORE` render hook scoped to `EditCurriculumModule::class` puts the picker in the page header. Enabling it elsewhere is one more class in `scopes`.
 
 ## Decisions to review
+
+Resolved: every default below was accepted as written.
 
 - **Default is "English only"** (persisted value `''`). Existing editors used to seeing all 12 boxes will now see one until they pick a language. The alternative default is `'*'` (all languages), which keeps the old behaviour until someone opts in.
 - **Selection is global**, not per page: one localStorage key. Per-page or per-resource memory would be a small change to the `.as()` key.

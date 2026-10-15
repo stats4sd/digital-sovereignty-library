@@ -1,7 +1,7 @@
 # Change Log: Quick Fixes from Template Review (Workstreams A–F)
 
 **Date**: 2026-07-07
-**Plan**: [docs/plans/quick-fixes-from-template-review.md](../plans/quick-fixes-from-template-review.md)
+**Plan**: [docs/archive/quick-fixes-from-template-review.md](../archive/quick-fixes-from-template-review.md)
 **Source review**: [docs/code-reviews/template-full-review.md](../code-reviews/template-full-review.md)
 
 Executes all six workstreams of the quick-fixes plan as a stack of branches off `dev`: `fix/security-access-control` (A) → `fix/draft-lifecycle` (B) → `fix/search-frontend` (C) → `fix/config-boot-ops` (D) → `chore/dead-code-cleanup` (E, with the F follow-through folded in). Full Pest suite green at the end of every workstream; final state 231 passed, 1 pre-existing skip.

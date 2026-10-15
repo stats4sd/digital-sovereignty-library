@@ -1,6 +1,6 @@
 # Search Milestone 1 — Federated Meilisearch search and the BrowseAll rewrite
 
-**Status:** In Progress — Phase 1 (Tasks 1–6) complete, one commit per task on `search-review`. Pause-point manual testing done (checklist below); the one open item it surfaced — conjunctive facet counts wrongly disabling OR-within-type/type/locale filter checkboxes — is fixed as part of Task 10. Phase 2: Tasks 7, 8 and 10 complete; Task 9 deferred (see its entry). Full suite green (359 passed, 6 skipped) on SQLite, plus the Integration suite passing locally against a real Meilisearch (`MEILISEARCH_INTEGRATION=1 php artisan test --testsuite=Integration`). Implementation note: federation-level pagination uses `limit`/`offset` (the engine/SDK reject `hitsPerPage`/`page` at federation level), with `totalPages` derived from `estimatedTotalHits`.
+**Status:** Completed — see [docs/change-logs/search-milestone-1-federated-browse.md](../change-logs/search-milestone-1-federated-browse.md). Tasks 1–8 and 10 are done. Task 9 (Scout 11 upgrade) is deferred, tracked in [issue #4](https://github.com/stats4sd/digital-sovereignty-library/issues/4). Implementation note: federation-level pagination uses `limit`/`offset` (the engine/SDK reject `hitsPerPage`/`page` at federation level), with `totalPages` derived from `estimatedTotalHits`.
 
 **Review:** [docs/code-reviews/search-and-browse-review.md](../code-reviews/search-and-browse-review.md) (§3 is the design this plan implements). Decisions taken by the maintainer on 2026-07-15: keep Meilisearch and lean into it; federated multi-search; tags (`tag_ids` + searchable `tag_names`) and trove type into the index as filterable attributes; collections participate in tag filtering via aggregated member-trove tags (option a); browse-mode default sort is publication date descending; remove `Trove::themeAndTopicTags()`; faceted counts from Meilisearch on the tag/type filters; keyboard-accessible clear/pagination controls and alt text on card images.
 
@@ -40,54 +40,54 @@
 
 **Files:** `app/Models/Trove.php`, `app/Models/Collection.php`, `config/scout.php`. Tests: `tests/Unit/Search/TroveSearchableArrayTest.php`, `tests/Unit/Search/CollectionSearchableArrayTest.php` (or extend existing model tests if present).
 
-- [ ] `Trove::toSearchableArray()` — keep the flattened multi-locale `title`/`description` (and `strip_tags`), drop the redundant `is_published`, and add:
+- [x] `Trove::toSearchableArray()` — keep the flattened multi-locale `title`/`description` (and `strip_tags`), drop the redundant `is_published`, and add:
   - `tag_ids`: `int[]` of all attached tag IDs.
   - `tag_names`: flattened unique tag names across all configured locales (searchable — makes "gender" match troves tagged *Gender*).
   - `trove_type_ids`: `int[]` with the single `trove_type_id` (array-shaped and plural-named so the facet attribute merges with the collection index).
   - `locales`: locale codes where the `title` translation is non-empty (replaces DB-side `whereLocales`, and fixes its empty-string quirk).
   - `sort_date`: `published_at` as a Unix timestamp (shared sortable attribute name across indexes).
-- [ ] `Collection::toSearchableArray()` — keep flattened `title`/`description`, drop the redundant `public`, and add `tag_ids` and `trove_type_ids` **aggregated from published canonical member troves** (explicit `whereNotNull('published_at')->whereNull('published_id')` — see the PublishedScope trap above), `locales` (non-empty titles), `sort_date` (`created_at` timestamp — collections have no publish lifecycle).
-- [ ] `config/scout.php` `index-settings` for both models: `filterableAttributes: [tag_ids, trove_type_ids, locales]`, `sortableAttributes: [sort_date]`, `searchableAttributes: [title, description, tag_names]` for Trove and `[title, description]` for Collection (declaring the order stops `id` being searchable and weights title above body). Keep the existing `maxTotalHits`.
-- [ ] Tests: document shape for a published trove with tags across locales; collection aggregation includes published members' tags/types only (create a draft/unpublished member and assert exclusion); `locales` excludes empty-string translations; `sort_date` present.
+- [x] `Collection::toSearchableArray()` — keep flattened `title`/`description`, drop the redundant `public`, and add `tag_ids` and `trove_type_ids` **aggregated from published canonical member troves** (explicit `whereNotNull('published_at')->whereNull('published_id')` — see the PublishedScope trap above), `locales` (non-empty titles), `sort_date` (`created_at` timestamp — collections have no publish lifecycle).
+- [x] `config/scout.php` `index-settings` for both models: `filterableAttributes: [tag_ids, trove_type_ids, locales]`, `sortableAttributes: [sort_date]`, `searchableAttributes: [title, description, tag_names]` for Trove and `[title, description]` for Collection (declaring the order stops `id` being searchable and weights title above body). Keep the existing `maxTotalHits`.
+- [x] Tests: document shape for a published trove with tags across locales; collection aggregation includes published members' tags/types only (create a draft/unpublished member and assert exclusion); `locales` excludes empty-string translations; `sort_date` present.
 
 ### Task 2: `SearchesLibrary` contract, DTOs, and the two implementations
 
 **Files:** Create `app/Contracts/SearchesLibrary.php`, `app/Services/Search/LibrarySearchRequest.php`, `app/Services/Search/LibrarySearchResult.php`, `app/Services/Search/LibraryHit.php`, `app/Services/Search/LibraryFacets.php`, `app/Services/Search/SearchUnavailableException.php`, `app/Services/Search/MeilisearchLibrarySearch.php`, `app/Services/Search/DatabaseLibrarySearch.php`; binding in `app/Providers/AppServiceProvider.php`. Delete `app/Traits/UsesCustomSearchOptions.php`. Tests: `tests/Unit/Search/MeilisearchLibrarySearchTest.php`, `tests/Feature/Search/DatabaseLibrarySearchTest.php`.
 
-- [ ] DTOs (readonly): `LibrarySearchRequest` — `?string $query`, `array $tagIdsByType` (tagTypeId ⇒ tag IDs), `array $troveTypeIds`, `array $locales`, `int $page`, `int $perPage`. `LibrarySearchResult` — `LibraryHit[] $hits` (each: `type` ('trove'|'collection'), `int $id`, `float $score`), `int $totalHits`, `int $totalPages`, `?LibraryFacets $facets` (tagCounts, troveTypeCounts, localeCounts as id/code ⇒ count; null when the backend can't provide facets). Interface method: `search(LibrarySearchRequest $request): LibrarySearchResult`.
-- [ ] `MeilisearchLibrarySearch`: build two `SearchQuery` objects (index UIDs via `(new Trove)->searchableAs()` / `(new Collection)->searchableAs()` so `SCOUT_PREFIX` is respected) and one `MultiSearchFederation` with `hitsPerPage`/`page`; call `Client::multiSearch()`. Resolve the `Meilisearch\Client` from the container if Scout registered it, else construct from `config('scout.meilisearch')`.
+- [x] DTOs (readonly): `LibrarySearchRequest` — `?string $query`, `array $tagIdsByType` (tagTypeId ⇒ tag IDs), `array $troveTypeIds`, `array $locales`, `int $page`, `int $perPage`. `LibrarySearchResult` — `LibraryHit[] $hits` (each: `type` ('trove'|'collection'), `int $id`, `float $score`), `int $totalHits`, `int $totalPages`, `?LibraryFacets $facets` (tagCounts, troveTypeCounts, localeCounts as id/code ⇒ count; null when the backend can't provide facets). Interface method: `search(LibrarySearchRequest $request): LibrarySearchResult`.
+- [x] `MeilisearchLibrarySearch`: build two `SearchQuery` objects (index UIDs via `(new Trove)->searchableAs()` / `(new Collection)->searchableAs()` so `SCOUT_PREFIX` is respected) and one `MultiSearchFederation` with `hitsPerPage`/`page`; call `Client::multiSearch()`. Resolve the `Meilisearch\Client` from the container if Scout registered it, else construct from `config('scout.meilisearch')`.
   - Filter compilation (same expression for both indexes): per tag type with selections, `tag_ids IN [..]` (OR within type), AND-joined across types; `trove_type_ids IN [..]`; `locales IN [..]`.
   - Facets: `facetsByIndex` requesting `tag_ids`, `trove_type_ids`, `locales` on both indexes + `mergeFacets`, mapped into `LibraryFacets` (facet keys arrive as strings — cast to int for IDs).
   - Empty/blank query: same request as placeholder search with `sort: ['sort_date:desc']` on **both** queries; non-empty query: no sort (relevance merge).
   - Hits: map `_federation`-merged list to `LibraryHit`s (hit index UID → type), read `estimatedTotalHits`/`totalPages` from the federation response.
   - Any `Throwable` from the SDK → `report()` + throw `SearchUnavailableException`.
-- [ ] `DatabaseLibrarySearch` (fallback, portable SQL only): two lightweight id+date queries (published canonical troves, public collections) with DB-side filters (tags via `whereHas`, type via `where`, locales via `whereLocales`), merged and date-sorted in PHP, paginated over the merged id list. `facets` = null, `score` = 0.
-- [ ] Bind in the container: `SearchesLibrary` ⇒ `MeilisearchLibrarySearch` when `config('scout.driver') === 'meilisearch'`, else `DatabaseLibrarySearch`.
-- [ ] Tests: Meilisearch implementation against a mocked `Client` — assert the queries array (filters, sort presence/absence by query emptiness, index UIDs) and federation payload (pagination, facetsByIndex), and the mapping of a canned federated response (hits, totals, facet casts); `SearchUnavailableException` on client throw. Database implementation: full feature coverage of filters/ordering/pagination on SQLite.
+- [x] `DatabaseLibrarySearch` (fallback, portable SQL only): two lightweight id+date queries (published canonical troves, public collections) with DB-side filters (tags via `whereHas`, type via `where`, locales via `whereLocales`), merged and date-sorted in PHP, paginated over the merged id list. `facets` = null, `score` = 0.
+- [x] Bind in the container: `SearchesLibrary` ⇒ `MeilisearchLibrarySearch` when `config('scout.driver') === 'meilisearch'`, else `DatabaseLibrarySearch`.
+- [x] Tests: Meilisearch implementation against a mocked `Client` — assert the queries array (filters, sort presence/absence by query emptiness, index UIDs) and federation payload (pagination, facetsByIndex), and the mapping of a canned federated response (hits, totals, facet casts); `SearchUnavailableException` on client throw. Database implementation: full feature coverage of filters/ordering/pagination on SQLite.
 
 ### Task 3: Rewrite `BrowseAll`; fold in `SearchBar`
 
 **Files:** `app/Livewire/BrowseAll.php` (rewrite). Delete `app/Livewire/SearchBar.php`, `resources/views/livewire/search-bar.blade.php`. Update `tests/Feature/Http/EmbeddedLivewireTest.php` (drop the SearchBar mount test). Tests: `tests/Feature/Http/BrowseAllTest.php` (rewrite — the SQLite blocker note goes away).
 
-- [ ] Public state (all `#[Url]`, except where noted): `?string $query` (as `q`), `array $selectedTagsByType`, `array $selectedTroveTypes`, `array $selectedLanguages`, `int $page`. Keep the checkbox-group array-initialisation guard for `selectedTagsByType` (see the existing `initialiseTagFilters()` docblock — the fix in `docs/plans/fix-tag-filter-checkbox-binding.md` must survive the rewrite). `perPage` fixed at 24.
-- [ ] Any update to query/filters resets `page` to 1 (`updated` hooks).
-- [ ] `render()`: build `LibrarySearchRequest` → `SearchesLibrary::search()`; on `SearchUnavailableException`, set a `searchUnavailable` flag and re-run through `DatabaseLibrarySearch` so the page stays usable. Hydrate the page's hits: one `whereIn` per model with eager loads (`media`, `troveType` for troves; `media` for collections), reorder in PHP by hit position, map to the existing card item array shape (`troveType` stays a model so `resource-result-card` is unchanged in contract). Nothing bulky stored on public properties — items, facets and pagination data are computed per render and passed to the view.
-- [ ] Remove: `fetchInitialData()`, `mergeItems()`, `searchHits()`, `loadPage()` and the manual pagination fields, the `queryUpdated`/`clearSearchInput` listeners, `UsesCustomSearchOptions`. `clearFilters()`/`clearSearch()` become simple `reset()` calls (no events).
-- [ ] `getFilterTagTypesProperty()`: drop the `ISNULL`/`JSON_EXTRACT` SQL — fetch and sort in PHP (order_column nulls-last, then lowercased current-locale label; same for tags within a type, respecting `use_custom_tag_order`).
-- [ ] New trove-type filter data for the sidebar: all `TroveType`s ordered by current-locale label (PHP-side).
-- [ ] Facet data to the view: per-tag, per-type, per-locale counts (empty map when facets are null so the blade renders without badges in fallback mode).
-- [ ] Tests (all on SQLite now): bind a fake `SearchesLibrary` recording requests — mount renders; query/filters/page map into the request correctly; page resets on filter change; hits hydrate in hit order; URL attributes round-trip (`Livewire::withQueryParams`); empty-state variants (no results with active filters vs empty library); `SearchUnavailableException` → fallback results + notice; facet counts reach the view.
+- [x] Public state (all `#[Url]`, except where noted): `?string $query` (as `q`), `array $selectedTagsByType`, `array $selectedTroveTypes`, `array $selectedLanguages`, `int $page`. Keep the checkbox-group array-initialisation guard for `selectedTagsByType` (see the existing `initialiseTagFilters()` docblock — the fix in `docs/archive/fix-tag-filter-checkbox-binding.md` must survive the rewrite). `perPage` fixed at 24.
+- [x] Any update to query/filters resets `page` to 1 (`updated` hooks).
+- [x] `render()`: build `LibrarySearchRequest` → `SearchesLibrary::search()`; on `SearchUnavailableException`, set a `searchUnavailable` flag and re-run through `DatabaseLibrarySearch` so the page stays usable. Hydrate the page's hits: one `whereIn` per model with eager loads (`media`, `troveType` for troves; `media` for collections), reorder in PHP by hit position, map to the existing card item array shape (`troveType` stays a model so `resource-result-card` is unchanged in contract). Nothing bulky stored on public properties — items, facets and pagination data are computed per render and passed to the view.
+- [x] Remove: `fetchInitialData()`, `mergeItems()`, `searchHits()`, `loadPage()` and the manual pagination fields, the `queryUpdated`/`clearSearchInput` listeners, `UsesCustomSearchOptions`. `clearFilters()`/`clearSearch()` become simple `reset()` calls (no events).
+- [x] `getFilterTagTypesProperty()`: drop the `ISNULL`/`JSON_EXTRACT` SQL — fetch and sort in PHP (order_column nulls-last, then lowercased current-locale label; same for tags within a type, respecting `use_custom_tag_order`).
+- [x] New trove-type filter data for the sidebar: all `TroveType`s ordered by current-locale label (PHP-side).
+- [x] Facet data to the view: per-tag, per-type, per-locale counts (empty map when facets are null so the blade renders without badges in fallback mode).
+- [x] Tests (all on SQLite now): bind a fake `SearchesLibrary` recording requests — mount renders; query/filters/page map into the request correctly; page resets on filter change; hits hydrate in hit order; URL attributes round-trip (`Livewire::withQueryParams`); empty-state variants (no results with active filters vs empty library); `SearchUnavailableException` → fallback results + notice; facet counts reach the view.
 
 ### Task 4: Blade rewrite — filters with counts, accessible controls, alt text
 
 **Files:** `resources/views/livewire/browse-all.blade.php`, `resources/views/components/resource-result-card.blade.php`, `resources/views/components/collection-result-card.blade.php`.
 
-- [ ] Inline search input (`wire:model.live.debounce.400ms="query"`) replacing `<livewire:search-bar>`; clear control becomes a real `<button type="button" aria-label="…">` wrapping the icon (keyboard focusable).
-- [ ] New "Type" filter group (same collapsible pattern as tag types) bound to `selectedTroveTypes`.
-- [ ] Facet count badges next to each tag/type/language checkbox; zero-count options get a muted/disabled treatment but remain rendered (so an active selection can be unticked). No badges when facets are unavailable.
-- [ ] Pagination: windowed page links (First/Prev … window … Next/Last) as real `<button>`s with `aria-current="page"` on the active page and proper `disabled` attributes; drop the Alpine `entangle` machinery — plain `wire:click` with server-side page state is sufficient now that only one page of items renders.
-- [ ] Card images get `alt="{{ $item['title'] }}"` in both card components (benefits the collection/related pages that share them).
-- [ ] Filter checkboxes: drop `wire:change="search"` (state changes re-render automatically now); keep `wire:key` on grid items.
+- [x] Inline search input (`wire:model.live.debounce.400ms="query"`) replacing `<livewire:search-bar>`; clear control becomes a real `<button type="button" aria-label="…">` wrapping the icon (keyboard focusable).
+- [x] New "Type" filter group (same collapsible pattern as tag types) bound to `selectedTroveTypes`.
+- [x] Facet count badges next to each tag/type/language checkbox; zero-count options get a muted/disabled treatment but remain rendered (so an active selection can be unticked). No badges when facets are unavailable.
+- [x] Pagination: windowed page links (First/Prev … window … Next/Last) as real `<button>`s with `aria-current="page"` on the active page and proper `disabled` attributes; drop the Alpine `entangle` machinery — plain `wire:click` with server-side page state is sufficient now that only one page of items renders.
+- [x] Card images get `alt="{{ $item['title'] }}"` in both card components (benefits the collection/related pages that share them).
+- [x] Filter checkboxes: drop `wire:change="search"` (state changes re-render automatically now); keep `wire:key` on grid items.
 
 ### Task 5: Reindex triggers for the new index dependencies
 
@@ -95,18 +95,18 @@
 
 Tags and member-trove data are now *in* the index, so changes outside the trove-save path must reindex:
 
-- [ ] `Tag` saved/deleted → `searchable()` over its troves (chunked) and the collections containing those troves.
-- [ ] Collection membership changes (attach/detach/bulk-attach in `AllTrovesTable`, any `CollectionResource` relation actions, and `TrovePublisher::copyRelations()`'s collection sync on publish) → reindex the affected collection(s).
-- [ ] `TrovePublisher::publish()/unpublish()/delete()` → reindex the trove's collections (their aggregated `tag_ids`/`trove_type_ids`/membership-derived data changed). Follow the publisher's existing after-commit discipline — Scout ops must not fire inside the transaction (`after_commit => true` covers `searchable()` calls made in-transaction, but keep explicit calls after commit for clarity).
-- [ ] TagType deletion/`show_in_filter` changes need no reindex (filter UI is DB-driven; documents store tag IDs regardless of type visibility).
-- [ ] Tests: spy on the Scout engine (reuse the `fakeSearchEngine` pattern from the old BrowseAllTest) or fake the queue and assert `makeSearchable` dispatch for: tag rename → member troves + their collections; attach/detach → collection; publish → collections.
+- [x] `Tag` saved/deleted → `searchable()` over its troves (chunked) and the collections containing those troves.
+- [x] Collection membership changes (attach/detach/bulk-attach in `AllTrovesTable`, any `CollectionResource` relation actions, and `TrovePublisher::copyRelations()`'s collection sync on publish) → reindex the affected collection(s).
+- [x] `TrovePublisher::publish()/unpublish()/delete()` → reindex the trove's collections (their aggregated `tag_ids`/`trove_type_ids`/membership-derived data changed). Follow the publisher's existing after-commit discipline — Scout ops must not fire inside the transaction (`after_commit => true` covers `searchable()` calls made in-transaction, but keep explicit calls after commit for clarity).
+- [x] TagType deletion/`show_in_filter` changes need no reindex (filter UI is DB-driven; documents store tag IDs regardless of type visibility).
+- [x] Tests: spy on the Scout engine (reuse the `fakeSearchEngine` pattern from the old BrowseAllTest) or fake the queue and assert `makeSearchable` dispatch for: tag rename → member troves + their collections; attach/detach → collection; publish → collections.
 
 ### Task 6: Cleanup
 
 **Files:** `app/Models/Trove.php`, `tests/Feature/Models/TroveRelationsTest.php`.
 
-- [ ] Remove `Trove::themeAndTopicTags()` (hardcoded `themes`/`topics` slugs — Stats4SD leftover) and its test. Verified remaining usages are only the old `BrowseAll` (rewritten in Task 3, where browse cards pass `show-tags="false"` anyway) — the collection page cards use the plain `tags` relation and are unaffected.
-- [ ] Sweep for dangling references (`UsesCustomSearchOptions`, `SearchBar`), run the full suite, `pint --dirty`.
+- [x] Remove `Trove::themeAndTopicTags()` (hardcoded `themes`/`topics` slugs — Stats4SD leftover) and its test. Verified remaining usages are only the old `BrowseAll` (rewritten in Task 3, where browse cards pass `show-tags="false"` anyway) — the collection page cards use the plain `tags` relation and are unaffected.
+- [x] Sweep for dangling references (`UsesCustomSearchOptions`, `SearchBar`), run the full suite, `pint --dirty`.
 
 ---
 
@@ -144,7 +144,7 @@ Record findings; adjust scope of Phase 2 accordingly.
 - [x] Scheduled nightly `scout:import` for `App\Models\Trove` and `App\Models\Collection` (`app/Console/Kernel.php::schedule()`), gated behind `config('scout.driver') === 'meilisearch'` so it's a no-op when search is disabled — closes the silent-drift gap (engine unreachable at publish time) with the simplest correct mechanism at this catalogue scale. Covered by `tests/Feature/Console/ScheduleTest.php` (both commands registered; the `when()` gate passes/fails on driver config).
 - [x] README/deploy docs (`README.md`, "In production" paragraph under the Meilisearch section): degraded listing without Meilisearch; first-deploy and post-schema-change steps (`sync-index-settings` + `import`); `SCOUT_QUEUE=true` + queue worker; scheduler requirement (cron `schedule:run` or `schedule:work`) for the new nightly reconciliation import.
 
-### Task 9: Scout 11 upgrade — **deferred**
+### Task 9: Scout 11 upgrade — **deferred** ([issue #4](https://github.com/stats4sd/digital-sovereignty-library/issues/4))
 
 - [x] Checked `kainiklas/filament-scout` (installed v1.1.0): its `composer.json` requires `"laravel/scout": "^10.5"`, so `composer require laravel/scout:^11` would conflict without forking the package. Per the task's own escape hatch, deferring rather than forking — nothing else in Milestone 1 needs Scout 11. Revisit if/when `filament-scout` ships a Scout-11-compatible release.
 

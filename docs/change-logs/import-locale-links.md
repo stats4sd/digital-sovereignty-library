@@ -1,6 +1,6 @@
 # Per-Locale Link/Video/Cover Import Columns — Change Log
 
-Implements [docs/plans/2026-07-08-import-locale-links.md](../plans/2026-07-08-import-locale-links.md), per the spec at [docs/superpowers/specs/2026-07-08-import-locale-links-design.md](../superpowers/specs/2026-07-08-import-locale-links-design.md).
+Implements [docs/archive/2026-07-08-import-locale-links.md](../archive/2026-07-08-import-locale-links.md), per the spec at [docs/superpowers/specs/2026-07-08-import-locale-links-design.md](../superpowers/specs/2026-07-08-import-locale-links-design.md).
 
 **Date**: 2026-07-09
 **Branch**: `feat/import-locale-links` (forked from `dev` after `feat/video-links` merged via PR #24)

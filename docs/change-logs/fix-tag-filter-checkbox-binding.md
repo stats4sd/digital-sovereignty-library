@@ -1,6 +1,6 @@
 # Change log: fix tag-filter checkbox group binding on browse-all
 
-Implements [docs/plans/fix-tag-filter-checkbox-binding.md](../plans/fix-tag-filter-checkbox-binding.md).
+Implements [docs/archive/fix-tag-filter-checkbox-binding.md](../archive/fix-tag-filter-checkbox-binding.md).
 
 ## Changes
 
