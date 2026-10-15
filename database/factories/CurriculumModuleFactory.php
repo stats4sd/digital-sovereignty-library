@@ -33,6 +33,8 @@ class CurriculumModuleFactory extends Factory
         return [
             'key' => $this->faker->unique()->slug(2),
             'section' => CurriculumModule::SECTION_MAP,
+            // Explicit: MapModule defaults new rows to draft, but test fixtures should be live.
+            'is_draft' => false,
             'title' => ['en' => rtrim($this->faker->unique()->sentence(4), '.')],
             'description' => ['en' => '<p>'.$this->faker->paragraph().'</p>'],
             'learning_outcomes' => collect(range(1, 3))->map(fn () => [
@@ -69,6 +71,11 @@ class CurriculumModuleFactory extends Factory
             'subtitle' => ['en' => rtrim($this->faker->sentence(3), '.')],
             'learning_outcomes' => null,
         ];
+    }
+
+    public function draft(): static
+    {
+        return $this->state(fn () => ['is_draft' => true]);
     }
 
     public function intro(): static

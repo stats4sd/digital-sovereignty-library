@@ -10,6 +10,10 @@
 # (Claude artifact) — four sessions plus a library-only "Further reading" session. Every
 # prose/callout body here is a placeholder to be rewritten in the admin; the structure
 # (which resource goes where, which activity closes each session) is the thing being seeded.
+# All five sessions are seeded as `draft: true` (hidden from learners, visible in the admin
+# and on /preview/curriculum/digital-landscape) until their copy is finished; the module
+# itself stays live on the map. On a database where these sessions already exist as live
+# rows (the seeder never changes existing rows), switch them to Draft in the admin.
 # Trove items reference library troves by slug or exact English title; the referenced troves
 # must exist first (the 24 new ones come from `php artisan troves:import
 # database/curriculum/troves/module-1.csv …`, the videos are already in the library).
@@ -48,6 +52,7 @@ sessions:
   # ---------------------------------------------------------------------------------------
   -
     slug: whats-the-fuss-all-about
+    draft: true
     builds_toward: 1
     title:
       en: "What's the fuss all about?"
@@ -258,6 +263,7 @@ sessions:
   # ---------------------------------------------------------------------------------------
   -
     slug: who-wins-who-loses
+    draft: true
     builds_toward: 2
     title:
       en: 'Who wins? Who loses? A focus on real people'
@@ -385,6 +391,7 @@ sessions:
   # ---------------------------------------------------------------------------------------
   -
     slug: ai-in-the-here-and-now
+    draft: true
     builds_toward: 2
     title:
       en: 'AI in the Here and Now'
@@ -455,6 +462,7 @@ sessions:
   # ---------------------------------------------------------------------------------------
   -
     slug: data-justice-is-collective
+    draft: true
     builds_toward: 3
     title:
       en: 'Data justice is collective — resist and build'
@@ -591,6 +599,7 @@ sessions:
   # ---------------------------------------------------------------------------------------
   -
     slug: further-reading
+    draft: true
     title:
       en: 'Further reading'
     summary:

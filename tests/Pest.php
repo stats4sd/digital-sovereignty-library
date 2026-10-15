@@ -37,6 +37,12 @@ uses(
     // flushes spatie's role/permission cache, which the array cache driver would otherwise
     // persist across tests in the same process.
     $this->seed(RoleSeeder::class);
+
+    // Admin context by default: the panel-aware global scopes (PublishedScope, DraftScope)
+    // are OFF, as they are inside the admin panel, where SetUpPanel middleware sets the
+    // current panel on every request. Public-visibility tests call usePublicContext() /
+    // bootPublicSite() to clear it.
+    Filament::setCurrentPanel(Filament::getPanel('admin'));
 })->in('Feature', 'Unit', 'Integration');
 
 /*

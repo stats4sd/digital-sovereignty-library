@@ -26,6 +26,7 @@ use Spatie\Translatable\HasTranslations;
  */
 class CurriculumModule extends Model
 {
+    use HasDraftFlag;
     use HasFactory;
     use HasTranslations;
 

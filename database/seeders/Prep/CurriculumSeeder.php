@@ -68,11 +68,24 @@ class CurriculumSeeder extends Seeder
                 ->all();
         }
 
-        $attributes = collect($definition)->except(['key', 'sessions'])->all();
+        // `draft` applies on create only (firstOrCreate), so a re-seed never flips an admin's
+        // choice. The value is always passed explicitly: MapModule defaults new rows to draft,
+        // and seeded content should be live unless the YAML says otherwise.
+        $draft = (bool) ($definition['draft'] ?? false);
 
-        $module = CurriculumModule::firstOrCreate(
+        if ($draft && ($definition['section'] ?? null) !== CurriculumModule::SECTION_MAP) {
+            throw new InvalidArgumentException(
+                "Module [{$definition['key']}]: only learning-map modules can be drafts; intro and toolkit modules are always live.",
+            );
+        }
+
+        $attributes = collect($definition)->except(['key', 'sessions', 'draft'])->all();
+
+        // withDrafts(): outside the admin panel DraftScope would hide an existing draft row,
+        // and firstOrCreate would then try to insert a duplicate key.
+        $module = CurriculumModule::withDrafts()->firstOrCreate(
             ['key' => $definition['key']],
-            $attributes,
+            [...$attributes, 'is_draft' => $draft],
         );
 
         $this->backfillModule($module, $attributes);
@@ -180,13 +193,14 @@ class CurriculumSeeder extends Seeder
             }
         }
 
-        return $module->sessions()->firstOrCreate(
+        return $module->sessions()->withDrafts()->firstOrCreate(
             ['slug' => $session['slug']],
             [
                 'title' => $session['title'],
                 'summary' => $session['summary'] ?? null,
                 'builds_toward' => $buildsToward,
                 'order_column' => $index + 1,
+                'is_draft' => (bool) ($session['draft'] ?? false),
             ],
         );
     }
@@ -208,11 +222,12 @@ class CurriculumSeeder extends Seeder
         $type = CurriculumItemType::tryFrom((string) ($item['type'] ?? ''))
             ?? throw new InvalidArgumentException("{$label}: unknown item type [".($item['type'] ?? '').'].');
 
-        if ($session->items()->where('key', $item['key'])->exists()) {
+        if ($session->items()->withDrafts()->where('key', $item['key'])->exists()) {
             return;
         }
 
-        $position = ($session->items()->max('position') ?? -1) + 1;
+        $position = ($session->items()->withDrafts()->max('position') ?? -1) + 1;
+        $draft = (bool) ($item['draft'] ?? false);
 
         if ($type === CurriculumItemType::Trove) {
             $trove = $this->resolveTrove($label, $item['trove'] ?? null);
@@ -223,6 +238,7 @@ class CurriculumSeeder extends Seeder
                 'position' => $position,
                 'config' => null,
                 'trove_id' => $trove->id,
+                'is_draft' => $draft,
             ]);
             $sessionItem->setTranslations('intro', $this->cleanIntro($item['intro'] ?? null));
             $sessionItem->save();
@@ -242,6 +258,7 @@ class CurriculumSeeder extends Seeder
             'position' => $position,
             'config' => $config,
             'trove_id' => null,
+            'is_draft' => $draft,
         ]);
     }
 

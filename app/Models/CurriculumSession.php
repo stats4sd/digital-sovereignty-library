@@ -20,8 +20,14 @@ use Spatie\Translatable\HasTranslations;
  */
 class CurriculumSession extends Model
 {
+    use HasDraftFlag;
     use HasFactory;
     use HasTranslations;
+
+    /** New sessions start as drafts; the database default is false only so pre-existing rows stayed live. */
+    protected $attributes = [
+        'is_draft' => true,
+    ];
 
     public array $translatable = [
         'title',
@@ -73,13 +79,20 @@ class CurriculumSession extends Model
 
     /**
      * The session's 1-based position among its module's siblings (ordered by order_column,
-     * id) — never the raw order_column, so numbering stays contiguous even with gaps. Uses
+     * id) — never the raw order_column, so numbering stays contiguous even with gaps. Only
+     * live siblings count, so learners never see a gap where a draft sits, and a draft session
+     * has no number at all (null; <x-session-label> shows a "Draft" badge instead). The reject
+     * matters in preview, where DraftScope is off and module->sessions includes drafts. Uses
      * the already-loaded module->sessions relation when present, falling back to 1 if the
      * module relation is unavailable.
      */
     protected function number(): Attribute
     {
-        return Attribute::get(function (): int {
+        return Attribute::get(function (): ?int {
+            if ($this->is_draft) {
+                return null;
+            }
+
             $module = $this->module;
 
             if ($module === null) {
@@ -90,7 +103,7 @@ class CurriculumSession extends Model
                 ? $module->sessions
                 : $module->sessions()->get();
 
-            $position = $siblings->pluck('id')->search($this->id);
+            $position = $siblings->reject->is_draft->pluck('id')->search($this->id);
 
             return $position === false ? 1 : $position + 1;
         });

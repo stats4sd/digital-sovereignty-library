@@ -109,7 +109,8 @@ it('lays out one map node per learning-map module, in module-number order, witho
     $response = $this->get('/curriculum')->assertOk()->assertSee('data-node-count="5"', false);
     expect(substr_count($response->getContent(), 'class="curriculum-node group"'))->toBe(5);
 
-    MapModule::create(['key' => 'new-node', 'title' => ['en' => 'Brand New Node'], 'number' => 6]);
+    // New map modules default to draft; make this one live so it appears on the public map.
+    MapModule::create(['key' => 'new-node', 'title' => ['en' => 'Brand New Node'], 'number' => 6, 'is_draft' => false]);
 
     $response = $this->get('/curriculum')
         ->assertOk()

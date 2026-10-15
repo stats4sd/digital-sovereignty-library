@@ -23,8 +23,14 @@ use Spatie\Translatable\HasTranslations;
  */
 class CurriculumSessionItem extends Model
 {
+    use HasDraftFlag;
     use HasFactory;
     use HasTranslations;
+
+    /** New items start as drafts; the database default is false only so pre-existing rows stayed live. */
+    protected $attributes = [
+        'is_draft' => true,
+    ];
 
     public array $translatable = [
         'intro',
@@ -100,8 +106,9 @@ class CurriculumSessionItem extends Model
     }
 
     /**
-     * Whether the item can be shown publicly: a trove item whose trove is unpublished (and
-     * so hidden by PublishedScope) or deleted renders nothing.
+     * Whether the item can be shown: a trove item whose trove is unpublished (and so hidden
+     * by PublishedScope) or deleted renders nothing. Draft items are not checked here — they
+     * never reach a public page (DraftScope), and in preview they render with a badge.
      */
     public function isRenderable(): bool
     {
