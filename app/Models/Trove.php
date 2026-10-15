@@ -589,6 +589,58 @@ class Trove extends Model implements HasMedia
         return asset('images/default-cover-photo.jpg');
     }
 
+    /**
+     * Locales to try for locale-specific content: current locale first, then English, then the rest.
+     */
+    protected function contentLocaleOrder(): array
+    {
+        $currentLocale = app()->getLocale();
+        $locales = array_keys(config('branding.locales', ['en' => 'English']));
+
+        return array_values(array_unique(array_merge([$currentLocale, 'en'], $locales)));
+    }
+
+    /**
+     * Resolved video links (url, embed_url, ...) for the current locale, falling back to other locales.
+     */
+    public function videoLinks(): \Illuminate\Support\Collection
+    {
+        foreach ($this->contentLocaleOrder() as $locale) {
+            $links = collect($this->getTranslation('video_links', $locale, false) ?? [])
+                ->filter(fn ($link) => is_array($link) && ! empty($link['url']))
+                ->values();
+
+            if ($links->isNotEmpty()) {
+                return $links;
+            }
+        }
+
+        return collect();
+    }
+
+    /**
+     * External links (link_title, link_url) for the current locale, falling back to other locales.
+     */
+    public function externalLinks(): \Illuminate\Support\Collection
+    {
+        foreach ($this->contentLocaleOrder() as $locale) {
+            $links = $this->getTranslation('external_links', $locale, false) ?? [];
+            if (isset($links['link_url'])) {
+                $links = [$links];
+            }
+
+            $links = collect(is_array($links) ? $links : [])
+                ->filter(fn ($link) => is_array($link) && ! empty($link['link_url']) && ! empty($link['link_title']))
+                ->values();
+
+            if ($links->isNotEmpty()) {
+                return $links;
+            }
+        }
+
+        return collect();
+    }
+
     public function getContentMedia(): \Illuminate\Support\Collection
     {
         $currentLocale = app()->getLocale();

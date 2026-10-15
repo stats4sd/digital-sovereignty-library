@@ -48,15 +48,20 @@ it('renders items in position order regardless of insertion order', function () 
     $this->get(sessionItemsUrl())->assertSeeInOrder(['First body', 'Second body']);
 });
 
-it('shows a trove item with its intro above the resource card', function () {
-    $trove = publishedTrove(['title' => ['en' => 'Attached resource']]);
+it('shows a trove item as a card with the title, intro and inline content', function () {
+    $trove = publishedTrove([
+        'title' => ['en' => 'Attached resource'],
+        'video_links' => ['en' => [['url' => 'https://www.youtube.com/watch?v=abc123', 'embeddable' => true, 'embed_url' => 'https://www.youtube.com/embed/abc123']]],
+        'external_links' => ['en' => [['link_title' => 'Companion guide', 'link_url' => 'https://example.org/guide']]],
+    ]);
     $item = CurriculumSessionItem::factory()->for(test()->session, 'session')->trove($trove)->create(['position' => 0]);
     $item->setTranslation('intro', 'en', '<p>Read this before the video.</p>')->save();
 
     $this->get(sessionItemsUrl())
         ->assertOk()
-        ->assertSeeInOrder(['Read this before the video.', 'Attached resource'])
-        ->assertSee(route('resources.show', $trove->slug));
+        ->assertSeeInOrder(['Attached resource', 'Read this before the video.', 'https://www.youtube.com/embed/abc123', 'Companion guide'], false)
+        ->assertSee(route('resources.show', $trove->slug))
+        ->assertDontSee($trove->description);
 });
 
 it('hides a trove item whose trove is unpublished, and shows the empty state when nothing else remains', function () {
@@ -173,4 +178,16 @@ it('falls back to another locale for a config leaf missing in the current one', 
         ->assertOk()
         ->assertSee('Titre français')
         ->assertSee('English only');
+});
+
+it('falls back to another locale for inline trove content the current locale lacks', function () {
+    $trove = publishedTrove([
+        'title' => ['en' => 'English-only video'],
+        'video_links' => ['en' => [['url' => 'https://www.youtube.com/watch?v=xyz', 'embeddable' => true, 'embed_url' => 'https://www.youtube.com/embed/xyz']]],
+    ]);
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->trove($trove)->create(['position' => 0]);
+
+    $this->get(sessionItemsUrl().'?locale=fr')
+        ->assertOk()
+        ->assertSee('https://www.youtube.com/embed/xyz', false);
 });
