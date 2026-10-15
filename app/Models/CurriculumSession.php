@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\CurriculumItemType;
+use App\Support\Curriculum\DraftVisibility;
 use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,8 +21,14 @@ use Spatie\Translatable\HasTranslations;
  */
 class CurriculumSession extends Model
 {
+    use HasDraftFlag;
     use HasFactory;
     use HasTranslations;
+
+    /** New sessions start as drafts; the database default is false only so pre-existing rows stayed live. */
+    protected $attributes = [
+        'is_draft' => true,
+    ];
 
     public array $translatable = [
         'title',
@@ -61,25 +68,42 @@ class CurriculumSession extends Model
      * The troves referenced by this session's `trove` items, in item order. A convenience
      * view over items(): the item row is the pivot, so withPivotValue pins type = trove on
      * both reads and attach(). Attaching through this relation cannot fill the item's
-     * NOT NULL key/position columns, so create trove items via items() instead.
+     * NOT NULL key/position columns, so create trove items via items() instead. The pivot
+     * is an item row, which DraftScope cannot see through, so draft items are excluded here
+     * explicitly under the same visibility rule.
      */
     public function troves(): BelongsToMany
     {
-        return $this->belongsToMany(Trove::class, 'curriculum_session_items')
+        $relation = $this->belongsToMany(Trove::class, 'curriculum_session_items')
             ->withPivotValue('type', CurriculumItemType::Trove->value)
-            ->withPivot('id', 'position', 'intro')
+            ->withPivot('id', 'position', 'intro', 'is_draft')
             ->orderByPivot('position');
+
+        // Not ->when(): its callback receives the Eloquent builder, where wherePivot() does
+        // not exist and silently degrades into where('pivot', 'is_draft', false).
+        if (! DraftVisibility::includesDrafts()) {
+            $relation->wherePivot('is_draft', false);
+        }
+
+        return $relation;
     }
 
     /**
      * The session's 1-based position among its module's siblings (ordered by order_column,
-     * id) — never the raw order_column, so numbering stays contiguous even with gaps. Uses
+     * id) — never the raw order_column, so numbering stays contiguous even with gaps. Only
+     * live siblings count, so learners never see a gap where a draft sits, and a draft session
+     * has no number at all (null; <x-session-label> shows a "Draft" badge instead). The reject
+     * matters in preview, where DraftScope is off and module->sessions includes drafts. Uses
      * the already-loaded module->sessions relation when present, falling back to 1 if the
      * module relation is unavailable.
      */
     protected function number(): Attribute
     {
-        return Attribute::get(function (): int {
+        return Attribute::get(function (): ?int {
+            if ($this->is_draft) {
+                return null;
+            }
+
             $module = $this->module;
 
             if ($module === null) {
@@ -90,7 +114,7 @@ class CurriculumSession extends Model
                 ? $module->sessions
                 : $module->sessions()->get();
 
-            $position = $siblings->pluck('id')->search($this->id);
+            $position = $siblings->reject->is_draft->pluck('id')->search($this->id);
 
             return $position === false ? 1 : $position + 1;
         });

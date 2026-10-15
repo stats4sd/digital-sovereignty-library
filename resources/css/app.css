@@ -326,6 +326,12 @@
         border: 2px solid var(--brand-primary);
     }
 
+    /* Jump targets on session pages land below the sticky header rather than under it. */
+    #session-overview,
+    .session-items h2[id] {
+        scroll-margin-top: 6.5rem;
+    }
+
     /* Session item bodies are RichEditor HTML; give lists and links the callout treatment. */
     .item-body ul {
         @apply mt-2 list-disc ps-6;

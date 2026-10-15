@@ -53,3 +53,13 @@ it('orders map modules by number then id, with unnumbered modules last', functio
 
     expect(MapModule::inMapOrder()->pluck('id')->all())->toBe([$first->id, $second->id, $unnumbered->id]);
 });
+
+it('defaults new map modules to draft but not intro or toolkit modules', function () {
+    $map = MapModule::create(['key' => 'new-node', 'title' => ['en' => 'New node']]);
+    $intro = IntroModule::create(['key' => 'new-intro', 'title' => ['en' => 'Intro']]);
+    $toolkit = ToolkitModule::create(['key' => 'new-pillar', 'title' => ['en' => 'Pillar']]);
+
+    expect($map->fresh()->is_draft)->toBeTrue()
+        ->and($intro->fresh()->is_draft)->toBeFalse()
+        ->and($toolkit->fresh()->is_draft)->toBeFalse();
+});

@@ -8,6 +8,7 @@ use App\Enums\CurriculumItemType;
 use App\Models\CurriculumSessionItem;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Toggle;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
 
@@ -259,5 +260,25 @@ it('builds every block with a hidden key field first', function () {
         expect($components[0])->toBeInstanceOf(Hidden::class)
             ->and($components[0]->getName())->toBe('key')
             ->and(count($components))->toBeGreaterThan(1);
+    }
+});
+
+it('appends " (draft)" to the block label of every type when the block is a draft', function () {
+    foreach (CurriculumItemType::cases() as $type) {
+        $definition = definitionFor($type);
+
+        expect($definition->labelFor(['draft' => true]))->toBe($definition->blockLabel(['draft' => true]).' (draft)')
+            ->and($definition->labelFor(['draft' => false]))->toBe($definition->blockLabel([]))
+            ->and($definition->labelFor([]))->toBe($definition->blockLabel([]));
+    }
+});
+
+it('gives every block a draft toggle that defaults to on', function () {
+    foreach (CurriculumItemType::cases() as $type) {
+        $toggle = collect(definitionFor($type)->block()->getDefaultChildComponents())
+            ->first(fn ($component) => $component->getName() === 'draft');
+
+        expect($toggle)->toBeInstanceOf(Toggle::class)
+            ->and($toggle->getDefaultState())->toBeTrue();
     }
 });

@@ -26,6 +26,8 @@ class CurriculumSessionItemFactory extends Factory
             'position' => 0,
             'key' => (string) Str::uuid(),
             'type' => CurriculumItemType::Prose,
+            // Explicit: the model defaults new rows to draft, but test fixtures should be live.
+            'is_draft' => false,
             'trove_id' => null,
             // `intro` is deliberately omitted: it is translatable, and null would be stored
             // as {"<locale>": null} rather than SQL NULL (which is what the app writes).
@@ -33,6 +35,11 @@ class CurriculumSessionItemFactory extends Factory
                 'body' => ['en' => '<p>'.$this->faker->paragraph().'</p>'],
             ],
         ];
+    }
+
+    public function draft(): static
+    {
+        return $this->state(fn () => ['is_draft' => true]);
     }
 
     public function prose(): static

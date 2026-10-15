@@ -105,3 +105,23 @@ it('returns null from buildsTowardOutcome when unset', function () {
 
     expect($session->builds_toward_outcome)->toBeNull();
 });
+
+it('defaults new sessions to draft', function () {
+    $module = CurriculumModule::factory()->map()->create();
+
+    $session = CurriculumSession::create(['curriculum_module_id' => $module->id, 'slug' => 'fresh', 'title' => ['en' => 'Fresh']]);
+
+    expect($session->fresh()->is_draft)->toBeTrue();
+});
+
+it('gives draft sessions no number and skips them when numbering live ones', function () {
+    $module = CurriculumModule::factory()->map()->create();
+
+    $a = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 1]);
+    $b = CurriculumSession::factory()->for($module, 'module')->draft()->create(['order_column' => 2]);
+    $c = CurriculumSession::factory()->for($module, 'module')->create(['order_column' => 3]);
+
+    expect($a->number)->toBe(1)
+        ->and($c->number)->toBe(2)
+        ->and($b->number)->toBeNull();
+});

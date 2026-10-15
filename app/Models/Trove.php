@@ -6,6 +6,7 @@ use App\Enums\CurriculumItemType;
 use App\Enums\PublicationState;
 use App\Enums\ReviewState;
 use App\Models\Scopes\PublishedScope;
+use App\Support\Curriculum\DraftVisibility;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -354,13 +355,22 @@ class Trove extends Model implements HasMedia
     }
 
     /**
-     * Sessions that reference this trove through a `trove` CurriculumSessionItem.
+     * Sessions that reference this trove through a `trove` CurriculumSessionItem. Draft
+     * sessions are hidden by DraftScope; draft *items* are a pivot row the scope cannot see
+     * through, so they are excluded here under the same visibility rule.
      */
     public function curriculumSessions(): BelongsToMany
     {
-        return $this->belongsToMany(CurriculumSession::class, 'curriculum_session_items')
+        $relation = $this->belongsToMany(CurriculumSession::class, 'curriculum_session_items')
             ->withPivotValue('type', CurriculumItemType::Trove->value)
-            ->withPivot('id', 'position', 'intro');
+            ->withPivot('id', 'position', 'intro', 'is_draft');
+
+        // Not ->when(): see CurriculumSession::troves().
+        if (! DraftVisibility::includesDrafts()) {
+            $relation->wherePivot('is_draft', false);
+        }
+
+        return $relation;
     }
 
     public function relatedTroves()
@@ -587,6 +597,58 @@ class Trove extends Model implements HasMedia
 
         // Default image
         return asset('images/default-cover-photo.jpg');
+    }
+
+    /**
+     * Locales to try for locale-specific content: current locale first, then English, then the rest.
+     */
+    protected function contentLocaleOrder(): array
+    {
+        $currentLocale = app()->getLocale();
+        $locales = array_keys(config('branding.locales', ['en' => 'English']));
+
+        return array_values(array_unique(array_merge([$currentLocale, 'en'], $locales)));
+    }
+
+    /**
+     * Resolved video links (url, embed_url, ...) for the current locale, falling back to other locales.
+     */
+    public function videoLinks(): \Illuminate\Support\Collection
+    {
+        foreach ($this->contentLocaleOrder() as $locale) {
+            $links = collect($this->getTranslation('video_links', $locale, false) ?? [])
+                ->filter(fn ($link) => is_array($link) && ! empty($link['url']))
+                ->values();
+
+            if ($links->isNotEmpty()) {
+                return $links;
+            }
+        }
+
+        return collect();
+    }
+
+    /**
+     * External links (link_title, link_url) for the current locale, falling back to other locales.
+     */
+    public function externalLinks(): \Illuminate\Support\Collection
+    {
+        foreach ($this->contentLocaleOrder() as $locale) {
+            $links = $this->getTranslation('external_links', $locale, false) ?? [];
+            if (isset($links['link_url'])) {
+                $links = [$links];
+            }
+
+            $links = collect(is_array($links) ? $links : [])
+                ->filter(fn ($link) => is_array($link) && ! empty($link['link_url']) && ! empty($link['link_title']))
+                ->values();
+
+            if ($links->isNotEmpty()) {
+                return $links;
+            }
+        }
+
+        return collect();
     }
 
     public function getContentMedia(): \Illuminate\Support\Collection

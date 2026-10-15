@@ -1,4 +1,4 @@
-@props(['link'])
+@props(['link', 'wide' => false])
 
 @php
     $url = $link['url'] ?? null;
@@ -8,16 +8,17 @@
     }
     $host = $url ? preg_replace('/^www\./', '', (string) parse_url($url, PHP_URL_HOST)) : null;
     $host = $host ?: $url;
+    $width = 'max-w-xl mx-auto';
 @endphp
 
 @if($embedUrl)
-    <div class="rounded-2xl overflow-hidden shadow-sm max-w-2xl mx-auto">
+    <div class="rounded-2xl overflow-hidden shadow-sm {{ $width }}">
         <iframe class="w-full aspect-video" src="{{ $embedUrl }}"
             frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 @elseif($url)
     <a href="{{ $url }}" target="_blank" rel="noopener noreferrer"
-        class="flex items-center justify-between p-4 rounded-2xl bg-white shadow-sm border border-gray-100 hover:border-brand-primary transition group max-w-2xl mx-auto">
+        class="flex items-center justify-between p-4 rounded-2xl bg-white shadow-sm border border-gray-100 hover:border-brand-primary transition group {{ $width }}">
         <div class="flex items-center gap-3 min-w-0">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 shrink-0 text-gray-400 group-hover:text-brand-primary transition">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>

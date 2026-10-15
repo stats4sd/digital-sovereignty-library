@@ -25,6 +25,8 @@ class SessionsRelationManager extends RelationManager
 
     protected static string $relationship = 'sessions';
 
+    protected static string|\BackedEnum|null $icon = 'heroicon-o-queue-list';
+
     public function isReadOnly(): bool
     {
         return false;
@@ -71,7 +73,15 @@ class SessionsRelationManager extends RelationManager
             ->reorderable('order_column')
             ->columns([
                 Tables\Columns\TextColumn::make('number')
-                    ->label('#'),
+                    ->label('#')
+                    ->placeholder('Draft')
+                    ->grow(false),
+                Tables\Columns\TextColumn::make('is_draft')
+                    ->label('Status')
+                    ->badge()
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Draft' : 'Live')
+                    ->color(fn (bool $state): string => $state ? 'warning' : 'success')
+                    ->grow(false),
                 Tables\Columns\TextColumn::make('title')
                     ->wrap()
                     ->formatStateUsing(fn (CurriculumSession $record): ?string => TranslatableText::pick(
@@ -79,13 +89,15 @@ class SessionsRelationManager extends RelationManager
                         $this->activeLocale ?? app()->getLocale(),
                     )),
                 Tables\Columns\TextColumn::make('summary')
-                    ->limit(60)
+                    ->wrap()
+                    ->limit(160)
                     ->formatStateUsing(fn (CurriculumSession $record): ?string => TranslatableText::pick(
                         $record->getTranslations('summary'),
                         $this->activeLocale ?? app()->getLocale(),
                     )),
                 Tables\Columns\TextColumn::make('builds_toward')
                     ->label('Builds toward')
+                    ->wrap()
                     ->formatStateUsing(function (CurriculumSession $record): ?string {
                         $outcome = $record->builds_toward_outcome;
 
@@ -94,7 +106,9 @@ class SessionsRelationManager extends RelationManager
                     ->placeholder('—'),
                 Tables\Columns\TextColumn::make('items_count')
                     ->counts('items')
-                    ->label('# Content blocks'),
+                    ->label('Blocks')
+                    ->alignCenter()
+                    ->grow(false),
             ])
             ->headerActions([
                 CreateAction::make()
@@ -108,6 +122,12 @@ class SessionsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
+                Action::make('preview')
+                    ->label('Preview')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn (CurriculumSession $record): string => route('curriculum.preview.session', ['key' => $record->module->key, 'session' => $record->slug]))
+                    ->openUrlInNewTab()
+                    ->visible(fn (): bool => auth()->user()?->can('preview-curriculum') ?? false),
                 Action::make('content')
                     ->label('Edit Content')
                     ->icon('heroicon-o-queue-list')

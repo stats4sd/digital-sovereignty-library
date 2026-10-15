@@ -19,10 +19,17 @@ class CurriculumSessionFactory extends Factory
             'curriculum_module_id' => CurriculumModule::factory()->map(),
             'slug' => $this->faker->unique()->slug(3),
             'order_column' => 1,
+            // Explicit: the model defaults new rows to draft, but test fixtures should be live.
+            'is_draft' => false,
             'title' => ['en' => rtrim($this->faker->unique()->sentence(4), '.')],
             'summary' => ['en' => rtrim($this->faker->sentence(8), '.')],
             'description' => ['en' => '<p>'.$this->faker->paragraph().'</p>'],
             'builds_toward' => null,
         ];
+    }
+
+    public function draft(): static
+    {
+        return $this->state(fn () => ['is_draft' => true]);
     }
 }

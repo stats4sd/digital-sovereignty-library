@@ -115,3 +115,16 @@ it('nulls trove_id when the trove is deleted and cascades when the session is de
 
     expect(CurriculumSessionItem::whereKey($item->id)->exists())->toBeFalse();
 });
+
+it('defaults new items to draft', function () {
+    $session = CurriculumSession::factory()->create();
+
+    $item = CurriculumSessionItem::create([
+        'curriculum_session_id' => $session->id,
+        'type' => CurriculumItemType::Prose,
+        'position' => 0,
+        'config' => ['body' => ['en' => '<p>x</p>']],
+    ]);
+
+    expect($item->fresh()->is_draft)->toBeTrue();
+});

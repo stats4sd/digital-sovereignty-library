@@ -1,5 +1,13 @@
 @extends('layouts.app')
-@section('title', t('Curriculum'))
+@section('title', ($curriculum->preview ? t('Preview').': ' : '').t('Curriculum'))
+@if($curriculum->preview)
+    @push('banner')
+        <x-curriculum-preview-banner :public-url="route('curriculum')" />
+    @endpush
+    @push('head')
+        <meta name="robots" content="noindex">
+    @endpush
+@endif
 @section('content')
     <div class="container mx-auto px-8 py-12 max-w-5xl">
 

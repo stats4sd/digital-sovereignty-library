@@ -22,11 +22,13 @@
         @if(config('app.env') != 'local')
             @include('layouts.analytics')
         @endif
+        @stack('head')
     </head>
     <body class="flex flex-col min-h-screen">
         @if(empty($hideHeader))
             @include('header')
         @endif
+        @stack('banner')
         <main class="flex-1">
         @isset($slot)
             {{ $slot }}

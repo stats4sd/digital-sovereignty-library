@@ -3,7 +3,9 @@
 namespace App\Filament\Resources\CurriculumModuleResource\Pages;
 
 use App\Filament\Resources\CurriculumModuleResource;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 use LaraZeus\SpatieTranslatable\Resources\Concerns\Translatable;
 
 class EditCurriculumModule extends EditRecord
@@ -26,9 +28,35 @@ class EditCurriculumModule extends EditRecord
         }
     }
 
+    /**
+     * One "Module" tab for the module's own fields, then a tab per relation manager
+     * (Sessions for map modules, Resources for intro/toolkit), mirroring the session edit page.
+     */
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return true;
+    }
+
+    public function getContentTabLabel(): ?string
+    {
+        return 'Module';
+    }
+
+    public function getContentTabIcon(): string|\BackedEnum|Htmlable|null
+    {
+        return 'heroicon-o-information-circle';
+    }
+
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview')
+                ->label('Preview')
+                ->icon('heroicon-o-eye')
+                ->url(fn () => route('curriculum.preview.show', $this->record->key))
+                ->openUrlInNewTab()
+                ->tooltip('Shows the last saved version')
+                ->visible(fn () => $this->record->isMapModule() && (auth()->user()?->can('preview-curriculum') ?? false)),
             CurriculumModuleResource::deleteAction(),
         ];
     }

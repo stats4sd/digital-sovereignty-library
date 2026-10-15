@@ -18,22 +18,28 @@
             <path d="{{ $trail }}" fill="none" stroke="var(--brand-primary)" stroke-width="0.4" stroke-dasharray="2,2" opacity="0.4" />
         </svg>
         @foreach($mapModules as $index => $module)
-            <a href="{{ route('curriculum.show', $module->key) }}"
+            <a href="{{ $curriculum->moduleUrl($module) }}"
                 class="curriculum-node group"
                 data-index="{{ $index }}"
                 style="left: {{ $nodes[$index]['x'] }}%; top: {{ $nodes[$index]['y'] }}%;">
                 <span class="curriculum-node-dot"></span>
                 <span class="block text-sm font-semibold leading-snug text-gray-800 group-hover:text-brand-primary">{{ $module->title }}</span>
+                @if($module->is_draft)
+                    <span data-draft-badge class="mt-1 inline-block rounded bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-amber-800">{{ t('Draft') }}</span>
+                @endif
             </a>
         @endforeach
     </div>
 
     <div class="sm:hidden flex flex-col gap-3 mt-8">
         @foreach($mapModules as $module)
-            <a href="{{ route('curriculum.show', $module->key) }}"
+            <a href="{{ $curriculum->moduleUrl($module) }}"
                 class="flex items-center gap-3 bg-white/60 border border-brand-primary/10 rounded-xl px-4 py-3 hover-effect">
                 <span class="curriculum-node-dot curriculum-node-dot-inline shrink-0"></span>
                 <span class="font-semibold text-gray-800">{{ $module->title }}</span>
+                @if($module->is_draft)
+                    <span data-draft-badge class="rounded bg-amber-100 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-amber-800">{{ t('Draft') }}</span>
+                @endif
             </a>
         @endforeach
     </div>

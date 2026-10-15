@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CurriculumModule;
 use Database\Seeders\Prep\SiteContentSeeder;
 
 beforeEach(function () {
@@ -27,10 +28,12 @@ it('renders the curriculum landing hero with the familiarity question', function
 it('renders the intro content below the question when the intro module is seeded', function () {
     $this->seed(\Database\Seeders\Prep\CurriculumSeeder::class);
 
+    $introTitle = \App\Models\CurriculumModule::where('key', 'intro')->firstOrFail()->getTranslation('title', 'en');
+
     $this->get('/home')
         ->assertOk()
         // Question and intro content live on the same page; #intro deep links reveal it.
-        ->assertSeeInOrder(['How familiar are you with digital sovereignty?', 'What is digital sovereignty?'])
+        ->assertSeeInOrder(['How familiar are you with digital sovereignty?', $introTitle])
         ->assertSee('id="intro-content"', false)
         ->assertSee('Continue to the learning map');
 });

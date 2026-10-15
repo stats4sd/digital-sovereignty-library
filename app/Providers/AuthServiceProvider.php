@@ -3,9 +3,10 @@
 namespace App\Providers;
 
 use App\Models\CurriculumModule;
+use App\Models\User;
 use App\Policies\CurriculumModulePolicy;
-// use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // The curriculum preview (/preview/curriculum/...) shows draft content, so it is open
+        // to anyone who may edit it: editors and admins. Viewers get a 403.
+        Gate::define('preview-curriculum', fn (User $user): bool => $user->canEdit());
     }
 }

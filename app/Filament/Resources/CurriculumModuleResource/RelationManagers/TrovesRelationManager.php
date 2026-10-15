@@ -23,6 +23,10 @@ class TrovesRelationManager extends RelationManager
 
     protected static string $relationship = 'troves';
 
+    protected static ?string $title = 'Resources';
+
+    protected static string|\BackedEnum|null $icon = 'heroicon-o-book-open';
+
     // The owner is hydrated as a ToolkitModule, so Filament would otherwise guess
     // Trove::toolkitModules() for the attach action's inverse.
     protected static ?string $inverseRelationship = 'curriculumModules';

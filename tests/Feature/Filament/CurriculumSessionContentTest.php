@@ -10,6 +10,7 @@ use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -261,4 +262,51 @@ it('shows no tab badges when the form is valid', function () {
         ->values();
 
     expect($badges->all())->toBe([null, null]);
+});
+
+it('hydrates and saves the per-block draft toggle', function () {
+    $item = CurriculumSessionItem::factory()->for($this->session, 'session')->prose()->draft()->create(['position' => 0]);
+
+    $component = Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()]);
+
+    expect(contentState($component)[0]['data']['draft'])->toBeTrue();
+
+    $content = $component->instance()->form->getState()['content'];
+    $content = array_values($content);
+    $content[0]['data']['draft'] = false;
+
+    $component->fillForm(['content' => $content])->call('save')->assertHasNoFormErrors();
+
+    expect($item->fresh()->is_draft)->toBeFalse()
+        ->and($item->fresh()->config)->not->toHaveKey('draft');
+});
+
+it('saves the session draft toggle', function () {
+    $this->session->update(['is_draft' => true]);
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->assertFormFieldExists('is_draft')
+        ->fillForm(['is_draft' => false])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($this->session->fresh()->is_draft)->toBeFalse();
+});
+
+it('shows the Preview header action to editors with the preview URL', function () {
+    Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->assertActionVisible('preview')
+        ->assertActionHasUrl('preview', route('curriculum.preview.session', [
+            'key' => $this->session->module->key,
+            'session' => $this->session->slug,
+        ]));
+
+    expect(route('curriculum.preview.session', ['key' => 'k', 'session' => 's'], false))->toBe('/preview/curriculum/k/s');
+});
+
+it('keeps viewers off the session edit page and out of the preview gate', function () {
+    actingAsViewer();
+
+    $this->get(CurriculumSessionResource::getUrl('edit', ['record' => $this->session]))->assertForbidden();
+    expect(Gate::allows('preview-curriculum'))->toBeFalse();
 });

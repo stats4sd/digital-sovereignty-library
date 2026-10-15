@@ -26,7 +26,7 @@ it('maps item rows to blocks in position order, flattening config and trove colu
     expect($blocks)->toHaveCount(2)
         ->and($blocks[0])->toBe([
             'type' => 'trove',
-            'data' => ['key' => $troveItem->key, 'trove_id' => $trove->id, 'intro' => ['en' => '<p>Read this</p>']],
+            'data' => ['key' => $troveItem->key, 'draft' => false, 'trove_id' => $trove->id, 'intro' => ['en' => '<p>Read this</p>']],
         ])
         ->and($blocks[1]['type'])->toBe('prose')
         ->and($blocks[1]['data']['key'])->toBe($prose->key)
@@ -157,4 +157,51 @@ it('deletes every row when given no blocks', function () {
     $this->sync->apply($this->session, []);
 
     expect($this->session->items()->count())->toBe(0);
+});
+
+it('round-trips the draft flag through toBlocks and apply, never storing it in config', function () {
+    CurriculumSessionItem::factory()->for($this->session, 'session')->prose()->draft()->create(['key' => 'k-draft', 'position' => 0]);
+    CurriculumSessionItem::factory()->for($this->session, 'session')->prose()->create(['key' => 'k-live', 'position' => 1]);
+
+    $blocks = $this->sync->toBlocks($this->session);
+
+    expect($blocks[0]['data']['draft'])->toBeTrue()
+        ->and($blocks[1]['data']['draft'])->toBeFalse();
+
+    $blocks[0]['data']['draft'] = false;
+    $blocks[1]['data']['draft'] = true;
+    $this->sync->apply($this->session, $blocks);
+
+    $items = $this->session->items()->get()->keyBy('key');
+
+    expect($items['k-draft']->is_draft)->toBeFalse()
+        ->and($items['k-live']->is_draft)->toBeTrue()
+        ->and($items['k-draft']->config)->not->toHaveKey('draft');
+});
+
+it('keeps an existing row\'s draft value when the flag is omitted', function () {
+    CurriculumSessionItem::factory()->for($this->session, 'session')->prose()->draft()->create(['key' => 'k-draft']);
+    CurriculumSessionItem::factory()->for($this->session, 'session')->prose()->create(['key' => 'k-live']);
+
+    $this->sync->apply($this->session, [
+        ['type' => 'prose', 'data' => ['key' => 'k-draft', 'body' => ['en' => '<p>A</p>']]],
+        ['type' => 'prose', 'data' => ['key' => 'k-live', 'body' => ['en' => '<p>B</p>']]],
+    ]);
+
+    $items = $this->session->items()->get()->keyBy('key');
+
+    expect($items['k-draft']->is_draft)->toBeTrue()
+        ->and($items['k-live']->is_draft)->toBeFalse();
+});
+
+it('creates a new block as a draft when the flag is omitted', function () {
+    $this->sync->apply($this->session, [
+        ['type' => 'prose', 'data' => ['body' => ['en' => '<p>New</p>']]],
+        ['type' => 'prose', 'data' => ['draft' => false, 'body' => ['en' => '<p>Live</p>']]],
+    ]);
+
+    $items = $this->session->items()->get();
+
+    expect($items[0]->is_draft)->toBeTrue()
+        ->and($items[1]->is_draft)->toBeFalse();
 });

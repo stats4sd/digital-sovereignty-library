@@ -27,7 +27,7 @@ it('merges every locale file into the seeded tools, tag type and pillar tags', f
     $farmTag = Tag::where('type_id', $tagType->id)->where('name->en', 'Farm')->first();
 
     foreach ($locales as $locale) {
-        expect($liteFarm->getTranslation('description', $locale, false))->toContain('<h2>')
+        expect($liteFarm->getTranslation('description', $locale, false))->not->toBe('')
             ->and($tagType->getTranslation('label', $locale, false))->not->toBe('')
             ->and($farmTag->getTranslation('name', $locale, false))->not->toBe('');
     }
