@@ -30,6 +30,7 @@ class ItemRegistry
         return new self([
             new ProseItem,
             new CalloutItem,
+            new ImageItem,
             new NotePromptItem,
             new NoteCanvasItem,
             new NoteMatrixItem,

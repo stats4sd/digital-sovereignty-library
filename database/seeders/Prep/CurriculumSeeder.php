@@ -9,12 +9,15 @@ use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\GlossaryTerm;
 use App\Models\Trove;
+use App\Support\Curriculum\ItemImages;
 use App\Support\HtmlSanitizer;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
+use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
 
 class CurriculumSeeder extends Seeder
@@ -250,6 +253,13 @@ class CurriculumSeeder extends Seeder
             return;
         }
 
+        $imageSource = null;
+        $imageName = null;
+
+        if ($type === CurriculumItemType::Image) {
+            [$item, $imageSource, $imageName] = $this->prepareImage($label, $item);
+        }
+
         $config = $this->normaliseItemConfig($label, $item, $type);
 
         $session->items()->create([
@@ -260,6 +270,51 @@ class CurriculumSeeder extends Seeder
             'trove_id' => null,
             'is_draft' => $draft,
         ]);
+
+        if ($imageSource !== null) {
+            // A re-run after a failed seed overwrites the same filename rather than duplicating.
+            // Disks are configured with throw => false, so a failed write returns false silently.
+            if (ItemImages::disk()->putFileAs(ItemImages::DIRECTORY, new File($imageSource), $imageName) === false) {
+                throw new RuntimeException("{$label}: could not copy image [{$imageName}] to the media disk.");
+            }
+        }
+    }
+
+    /**
+     * Resolves an image item's source file (relative to database/curriculum/images/) and points
+     * `config.image` at the managed target path so the managed-path rule passes.
+     *
+     * @return array{0: array<string, mixed>, 1: string, 2: string} item, source path, target filename
+     */
+    private function prepareImage(string $label, array $item): array
+    {
+        $filename = $item['config']['image'] ?? null;
+
+        if (! is_string($filename) || $filename === '' || basename($filename) !== $filename) {
+            throw new RuntimeException("{$label}: image items need `config.image` set to a filename inside database/curriculum/images/.");
+        }
+
+        $source = database_path('curriculum/images/'.$filename);
+
+        if (! is_file($source)) {
+            throw new RuntimeException("{$label}: image file [{$filename}] not found in database/curriculum/images/.");
+        }
+
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        if (! in_array($extension, ItemImages::EXTENSIONS, true)) {
+            throw new RuntimeException("{$label}: image file [{$filename}] must be one of: ".implode(', ', ItemImages::EXTENSIONS).'.');
+        }
+
+        // The key becomes the stored filename, so it must be a bare uuid (no separators).
+        if (! is_string($item['key'] ?? null) || ! Str::isUuid($item['key'])) {
+            throw new RuntimeException("{$label}: image items need a uuid `key`.");
+        }
+
+        $name = $item['key'].'.'.$extension;
+        $item['config']['image'] = ItemImages::DIRECTORY.'/'.$name;
+
+        return [$item, $source, $name];
     }
 
     private function resolveTrove(string $label, mixed $reference): Trove

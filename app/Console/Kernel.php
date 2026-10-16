@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
         }
 
         $schedule->command('app:prune-superseded-media')->daily();
+        $schedule->command('app:prune-curriculum-images')->daily();
 
         // Closes the silent-drift gap if the engine was unreachable at publish/reindex time.
         $schedule->command('scout:import', [Trove::class])

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Curriculum\Items\ItemDefinition;
 use App\Curriculum\Items\ItemRegistry;
 use App\Enums\CurriculumItemType;
+use App\Support\Curriculum\ItemImages;
 use App\Support\TranslatableText;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -89,6 +90,14 @@ class CurriculumSessionItem extends Model
         $leaf = Arr::get($this->config ?? [], $path);
 
         return is_array($leaf) ? TranslatableText::pick($leaf) : null;
+    }
+
+    /**
+     * Public URL of an image item's uploaded file; null for other types or an unmanaged path.
+     */
+    public function imageUrl(): ?string
+    {
+        return ItemImages::url(Arr::get($this->config ?? [], 'image'));
     }
 
     /**

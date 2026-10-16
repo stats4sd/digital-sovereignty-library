@@ -7,6 +7,7 @@ use App\Enums\CurriculumItemType;
 use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use App\Support\Curriculum\ItemImages;
 use App\Support\HtmlSanitizer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -62,6 +63,7 @@ class CurriculumSessionContentSync
     {
         DB::transaction(function () use ($session, $blocks): void {
             $existing = $session->items()->get()->keyBy('key');
+            $oldPaths = $this->imagePaths($existing);
             $seen = [];
 
             foreach (array_values($blocks) as $position => $block) {
@@ -115,7 +117,33 @@ class CurriculumSessionContentSync
 
             // Eloquent\Collection::except() filters by primary key, so query by key instead.
             $session->items()->whereNotIn('key', $seen)->get()->each->delete();
+
+            // Files no longer used by this session are removed once the save has committed
+            // (a rollback drops the callback). The reference check inside deleteIfOrphaned()
+            // is global, so a file another item still points at survives.
+            $newPaths = $this->imagePaths($session->items()->get());
+
+            DB::afterCommit(fn () => ItemImages::deleteIfOrphaned(array_diff($oldPaths, $newPaths)));
         });
+    }
+
+    /**
+     * @param  iterable<CurriculumSessionItem>  $items
+     * @return list<string>
+     */
+    private function imagePaths(iterable $items): array
+    {
+        $paths = [];
+
+        foreach ($items as $item) {
+            $path = $item->type === CurriculumItemType::Image ? ($item->config['image'] ?? null) : null;
+
+            if (is_string($path) && $path !== '') {
+                $paths[] = $path;
+            }
+        }
+
+        return array_values(array_unique($paths));
     }
 
     /**
