@@ -4,6 +4,7 @@ use App\Enums\CurriculumItemType;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
 use App\Services\CurriculumSessionContentSync;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 beforeEach(function () {
@@ -204,4 +205,82 @@ it('creates a new block as a draft when the flag is omitted', function () {
 
     expect($items[0]->is_draft)->toBeTrue()
         ->and($items[1]->is_draft)->toBeFalse();
+});
+
+function imageBlock(string $key, string $path, array $extra = []): array
+{
+    return ['type' => 'image', 'data' => ['key' => $key, 'image' => $path, 'alt' => ['en' => 'Alt'], ...$extra]];
+}
+
+function putImage(string $path): void
+{
+    Storage::disk(config('media-library.disk_name'))->put($path, 'x');
+}
+
+function imageExists(string $path): bool
+{
+    return Storage::disk(config('media-library.disk_name'))->exists($path);
+}
+
+describe('image cleanup', function () {
+    beforeEach(function () {
+        Storage::fake(config('media-library.disk_name'));
+    });
+
+    it('deletes a replaced image file after the save commits', function () {
+        putImage('curriculum/images/old.jpg');
+        putImage('curriculum/images/new.jpg');
+        CurriculumSessionItem::factory()->for($this->session, 'session')->image('curriculum/images/old.jpg')->create(['key' => 'k1']);
+
+        $this->sync->apply($this->session, [imageBlock('k1', 'curriculum/images/new.jpg')]);
+
+        expect(imageExists('curriculum/images/old.jpg'))->toBeFalse()
+            ->and(imageExists('curriculum/images/new.jpg'))->toBeTrue();
+    });
+
+    it('deletes the file of a removed block', function () {
+        putImage('curriculum/images/gone.jpg');
+        CurriculumSessionItem::factory()->for($this->session, 'session')->image('curriculum/images/gone.jpg')->create(['key' => 'k1']);
+
+        $this->sync->apply($this->session, []);
+
+        expect(imageExists('curriculum/images/gone.jpg'))->toBeFalse();
+    });
+
+    it('deletes the file when a block changes type on the same key', function () {
+        putImage('curriculum/images/a.jpg');
+        CurriculumSessionItem::factory()->for($this->session, 'session')->image('curriculum/images/a.jpg')->create(['key' => 'k1']);
+
+        $this->sync->apply($this->session, [
+            ['type' => 'prose', 'data' => ['key' => 'k1', 'body' => ['en' => '<p>Now text</p>']]],
+        ]);
+
+        expect(imageExists('curriculum/images/a.jpg'))->toBeFalse();
+    });
+
+    it('keeps a file that a draft item in another session still references', function () {
+        putImage('curriculum/images/shared.jpg');
+        CurriculumSessionItem::factory()->for($this->session, 'session')->image('curriculum/images/shared.jpg')->create(['key' => 'k1']);
+        CurriculumSessionItem::factory()->for(CurriculumSession::factory()->create(), 'session')->draft()
+            ->image('curriculum/images/shared.jpg')->create(['key' => 'other']);
+
+        // Removing the only block here drops the path from this session, so only the global,
+        // draft-inclusive reference check keeps the file.
+        $this->sync->apply($this->session, []);
+
+        expect($this->session->items()->count())->toBe(0)
+            ->and(imageExists('curriculum/images/shared.jpg'))->toBeTrue();
+    });
+
+    it('leaves files intact when validation fails and the save rolls back', function () {
+        putImage('curriculum/images/old.jpg');
+        CurriculumSessionItem::factory()->for($this->session, 'session')->image('curriculum/images/old.jpg')->create(['key' => 'k1']);
+
+        expect(fn () => $this->sync->apply($this->session, [
+            imageBlock('k1', 'curriculum/images/new.jpg', ['size' => 'huge']),
+        ]))->toThrow(ValidationException::class);
+
+        expect(imageExists('curriculum/images/old.jpg'))->toBeTrue()
+            ->and($this->session->items()->first()->config['image'])->toBe('curriculum/images/old.jpg');
+    });
 });

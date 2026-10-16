@@ -66,6 +66,20 @@ class CurriculumSessionItemFactory extends Factory
         ]);
     }
 
+    public function image(string $path = 'curriculum/images/fixture.jpg'): static
+    {
+        return $this->state(fn () => [
+            'type' => CurriculumItemType::Image,
+            'trove_id' => null,
+            'config' => [
+                'image' => $path,
+                'alt' => ['en' => 'A farmer inspecting seedlings'],
+                'caption' => ['en' => 'Seedlings in a community nursery'],
+                'size' => 'wide',
+            ],
+        ]);
+    }
+
     public function notePrompt(): static
     {
         return $this->state(fn () => [

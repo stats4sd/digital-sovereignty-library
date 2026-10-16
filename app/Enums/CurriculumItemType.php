@@ -15,6 +15,7 @@ enum CurriculumItemType: string implements HasIcon, HasLabel
 {
     case Prose = 'prose';
     case Callout = 'callout';
+    case Image = 'image';
     case NotePrompt = 'note_prompt';
     case NoteCanvas = 'note_canvas';
     case NoteMatrix = 'note_matrix';
@@ -26,6 +27,7 @@ enum CurriculumItemType: string implements HasIcon, HasLabel
         return match ($this) {
             self::Prose => 'Text',
             self::Callout => 'Callout',
+            self::Image => 'Image',
             self::NotePrompt => 'Note prompt',
             self::NoteCanvas => 'Note canvas',
             self::NoteMatrix => 'Note matrix',
@@ -39,6 +41,7 @@ enum CurriculumItemType: string implements HasIcon, HasLabel
         return match ($this) {
             self::Prose => 'heroicon-o-document-text',
             self::Callout => 'heroicon-o-light-bulb',
+            self::Image => 'heroicon-o-photo',
             self::NotePrompt => 'heroicon-o-pencil-square',
             self::NoteCanvas => 'heroicon-o-view-columns',
             self::NoteMatrix => 'heroicon-o-table-cells',
@@ -54,7 +57,7 @@ enum CurriculumItemType: string implements HasIcon, HasLabel
     {
         return match ($this) {
             self::NotePrompt, self::NoteCanvas, self::NoteMatrix, self::Quiz => true,
-            self::Prose, self::Callout, self::Trove => false,
+            self::Prose, self::Callout, self::Image, self::Trove => false,
         };
     }
 

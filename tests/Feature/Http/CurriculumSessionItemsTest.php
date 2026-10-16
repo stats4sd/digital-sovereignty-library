@@ -3,6 +3,7 @@
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 beforeEach(function () {
@@ -256,4 +257,70 @@ it('shows the empty state when every item is a draft', function () {
         ->assertSee('Content for this session is coming soon.')
         ->assertDontSee('Draft body')
         ->assertDontSee('data-session-outline', false);
+});
+
+it('renders an image item as a figure with the disk URL, alt text and caption', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+    $disk->put('curriculum/images/fixture.jpg', 'x');
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->image()->create(['position' => 0]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('data-item-type="image" data-image-size="wide"', false)
+        ->assertSee('src="'.$disk->url('curriculum/images/fixture.jpg').'"', false)
+        ->assertSee('alt="A farmer inspecting seedlings"', false)
+        ->assertSeeInOrder(['<figcaption', 'Seedlings in a community nursery', '</figcaption>'], false);
+});
+
+it('applies the configured image size', function () {
+    Storage::fake(config('media-library.disk_name'));
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->image()->create([
+        'position' => 0,
+        'config' => ['image' => 'curriculum/images/fixture.jpg', 'alt' => ['en' => 'Alt'], 'caption' => null, 'size' => 'small'],
+    ]);
+
+    $this->get(sessionItemsUrl())->assertOk()->assertSee('data-image-size="small"', false);
+});
+
+it('omits the figcaption when an image item has no caption', function () {
+    Storage::fake(config('media-library.disk_name'));
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->image()->create([
+        'position' => 0,
+        'config' => ['image' => 'curriculum/images/fixture.jpg', 'alt' => ['en' => 'Alt'], 'caption' => null, 'size' => 'wide'],
+    ]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertSee('data-item-type="image"', false)
+        ->assertDontSee('<figcaption', false);
+});
+
+it('renders nothing for an image item whose image is null or unmanaged', function (?string $image) {
+    Storage::fake(config('media-library.disk_name'));
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->image()->create([
+        'position' => 0,
+        'config' => ['image' => $image, 'alt' => ['en' => 'Alt'], 'caption' => ['en' => 'Hidden caption'], 'size' => 'wide'],
+    ]);
+
+    $this->get(sessionItemsUrl())
+        ->assertOk()
+        ->assertDontSee('data-item-type="image"', false)
+        ->assertDontSee('Hidden caption');
+})->with([
+    'null' => [null],
+    'outside the images directory' => ['media/1/photo.jpg'],
+    'path traversal' => ['curriculum/images/../../secret.jpg'],
+]);
+
+it('shows a draft image item in the editor preview', function () {
+    Storage::fake(config('media-library.disk_name'));
+    actingAsEditor();
+    CurriculumSessionItem::factory()->for(test()->session, 'session')->image()->draft()->create(['position' => 0]);
+
+    $this->get('/preview/curriculum/items-module/'.test()->session->slug)
+        ->assertOk()
+        ->assertSee('data-item-type="image"', false);
+
+    auth()->logout();
+    $this->get(sessionItemsUrl())->assertOk()->assertDontSee('data-item-type="image"', false);
 });

@@ -7,6 +7,7 @@ use App\Models\GlossaryTerm;
 use App\Models\Trove;
 use App\Support\HtmlSanitizer;
 use Database\Seeders\Prep\CurriculumSeeder;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Yaml\Yaml;
 
 it('seeds the fixed module set and glossary', function () {
@@ -485,3 +486,107 @@ it('rejects draft: true on an intro or toolkit module', function (string $sectio
     ]);
 })->with([CurriculumModule::SECTION_INTRO, CurriculumModule::SECTION_TOOLKIT])
     ->throws(InvalidArgumentException::class, 'always live');
+
+/*
+|--------------------------------------------------------------------------
+| Image items
+|--------------------------------------------------------------------------
+*/
+
+/** Run $callback with a temporary source image in database/curriculum/images/, removed afterwards. */
+function withSeedImage(string $filename, Closure $callback): void
+{
+    $path = database_path('curriculum/images/'.$filename);
+    file_put_contents($path, 'fake-image-bytes');
+
+    try {
+        $callback();
+    } finally {
+        @unlink($path);
+    }
+}
+
+function imageModuleDefinition(string $filename, string $key = 'a3f1c2d4-1111-4222-8333-444455556666'): array
+{
+    return [
+        'key' => 'image-module',
+        'section' => CurriculumModule::SECTION_MAP,
+        'number' => 9,
+        'title' => ['en' => 'Image module'],
+        'learning_outcomes' => [['statement' => ['en' => 'Outcome one']]],
+        'sessions' => [[
+            'slug' => 'pictures',
+            'title' => ['en' => 'Pictures'],
+            'items' => [[
+                'key' => $key,
+                'type' => 'image',
+                'config' => [
+                    'image' => $filename,
+                    'alt' => ['en' => 'A diagram'],
+                    'caption' => ['en' => 'Figure one'],
+                ],
+            ]],
+        ]],
+    ];
+}
+
+it('copies a YAML image to the media disk and stores its managed path', function () {
+    Storage::fake(config('media-library.disk_name'));
+
+    withSeedImage('seeder-test-image.jpg', function () {
+        seedModuleDefinition(imageModuleDefinition('seeder-test-image.jpg'));
+    });
+
+    $key = 'a3f1c2d4-1111-4222-8333-444455556666';
+    $item = CurriculumSessionItem::withDrafts()->where('key', $key)->firstOrFail();
+
+    expect($item->config['image'])->toBe("curriculum/images/{$key}.jpg")
+        ->and($item->config['alt']['en'])->toBe('A diagram')
+        ->and($item->config['caption']['en'])->toBe('Figure one');
+
+    Storage::disk(config('media-library.disk_name'))->assertExists("curriculum/images/{$key}.jpg");
+});
+
+it('fails the seed and creates nothing when the image source file is missing', function () {
+    Storage::fake(config('media-library.disk_name'));
+
+    expect(fn () => seedModuleDefinition(imageModuleDefinition('does-not-exist.jpg')))
+        ->toThrow(RuntimeException::class, 'does-not-exist.jpg');
+
+    expect(CurriculumSessionItem::withDrafts()->where('type', 'image')->count())->toBe(0)
+        ->and(Storage::disk(config('media-library.disk_name'))->allFiles())->toBe([]);
+});
+
+it('rejects an image source whose extension is not an allowed image type', function () {
+    Storage::fake(config('media-library.disk_name'));
+
+    withSeedImage('seeder-test-image.svg', function () {
+        expect(fn () => seedModuleDefinition(imageModuleDefinition('seeder-test-image.svg')))
+            ->toThrow(RuntimeException::class, 'must be one of');
+    });
+
+    expect(Storage::disk(config('media-library.disk_name'))->allFiles())->toBe([]);
+});
+
+it('rejects an image item whose key is not a uuid', function () {
+    Storage::fake(config('media-library.disk_name'));
+
+    withSeedImage('seeder-test-image.jpg', function () {
+        expect(fn () => seedModuleDefinition(imageModuleDefinition('seeder-test-image.jpg', 'nested/key')))
+            ->toThrow(RuntimeException::class, 'uuid');
+    });
+
+    expect(Storage::disk(config('media-library.disk_name'))->allFiles())->toBe([]);
+});
+
+it('does not duplicate an image item or its file on re-seed', function () {
+    Storage::fake(config('media-library.disk_name'));
+
+    withSeedImage('seeder-test-image.jpg', function () {
+        seedModuleDefinition(imageModuleDefinition('seeder-test-image.jpg'));
+        seedModuleDefinition(imageModuleDefinition('seeder-test-image.jpg'));
+    });
+
+    expect(CurriculumSessionItem::withDrafts()->where('type', 'image')->count())->toBe(1)
+        ->and(Storage::disk(config('media-library.disk_name'))->allFiles())->toHaveCount(1);
+});

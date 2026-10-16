@@ -4,7 +4,7 @@ use App\Enums\CurriculumItemType;
 
 it('has the expected cases and stored values', function () {
     expect(array_map(fn (CurriculumItemType $type) => $type->value, CurriculumItemType::cases()))
-        ->toBe(['prose', 'callout', 'note_prompt', 'note_canvas', 'note_matrix', 'quiz', 'trove']);
+        ->toBe(['prose', 'callout', 'image', 'note_prompt', 'note_canvas', 'note_matrix', 'quiz', 'trove']);
 });
 
 it('marks only the learner-input types as activities', function () {

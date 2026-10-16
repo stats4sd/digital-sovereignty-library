@@ -10,7 +10,9 @@ use App\Filament\Translatable\Form\TranslatableComboField;
 use App\Models\CurriculumModule;
 use App\Models\CurriculumSession;
 use App\Models\CurriculumSessionItem;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -309,4 +311,131 @@ it('keeps viewers off the session edit page and out of the preview gate', functi
 
     $this->get(CurriculumSessionResource::getUrl('edit', ['record' => $this->session]))->assertForbidden();
     expect(Gate::allows('preview-curriculum'))->toBeFalse();
+});
+
+it('saves a new image block, storing the upload under the curriculum images directory', function () {
+    if (! extension_loaded('gd')) {
+        $this->markTestSkipped('GD is required for UploadedFile::fake()->image().');
+    }
+
+    $disk = Storage::fake(config('media-library.disk_name'));
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->fillForm([
+            'content' => [
+                ['type' => 'image', 'data' => [
+                    'image' => [UploadedFile::fake()->image('a.jpg', 800, 600)],
+                    'alt' => ['en' => 'A field'],
+                    'caption' => ['en' => 'Cap'],
+                    'size' => 'wide',
+                ]],
+            ],
+        ])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    $items = $this->session->items()->get();
+    expect($items)->toHaveCount(1)
+        ->and($items[0]->type)->toBe(CurriculumItemType::Image)
+        ->and($items[0]->config['image'])->toStartWith('curriculum/images/')
+        ->and($items[0]->config['alt'])->toBe(['en' => 'A field'])
+        ->and($items[0]->config['caption'])->toBe(['en' => 'Cap']);
+
+    $disk->assertExists($items[0]->config['image']);
+});
+
+it('keeps the stored file when only the caption of an existing image block changes', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+    $path = 'curriculum/images/fixture.jpg';
+    $disk->put($path, 'x');
+    $item = CurriculumSessionItem::factory()->for($this->session, 'session')->image($path)->create(['position' => 0]);
+
+    $component = Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()]);
+    $content = array_values($component->instance()->form->getRawState()['content']);
+    $content[0]['data']['caption']['en'] = 'New caption';
+
+    $component->fillForm(['content' => $content])->call('save')->assertHasNoFormErrors();
+
+    $item = $item->fresh();
+    expect($item->config['image'])->toBe($path)
+        ->and($item->config['caption'])->toBe(['en' => 'New caption']);
+    $disk->assertExists($path);
+});
+
+it('deletes the stored file when its image block is removed and saved', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+    $path = 'curriculum/images/fixture.jpg';
+    $disk->put($path, 'x');
+    $item = CurriculumSessionItem::factory()->for($this->session, 'session')->image($path)->create(['position' => 0]);
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->fillForm(['content' => []])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect(CurriculumSessionItem::whereKey($item->id)->exists())->toBeFalse();
+    $disk->assertMissing($path);
+});
+
+it('rejects an image block without alt text', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+    $path = 'curriculum/images/fixture.jpg';
+    $disk->put($path, 'x');
+    CurriculumSessionItem::factory()->for($this->session, 'session')->image($path)->create(['position' => 0]);
+
+    $component = Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()]);
+    $content = array_values($component->instance()->form->getRawState()['content']);
+    $content[0]['data']['alt'] = ['en' => '', 'fr' => ''];
+
+    $component->fillForm(['content' => $content])->call('save')->assertHasFormErrors();
+
+    expect($this->session->items()->first()->config['alt'])->toBe(['en' => 'A farmer inspecting seedlings']);
+});
+
+function imageBlockWithUpload(UploadedFile $file): array
+{
+    return ['content' => [
+        ['type' => 'image', 'data' => [
+            'image' => [$file],
+            'alt' => ['en' => 'A field'],
+            'caption' => ['en' => 'Cap'],
+            'size' => 'wide',
+        ]],
+    ]];
+}
+
+it('never stores a GIF/HTML polyglot upload with an html extension', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+    $polyglot = "GIF89a\x01\x00\x01\x00\x00\xff\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x00;<script>alert(1)</script>";
+
+    $component = Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->fillForm(imageBlockWithUpload(UploadedFile::fake()->createWithContent('x.html', $polyglot)))
+        ->call('save');
+
+    $files = $disk->allFiles();
+    expect(collect($files)->filter(fn ($f) => str_ends_with(strtolower($f), '.html')))->toBeEmpty();
+
+    if ($this->session->items()->count() === 0) {
+        $component->assertHasFormErrors();
+        expect($files)->toBeEmpty();
+    } else {
+        $component->assertHasNoFormErrors();
+        $path = $this->session->items()->first()->config['image'];
+        expect($path)->toEndWith('.gif');
+    }
+});
+
+// Livewire's test harness reports a TemporaryUploadedFile's mime from the fake's filename, not its bytes,
+// so an `x.jpg` containing HTML cannot be rejected here; real content sniffing was checked separately
+// (finfo reports text/html for that payload, image/gif for the polyglot). A non-image name is rejected.
+it('rejects a non-image upload and stores nothing', function () {
+    $disk = Storage::fake(config('media-library.disk_name'));
+
+    Livewire::test(EditCurriculumSession::class, ['record' => $this->session->getKey()])
+        ->fillForm(imageBlockWithUpload(UploadedFile::fake()->createWithContent('x.txt', '<html><body>hi</body></html>')))
+        ->call('save')
+        ->assertHasFormErrors();
+
+    expect($disk->allFiles())->toBeEmpty()
+        ->and($this->session->items()->count())->toBe(0);
 });

@@ -28,6 +28,7 @@ function fixtureConfig(CurriculumItemType $type): array
     $state = match ($type) {
         CurriculumItemType::Prose => $factory->prose(),
         CurriculumItemType::Callout => $factory->callout(),
+        CurriculumItemType::Image => $factory->image(),
         CurriculumItemType::NotePrompt => $factory->notePrompt(),
         CurriculumItemType::NoteCanvas => $factory->noteCanvas(),
         CurriculumItemType::NoteMatrix => $factory->noteMatrix(),
@@ -126,6 +127,8 @@ it('rejects a fixture missing a required leaf', function (CurriculumItemType $ty
     'prose body' => [CurriculumItemType::Prose, 'body'],
     'callout kind' => [CurriculumItemType::Callout, 'kind'],
     'callout body' => [CurriculumItemType::Callout, 'body'],
+    'image image' => [CurriculumItemType::Image, 'image'],
+    'image alt' => [CurriculumItemType::Image, 'alt'],
     'note prompt heading' => [CurriculumItemType::NotePrompt, 'heading'],
     'note prompt prompt' => [CurriculumItemType::NotePrompt, 'prompt'],
     'note prompt rows' => [CurriculumItemType::NotePrompt, 'rows'],
@@ -281,4 +284,30 @@ it('gives every block a draft toggle that defaults to on', function () {
         expect($toggle)->toBeInstanceOf(Toggle::class)
             ->and($toggle->getDefaultState())->toBeTrue();
     }
+});
+
+it('rejects an image path outside the managed directory', function (string $path) {
+    $config = [...fixtureConfig(CurriculumItemType::Image), 'image' => $path];
+
+    expect(fn () => definitionFor(CurriculumItemType::Image)->normalise($config))->toThrow(ValidationException::class);
+})->with([
+    'traversal' => '../x.jpg',
+    'nested traversal' => 'curriculum/images/../../x.jpg',
+    'media library path' => 'media/1/x.jpg',
+    'absolute' => '/curriculum/images/x.jpg',
+]);
+
+it('rejects an unknown image size', function () {
+    $config = [...fixtureConfig(CurriculumItemType::Image), 'size' => 'huge'];
+
+    expect(fn () => definitionFor(CurriculumItemType::Image)->normalise($config))->toThrow(ValidationException::class);
+});
+
+it('coerces an array image value to its first path and an empty one to missing', function () {
+    $definition = definitionFor(CurriculumItemType::Image);
+    $config = fixtureConfig(CurriculumItemType::Image);
+
+    expect($definition->normalise([...$config, 'image' => ['curriculum/images/a.jpg', 'curriculum/images/b.jpg']])['image'])
+        ->toBe('curriculum/images/a.jpg')
+        ->and(fn () => $definition->normalise([...$config, 'image' => '']))->toThrow(ValidationException::class);
 });
