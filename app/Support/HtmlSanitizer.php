@@ -4,6 +4,7 @@ namespace App\Support;
 
 use Symfony\Component\HtmlSanitizer\HtmlSanitizer as SymfonyHtmlSanitizer;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
+use Symfony\Component\HtmlSanitizer\Visitor\AttributeSanitizer\AttributeSanitizerInterface;
 
 /**
  * Sanitises rich-text HTML produced by (or pasted into) Filament's RichEditor
@@ -41,21 +42,23 @@ class HtmlSanitizer
     protected static function sanitizer(): SymfonyHtmlSanitizer
     {
         $config = (new HtmlSanitizerConfig)
-            // Block-level & structural
-            ->allowElement('p')
+            // Block-level & structural. `style` on paragraphs/headings carries the
+            // editor's text alignment; textAlignOnly() drops any other declaration.
+            ->allowElement('p', ['style'])
             ->allowElement('br')
             ->allowElement('hr')
             ->allowElement('blockquote')
             ->allowElement('pre')
-            ->allowElement('h1')
-            ->allowElement('h2')
-            ->allowElement('h3')
-            ->allowElement('h4')
-            ->allowElement('h5')
-            ->allowElement('h6')
+            ->allowElement('h1', ['style'])
+            ->allowElement('h2', ['style'])
+            ->allowElement('h3', ['style'])
+            ->allowElement('h4', ['style'])
+            ->allowElement('h5', ['style'])
+            ->allowElement('h6', ['style'])
+            ->withAttributeSanitizer(static::textAlignOnly())
             // Lists
             ->allowElement('ul')
-            ->allowElement('ol')
+            ->allowElement('ol', ['start'])
             ->allowElement('li')
             // Tables
             ->allowElement('table')
@@ -84,5 +87,32 @@ class HtmlSanitizer
             ->forceAttribute('a', 'rel', 'noopener noreferrer');
 
         return new SymfonyHtmlSanitizer($config);
+    }
+
+    /**
+     * Reduces a `style` attribute to the single `text-align` declaration the RichEditor's
+     * alignment buttons emit (e.g. "text-align: center;"); anything else drops the attribute.
+     */
+    protected static function textAlignOnly(): AttributeSanitizerInterface
+    {
+        return new class implements AttributeSanitizerInterface
+        {
+            public function getSupportedElements(): ?array
+            {
+                return null;
+            }
+
+            public function getSupportedAttributes(): ?array
+            {
+                return ['style'];
+            }
+
+            public function sanitizeAttribute(string $element, string $attribute, string $value, HtmlSanitizerConfig $config): ?string
+            {
+                return preg_match('/^\s*text-align\s*:\s*(start|center|end|justify|left|right)\s*;?\s*$/i', $value, $m)
+                    ? 'text-align: '.strtolower($m[1]).';'
+                    : null;
+            }
+        };
     }
 }
