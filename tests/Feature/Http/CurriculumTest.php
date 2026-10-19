@@ -17,9 +17,9 @@ it('renders the curriculum page: stepper, then map, then toolkit', function () {
         ->assertOk()
         ->assertSeeInOrder([
             'Intro',                         // stepper: back to the intro on home
-            'Explore in any order',          // map
+            '1. Take the Online Course',          // map
             'Tech Assessment',               // map node from DB
-            'Build Your Sovereign Toolkit',  // toolkit below
+            '2. Build Your Sovereign Toolkit',  // toolkit below
         ])
         ->assertSee(route('home').'#intro') // Intro dot reopens the intro step on home
         ->assertSee('id="map"', false);      // #map anchor for deep links
@@ -52,7 +52,7 @@ it('renders a map module detail page with outcomes', function () {
 it('renders the toolkit section with all four pillars on the curriculum page', function () {
     $this->get('/curriculum')
         ->assertOk()
-        ->assertSee('Build Your Sovereign Toolkit')
+        ->assertSee('2. Build Your Sovereign Toolkit')
         ->assertSee('id="toolkit"', false)
         ->assertSee('Knowledge')
         ->assertSee('Collaboration')
@@ -66,9 +66,9 @@ it('features the Farm Hack Box in the toolkit section before the pillars, not on
     $this->get('/curriculum')
         ->assertOk()
         // Featured card comes after the toolkit heading and before the first pillar…
-        ->assertSeeInOrder(['Build Your Sovereign Toolkit', 'The Farm Hack Box', strip_tags($knowledge->getTranslation('description', 'en'))])
+        ->assertSeeInOrder(['2. Build Your Sovereign Toolkit', 'The Farm Hack Box', strip_tags($knowledge->getTranslation('description', 'en'))])
         // …and the map (which precedes the toolkit heading) does not list it.
-        ->assertSeeInOrder(['Explore in any order', 'Build Your Sovereign Toolkit']);
+        ->assertSeeInOrder(['1. Take the Online Course', '2. Build Your Sovereign Toolkit']);
 
     // Only one occurrence of the title on the page (the featured card, not a map node too).
     expect(substr_count($this->get('/curriculum')->getContent(), 'The Farm Hack Box'))->toBe(1);
@@ -106,7 +106,9 @@ it('drops a deleted module from the map and 404s its page', function () {
 });
 
 it('lays out one map node per learning-map module, in module-number order, without touching the toolkit', function () {
-    $response = $this->get('/curriculum')->assertOk()->assertSee('data-node-count="5"', false);
+    $response = $this->get('/curriculum')->assertOk()->assertSee('data-node-count="5"', false)
+        ->assertSee('left: 50%; top: 98%;', false)
+        ->assertSeeInOrder(['Tech Strategy', 'Ready to build your toolkit', '2. Build Your Sovereign Toolkit']);
     expect(substr_count($response->getContent(), 'class="curriculum-node group"'))->toBe(5);
 
     // New map modules default to draft; make this one live so it appears on the public map.
@@ -117,7 +119,7 @@ it('lays out one map node per learning-map module, in module-number order, witho
         ->assertSee('data-node-count="6"', false)
         ->assertSee('Brand New Node')
         ->assertSee(route('curriculum.show', 'new-node'))
-        ->assertSeeInOrder(['Understanding the Digital Landscape', 'Tech Strategy', 'Brand New Node', 'Build Your Sovereign Toolkit']);
+        ->assertSeeInOrder(['Understanding the Digital Landscape', 'Tech Strategy', 'Brand New Node', '2. Build Your Sovereign Toolkit']);
     expect(substr_count($response->getContent(), 'class="curriculum-node group"'))->toBe(6);
     $response->assertSeeInOrder(['Knowledge', 'Collaboration', 'Farm', 'Market']);
 
@@ -132,7 +134,7 @@ it('renders a single node at the trail head and an empty-state message as the ma
     $this->get('/curriculum')
         ->assertOk()
         ->assertSee('Learning-map modules are coming soon.')
-        ->assertDontSee('sm:-mt-8');
+        ->assertDontSee('data-map-destination', false);
 });
 
 it('shows the curriculum nav item', function () {

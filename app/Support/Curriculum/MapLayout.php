@@ -10,7 +10,7 @@ namespace App\Support\Curriculum;
  * numbers position the dots and draw the trail.
  *
  * The trail itself never changes: it is the original curve (two rows joined by a bend on the
- * right, then a tail curling off the bottom-left towards the "Build your toolkit" button). Nodes
+ * right, then a tail curling off the bottom-left and round to the "Ready to build your toolkit" destination, centred under the map). Nodes
  * are spread at equal arc-length intervals along the two rows, so adding or removing a module
  * reshuffles the remaining nodes evenly along the same route. The bend joining the rows is a
  * connector that carries no nodes: a label there would overflow the right edge of the map, and
@@ -41,7 +41,7 @@ class MapLayout
         [78, 55, 70, 55, 60, 55],
         [48, 55, 38, 55, 26, 55],
         [10, 55, 4, 72, 16, 86],
-        [21, 92, 28, 96, 36, 98],
+        [22, 94, 34, 98, 50, 98],
     ];
 
     private const START = [12.0, 12.0];
@@ -73,6 +73,18 @@ class MapLayout
                 $count === 1 ? 0.0 : $total * $index / ($count - 1),
             ))
             ->all();
+    }
+
+    /**
+     * The trail's final point, where the map's "Ready to build your toolkit" destination sits.
+     *
+     * @return array{x: float, y: float}
+     */
+    public static function end(): array
+    {
+        $last = self::SEGMENTS[array_key_last(self::SEGMENTS)];
+
+        return ['x' => (float) $last[4], 'y' => (float) $last[5]];
     }
 
     /**

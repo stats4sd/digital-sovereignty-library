@@ -2,7 +2,7 @@
 
 use App\Support\Curriculum\MapLayout;
 
-const ORIGINAL_TRAIL = 'M12,12 C23,7 35,7 46,12 C57,7 69,7 80,12 C94,14 98,42 88,53 C78,55 70,55 60,55 C48,55 38,55 26,55 C10,55 4,72 16,86 C21,92 28,96 36,98';
+const ORIGINAL_TRAIL = 'M12,12 C23,7 35,7 46,12 C57,7 69,7 80,12 C94,14 98,42 88,53 C78,55 70,55 60,55 C48,55 38,55 26,55 C10,55 4,72 16,86 C22,94 34,98 50,98';
 
 it('returns no nodes for an empty map', function () {
     expect(MapLayout::nodes(0))->toBe([]);
@@ -10,6 +10,10 @@ it('returns no nodes for an empty map', function () {
 
 it('always draws the same hand-drawn trail', function () {
     expect(MapLayout::trail())->toBe(ORIGINAL_TRAIL);
+});
+
+it('ends the trail at the toolkit destination', function () {
+    expect(MapLayout::end())->toBe(['x' => 50.0, 'y' => 98.0]);
 });
 
 it('puts a single node at the head of the trail', function () {

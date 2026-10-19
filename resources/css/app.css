@@ -273,6 +273,17 @@
         transform: scale(1.1);
     }
 
+    /* End of the trail: an outlined, non-interactive marker so it reads as a place still ahead, not a button */
+    .curriculum-destination {
+        @apply absolute w-44 text-center;
+        transform: translate(-50%, -18px);
+    }
+
+    .curriculum-destination-dot {
+        @apply flex items-center justify-center w-9 h-9 rounded-full mx-auto mb-2 bg-brand-bg text-brand-secondary;
+        border: 3px solid var(--brand-secondary);
+    }
+
     /* In the mobile stacked list the dot sits inline, not centred */
     .curriculum-node-dot-inline {
         @apply mx-0 mb-0 w-4 h-4;

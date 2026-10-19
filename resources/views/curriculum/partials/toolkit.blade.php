@@ -9,7 +9,7 @@
 
 <div id="toolkit" class="mt-20 scroll-mt-24">
     <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-brand-primary mb-3">{{ t('Build Your Sovereign Toolkit') }}</h2>
+        <h2 class="text-3xl font-bold text-brand-primary mb-3">{{ t('2. Build Your Sovereign Toolkit') }}</h2>
         <p class="text-gray-600 max-w-xl mx-auto">{{ t('Tools your community can own and run.') }}</p>
     </div>
 
