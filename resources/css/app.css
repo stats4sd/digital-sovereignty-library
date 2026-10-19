@@ -182,6 +182,41 @@
         @apply my-4;
     }
 
+    /* The editor wraps list-item, quote and table-cell text in <p>; don't push the
+       first line away from its bullet, quote bar or cell border. */
+    .description :is(li, blockquote, th, td) > p:first-child {
+        @apply mt-0;
+    }
+
+    .description blockquote {
+        @apply my-6 border-s-4 ps-5 py-1 italic;
+        border-color: var(--brand-secondary);
+    }
+
+    .description pre {
+        @apply my-4 overflow-x-auto rounded-lg p-4 text-sm leading-relaxed;
+        background-color: var(--brand-surface-muted);
+        color: var(--brand-ink);
+    }
+
+    .description :not(pre) > code {
+        @apply rounded px-1.5 py-0.5 text-[0.9em];
+        background-color: var(--brand-surface-muted);
+    }
+
+    .description table {
+        @apply mt-4 w-full border-collapse text-base;
+    }
+
+    .description th,
+    .description td {
+        @apply border border-brand-line p-3 text-start align-top;
+    }
+
+    .description th {
+        @apply bg-brand-surface-muted font-bold;
+    }
+
     /* ---------- Curriculum ---------- */
 
     /* Onboarding progress trail */
@@ -348,19 +383,6 @@
     .item-body a {
         @apply font-semibold underline underline-offset-2;
         text-decoration-color: var(--brand-secondary);
-    }
-
-    .item-body table {
-        @apply mt-4 w-full border-collapse text-base;
-    }
-
-    .item-body th,
-    .item-body td {
-        @apply border border-brand-line p-3 text-start align-top;
-    }
-
-    .item-body th {
-        @apply bg-brand-surface-muted font-bold;
     }
 }
 
