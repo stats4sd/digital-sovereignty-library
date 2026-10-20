@@ -36,6 +36,10 @@
                         class=" hover:text-brand-primary  {{ request()->is('browse-all') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} !hover:text-red">
                         {{ t('Browse Library') }}
                     </a></li>
+                <li><a href="/get-involved"
+                        class=" hover:text-brand-primary {{ request()->is('get-involved') ? 'border-b-[6px] pb-5 border-brand-primary pb-1' : '' }} ">
+                        {{ t('Get Involved') }}
+                    </a></li>
 
                 <!-- Language Dropdown - hidden automatically when only one locale is configured -->
                 @if(count(config('branding.locales', ['en' => 'English'])) > 1)
@@ -68,6 +72,7 @@
                         {{ t('Glossary') }}
                     </button></li>
                 <li><a href="/browse-all" class="text-gray-800 hover:text-gray-600">{{ t('Browse Library') }}</a></li>
+                <li><a href="/get-involved" class="text-gray-800 hover:text-gray-600">{{ t('Get Involved') }}</a></li>
                 @if(count(config('branding.locales', ['en' => 'English'])) > 1)
                 <li class="relative nav-item pt-2 text-gray-800" x-data="{ langOpen: false }">
                     <a class="nav-link cursor-pointer hover:text-brand-primary" role="button" x-on:click="langOpen = !langOpen">
