@@ -401,3 +401,46 @@ msgstr "包含本资源的合集"
 #: resources/views/trove.blade.php:231
 msgid "Related resources"
 msgstr "相关资源"
+
+#: resources/views/header.blade.php:41
+#: resources/views/header.blade.php:75
+#: resources/views/get-involved.blade.php:59
+#: resources/views/get-involved.blade.php:63
+msgid "Get Involved"
+msgstr "参与其中"
+
+#: resources/views/get-involved.blade.php:4
+msgid "Key initiatives for supporting community-led digital pathways"
+msgstr "支持社区主导的数字路径的重点倡议"
+
+#: resources/views/get-involved.blade.php:9
+msgid "Have you tried to find a tool to help your community take action, only to be overwhelmed by the range and extent of options? You are not alone. There are numerous tools that may be useful to earth defender communities, and it can be difficult to figure out which ones will work best for you. This interactive toolfinder guide is designed to help you find the right tool by answering a few questions that are tailored to earth defender work."
+msgstr "您是否曾想为社区寻找一款有助于采取行动的工具，却被繁多的选项弄得不知所措？您并不孤单。有许多工具可能对地球守护者社区有用，但要判断哪些最适合您并不容易。这份互动式工具查找指南旨在通过几个专为地球守护工作设计的问题，帮助您找到合适的工具。"
+
+#: resources/views/get-involved.blade.php:15
+msgid "The Africa Technology Assessment Platform (AfriTAP) brings together African civil society groups, social movements, independent scientists, lawyers and media professionals working together to assess the implications of new emerging technologies on the continent. AfriTAP aims to enable Africans to choose their future pathway and assert control over new technologies and the continent’s technological advancement."
+msgstr "非洲技术评估平台（AfriTAP）汇聚非洲民间社会团体、社会运动、独立科学家、律师和媒体专业人士，共同评估新兴技术对非洲大陆的影响。AfriTAP 旨在让非洲人民能够自主选择未来道路，并掌握对新技术及非洲大陆技术发展的主导权。"
+
+#: resources/views/get-involved.blade.php:21
+msgid "The Latin American Network for the Assessment of Technologies, called Red TECLA, is a network of organizations and individuals who challenge the technological tools and processes that are being imposed upon peoples, without consideration of their impacts on life, nature and the livelihoods of peoples, communities and collectives."
+msgstr "拉丁美洲技术评估网络（Red TECLA）是一个由组织和个人组成的网络，他们质疑那些在未考虑对生命、自然以及各民族、社区和集体生计影响的情况下强加于人民的技术工具和流程。"
+
+#: resources/views/get-involved.blade.php:27
+msgid "Aligning technology and actual users. Finding people to try, test, break, and give feedback on new technology is hard but critically important to making technology relevant and useful. By bringing users and developers together with open lines of communication, we can increase the utility of open technology in ag across the board."
+msgstr "让技术与真正的用户相契合。寻找愿意试用、测试、挑错并反馈新技术的人并不容易，但这对于让技术切实有用至关重要。通过让用户与开发者在开放的沟通渠道中相聚，我们可以全面提升开放技术在农业领域的实用价值。"
+
+#: resources/views/get-involved.blade.php:33
+msgid "The Grassroots Innovations Assembly for Agroecology (GIAA) is valuing and promoting local knowledge and daily inventiveness of food producers worldwide. It is an Assembly of grassroots organizations and local networks, rooted in agroecology (Nyéléni, 2015), active to strengthen, defend and share food producers’ knowledge, tools, equipment, machines and innovations in general."
+msgstr "农业生态基层创新大会（GIAA）重视并推广全球粮食生产者的本地知识和日常创造力。它是一个由基层组织和地方网络组成的大会，植根于农业生态学（Nyéléni，2015），致力于加强、捍卫和分享粮食生产者的知识、工具、设备、机械及各类创新。"
+
+#: resources/views/get-involved.blade.php:39
+msgid "SPACAT provides funds to “on-the-ground” organizations working to strengthen local and regional food systems who want to adopt open source tools. Examples include (but not limited to) organizations promoting adoption of sustainable production practices (organic, agroecological, regenerative) or strengthening farmer-consumer connections."
+msgstr "SPACAT 为致力于加强地方和区域粮食体系、并希望采用开源工具的一线组织提供资金。例如（但不限于）推动可持续生产方式（有机、农业生态、再生农业）或加强农民与消费者联系的组织。"
+
+#: resources/views/get-involved.blade.php:45
+msgid "Guardian Connector is a free and open-source Indigenous data sovereignty platform for communities to securely centralize, access, and derive insights from their environmental and cultural data. Developed through collaboration between Indigenous communities, Conservation Metrics, and technical partners, Guardian Connector addresses the unique challenges faced by communities on the frontlines of protecting their territories."
+msgstr "Guardian Connector 是一个免费开源的原住民数据主权平台，供社区安全地集中管理、访问其环境与文化数据，并从中获得洞见。该平台由原住民社区、Conservation Metrics 和技术合作伙伴共同开发，旨在应对处于保护领地前线的社区所面临的独特挑战。"
+
+#: resources/views/get-involved.blade.php:51
+msgid "Float is an experiment in community-led prioritisation and resource allocation that aims to bridge the needs and expertise of agroecological farmers with developers, civil society actors, designers, and technologists."
+msgstr "Float 是一项由社区主导的优先事项确定和资源分配实验，旨在将农业生态农民的需求与专业知识同开发者、民间社会行动者、设计师和技术人员联系起来。"

@@ -401,3 +401,46 @@ msgstr "Raccolte che includono questa risorsa"
 #: resources/views/trove.blade.php:231
 msgid "Related resources"
 msgstr "Risorse correlate"
+
+#: resources/views/header.blade.php:41
+#: resources/views/header.blade.php:75
+#: resources/views/get-involved.blade.php:59
+#: resources/views/get-involved.blade.php:63
+msgid "Get Involved"
+msgstr "Partecipa"
+
+#: resources/views/get-involved.blade.php:4
+msgid "Key initiatives for supporting community-led digital pathways"
+msgstr "Iniziative chiave a sostegno di percorsi digitali guidati dalle comunità"
+
+#: resources/views/get-involved.blade.php:9
+msgid "Have you tried to find a tool to help your community take action, only to be overwhelmed by the range and extent of options? You are not alone. There are numerous tools that may be useful to earth defender communities, and it can be difficult to figure out which ones will work best for you. This interactive toolfinder guide is designed to help you find the right tool by answering a few questions that are tailored to earth defender work."
+msgstr "Hai mai cercato uno strumento per aiutare la tua comunità ad agire, finendo sopraffatto dalla quantità e varietà delle opzioni? Non sei solo. Esistono numerosi strumenti che possono essere utili alle comunità di difensori della terra, e può essere difficile capire quali funzioneranno meglio per te. Questa guida interattiva alla ricerca di strumenti è pensata per aiutarti a trovare quello giusto rispondendo a poche domande pensate per il lavoro di difesa della terra."
+
+#: resources/views/get-involved.blade.php:15
+msgid "The Africa Technology Assessment Platform (AfriTAP) brings together African civil society groups, social movements, independent scientists, lawyers and media professionals working together to assess the implications of new emerging technologies on the continent. AfriTAP aims to enable Africans to choose their future pathway and assert control over new technologies and the continent’s technological advancement."
+msgstr "La Piattaforma africana di valutazione delle tecnologie (AfriTAP) riunisce gruppi della società civile africana, movimenti sociali, scienziati indipendenti, giuristi e professionisti dei media che lavorano insieme per valutare le implicazioni delle nuove tecnologie emergenti nel continente. AfriTAP mira a consentire agli africani di scegliere il proprio percorso futuro e di affermare il controllo sulle nuove tecnologie e sullo sviluppo tecnologico del continente."
+
+#: resources/views/get-involved.blade.php:21
+msgid "The Latin American Network for the Assessment of Technologies, called Red TECLA, is a network of organizations and individuals who challenge the technological tools and processes that are being imposed upon peoples, without consideration of their impacts on life, nature and the livelihoods of peoples, communities and collectives."
+msgstr "La Rete latinoamericana per la valutazione delle tecnologie, chiamata Red TECLA, è una rete di organizzazioni e persone che contestano gli strumenti e i processi tecnologici imposti ai popoli senza considerare il loro impatto sulla vita, sulla natura e sui mezzi di sussistenza di popoli, comunità e collettivi."
+
+#: resources/views/get-involved.blade.php:27
+msgid "Aligning technology and actual users. Finding people to try, test, break, and give feedback on new technology is hard but critically important to making technology relevant and useful. By bringing users and developers together with open lines of communication, we can increase the utility of open technology in ag across the board."
+msgstr "Allineare la tecnologia agli utenti reali. Trovare persone disposte a provare, testare, mettere alla prova e dare un riscontro sulle nuove tecnologie è difficile, ma fondamentale per renderle rilevanti e utili. Mettendo in contatto utenti e sviluppatori attraverso canali di comunicazione aperti, possiamo aumentare l’utilità della tecnologia aperta in agricoltura a tutti i livelli."
+
+#: resources/views/get-involved.blade.php:33
+msgid "The Grassroots Innovations Assembly for Agroecology (GIAA) is valuing and promoting local knowledge and daily inventiveness of food producers worldwide. It is an Assembly of grassroots organizations and local networks, rooted in agroecology (Nyéléni, 2015), active to strengthen, defend and share food producers’ knowledge, tools, equipment, machines and innovations in general."
+msgstr "L’Assemblea delle innovazioni dal basso per l’agroecologia (GIAA) valorizza e promuove il sapere locale e l’inventiva quotidiana dei produttori alimentari di tutto il mondo. È un’assemblea di organizzazioni di base e reti locali, radicata nell’agroecologia (Nyéléni, 2015), impegnata a rafforzare, difendere e condividere conoscenze, strumenti, attrezzature, macchine e innovazioni in generale dei produttori alimentari."
+
+#: resources/views/get-involved.blade.php:39
+msgid "SPACAT provides funds to “on-the-ground” organizations working to strengthen local and regional food systems who want to adopt open source tools. Examples include (but not limited to) organizations promoting adoption of sustainable production practices (organic, agroecological, regenerative) or strengthening farmer-consumer connections."
+msgstr "SPACAT finanzia organizzazioni «sul campo» che lavorano per rafforzare i sistemi alimentari locali e regionali e che desiderano adottare strumenti open source. Tra gli esempi rientrano (ma non solo) organizzazioni che promuovono l’adozione di pratiche di produzione sostenibili (biologiche, agroecologiche, rigenerative) o che rafforzano i legami tra agricoltori e consumatori."
+
+#: resources/views/get-involved.blade.php:45
+msgid "Guardian Connector is a free and open-source Indigenous data sovereignty platform for communities to securely centralize, access, and derive insights from their environmental and cultural data. Developed through collaboration between Indigenous communities, Conservation Metrics, and technical partners, Guardian Connector addresses the unique challenges faced by communities on the frontlines of protecting their territories."
+msgstr "Guardian Connector è una piattaforma gratuita e open source per la sovranità dei dati indigeni, che permette alle comunità di centralizzare, consultare e trarre informazioni dai propri dati ambientali e culturali in modo sicuro. Sviluppato grazie alla collaborazione tra comunità indigene, Conservation Metrics e partner tecnici, Guardian Connector risponde alle sfide specifiche delle comunità in prima linea nella protezione dei propri territori."
+
+#: resources/views/get-involved.blade.php:51
+msgid "Float is an experiment in community-led prioritisation and resource allocation that aims to bridge the needs and expertise of agroecological farmers with developers, civil society actors, designers, and technologists."
+msgstr "Float è un esperimento di definizione delle priorità e di allocazione delle risorse guidato dalla comunità, che mira a creare un ponte tra le esigenze e le competenze degli agricoltori agroecologici e sviluppatori, attori della società civile, designer e tecnologi."

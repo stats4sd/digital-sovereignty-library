@@ -85,6 +85,8 @@ Route::group([
         return view('curriculum.pillar', compact('pillar'));
     })->name('toolkit.show');
 
+    Route::view('/get-involved', 'get-involved')->name('get-involved');
+
     Route::get('/collections/{id}', function ($id) {
         $collection = Collection::where('id', $id)->where('public', 1)->firstOrFail();
 
